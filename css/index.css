@@ -1,0 +1,64 @@
+/*
+    File: index.html
+    Erdun E
+    Contact: Erdun_E@student.uml.edu
+    MIT Licensed - see http://opensource.org/licenses/MIT for details.
+    Anyone may freely use this code. Just don't sue me if it breaks stuff.
+    Created: July 24th, 2020.
+    Last Updated: July 28th, 2020.
+
+    This file contains CSS classes / IDs used to override the Creative Bootstrap Theme
+*/
+
+.text-small {
+  font-size: 100%;
+}
+
+.text-blue {
+  color: blue;
+}
+
+/*  For the GitHub Section link
+    These styles make the GitHub Section header appear white all the time,
+    unless hovered on. Makes for a better style, and clearer that it is a link.
+    From: https://www.w3schools.com/css/css_link.asp
+    and: https://www.w3schools.com/css/tryit.asp?filename=trycss_link2;
+*/
+.text-white {
+  color: white;
+}
+
+/* Link color when it is unvisited */
+a.text-white:link  {
+  color: white;
+}
+
+/* Link color after being clicked on and visited */
+a.text-white:visited {
+  color: white;
+}
+
+/* Link color while being hovered on */
+a.text-white:hover {
+  color: blue;
+}
+
+/* Link color the moment it is clicked */
+a.text-white:active {
+  color: white;
+}
+
+.min-padding {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.min-padding-top {
+  padding-top: 2em;
+  padding-bottom: 0em;
+}
+
+
+.div-padding-fix {
+  padding-bottom: 2em;
+}
