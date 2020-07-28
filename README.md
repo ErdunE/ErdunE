@@ -1,5 +1,5 @@
 # My Personal Web
-View it at the following address: [https://ErdunE.github.io](https://ErdunE.github.io)
+View it at the following address: [https://erdune.github.io/ErdunE/](https://erdune.github.io/ErdunE/)
 
 Source code for my personal website. MIT Licensed. Do whatever you want it.
 Just don't sue me. 
