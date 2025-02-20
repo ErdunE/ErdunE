@@ -1,4 +1,6 @@
-# My Personal Web
+## Hi, I'm Erdun E <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">
+
+#### My Personal Web
 View it at the following address: [https://erdune.github.io/ErdunE/](https://erdune.github.io/ErdunE/)
 
 Source code for my personal website. MIT Licensed. Do whatever you want it.
@@ -23,3 +25,7 @@ Built using [Bootstrap](http://getbootstrap.com/) for CSS,
 [git](https://git-scm.com/) for source control
 
 Check out the source code if you like! ☺
+
+You can find me on [LinkedIn](https://www.linkedin.com/in/erdune/) or [mail me](erdunwork@gmail.com).
+
+![](https://komarev.com/ghpvc/?username=ErdunE&style=flat-square)
