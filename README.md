@@ -1,5 +1,7 @@
 ## Hi, I'm Erdun E <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">
 
+Former Software Development Engineer I at Amazon Web Services (AWS), now pursuing my Master’s in Computer Science at Northeastern University.
+
 #### My Personal Web
 View it at the following address: [https://erdune.github.io/ErdunE/](https://erdune.github.io/ErdunE/)
 
@@ -10,7 +12,7 @@ Contains a copy of my resume and some links to Github.
 
 Built using HTML5 and Bootstrap.
 
-Check out some of my other webpages
+Check out some of my other projects
 [on my GitHub profile](https://github.com/ErdunE/)
 
 Based on the
