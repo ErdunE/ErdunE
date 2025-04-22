@@ -240,14 +240,31 @@ header::before {
 .edu-card {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  padding: 24px 28px;
-  margin: 20px 0;
+  padding: 30px;
+  margin: 20px auto;
   color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  max-width: 600px;        
+  width: 100%; 
 }
 
+@media (max-width: 850px) {
+  .equal-height-row {
+    justify-content: center;
+  }
+
+  .equal-height-row > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .equal-height-row .edu-card {
+    max-width: 90vw;
+  }
+}
 .edu-card h3 {
   font-size: 20px;
   font-weight: 600;
@@ -285,4 +302,19 @@ header::before {
 
 .equal-height-row .edu-card {
   flex: 1;
+}
+
+.skill-box-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.skill-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
 }
