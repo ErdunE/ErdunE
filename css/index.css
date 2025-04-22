@@ -181,9 +181,9 @@ header::before {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   text-align: center;
   display: block;
-  width: 30%;             /* 控制宽度比例 */
-  max-width: 1000px;       /* 可选：不超过这个宽 */
-  min-width: 300px;       /* 可选：不要太小 */
+  width: 30%;             
+  max-width: 1000px;      
+  min-width: 300px;      
   margin: 0 auto;  
 }
 
@@ -212,8 +212,8 @@ header::before {
 }
 
 .glass-card p {
-  margin-bottom: 15px !important; /* 控制段落间距：可以改成 0 或 6 看效果 */
-  line-height: 1.8 !important;   /* 控制 <br> 换行的垂直距离 */
+  margin-bottom: 15px !important; 
+  line-height: 1.8 !important;  
 }
 
 .header-content-inner hr {
@@ -221,4 +221,9 @@ header::before {
   max-width: 40px;
   margin: 16px auto;
   opacity: 0.7;
+}
+
+.no-break {
+  white-space: pre-line;
+  word-break: keep-all;
 }
