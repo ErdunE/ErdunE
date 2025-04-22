@@ -236,3 +236,53 @@ header::before {
     padding: 20px 20px; 
   }
 }
+
+.edu-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin: 20px 0;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.edu-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.edu-card p {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.edu-card .highlight {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffd966;
+  margin-bottom: 12px;
+}
+
+.edu-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.equal-height-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.equal-height-row > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.equal-height-row .edu-card {
+  flex: 1;
+}

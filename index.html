@@ -12,7 +12,7 @@
     MIT Licensed - see http://opensource.org/licenses/MIT for details.
     Anyone may freely use this code. Just don't sue me if it breaks stuff.
     Created: July 24th, 2020.
-    Last Updated: July 28th, 2020.
+    Last Updated: April 21st, 2025.
 
     Erdun E's personal website. This site has information about him,
     details about his education, skills, and links to his GitHub and LinkedIn
@@ -72,24 +72,13 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a class="page-scroll" href="#page-top">Home</a>
-          </li>
-          <li>
-            <a class="page-scroll" href="#about">Education</a>
-          </li>
-          <li>
-            <a class="page-scroll" href="#work">Work</a>
-          </li>
-          <li>
-            <a class="page-scroll" href="#github">GitHub</a>
-          </li>
-          <li>
-            <a class="page-scroll" href="#contact">Contact</a>
-          </li>
-          <li>
-            <a class="page-scroll" href="img/resume.pdf">Resume</a>
-          </li>
+          <li><a class="page-scroll" href="#page-top">Home</a></li>
+          <li><a class="page-scroll" href="#education">Education</a></li>
+          <li><a class="page-scroll" href="#skills">Skills</a></li>
+          <li><a class="page-scroll" href="#experience">Experience</a></li>
+          <li><a class="page-scroll" href="#projects">Projects</a></li>
+          <li><a class="page-scroll" href="#contact">Contact</a></li>
+          <li><a class="page-scroll" href="img/resume.pdf">Resume</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -111,21 +100,18 @@
       <div class="header-content-inner glass-card">
         <h1 id="homeHeading">Erdun E</h1>
         <hr>
-        <p class="highlight">20+ Yrs Skier</p>
-        <p class="dimmed no-break">Former Amazon SDE (’21–’23)</p>
-        <p class="highlight no-break">M.S. in CS @ Northeastern<br>2025 Outstanding Network Student</p>
-        <p class="dimmed no-break">Graduating May 2026<br>Seeking Coop @ 25Fall/26Spring<br>Seeking Full-time @ May 2026</p>
+        <p class="dimmed no-break">20+ Yrs Skier<br>Former Amazon SDE (’21–’23)</p>
+        <p class="highlight no-break">M.S. in CS @ Northeastern<br>Graduating May 2026<br>Seeking Coop @ 25Fall/26Spring<br>Seeking Full-time @ May 2026<br>2025 Outstanding Network Student</p>
         <p class="highlight no-break">B.S. in CS @ UMass Lowell<br>Dean’s List</p>
         <p class="dimmed">Boston · Indy · Miami</p>
-        <a href="#about" class="btn btn-primary btn-xl page-scroll">Explore my journey</a>
+        <a href="#education" class="btn btn-primary btn-xl page-scroll">Explore my journey</a>
       </div>
     </div>
   </header>
 
   <!-- Education Section -->
-  <section class="min-padding bg-primary" id="about">
+  <section class="min-padding bg-primary" id="education">
     <div class="container">
-
       <div class="row">
         <div class="col-lg-12 text-center">
           <h2 class="section-heading">Education</h2>
@@ -133,43 +119,105 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center">
-          <i class="fa fa-4x fa-id-card-o text-faded sr-icons"></i>
-          <h3>Degree</h3>
-          <p class="text-faded">Bachelor of Science in Computer Science at
-          <a class="text-white" href="https://www.uml.edu/">UMass Lowell</a></p>
+      <div class="row equal-height-row">
+        <!-- Graduate Card -->
+        <div class="col-md-6">
+          <div class="edu-card">
+            <h3><i class="fa fa-graduation-cap"></i> 
+              <a class="text-white" href="https://www.northeastern.edu/" target="_blank">Northeastern University</a>
+            </h3>
+            
+            <p class="dimmed">
+              <a class="text-white" href="https://www.khoury.northeastern.edu/" target="_blank">Khoury College Of Computer Science</a>
+            </p>
+            
+            <p class="dimmed">
+              <a class="text-white" href="https://miami.northeastern.edu/" target="_blank">Miami, FL</a> · Sep, 2024 – May, 2026 (expected)
+            </p>
+            <p class="highlight">M.S. in Computer Science</p>
+            <ul class="edu-list">
+              <li>GPA: 4.00</li>
+              <li>Courses:</li>
+              <ul class="edu-list">
+                <li>CS5200 Database Management System</li>
+                <li>CS5520 Mobile App Devlopment</li>
+                <li>CS5800 Algorithms</li>
+                <li>CS5100 Programming Design Paradigm</li>
+              </ul>
+              <li>
+                <a class="text-white" href="https://outstandingawards.sites.northeastern.edu/2025-winners/#:~:text=Oakland%20campus%20community.-,2025,-Outstanding%20Network%20Student" target="_blank">
+                  2025 Outstanding Network Student 🏅
+                </a>
+              </li>
+              <li>
+                <a class="text-white" href="https://www.khoury.northeastern.edu/clubs_and_orgs/miami-tech-club/" target="_blank">
+                  President & Co-founder Of Miami Tech Club
+                </a>
+              </li>
+              <li>Student Ambassador</li>
+            </ul>
+          </div>
         </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center div-padding-fix">
-          <i class="fa fa-4x fa-graduation-cap text-faded sr-icons"></i>
-          <h3>Graduation</h3>
-          <p class="text-faded">Graduating in December 2020</p>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center">
-          <i class="fa fa-4x fa-code text-faded sr-icons"></i>
-          <h3>Languages</h3>
-          <p class="text-faded">C / C++, Python, CSS and JavaScript</p>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center">
-          <i class="fa fa-4x fa-file-code-o text-faded sr-icons"></i>
-          <h3>Operating System</h3>
-          <p class="text-faded">Linux(Ubuntu), Mac OS and Windows</p>
+      
+        <!-- Undergraduate Card -->
+        <div class="col-md-6">
+          <div class="edu-card">
+            <h3>
+              <i class="fa fa-university"></i>
+              <a class="text-white" href="https://www.massachusetts.edu/" target="_blank">
+                University Of Massachusetts
+              </a>
+            </h3>
+            <p class="dimmed">
+              <a class="text-white" href="https://www.uml.edu/" target="_blank">
+                Kennedy College of Sciences
+              </a>
+            </p>
+            <p class="dimmed">
+              <a class="text-white" href="https://www.uml.edu/Sciences/" target="_blank">
+                Lowell, MA 
+              </a>· May, 2016 – Dec, 2020
+            </p>
+            <p class="highlight">B.S. in Computer Science</p>
+            <ul class="edu-list">
+              <li>GPA: 3.20</li>
+              <li>Courses:</li>
+              <ul class="edu-list">
+                <li>COMP4200 Artificial Intelligence</li>
+                <li>COMP4210 Data Mining</li>
+                <li>COMP4610 GUI Programming I</li>
+                <li>COMP4630 Mobile App Programming l</li>
+              </ul>
+              <li>Dean’s List (2018 – 2020)</li>
+              <li>Propagada Leader Of CSSA</li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-          <a href="#work" class="page-scroll btn btn-default btn-xl sr-button">Wait There's More!</a>
+          <a href="#skills" class="page-scroll btn btn-default btn-xl sr-button">Wait There's More!</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Skills Section -->
+<section class="min-padding" id="skills">
+  <div class="container text-center">
+    <h2 class="section-heading">Skills</h2>
+    <hr class="primary">
+    <p>💻 Placeholder for programming languages, tools, frameworks</p>
+  </div>
+  <div class="text-center">
+    <a href="#experience" class="btn btn-primary btn-xl page-scroll">
+      Placeholder</a>
+  </div>
+</section>
+
   <!-- Work Experience Section. -->
-  <section class="min-padding" id="work">
+  <section class="min-padding" id="experience">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -201,14 +249,14 @@
         </div>
       </div>
       <div class="text-center">
-        <a href="#github" class="btn btn-primary btn-xl page-scroll">
+        <a href="#projects" class="btn btn-primary btn-xl page-scroll">
         Show me the CODE</a>
       </div>
     </div>
   </section>
 
   <!-- GitHub Section -->
-  <section class="min-padding-top bg-primary" id="github">
+  <section class="min-padding-top bg-primary" id="projects">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
