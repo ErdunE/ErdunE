@@ -227,3 +227,12 @@ header::before {
   white-space: pre-line;
   word-break: keep-all;
 }
+
+@media (max-width: 768px) {
+  .glass-card {
+    width: 90vw;       
+    max-width: none;    
+    min-width: 0;       
+    padding: 20px 20px; 
+  }
+}
