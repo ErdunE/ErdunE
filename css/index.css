@@ -62,3 +62,163 @@ a.text-white:active {
 .div-padding-fix {
   padding-bottom: 2em;
 }
+
+/* === Enhanced Header Styling (2025 Refresh) === */
+.header-content-inner h1 {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.header-content-inner p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 4px;
+}
+
+.header-content-inner p:first-of-type {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffd966; /* goldish highlight for target line */
+}
+
+.header-content-inner p:last-of-type {
+  margin-top: 12px;
+  font-size: 18px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.header-content-inner i {
+  color: #ffdab9; /* peach tone for secondary items */
+}
+
+/* Button polish */
+.header-content-inner .btn-primary {
+  font-size: 14px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  background: #ff5e3a;
+  border: none;
+  text-shadow: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background 0.3s ease;
+}
+.header-content-inner .btn-primary:hover {
+  background: #e94720;
+}
+
+header {
+  position: relative;
+  height: 100vh;
+  background: none !important; 
+  overflow: hidden; 
+}
+
+.video-background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -2;
+}
+
+#header-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0.3) 60%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+header {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 30px 30px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: block;
+  width: 30%;             /* 控制宽度比例 */
+  max-width: 1000px;       /* 可选：不超过这个宽 */
+  min-width: 300px;       /* 可选：不要太小 */
+  margin: 0 auto;  
+}
+
+.glass-card p {
+  line-height: 1.8;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.glass-card p.title {
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffd966;
+  margin-bottom: 16px;
+}
+
+.glass-card p.highlight {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.glass-card p.dimmed {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 300;
+}
+
+.glass-card p {
+  margin-bottom: 15px !important; /* 控制段落间距：可以改成 0 或 6 看效果 */
+  line-height: 1.8 !important;   /* 控制 <br> 换行的垂直距离 */
+}
+
+.header-content-inner hr {
+  border-color: #f05f40;
+  max-width: 40px;
+  margin: 16px auto;
+  opacity: 0.7;
+}
