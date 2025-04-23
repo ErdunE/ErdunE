@@ -9,7 +9,9 @@ MIT Licensed · Built with HTML5 + Bootstrap · Contains resume, project links, 
 
 Check out the source code if you like! ☺
 
-![Hello](https://img.shields.io/badge/Hello%20World!-I'm%20Erdun-brightgreen?style=for-the-badge)
+[![Erdun's terminal](https://readme-typing-svg.herokuapp.com?font=Fira+Code&duration=2000&pause=1000&color=F7F7F7&background=000000&width=500&lines=Hi+I'm+Erdun;Welcome+to+my+github;Let's+build+something+cool)](https://github.com/ErdunE)
+
+<!-- ![Hello](https://img.shields.io/badge/Hello%20World!-I'm%20Erdun-brightgreen?style=for-the-badge) -->
 
 ![](https://komarev.com/ghpvc/?username=ErdunE&style=flat-square)
 [![My Web](https://img.shields.io/badge/Portfolio-ErdunE.github.io-informational?style=flat&logo=githubpages&logoColor=white&color=blue)](https://erdune.github.io/ErdunE/)
@@ -58,4 +60,11 @@ Check out the source code if you like! ☺
 ![English](https://img.shields.io/badge/🇺🇸%20English-Fluent-blue?style=flat&logo=googletranslate&logoColor=white)
 
 
-![GitHub Streak](https://streak-stats.demolab.com?user=ErdunE&theme=tokyonight&hide_border=false&cache_seconds=86400)
+![GitHub Activity Map](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ErdunE&theme=github_dark)
+
+<!-- [![LeetCode Stats](https://leetcard.jacoblin.cool/ErdunE?theme=dark&font=Fira+Code)](https://leetcode.com/yourUsername) -->
+
+
+<p align="center">
+  <a href="https://github.com/search?q=user:ErdunE+">Search My Projects 🔍</a>
+</p>
