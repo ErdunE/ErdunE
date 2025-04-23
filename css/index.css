@@ -299,7 +299,7 @@ header::before {
 
 .edu-logo-wrapper {
   width: 45px;       
-  height: 45px;     
+  height:45px;     
   display: flex;
   justify-content: center;
   align-items: center;
@@ -340,4 +340,8 @@ header::before {
   align-items: center;
   height: 100%;
   padding: 20px;
+}
+
+footer {
+  padding-top: 20px;
 }
