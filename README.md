@@ -64,6 +64,7 @@ Check out the source code if you like! ☺
 
 <!-- [![LeetCode Stats](https://leetcard.jacoblin.cool/ErdunE?theme=dark&font=Fira+Code)](https://leetcode.com/yourUsername) -->
 
+![Snake gif dark](https://raw.githubusercontent.com/ErdunE/ErdunE/output/github-snake-dark.svg?palette=github-dark)
 
 <p align="center">
   <a href="https://github.com/search?q=user:ErdunE+">Search My Projects 🔍</a>
