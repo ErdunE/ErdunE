@@ -235,6 +235,16 @@ header::before {
     min-width: 0;       
     padding: 20px 20px; 
   }
+
+  .header-content {
+    padding-top: 60px; 
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 
 .edu-card {
@@ -342,6 +352,13 @@ header::before {
   padding: 20px;
 }
 
-footer {
-  padding-top: 20px;
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+  z-index: 1;
+  position: relative;
+  text-align: center;
 }
