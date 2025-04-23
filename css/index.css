@@ -1,5 +1,5 @@
 /*
-    File: index.html
+    File: index.css
     Erdun E
     Contact: erdunwork@gmail.com
     MIT Licensed - see http://opensource.org/licenses/MIT for details.
@@ -382,5 +382,14 @@ header::before {
   -webkit-backdrop-filter: blur(10px);
   border: none;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: all 0.3s ease-in-out;
+}
+
+#contact a.text-white {
+  text-decoration: underline;
+  border-bottom: none;
+}
+
+#contact a.text-white:hover {
+  text-decoration: underline;
+  color: #ffd966;
 }
