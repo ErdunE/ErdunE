@@ -362,3 +362,25 @@ header::before {
   position: relative;
   text-align: center;
 }
+
+.navbar-default .nav > li > a {
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.navbar-default .nav > li > a {
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
+
+.navbar-default.affix {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-in-out;
+}
