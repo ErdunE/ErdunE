@@ -245,6 +245,10 @@ header::before {
     align-items: center;
     flex-direction: column;
   }
+
+  html {
+    scroll-padding-top: 70px;
+  }
 }
 
 .edu-card {
