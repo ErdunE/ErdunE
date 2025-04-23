@@ -63,7 +63,7 @@ Check out the source code if you like! ☺
 ![GitHub Activity Map](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ErdunE&theme=github_dark)
 
 <p>
-  <img src="https://github.com/ErdunE/ErdunE/blob/output/github-snake-dark.svg?palette=github-dark" width="750" alt="GitHub Snake">
+  <img src="https://github.com/ErdunE/ErdunE/blob/output/github-snake-dark.svg?palette=github-dark" width="700" alt="GitHub Snake">
 </p>
 
 <!-- [![LeetCode Stats](https://leetcard.jacoblin.cool/ErdunE?theme=dark&font=Fira+Code)](https://leetcode.com/yourUsername) -->
