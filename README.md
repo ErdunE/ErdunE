@@ -62,7 +62,7 @@ Check out the source code if you like! ☺
 
 ![GitHub Activity Map](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ErdunE&theme=github_dark)
 
-<p align="center">
+<p>
   <img src="https://github.com/ErdunE/ErdunE/blob/output/github-snake-dark.svg?palette=github-dark" width="750" alt="GitHub Snake">
 </p>
 
