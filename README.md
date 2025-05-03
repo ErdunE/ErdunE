@@ -59,6 +59,7 @@ Check out the source code if you like! ☺
 ![Jetpack Compose](https://img.shields.io/badge/Jetpack_Compose-4285F4?style=flat&logo=jetpack-compose&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwind-css&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-00C4CC?style=flat&logo=canva&logoColor=white)
+
 ![Mandarin](https://img.shields.io/badge/🇨🇳%20Mandarin-Native-red?style=flat&logo=googletranslate&logoColor=white)
 ![English](https://img.shields.io/badge/🇺🇸%20English-Fluent-blue?style=flat&logo=googletranslate&logoColor=white)
 
