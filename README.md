@@ -1,6 +1,6 @@
 ## Hi, I'm Erdun E <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px"> 
-Former Software Development Engineer I @ Amazon Web Services (AWS)  
-Now pursuing M.S. in Computer Science @ Northeastern University (Miami Campus)
+EX-Software Development Engineer I @ Amazon Web Services (AWS)  
+Now pursuing M.S. in Computer Science @ Northeastern University
 
 ---
 View My Personal Web at the following address: [https://erdune.github.io/ErdunE/](https://erdune.github.io/ErdunE/)
