@@ -1,13 +1,15 @@
 ## Hi, I'm Erdun E <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px"> 
 EX-Software Development Engineer I @ Amazon Web Services (AWS)  
-Now pursuing M.S. in Computer Science @ Northeastern University
+Now pursuing M.S. in Computer Science @ Northeastern University  
+
+📅 Want to chat or connect?  
+[Book a 30-minute meeting with me on Calendly](https://calendly.com/e-e-northeastern/30min)  
 
 ---
 View My Personal Web at the following address: [https://erdune.github.io/ErdunE/](https://erdune.github.io/ErdunE/)  
 MIT Licensed · Built with HTML5 + Bootstrap · Contains resume, project links, and source code. 
 
 Check out the source code if you like! ☺  
-📅 Want to chat or connect? [Book a 30-minute meeting with me on Calendly](https://calendly.com/e-e-northeastern/30min)  
 
 [![Erdun's terminal](https://readme-typing-svg.herokuapp.com?font=Fira+Code&duration=2000&pause=1000&color=F7F7F7&background=000000&width=500&lines=Hi+I'm+Erdun;Welcome+to+my+github;Let's+build+something+cool)](https://github.com/ErdunE)
 
