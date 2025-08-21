@@ -489,5 +489,21 @@
 
   <!-- Theme JavaScript -->
   <script src="js/creative.min.js"></script>
+
+  <!-- Calendly badge widget begin -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script type="text/javascript">
+    window.onload = function () {
+      Calendly.initBadgeWidget({
+        url: 'https://calendly.com/e-e-northeastern/30min',
+        text: 'Chat with Erdun',
+        color: '#0069ff',
+        textColor: '#ffffff',
+        branding: true
+      });
+    };
+  </script>
+  <!-- Calendly badge widget end -->
 </body>
 </html>
