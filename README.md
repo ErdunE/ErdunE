@@ -3,7 +3,7 @@ EX-Software Development Engineer I @ Amazon Web Services (AWS)
 Now pursuing M.S. in Computer Science @ Northeastern University  
 
 📅 Want to chat or connect?  
-[Book a 30-minute meeting with me on Calendly](https://calendly.com/e-e-northeastern/30min)  
+[Book a 30-minute meeting with me on Calendly](https://calendly.com/erdune)  
 
 ---
 View My Personal Web at the following address: [https://erdune.github.io/ErdunE/](https://erdune.github.io/ErdunE/)  
