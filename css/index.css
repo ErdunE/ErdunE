@@ -402,7 +402,7 @@ header::before {
 .marquee-row {
   margin: 0;               
   padding: 22px 0;  
-  overflow: visible;       
+  overflow: hidden;   
   position: relative;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
           mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
