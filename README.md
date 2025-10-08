@@ -5,6 +5,9 @@ Now pursuing M.S. in Computer Science @ Northeastern University
 <a href="https://www.buymeacoffee.com/erdun" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50" >
 </a>
+<a href="https://donate.stripe.com/fZu7sLaqc8QV1XF9QGa3u00" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" height="50" >
+</a>
 
 📅 Want to chat or connect?  
 [Book a 30-minute meeting with me on Calendly](https://calendly.com/erdune)  
