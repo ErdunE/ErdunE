@@ -1395,6 +1395,10 @@
     const SCALE_AT_EDGE = 0.72;         // scale at ±90°
     const OPACITY_AT_EDGE = 0.35;       // opacity at ±90°
     
+    // === Center Card Emphasis ===
+    const CENTER_SCALE = 1.22;          // center card scale boost
+    const CENTER_Z_BOOST = 120;         // center card steps forward in Z
+    
     // === 3D Carousel Controller ===
     const carousel = {
       track: null,
@@ -1594,16 +1598,26 @@
           // x = horizontal position along the arc
           // z = depth (negative = further away)
           const x = Math.sin(thetaRad) * radius;
-          const z = Math.cos(thetaRad) * radius - radius; // z=0 at center, negative elsewhere
+          let z = Math.cos(thetaRad) * radius - radius; // z=0 at center, negative elsewhere
           
           // === ROTATION: Cards face the CENTER of the circle ===
           // rotateY = -theta means each card rotates to face inward
           // Center card (theta=0) naturally faces user
           const rotateY = -thetaDeg;
           
+          // === CENTER CARD EMPHASIS ===
+          // Center card gets scale boost and steps forward in Z
+          const isCenter = offset === 0;
+          if (isCenter) {
+            z += CENTER_Z_BOOST; // step forward toward user
+          }
+          
           // === VISIBILITY & DEPTH PROPERTIES ===
           const normalizedAngle = Math.min(absThetaDeg / MAX_VISIBLE_ANGLE, 1);
-          const scale = 1 - normalizedAngle * (1 - SCALE_AT_EDGE);
+          // Side cards scale from ~0.85 down to SCALE_AT_EDGE
+          // Center card uses CENTER_SCALE
+          const baseScale = isCenter ? CENTER_SCALE : (1 - normalizedAngle * (1 - SCALE_AT_EDGE));
+          const scale = baseScale;
           const opacity = 1 - normalizedAngle * (1 - OPACITY_AT_EDGE);
           const zIndex = Math.round(100 - absThetaDeg);
           
