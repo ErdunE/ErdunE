@@ -684,10 +684,18 @@ header::before {
 
 /* === Carousel Track === */
 .carousel-3d-track {
-  position: relative;
-  width: 320px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* center the track */
+  width: 320px; /* card width - actual spread comes from JS */
   height: 380px;
   transform-style: preserve-3d;
+}
+
+/* Full-width carousel container */
+.carousel-3d-container {
+  padding: 0;
+  overflow: visible;
 }
 
 /* === Individual Cards === */
@@ -839,14 +847,11 @@ header::before {
   line-height: 1.5;
 }
 
-/* === Position Classes: 3D Transforms === */
+/* === Position Classes (visual styles only - transforms come from JS) === */
 
 /* Center card - fully visible, front position */
 .carousel-3d-center {
-  transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
-  opacity: 1;
-  z-index: 50;
-  pointer-events: auto;
+  /* transform set by JS inline styles */
   filter: contrast(1.02) brightness(1.01);
 }
 
@@ -862,10 +867,7 @@ header::before {
 
 /* Left card - slightly back, rotated, clickable */
 .carousel-3d-left {
-  transform: translateX(-280px) translateZ(-100px) rotateY(28deg) scale(0.85);
-  opacity: 0.68;
-  z-index: 40;
-  pointer-events: auto;
+  /* transform set by JS inline styles */
   filter: saturate(0.88) contrast(0.94);
 }
 
@@ -874,15 +876,12 @@ header::before {
 }
 
 .carousel-3d-left:hover {
-  opacity: 0.82;
+  filter: saturate(0.92) contrast(0.96);
 }
 
 /* Right card - slightly back, rotated opposite, clickable */
 .carousel-3d-right {
-  transform: translateX(280px) translateZ(-100px) rotateY(-28deg) scale(0.85);
-  opacity: 0.68;
-  z-index: 40;
-  pointer-events: auto;
+  /* transform set by JS inline styles */
   filter: saturate(0.88) contrast(0.94);
 }
 
@@ -891,15 +890,12 @@ header::before {
 }
 
 .carousel-3d-right:hover {
-  opacity: 0.82;
+  filter: saturate(0.92) contrast(0.96);
 }
 
 /* Ghost left - deeper in the wheel, non-interactive */
 .carousel-3d-ghost-left {
-  transform: translateX(-480px) translateZ(-200px) rotateY(45deg) scale(0.62);
-  opacity: 0.25;
-  z-index: 20;
-  pointer-events: none;
+  /* transform set by JS inline styles */
   filter: blur(1px);
 }
 
@@ -909,10 +905,7 @@ header::before {
 
 /* Ghost right - deeper in the wheel, non-interactive */
 .carousel-3d-ghost-right {
-  transform: translateX(480px) translateZ(-200px) rotateY(-45deg) scale(0.62);
-  opacity: 0.25;
-  z-index: 20;
-  pointer-events: none;
+  /* transform set by JS inline styles */
   filter: blur(1px);
 }
 
@@ -922,10 +915,7 @@ header::before {
 
 /* Far left - barely visible, atmosphere */
 .carousel-3d-far-left {
-  transform: translateX(-600px) translateZ(-300px) rotateY(60deg) scale(0.45);
-  opacity: 0.1;
-  z-index: 10;
-  pointer-events: none;
+  /* transform set by JS inline styles */
   filter: blur(2px);
 }
 
@@ -935,10 +925,7 @@ header::before {
 
 /* Far right - barely visible, atmosphere */
 .carousel-3d-far-right {
-  transform: translateX(600px) translateZ(-300px) rotateY(-60deg) scale(0.45);
-  opacity: 0.1;
-  z-index: 10;
-  pointer-events: none;
+  /* transform set by JS inline styles */
   filter: blur(2px);
 }
 
@@ -948,9 +935,8 @@ header::before {
 
 /* Hidden - off the visible wheel */
 .carousel-3d-hidden {
-  transform: translateX(0) translateZ(-400px) scale(0.3);
-  opacity: 0;
-  pointer-events: none;
+  /* transform, opacity, pointer-events set by JS inline styles */
+  visibility: visible; /* placeholder to avoid empty ruleset warning */
 }
 
 .carousel-3d-hidden .carousel-3d-link {
@@ -1037,7 +1023,7 @@ header::before {
 /* === Desktop Adjustments === */
 @media (min-width: 1024px) {
   .carousel-3d-viewport {
-    height: 490px; /* increased from 450px */
+    height: 490px;
   }
   
   .carousel-3d-track {
@@ -1049,35 +1035,21 @@ header::before {
     height: 220px;
   }
   
-  .carousel-3d-left {
-    transform: translateX(-320px) translateZ(-120px) rotateY(30deg) scale(0.82);
-  }
-  
-  .carousel-3d-right {
-    transform: translateX(320px) translateZ(-120px) rotateY(-30deg) scale(0.82);
-  }
-  
-  .carousel-3d-ghost-left {
-    transform: translateX(-540px) translateZ(-220px) rotateY(48deg) scale(0.58);
-  }
-  
-  .carousel-3d-ghost-right {
-    transform: translateX(540px) translateZ(-220px) rotateY(-48deg) scale(0.58);
-  }
+  /* Transforms now handled by JS - removed legacy transforms */
   
   .carousel-3d-prev {
-    left: max(40px, calc(50% - 320px));
+    left: max(40px, calc(50% - 420px));
   }
   
   .carousel-3d-next {
-    right: max(40px, calc(50% - 320px));
+    right: max(40px, calc(50% - 420px));
   }
 }
 
 /* === Tablet Adjustments === */
 @media (max-width: 1023px) and (min-width: 769px) {
   .carousel-3d-viewport {
-    height: 440px; /* increased from 400px */
+    height: 440px;
   }
   
   .carousel-3d-track {
@@ -1085,13 +1057,7 @@ header::before {
     height: 360px;
   }
   
-  .carousel-3d-left {
-    transform: translateX(-260px) translateZ(-90px) rotateY(26deg) scale(0.84);
-  }
-  
-  .carousel-3d-right {
-    transform: translateX(260px) translateZ(-90px) rotateY(-26deg) scale(0.84);
-  }
+  /* Transforms now handled by JS */
 }
 
 /* === Mobile Adjustments === */
@@ -1106,7 +1072,7 @@ header::before {
   }
   
   .carousel-3d-viewport {
-    height: 420px; /* increased from 380px */
+    height: 420px;
     perspective: 1000px;
   }
   
@@ -1140,33 +1106,9 @@ header::before {
     font-size: 11px;
   }
   
-  /* Mobile: side cards closer */
-  .carousel-3d-left {
-    transform: translateX(-200px) translateZ(-80px) rotateY(24deg) scale(0.8);
-    opacity: 0.6;
-  }
+  /* Transforms now handled by JS - removed legacy transforms */
   
-  .carousel-3d-right {
-    transform: translateX(200px) translateZ(-80px) rotateY(-24deg) scale(0.8);
-    opacity: 0.6;
-  }
-  
-  .carousel-3d-ghost-left {
-    transform: translateX(-340px) translateZ(-160px) rotateY(40deg) scale(0.55);
-    opacity: 0.15;
-  }
-  
-  .carousel-3d-ghost-right {
-    transform: translateX(340px) translateZ(-160px) rotateY(-40deg) scale(0.55);
-    opacity: 0.15;
-  }
-  
-  .carousel-3d-far-left,
-  .carousel-3d-far-right {
-    opacity: 0;
-  }
-  
-  /* Hide nav buttons on mobile - use swipe */
+  /* Nav buttons on mobile */
   .carousel-3d-nav {
     width: 40px;
     height: 40px;
@@ -1194,7 +1136,7 @@ header::before {
 /* === Very Small Screens === */
 @media (max-width: 480px) {
   .carousel-3d-viewport {
-    height: 400px; /* increased from 360px */
+    height: 400px;
   }
   
   .carousel-3d-track {
@@ -1202,16 +1144,5 @@ header::before {
     height: 320px;
   }
   
-  .carousel-3d-left {
-    transform: translateX(-160px) translateZ(-70px) rotateY(22deg) scale(0.75);
-  }
-  
-  .carousel-3d-right {
-    transform: translateX(160px) translateZ(-70px) rotateY(-22deg) scale(0.75);
-  }
-  
-  .carousel-3d-ghost-left,
-  .carousel-3d-ghost-right {
-    opacity: 0.08;
-  }
+  /* Transforms now handled by JS */
 }
