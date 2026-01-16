@@ -1012,10 +1012,11 @@
             </a>
           </article>
         </div>
-
-        <!-- Carousel Indicators -->
-        <div class="carousel-3d-indicators"></div>
       </div>
+    </div>
+    <!-- Carousel Indicators (2D flow, outside viewport) -->
+    <div class="carousel-3d-indicators-wrapper">
+      <div class="carousel-3d-indicators"></div>
     </div>
     </div>
 
@@ -1673,13 +1674,26 @@
         this.updateIndicators();
       },
       
-      // Update dot indicators
+      // Update dot indicators with angle-based prominence
       updateIndicators() {
         if (!this.indicators) return;
         
         const dots = this.indicators.querySelectorAll('.carousel-3d-dot');
         dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === this.activeIndex);
+          const offset = this.getCircularDiff(i, this.activeIndex);
+          const absOffset = Math.abs(offset);
+          
+          // Angle-based prominence
+          // Center dot (active): full scale and opacity
+          // Adjacent dots: slightly reduced
+          // Far dots: more reduced
+          const isActive = offset === 0;
+          const scale = isActive ? 1.4 : Math.max(0.7, 1 - absOffset * 0.1);
+          const opacity = isActive ? 1 : Math.max(0.3, 1 - absOffset * 0.15);
+          
+          dot.classList.toggle('active', isActive);
+          dot.style.transform = `scale(${scale.toFixed(2)})`;
+          dot.style.opacity = opacity.toFixed(2);
         });
       },
       

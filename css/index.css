@@ -987,38 +987,50 @@ header::before {
   right: max(20px, calc(50% - 280px));
 }
 
-/* === Dot Indicators === */
-.carousel-3d-indicators {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+/* === Dot Indicators Wrapper (2D flow, aligned with center card) === */
+.carousel-3d-indicators-wrapper {
   display: flex;
-  gap: 10px;
-  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  max-width: 360px; /* matches center card width on desktop */
+  width: 100%;
+  margin: 36px auto 0; /* center the wrapper */
+  padding-top: 16px; /* reduced: dots feel attached to card */
+  padding-bottom: 12px;
+}
+
+/* === Dot Indicators (2D flow, normal document layout) === */
+.carousel-3d-indicators {
+  display: flex;
+  gap: 12px;
+  pointer-events: auto;
+  /* NO position: absolute — uses normal flow */
+  /* NO translateZ — stays in 2D */
 }
 
 .carousel-3d-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.2);
   cursor: pointer;
   padding: 0;
   transition: 
     background 300ms ease,
-    transform 300ms ease;
+    transform 300ms ease,
+    opacity 300ms ease;
+  /* Default state - will be overridden by JS */
+  opacity: 0.5;
 }
 
 .carousel-3d-dot:hover {
-  background: rgba(255, 255, 255, 0.5);
-  transform: scale(1.2);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .carousel-3d-dot.active {
-  background: #ffd966;
-  transform: scale(1.3);
+  background: #f05f40;
+  /* Scale/opacity set by JS based on angle */
 }
 
 /* === Desktop Adjustments === */
@@ -1045,6 +1057,11 @@ header::before {
   .carousel-3d-next {
     right: max(40px, calc(50% - 420px));
   }
+  
+  .carousel-3d-indicators-wrapper {
+    max-width: 360px; /* matches desktop card width */
+    padding-top: 20px;
+  }
 }
 
 /* === Tablet Adjustments === */
@@ -1059,6 +1076,10 @@ header::before {
   }
   
   /* Transforms now handled by JS */
+  
+  .carousel-3d-indicators-wrapper {
+    max-width: 300px; /* matches tablet card width */
+  }
 }
 
 /* === Mobile Adjustments === */
@@ -1124,13 +1145,19 @@ header::before {
     right: 10px;
   }
   
+  .carousel-3d-indicators-wrapper {
+    max-width: 260px; /* matches mobile card width */
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+  
   .carousel-3d-indicators {
-    bottom: 5px;
+    gap: 10px;
   }
   
   .carousel-3d-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
   }
 }
 
@@ -1146,4 +1173,9 @@ header::before {
   }
   
   /* Transforms now handled by JS */
+  
+  .carousel-3d-indicators-wrapper {
+    max-width: 240px; /* matches small screen card width */
+    padding-top: 10px;
+  }
 }
