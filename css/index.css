@@ -859,6 +859,8 @@ header::before {
 .carousel-3d-center .carousel-3d-link {
   box-shadow: var(--shadow-front);
   border-color: rgba(255, 217, 102, 0.35);
+  width: 560px;
+  margin-left: -100px;
 }
 
 .carousel-3d-center .carousel-3d-img-wrap img {
