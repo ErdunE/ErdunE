@@ -530,3 +530,592 @@ header::before {
   .card-w { flex-basis: 240px; }
   .marquee-track { animation-duration: 36s; }
 }
+
+/* ===== Projects Dial / 3D Carousel (Experimental) ===== */
+
+/* Unified Shadow System */
+.projects-dial-section {
+  --shadow-front: 0 28px 56px rgba(0,0,0,0.55), 0 10px 18px rgba(0,0,0,0.35);
+  --shadow-mid:   0 16px 36px rgba(0,0,0,0.38);
+  --shadow-back:  0 8px 20px rgba(0,0,0,0.22);
+  --shadow-none:  none;
+
+  background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 40%, #0f0f23 100%);
+  padding: 60px 0 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Subtle ambient glow behind carousel */
+.projects-dial-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(255, 217, 102, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.projects-dial-hint {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+}
+
+/* === 3D Viewport & Scene === */
+.carousel-3d-viewport {
+  position: relative;
+  width: 100%;
+  height: 460px; /* increased from 420px to add breathing room for indicators */
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  overflow: hidden;
+}
+
+.carousel-3d-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Carousel Track === */
+.carousel-3d-track {
+  position: relative;
+  width: 320px;
+  height: 380px;
+  transform-style: preserve-3d;
+}
+
+/* === Individual Cards === */
+.carousel-3d-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: 
+    transform 650ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity 650ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    filter 650ms ease;
+  cursor: pointer;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.carousel-3d-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-back);
+  text-decoration: none;
+  color: inherit;
+  transition: 
+    box-shadow 400ms ease,
+    border-color 400ms ease;
+}
+
+.carousel-3d-link:hover,
+.carousel-3d-link:focus {
+  text-decoration: none;
+}
+
+/* === Card Image === */
+.carousel-3d-img-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.carousel-3d-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+/* === Card Info === */
+.carousel-3d-info {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Tags container - single line, no wrap */
+.carousel-3d-tags {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.carousel-3d-tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgba(255, 217, 102, 0.95);
+  background: rgba(255, 217, 102, 0.12);
+  padding: 4px 8px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* Legacy single category (fallback) */
+.carousel-3d-category {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgba(255, 217, 102, 0.95);
+  background: rgba(255, 217, 102, 0.12);
+  padding: 4px 8px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+}
+
+.carousel-3d-title {
+  margin: 0 0 10px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Center card title emphasis */
+.carousel-3d-center .carousel-3d-title {
+  font-size: 20px;
+}
+
+/* Description wrapper - contains primary + secondary */
+.carousel-3d-desc-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Primary description - project definition */
+.carousel-3d-desc-primary {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.45;
+}
+
+/* Secondary description - capability/feature expansion */
+.carousel-3d-desc-secondary {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.4;
+}
+
+/* Legacy single description (fallback) */
+.carousel-3d-desc {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+}
+
+/* === Position Classes: 3D Transforms === */
+
+/* Center card - fully visible, front position */
+.carousel-3d-center {
+  transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
+  opacity: 1;
+  z-index: 50;
+  pointer-events: auto;
+  filter: contrast(1.02) brightness(1.01);
+}
+
+.carousel-3d-center .carousel-3d-link {
+  box-shadow: var(--shadow-front);
+  border-color: rgba(255, 217, 102, 0.35);
+}
+
+.carousel-3d-center .carousel-3d-img-wrap img {
+  transform: scale(1.02);
+  filter: contrast(1.04) brightness(1.02);
+}
+
+/* Left card - slightly back, rotated, clickable */
+.carousel-3d-left {
+  transform: translateX(-280px) translateZ(-100px) rotateY(28deg) scale(0.85);
+  opacity: 0.68;
+  z-index: 40;
+  pointer-events: auto;
+  filter: saturate(0.88) contrast(0.94);
+}
+
+.carousel-3d-left .carousel-3d-link {
+  box-shadow: var(--shadow-mid);
+}
+
+.carousel-3d-left:hover {
+  opacity: 0.82;
+}
+
+/* Right card - slightly back, rotated opposite, clickable */
+.carousel-3d-right {
+  transform: translateX(280px) translateZ(-100px) rotateY(-28deg) scale(0.85);
+  opacity: 0.68;
+  z-index: 40;
+  pointer-events: auto;
+  filter: saturate(0.88) contrast(0.94);
+}
+
+.carousel-3d-right .carousel-3d-link {
+  box-shadow: var(--shadow-mid);
+}
+
+.carousel-3d-right:hover {
+  opacity: 0.82;
+}
+
+/* Ghost left - deeper in the wheel, non-interactive */
+.carousel-3d-ghost-left {
+  transform: translateX(-480px) translateZ(-200px) rotateY(45deg) scale(0.62);
+  opacity: 0.25;
+  z-index: 20;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.carousel-3d-ghost-left .carousel-3d-link {
+  box-shadow: var(--shadow-none);
+}
+
+/* Ghost right - deeper in the wheel, non-interactive */
+.carousel-3d-ghost-right {
+  transform: translateX(480px) translateZ(-200px) rotateY(-45deg) scale(0.62);
+  opacity: 0.25;
+  z-index: 20;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.carousel-3d-ghost-right .carousel-3d-link {
+  box-shadow: var(--shadow-none);
+}
+
+/* Far left - barely visible, atmosphere */
+.carousel-3d-far-left {
+  transform: translateX(-600px) translateZ(-300px) rotateY(60deg) scale(0.45);
+  opacity: 0.1;
+  z-index: 10;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.carousel-3d-far-left .carousel-3d-link {
+  box-shadow: var(--shadow-none);
+}
+
+/* Far right - barely visible, atmosphere */
+.carousel-3d-far-right {
+  transform: translateX(600px) translateZ(-300px) rotateY(-60deg) scale(0.45);
+  opacity: 0.1;
+  z-index: 10;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.carousel-3d-far-right .carousel-3d-link {
+  box-shadow: var(--shadow-none);
+}
+
+/* Hidden - off the visible wheel */
+.carousel-3d-hidden {
+  transform: translateX(0) translateZ(-400px) scale(0.3);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carousel-3d-hidden .carousel-3d-link {
+  box-shadow: var(--shadow-none);
+}
+
+/* === Navigation Buttons === */
+.carousel-3d-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  cursor: pointer;
+  transition: 
+    background 300ms ease,
+    color 300ms ease,
+    transform 300ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-3d-nav:hover {
+  background: rgba(255, 217, 102, 0.2);
+  color: #ffd966;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-3d-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-3d-prev {
+  left: max(20px, calc(50% - 280px));
+}
+
+.carousel-3d-next {
+  right: max(20px, calc(50% - 280px));
+}
+
+/* === Dot Indicators === */
+.carousel-3d-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+
+.carousel-3d-dot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: 
+    background 300ms ease,
+    transform 300ms ease;
+}
+
+.carousel-3d-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.carousel-3d-dot.active {
+  background: #ffd966;
+  transform: scale(1.3);
+}
+
+/* === Desktop Adjustments === */
+@media (min-width: 1024px) {
+  .carousel-3d-viewport {
+    height: 490px; /* increased from 450px */
+  }
+  
+  .carousel-3d-track {
+    width: 360px;
+    height: 420px;
+  }
+  
+  .carousel-3d-img-wrap {
+    height: 220px;
+  }
+  
+  .carousel-3d-left {
+    transform: translateX(-320px) translateZ(-120px) rotateY(30deg) scale(0.82);
+  }
+  
+  .carousel-3d-right {
+    transform: translateX(320px) translateZ(-120px) rotateY(-30deg) scale(0.82);
+  }
+  
+  .carousel-3d-ghost-left {
+    transform: translateX(-540px) translateZ(-220px) rotateY(48deg) scale(0.58);
+  }
+  
+  .carousel-3d-ghost-right {
+    transform: translateX(540px) translateZ(-220px) rotateY(-48deg) scale(0.58);
+  }
+  
+  .carousel-3d-prev {
+    left: max(40px, calc(50% - 320px));
+  }
+  
+  .carousel-3d-next {
+    right: max(40px, calc(50% - 320px));
+  }
+}
+
+/* === Tablet Adjustments === */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .carousel-3d-viewport {
+    height: 440px; /* increased from 400px */
+  }
+  
+  .carousel-3d-track {
+    width: 300px;
+    height: 360px;
+  }
+  
+  .carousel-3d-left {
+    transform: translateX(-260px) translateZ(-90px) rotateY(26deg) scale(0.84);
+  }
+  
+  .carousel-3d-right {
+    transform: translateX(260px) translateZ(-90px) rotateY(-26deg) scale(0.84);
+  }
+}
+
+/* === Mobile Adjustments === */
+@media (max-width: 768px) {
+  .projects-dial-section {
+    padding: 40px 0 60px;
+  }
+  
+  .projects-dial-section::before {
+    width: 300px;
+    height: 200px;
+  }
+  
+  .carousel-3d-viewport {
+    height: 420px; /* increased from 380px */
+    perspective: 1000px;
+  }
+  
+  .carousel-3d-track {
+    width: 260px;
+    height: 340px;
+  }
+  
+  .carousel-3d-img-wrap {
+    height: 160px;
+  }
+  
+  .carousel-3d-info {
+    padding: 14px 16px 18px;
+  }
+  
+  .carousel-3d-title {
+    font-size: 16px;
+  }
+  
+  .carousel-3d-center .carousel-3d-title {
+    font-size: 17px;
+  }
+  
+  .carousel-3d-desc,
+  .carousel-3d-desc-primary {
+    font-size: 12px;
+  }
+  
+  .carousel-3d-desc-secondary {
+    font-size: 11px;
+  }
+  
+  /* Mobile: side cards closer */
+  .carousel-3d-left {
+    transform: translateX(-200px) translateZ(-80px) rotateY(24deg) scale(0.8);
+    opacity: 0.6;
+  }
+  
+  .carousel-3d-right {
+    transform: translateX(200px) translateZ(-80px) rotateY(-24deg) scale(0.8);
+    opacity: 0.6;
+  }
+  
+  .carousel-3d-ghost-left {
+    transform: translateX(-340px) translateZ(-160px) rotateY(40deg) scale(0.55);
+    opacity: 0.15;
+  }
+  
+  .carousel-3d-ghost-right {
+    transform: translateX(340px) translateZ(-160px) rotateY(-40deg) scale(0.55);
+    opacity: 0.15;
+  }
+  
+  .carousel-3d-far-left,
+  .carousel-3d-far-right {
+    opacity: 0;
+  }
+  
+  /* Hide nav buttons on mobile - use swipe */
+  .carousel-3d-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .carousel-3d-prev {
+    left: 10px;
+  }
+  
+  .carousel-3d-next {
+    right: 10px;
+  }
+  
+  .carousel-3d-indicators {
+    bottom: 5px;
+  }
+  
+  .carousel-3d-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* === Very Small Screens === */
+@media (max-width: 480px) {
+  .carousel-3d-viewport {
+    height: 400px; /* increased from 360px */
+  }
+  
+  .carousel-3d-track {
+    width: 240px;
+    height: 320px;
+  }
+  
+  .carousel-3d-left {
+    transform: translateX(-160px) translateZ(-70px) rotateY(22deg) scale(0.75);
+  }
+  
+  .carousel-3d-right {
+    transform: translateX(160px) translateZ(-70px) rotateY(-22deg) scale(0.75);
+  }
+  
+  .carousel-3d-ghost-left,
+  .carousel-3d-ghost-right {
+    opacity: 0.08;
+  }
+}
