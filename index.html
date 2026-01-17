@@ -1587,26 +1587,30 @@
     }
   
     const onLoad = function(){
-    const script = document.createElement("script");
-    script.src = "https://www.chatbase.co/embed.min.js";
-    script.id = "OiQfMdOhl78Pj66N6kHJz";
-    script.domain = "www.chatbase.co";
-    document.body.appendChild(script);
-
-    script.onload = function () {
-      const isDesktop = window.innerWidth > 768;
-      const hasOpened = localStorage.getItem("chatbase_opened");
-
-      if (isDesktop && !hasOpened) {
-        setTimeout(() => {
-          if (window.chatbase) {
-            window.chatbase("open");
-            localStorage.setItem("chatbase_opened", "true");
-          }
-        }, 5000);
+      if (document.documentElement.classList.contains("is-mobile")) {
+        return; 
       }
+
+      const script = document.createElement("script");
+      script.src = "https://www.chatbase.co/embed.min.js";
+      script.id = "OiQfMdOhl78Pj66N6kHJz";
+      script.domain = "www.chatbase.co";
+      document.body.appendChild(script);
+
+      script.onload = function () {
+        const isDesktop = window.innerWidth > 768;
+        const hasOpened = localStorage.getItem("chatbase_opened");
+
+        if (isDesktop && !hasOpened) {
+          setTimeout(() => {
+            if (window.chatbase) {
+              window.chatbase("open");
+              localStorage.setItem("chatbase_opened", "true");
+            }
+          }, 5000);
+        }
+      };
     };
-  };
   
     if(document.readyState === "complete"){ onLoad(); }
     else{ window.addEventListener("load", onLoad); }
@@ -1636,17 +1640,20 @@
   </script>
 
   <!-- Buy Me a Coffee Widget -->
-  <script 
-    data-name="BMC-Widget" 
-    data-cfasync="false" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-    data-id="erdun"
-    data-description="Support Erdun’s work on Buy Me a Coffee!"
-    data-message=""
-    data-color="#FF813F"
-    data-position="right"
-    data-x_margin="280"
-    data-y_margin="12">
+  <script>
+    if (!document.documentElement.classList.contains("is-mobile")) {
+      const bmc = document.createElement("script");
+      bmc.setAttribute("data-name", "BMC-Widget");
+      bmc.setAttribute("data-cfasync", "false");
+      bmc.src = "https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js";
+      bmc.setAttribute("data-id", "erdun");
+      bmc.setAttribute("data-description", "Support Erdun’s work on Buy Me a Coffee!");
+      bmc.setAttribute("data-color", "#FF813F");
+      bmc.setAttribute("data-position", "right");
+      bmc.setAttribute("data-x_margin", "280");
+      bmc.setAttribute("data-y_margin", "12");
+      document.body.appendChild(bmc);
+    }
   </script>
 
   <!-- Stripe Round Donation Button -->
@@ -2093,6 +2100,14 @@
           e.target.classList.add("hidden");
         }
       });
+  </script>
+  <script>
+    (function () {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        document.documentElement.classList.add("is-mobile");
+      }
+    })();
   </script>
 </body>
 </html>

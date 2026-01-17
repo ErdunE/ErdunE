@@ -294,11 +294,11 @@ header::before {
   transform: scaleX(-1);
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .edu-mascot {
     display: none;
   }
-}
+} */
 
 @media (max-width: 850px) {
   .equal-height-row {
@@ -1512,4 +1512,22 @@ header::before {
   .capability-point-title{
     font-size: 17px;
   }
+}
+
+/* Chatbase 提示气泡（Hi I'm Erdun） */
+.is-mobile .chatbase-tooltip,
+.is-mobile .chatbase-tooltip-container,
+.is-mobile .chatbase-intro {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Chatbase iframe（整个聊天组件） */
+.is-mobile iframe[src*="chatbase"] {
+  display: none !important;
+}
+
+.is-mobile #stripe-round-button {
+  display: none !important;
 }
