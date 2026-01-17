@@ -398,6 +398,109 @@ header::before {
   color: #ffd966;
 }
 
+/* ===== Experience: Global Detail Layer ===== */
+
+.experience-detail {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.experience-detail.hidden {
+  display: none;
+}
+
+.experience-detail-card {
+  background: rgba(255,255,255,0.94);
+  border-radius: 18px;
+  width: 880px;
+  max-width: 92%;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 36px;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.35);
+}
+
+/* Left Column */
+.detail-left img {
+  width: 56px;
+  margin-bottom: 16px;
+}
+
+.detail-left h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.detail-left p {
+  margin: 6px 0;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.detail-left span {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* Right Column */
+.detail-right p {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: rgba(0,0,0,0.85);
+}
+
+#experience .experience-title {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+#experience .experience-company {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.85;
+  margin-bottom: 2px;
+}
+
+#experience .experience-time {
+  font-size: 12px;
+  opacity: 0.65;
+  letter-spacing: 0.02em;
+}
+
+#experience .experience-item {
+  margin: 14px 14px 14px;
+  min-height: 230px;
+  padding: 32px 24px 34px;
+  border-radius: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 22%;
+
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+#experience .experience-item img {
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.25));
+  margin-bottom: 10px;
+}
+
 /* ===== Testimonials Marquee ===== */
 .marquee-row {
   margin: 0;               
@@ -1199,5 +1302,148 @@ header::before {
   .carousel-3d-indicators-wrapper {
     max-width: 240px; /* matches small screen card width */
     padding-top: 10px;
+  }
+}
+
+/* ===== Capability (Matrix Layout) ===== */
+
+.capability-lead{
+  margin: 10px auto 34px;
+  font-size: 17px;                 
+  line-height: 1.65;              
+  color: rgba(0,0,0,0.78);         
+  text-align: center;
+  max-width: 860px;
+}
+
+/* 这个容器只负责“视觉层次”，不做卡片 */
+.capability-rows{
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.capability-row{
+  display: grid;
+  grid-template-columns: 0.95fr 1.55fr;
+  column-gap: 52px;
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+
+  opacity: 0.55;
+  transition: opacity 0.35s ease, background 0.2s ease;
+}
+
+.capability-row.is-active {
+  opacity: 1;
+}
+
+.capability-row:hover{
+  background: rgba(0,0,0,0.012);
+}
+
+.capability-row:hover .capability-point-title{
+  color: #000;
+}
+
+.capability-row:hover .capability-desc p{
+  color: rgba(0,0,0,0.78);
+}
+
+.capability-kicker{
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.38);
+  margin-bottom: 10px;
+}
+
+.capability-point-title{
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: rgba(0,0,0,0.9);
+}
+
+.capability-point {
+  position: relative;
+  padding-left: 14px;
+}
+
+.capability-row.is-active .capability-desc p:first-child {
+  color: rgba(0,0,0,0.85);
+}
+
+.capability-row.is-active .capability-desc-muted {
+  color: rgba(0,0,0,0.60) !important;
+}
+
+.capability-point::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  height: 1.2em;
+  width: 2px;
+  background: rgba(240, 95, 64, 0.35);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.capability-row.is-active .capability-point::before {
+  opacity: 1;
+}
+
+.capability-desc p{
+  margin: 0 0 10px;
+  font-size: 15.5px;              
+  line-height: 1.65;
+  color: rgba(0,0,0,0.78);       
+}
+
+.capability-desc-muted{
+  color: rgba(0,0,0,0.52) !important;
+}
+
+/* Technical Context 作为声明块：更轻、更收敛 */
+.capability-context{
+  margin-top: 26px;
+  padding-top: 0px;
+  /* border-top: 1px solid rgba(0,0,0,0.08); */
+  text-align: center;
+}
+
+.capability-context-title{
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.40);
+  margin-bottom: 10px;
+}
+
+.capability-context-text{
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.55);
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Mobile：从“左右”降级为“上下”，避免挤 */
+@media (max-width: 768px){
+  .capability-lead{
+    text-align: left;
+    padding: 0 6px;
+  }
+
+  .capability-row{
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+    column-gap: 0;
+    padding: 20px 0;
+  }
+
+  .capability-point-title{
+    font-size: 17px;
   }
 }
