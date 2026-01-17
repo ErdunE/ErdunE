@@ -530,3 +530,674 @@ header::before {
   .card-w { flex-basis: 240px; }
   .marquee-track { animation-duration: 36s; }
 }
+
+/* ===== Projects Dial / 3D Carousel (Experimental) ===== */
+
+/* Unified Shadow System - Dark Theme (legacy) */
+.projects-dial-section {
+  --shadow-front: 0 28px 56px rgba(0,0,0,0.55), 0 10px 18px rgba(0,0,0,0.35);
+  --shadow-mid:   0 16px 36px rgba(0,0,0,0.38);
+  --shadow-back:  0 8px 20px rgba(0,0,0,0.22);
+  --shadow-none:  none;
+
+  background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 40%, #0f0f23 100%);
+  padding: 60px 0 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Subtle ambient glow behind carousel - dark theme */
+.projects-dial-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(255, 217, 102, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.projects-dial-hint {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Light Theme Carousel (inside #projects) ===== */
+.projects-carousel-section {
+  --shadow-front: 0 28px 56px rgba(0,0,0,0.18), 0 10px 18px rgba(0,0,0,0.12);
+  --shadow-mid:   0 16px 36px rgba(0,0,0,0.12);
+  --shadow-back:  0 8px 20px rgba(0,0,0,0.08);
+  --shadow-none:  none;
+
+  background: #ffffff;
+  padding: 40px 0 60px;
+  overflow-x: hidden; /* allow vertical shadow overflow, clip horizontal */
+  position: relative;
+}
+
+/* Subtle ambient glow - light theme */
+.projects-carousel-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(240, 95, 64, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.projects-carousel-hint {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+  margin-bottom: 6px; /* reduced from 30px - closer to carousel */
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+}
+
+/* Light theme card styling */
+.projects-carousel-section .carousel-3d-link {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.projects-carousel-section .carousel-3d-title {
+  color: #1a1a2e;
+}
+
+.projects-carousel-section .carousel-3d-desc-primary {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.projects-carousel-section .carousel-3d-desc-secondary {
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.projects-carousel-section .carousel-3d-desc {
+  color: rgba(0, 0, 0, 0.60);
+}
+
+/* Tags keep gold accent on light */
+.projects-carousel-section .carousel-3d-tag {
+  color: #b8860b;
+  background: rgba(184, 134, 11, 0.12);
+}
+
+/* Center card border accent - light theme */
+.projects-carousel-section .carousel-3d-center .carousel-3d-link {
+  border-color: rgba(240, 95, 64, 0.25);
+}
+
+/* Navigation buttons - light theme */
+.projects-carousel-section .carousel-3d-nav {
+  background: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.projects-carousel-section .carousel-3d-nav:hover {
+  background: rgba(240, 95, 64, 0.15);
+  color: #f05f40;
+}
+
+/* Dot indicators - light theme */
+.projects-carousel-section .carousel-3d-dot {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.projects-carousel-section .carousel-3d-dot:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.projects-carousel-section .carousel-3d-dot.active {
+  background: #f05f40;
+}
+
+/* === 3D Viewport & Scene === */
+.carousel-3d-viewport {
+  position: relative;
+  width: 100%;
+  height: 500px; /* increased from 420px to add breathing room for indicators */
+  padding-top: 36px; 
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  overflow: visible; /* allow shadow overflow vertically */
+}
+
+.carousel-3d-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 12px;
+  justify-content: center;
+  overflow: visible; /* clip 3D content horizontally */
+}
+
+/* === Carousel Track === */
+.carousel-3d-track {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* center the track */
+  width: 320px; /* card width - actual spread comes from JS */
+  height: 380px;
+  transform-style: preserve-3d;
+}
+
+/* Full-width carousel container */
+.carousel-3d-container {
+  padding: 0;
+  overflow: visible;
+}
+
+/* === Individual Cards === */
+.carousel-3d-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: 
+    transform 650ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity 650ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    filter 650ms ease;
+  cursor: pointer;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.carousel-3d-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-back);
+  text-decoration: none;
+  color: inherit;
+  transition: 
+    box-shadow 400ms ease,
+    border-color 400ms ease;
+}
+
+.carousel-3d-link:hover,
+.carousel-3d-link:focus {
+  text-decoration: none;
+}
+
+/* === Card Image === */
+.carousel-3d-img-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.carousel-3d-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+/* === Card Info === */
+.carousel-3d-info {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Tags container - single line, no wrap */
+.carousel-3d-tags {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.carousel-3d-tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgba(255, 217, 102, 0.95);
+  background: rgba(255, 217, 102, 0.12);
+  padding: 4px 8px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* Legacy single category (fallback) */
+.carousel-3d-category {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgba(255, 217, 102, 0.95);
+  background: rgba(255, 217, 102, 0.12);
+  padding: 4px 8px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+}
+
+.carousel-3d-title {
+  margin: 0 0 10px;
+  font-size: clamp(16px, 4vw, 19px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Center card title emphasis */
+.carousel-3d-center .carousel-3d-title {
+  font-size: clamp(17px, 4.2vw, 20px);
+}
+
+/* Description wrapper - contains primary + secondary */
+.carousel-3d-desc-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Primary description - project definition */
+.carousel-3d-desc-primary {
+  margin: 0;
+  font-size: clamp(12px, 2.8vw, 13px);
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.45;
+}
+
+/* Secondary description - capability/feature expansion */
+.carousel-3d-desc-secondary {
+  margin: 0;
+  font-size: clamp(11px, 2.6vw, 12px);
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.4;
+}
+
+/* Legacy single description (fallback) */
+.carousel-3d-desc {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+}
+
+/* === Position Classes (visual styles only - transforms come from JS) === */
+
+/* Center card - fully visible, front position */
+.carousel-3d-center {
+  /* transform set by JS inline styles */
+  filter: contrast(1.02) brightness(1.01);
+}
+
+.carousel-3d-center .carousel-3d-link {
+  box-shadow: var(--shadow-front);
+  border-color: rgba(255, 217, 102, 0.35);
+  width: 560px;
+  margin-left: -100px;
+}
+
+.carousel-3d-center .carousel-3d-img-wrap img {
+  transform: scale(1.02);
+  filter: contrast(1.04) brightness(1.02);
+}
+
+/* Left card - slightly back, rotated, clickable */
+.carousel-3d-left {
+  /* transform set by JS inline styles */
+  filter: saturate(0.88) contrast(0.94);
+}
+
+.carousel-3d-left .carousel-3d-link {
+  box-shadow: var(--shadow-mid);
+}
+
+.carousel-3d-left:hover {
+  filter: saturate(0.92) contrast(0.96);
+}
+
+/* Right card - slightly back, rotated opposite, clickable */
+.carousel-3d-right {
+  /* transform set by JS inline styles */
+  filter: saturate(0.88) contrast(0.94);
+}
+
+.carousel-3d-right .carousel-3d-link {
+  box-shadow: var(--shadow-mid);
+}
+
+.carousel-3d-right:hover {
+  filter: saturate(0.92) contrast(0.96);
+}
+
+/* Ghost left - deeper in the wheel, non-interactive */
+.carousel-3d-ghost-left {
+  /* transform set by JS inline styles */
+  filter: blur(1px);
+}
+
+.carousel-3d-ghost-left .carousel-3d-link {
+  box-shadow: var(--shadow-none);
+}
+
+/* Ghost right - deeper in the wheel, non-interactive */
+.carousel-3d-ghost-right {
+  /* transform set by JS inline styles */
+  filter: blur(1px);
+}
+
+.carousel-3d-ghost-right .carousel-3d-link {
+  box-shadow: var(--shadow-none);
+}
+
+/* Far left - barely visible, atmosphere */
+.carousel-3d-far-left {
+  /* transform set by JS inline styles */
+  filter: blur(2px);
+}
+
+.carousel-3d-far-left .carousel-3d-link {
+  box-shadow: var(--shadow-none);
+}
+
+/* Far right - barely visible, atmosphere */
+.carousel-3d-far-right {
+  /* transform set by JS inline styles */
+  filter: blur(2px);
+}
+
+.carousel-3d-far-right .carousel-3d-link {
+  box-shadow: var(--shadow-none);
+}
+
+/* Hidden - off the visible wheel */
+.carousel-3d-hidden {
+  /* transform, opacity, pointer-events set by JS inline styles */
+  visibility: visible; /* placeholder to avoid empty ruleset warning */
+}
+
+.carousel-3d-hidden .carousel-3d-link {
+  box-shadow: var(--shadow-none);
+}
+
+.carousel-3d-link:focus,
+.carousel-3d-link:focus-visible {
+  outline: none;
+}
+/* === Navigation Buttons === */
+.carousel-3d-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  cursor: pointer;
+  transition: 
+    background 300ms ease,
+    color 300ms ease,
+    transform 300ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-3d-nav:hover {
+  background: rgba(255, 217, 102, 0.2);
+  color: #ffd966;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-3d-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-3d-prev {
+  left: max(20px, calc(50% - 280px));
+}
+
+.carousel-3d-next {
+  right: max(20px, calc(50% - 280px));
+}
+
+/* === Dot Indicators Wrapper (2D flow, aligned with center card) === */
+.carousel-3d-indicators-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 360px; /* matches center card width on desktop */
+  width: 100%;
+  margin: 36px auto 0; /* center the wrapper */
+  padding-top: 16px; /* reduced: dots feel attached to card */
+  padding-bottom: 12px;
+}
+
+/* === Dot Indicators (2D flow, normal document layout) === */
+.carousel-3d-indicators {
+  display: flex;
+  gap: 12px;
+  pointer-events: auto;
+  /* NO position: absolute — uses normal flow */
+  /* NO translateZ — stays in 2D */
+}
+
+.carousel-3d-dot {
+  width: 8px;
+  height: 8px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: 
+    background 300ms ease,
+    transform 300ms ease,
+    opacity 300ms ease;
+  /* Default state - will be overridden by JS */
+  opacity: 0.5;
+}
+
+.carousel-3d-dot:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.carousel-3d-dot.active {
+  background: #f05f40;
+  /* Scale/opacity set by JS based on angle */
+}
+
+/* === Desktop Adjustments === */
+@media (min-width: 1024px) {
+  .carousel-3d-viewport {
+    height: 490px;
+  }
+  
+  .carousel-3d-track {
+    width: 360px;
+    height: 420px;
+  }
+  
+  .carousel-3d-img-wrap {
+    height: 220px;
+  }
+  
+  /* Transforms now handled by JS - removed legacy transforms */
+  
+  .carousel-3d-prev {
+    left: max(40px, calc(50% - 420px));
+  }
+  
+  .carousel-3d-next {
+    right: max(40px, calc(50% - 420px));
+  }
+  
+  .carousel-3d-indicators-wrapper {
+    max-width: 360px; /* matches desktop card width */
+    padding-top: 20px;
+  }
+}
+
+/* === Tablet Adjustments === */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .carousel-3d-viewport {
+    height: 440px;
+  }
+  
+  .carousel-3d-track {
+    width: 300px;
+    height: 360px;
+  }
+  
+  /* Transforms now handled by JS */
+  
+  .carousel-3d-indicators-wrapper {
+    max-width: 300px; /* matches tablet card width */
+  }
+}
+
+/* === Mobile Adjustments === */
+@media (max-width: 768px) {
+  .projects-dial-section {
+    padding: 40px 0 60px;
+  }
+  
+  .projects-dial-section::before {
+    width: 300px;
+    height: 200px;
+  }
+  
+  .carousel-3d-viewport {
+    height: 420px;
+    perspective: 1000px;
+  }
+  
+  .carousel-3d-track {
+    width: 260px;
+    height: 340px;
+  }
+  
+  .carousel-3d-img-wrap {
+    height: 160px;
+  }
+  
+  .carousel-3d-info {
+    padding: 14px 16px 18px;
+  }
+  
+  .carousel-3d-desc,
+  .carousel-3d-desc-primary {
+    font-size: 12px;
+  }
+  
+  .carousel-3d-desc-secondary {
+    font-size: 11px;
+  }
+  
+  /* Transforms now handled by JS - removed legacy transforms */
+  
+  /* Nav buttons on mobile */
+  .carousel-3d-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .carousel-3d-prev {
+    left: 10px;
+  }
+  
+  .carousel-3d-next {
+    right: 10px;
+  }
+  
+  .carousel-3d-indicators-wrapper {
+    max-width: 260px; /* matches mobile card width */
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+  
+  .carousel-3d-indicators {
+    gap: 10px;
+  }
+  
+  .carousel-3d-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .carousel-3d-center .carousel-3d-link {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .carousel-3d-tags {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .carousel-3d-tag {
+    font-size: 8px;
+    padding: 3px 6px;
+  }
+
+  .carousel-3d-title {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* === Very Small Screens === */
+@media (max-width: 480px) {
+  .carousel-3d-viewport {
+    height: 400px;
+  }
+  
+  .carousel-3d-track {
+    width: 240px;
+    height: 320px;
+  }
+  
+  /* Transforms now handled by JS */
+  
+  .carousel-3d-indicators-wrapper {
+    max-width: 240px; /* matches small screen card width */
+    padding-top: 10px;
+  }
+}

@@ -79,7 +79,7 @@
           <li><a class="page-scroll" href="#experience"><i class="fa fa-briefcase"></i> Experience</a></li>
           <li><a class="page-scroll" href="#projects"><i class="fa fa-code"></i> Projects</a></li>
           <li><a class="page-scroll" href="#contact"><i class="fa fa-envelope"></i> Contact</a></li>
-          <li><a class="page-scroll" href=img/Resume_of_ErdunE_2025_10_07.pdf><i class="fa fa-file-pdf-o"></i> Resume</a></li>
+          <li><a class="page-scroll" href=img/Resume_of_ErdunE_2025_12_03.pdf><i class="fa fa-file-pdf-o"></i> Resume</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -102,7 +102,7 @@
         <h1 id="homeHeading">Erdun E</h1>
         <hr>
         <p class="dimmed no-break">20+ Yrs Skier<br>Former Amazon SDE (’21–’23)</p>
-        <p class="highlight no-break">M.S. in CS @ Northeastern<br>Graduating May 2026<br>Seeking Coop @ 25Fall/26Spring<br>Seeking Full-time @ May 2026<br>2025 Outstanding Network Student</p>
+        <p class="highlight no-break">M.S. in CS @ Northeastern<br>Graduating May 2026<br>Seeking Full-time @ May 2026<br>2025 Outstanding Network Student</p>
         <p class="highlight no-break">B.S. in CS @ UMass Lowell<br>Dean’s List</p>
         <p class="dimmed">Boston · Indy · Miami</p>
         <a href="#education" class="btn btn-primary btn-xl page-scroll">Explore my journey</a>
@@ -799,21 +799,354 @@
   </section>
 
   <!-- GitHub Section -->
-  <section class="min-padding-top" id="projects">
+  <section class="min-padding-top projects-carousel-section" id="projects">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-
-
           <h2 class="section-heading">
           <a class="text-primary" href="https://github.com/ErdunE/"><i class="fa fa-1x fa-github-square text-primary" ></i> Projects
           </a></h2>
           <hr class="text-primary">
+          <p class="projects-carousel-hint">Click side cards or swipe to rotate</p>
         </div>
       </div>
     </div>
 
-    <!-- GitHub links below -->
+    <!-- 3D Carousel Container (full-width) -->
+    <div class="container-fluid carousel-3d-container">
+    <div class="carousel-3d-viewport">
+      <div class="carousel-3d-scene">
+        <!-- Navigation Arrows -->
+        <button class="carousel-3d-nav carousel-3d-prev" aria-label="Previous project">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+        <button class="carousel-3d-nav carousel-3d-next" aria-label="Next project">
+          <i class="fa fa-chevron-right"></i>
+        </button>
+
+        <!-- Carousel Track (3D transformed) -->
+        <div class="carousel-3d-track">
+          <!-- Card 1: ErdunE's Web -->
+          <article class="carousel-3d-card" data-index="0">
+            <a href="https://github.com/ErdunE/ErdunE/tree/master" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/01.png" alt="ErdunE's Web" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">Bootstrap</span>
+                  <span class="carousel-3d-tag">Responsive Design</span>
+                  <span class="carousel-3d-tag">Personal Portfolio</span>
+                </div>
+                <h4 class="carousel-3d-title">ErdunE's Web</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    A fully responsive personal portfolio website showcasing projects and experience.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Built with Bootstrap and custom CSS, featuring glassmorphism UI, video background, and a custom 3D carousel. 
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 2: PromptLint -->
+          <article class="carousel-3d-card" data-index="1">
+            <a href="https://github.com/ErdunE/promptlint" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/promptlint.png" alt="PromptLint" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">AI/ML</span>
+                  <span class="carousel-3d-tag">Prompt Engineering</span>
+                  <span class="carousel-3d-tag">Chrome Extension</span>
+                  <span class="carousel-3d-tag">Developer Tooling</span>
+                </div>
+                <h4 class="carousel-3d-title">PromptLint</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    An AI-powered prompt quality analysis and optimization tool for developers. 
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Provides real-time prompt scoring, structured feedback, and rephrase suggestions across web, IDE, and browser extensions. 
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 3: Superstars -->
+          <article class="carousel-3d-card" data-index="2">
+            <a href="https://github.com/naylalabs/superstars-mobile-v2" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/superstars.png" alt="Superstars" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">Flutter</span>
+                  <span class="carousel-3d-tag">Bloc</span>
+                  <span class="carousel-3d-tag">Firebase</span>
+                  <span class="carousel-3d-tag">Mobile Architecture</span>
+                </div>
+                <h4 class="carousel-3d-title">Superstars</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    A video-first professional hiring and networking mobile platform.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Implemented end-to-end story creation workflows with clean architecture, state management, and media processing.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 4: Traffic-Sign-Recognition -->
+          <article class="carousel-3d-card" data-index="3">
+            <a href="https://github.com/ErdunE/AI-Project-Computer-Vision-Traffic-Sign-Recognition" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/traffic_sign_classification_phases.png" alt="Traffic Sign Recognition" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">Computer Vision</span>
+                  <span class="carousel-3d-tag">CNN</span>
+                  <span class="carousel-3d-tag">TensorFlow</span>
+                  <span class="carousel-3d-tag">Deep Learning</span>
+                </div>
+                <h4 class="carousel-3d-title">Traffic Sign Recognition</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    A deep learning system for traffic sign classification and recognition.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Trained CNN models on the GTSRB dataset with image augmentation and performance evaluation pipelines.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 5: Bean Vibes -->
+          <article class="carousel-3d-card" data-index="4">
+            <a href="https://github.com/ErdunE/CS5200-Final-Project" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/02.jpg" alt="Bean Vibes" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">Android</span>
+                  <span class="carousel-3d-tag">MySQL</span>
+                  <span class="carousel-3d-tag">REST API</span>
+                  <span class="carousel-3d-tag">Full Stack</span>
+                </div>
+                <h4 class="carousel-3d-title">Bean Vibes</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    A full-stack mobile app for personalized coffee tasting and journaling.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Supports flavor profiling, brew tracking, and backend-driven data persistence via RESTful APIs.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 6: Habitend -->
+          <article class="carousel-3d-card" data-index="5">
+            <a href="https://github.com/ErdunE/CS5520-Final-Project" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/03.jpg" alt="Habitend" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">Kotlin</span>
+                  <span class="carousel-3d-tag">Firebase</span>
+                  <span class="carousel-3d-tag">MVVM</span>
+                  <span class="carousel-3d-tag">Mobile UX</span>
+                </div>
+                <h4 class="carousel-3d-title">Habitend</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    A gamified habit-tracking Android application.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Designed with MVVM architecture, real-time sync, and streak-based habit visualization.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 7: Entertainment Recommendation System -->
+          <article class="carousel-3d-card" data-index="6">
+            <a href="https://github.com/ErdunE/NortheasternMiami/tree/main/CS5010ProgrammingDesignParadigm/Final%20Project/FinalProject" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/04.jpg" alt="Entertainment Recommendation System" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">JavaFX</span>
+                  <span class="carousel-3d-tag">Recommendation System</span>
+                  <span class="carousel-3d-tag">API Integration</span>
+                  <span class="carousel-3d-tag">Desktop Application</span>
+                </div>
+                <h4 class="carousel-3d-title">Entertainment Rec System</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    A desktop-based movie recommendation application.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Integrates TMDB API to filter and rank movies by genre, popularity, language, and release year.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 8: KNN Algorithm Visualization -->
+          <article class="carousel-3d-card" data-index="7">
+            <a href="https://github.com/ErdunE/CS5800-Final-Project" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/05.jpg" alt="KNN Algorithm Visualization" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">Machine Learning</span>
+                  <span class="carousel-3d-tag">KNN</span>
+                  <span class="carousel-3d-tag">Data Visualization</span>
+                  <span class="carousel-3d-tag">Python</span>
+                </div>
+                <h4 class="carousel-3d-title">KNN Visualization</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    An interactive visualization tool for the k-Nearest Neighbors algorithm.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Enables real-time adjustment of K values and distance metrics with visual decision boundaries.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 9: Due Mate -->
+          <article class="carousel-3d-card" data-index="8">
+            <a href="https://github.com/ErdunE/DueMate" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/06.jpg" alt="Due Mate" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">Python</span>
+                  <span class="carousel-3d-tag">Flask</span>
+                  <span class="carousel-3d-tag">SQLite</span>
+                  <span class="carousel-3d-tag">Backend Systems</span>
+                </div>
+                <h4 class="carousel-3d-title">Due Mate</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    A unified bill and payment deadline tracking application.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Supports recurring payments, reminders, and lightweight backend persistence.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 10: FuckWork -->
+          <article class="carousel-3d-card" data-index="9">
+            <a href="https://github.com/ErdunE/FuckWork" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/fuckwork.png" alt="FuckWork" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">Chrome Extension</span>
+                  <span class="carousel-3d-tag">Productivity</span>
+                  <span class="carousel-3d-tag">JavaScript</span>
+                  <span class="carousel-3d-tag">UX Design</span>
+                </div>
+                <h4 class="carousel-3d-title">FuckWork</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    A no-nonsense productivity Chrome extension designed to eliminate distractions.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Enforces focus through aggressive blocking rules and opinionated UX design.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 11: Mira -->
+          <article class="carousel-3d-card" data-index="10">
+            <a href="https://github.com/ErdunE/Mira" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/mira.png" alt="Mira" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">AI</span>
+                  <span class="carousel-3d-tag">NLP</span>
+                  <span class="carousel-3d-tag">Reasoning Systems</span>
+                  <span class="carousel-3d-tag">Python</span>
+                </div>
+                <h4 class="carousel-3d-title">Mira</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    An intelligent AI assistant prototype focused on structured reasoning.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Explores context-aware response generation and prompt-to-structure pipelines.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 12: Forecasting Store Sales -->
+          <article class="carousel-3d-card" data-index="11">
+            <a href="https://github.com/ErdunE/Store-Sales-Forecasting" class="carousel-3d-link" target="_blank" tabindex="-1">
+              <div class="carousel-3d-img-wrap">
+                <img src="img/portfolio/thumbnails/store_sales_forecasting.png" alt="Forecasting Store Sales" loading="lazy">
+              </div>
+              <div class="carousel-3d-info">
+                <div class="carousel-3d-tags">
+                  <span class="carousel-3d-tag">Machine Learning</span>
+                  <span class="carousel-3d-tag">Time Series Forecasting</span>
+                  <span class="carousel-3d-tag">Feature Engineering</span>
+                  <span class="carousel-3d-tag">Python</span>
+                </div>
+                <h4 class="carousel-3d-title">Forecasting Store Sales</h4>
+                <div class="carousel-3d-desc-wrap">
+                  <p class="carousel-3d-desc-primary">
+                    A retail sales forecasting project using historical time-series data.
+                  </p>
+                  <p class="carousel-3d-desc-secondary">
+                    Compares multiple models with feature engineering, validation strategies, and performance analysis.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel Indicators (2D flow, outside viewport) -->
+    <div class="carousel-3d-indicators-wrapper">
+      <div class="carousel-3d-indicators"></div>
+    </div>
+    </div>
+
+    <!-- LEGACY PROJECT GRID (disabled for rollback) -->
+    <div id="projects-legacy-grid" style="display:none">
     <div class="container-fluid">
       <div class="row no-gutter">
 
@@ -969,6 +1302,8 @@
         </div>
       </div>
     </div>
+    </div>
+    <!-- END LEGACY PROJECT GRID -->
   </section>
 
   <!-- Contact section -->
@@ -981,11 +1316,11 @@
             <hr class="light">
             <p class="text-white">Interested in hiring Erdun?
             <br>Have a cool open source project you need help with? 
-            <br>Or just want to chat tech—drop him a line? 
+            <br>Or just want to chat tech, drop him a line? 
             <br>Feel free to reach out to him at the following email address, or on LinkedIn, or on WeChat. He is interested in working on challenging projects. You can also find him on <a class="text-white" href="https://github.com/ErdunE">GitHub</a> and view the cool stuff he works on in his free time.</p>
             
             <p class="text-white">You can even view his
-            <a class="text-white"href="img/Resume_of_ErdunE_2025_10_07.pdf">resume right here!</a></p>
+            <a class="text-white"href="img/Resume_of_ErdunE_2025_12_03.pdf">resume right here!</a></p>
           </div>
           <div class="col-xs-3 col-lg-2 col-lg-offset-2 text-center">
             <a href="mailto: erdunwork@gmail.com">
@@ -1070,18 +1405,26 @@
     }
   
     const onLoad = function(){
-      const script = document.createElement("script");
-      script.src = "https://www.chatbase.co/embed.min.js";
-      script.id = "OiQfMdOhl78Pj66N6kHJz";  
-      script.domain = "www.chatbase.co";
-      document.body.appendChild(script);
-  
-      script.onload = function(){
-        setTimeout(()=>{
-          if(window.chatbase) window.chatbase("open");
-        }, 1000);
-      };
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "OiQfMdOhl78Pj66N6kHJz";
+    script.domain = "www.chatbase.co";
+    document.body.appendChild(script);
+
+    script.onload = function () {
+      const isDesktop = window.innerWidth > 768;
+      const hasOpened = localStorage.getItem("chatbase_opened");
+
+      if (isDesktop && !hasOpened) {
+        setTimeout(() => {
+          if (window.chatbase) {
+            window.chatbase("open");
+            localStorage.setItem("chatbase_opened", "true");
+          }
+        }, 5000);
+      }
     };
+  };
   
     if(document.readyState === "complete"){ onLoad(); }
     else{ window.addEventListener("load", onLoad); }
@@ -1117,7 +1460,7 @@
     src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
     data-id="erdun"
     data-description="Support Erdun’s work on Buy Me a Coffee!"
-    data-message="Love what Erdun builds? Send him a beer 🍺"
+    data-message=""
     data-color="#FF813F"
     data-position="right"
     data-x_margin="280"
@@ -1173,5 +1516,359 @@
     rel="noopener noreferrer">
     <img src="img/bmc-logo-yellow.png" alt="Buy me a coffee icon" />
   </a>
+
+  <!-- 3D Carousel Logic (angle-driven semi-circular wheel) -->
+  <script>
+  (function() {
+    'use strict';
+
+    // --- shuffle helper (for random project order on load) ---
+    function shuffleArray(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+    
+    // === Semi-Circular Wheel Constants ===
+    const STEP_ANGLE = 28;              // degrees between cards
+    const RADIUS_FACTOR = 0.42;         // radius as fraction of viewport width
+    const MAX_VISIBLE_ANGLE = 90;       // cards beyond ±90° are hidden
+    const SCALE_AT_EDGE = 0.72;         // scale at ±90°
+    const OPACITY_AT_EDGE = 0.35;       // opacity at ±90°
+    
+    // === Center Card Emphasis ===
+    const CENTER_SCALE = 1.22;          // center card scale boost
+    const CENTER_Z_BOOST = 120;         // center card steps forward in Z
+    
+    // === 3D Carousel Controller ===
+    const carousel = {
+      track: null,
+      cards: [],
+      indicators: null,
+      activeIndex: 0,
+      totalCards: 0,
+      isAnimating: false,
+      touchStartX: 0,
+      touchEndX: 0,
+      
+      // Initialize the carousel
+      init() {
+        this.track = document.querySelector('.carousel-3d-track');
+        this.cards = shuffleArray(
+          Array.from(document.querySelectorAll('.carousel-3d-card'))
+        );
+        this.cards.forEach(card => this.track.appendChild(card));
+        this.indicators = document.querySelector('.carousel-3d-indicators');
+        this.totalCards = this.cards.length;
+        
+        if (!this.track || this.totalCards === 0) return;
+        
+        this.createIndicators();
+        this.bindEvents();
+        this.updatePositions();
+      },
+      
+      // Create dot indicators
+      createIndicators() {
+        if (!this.indicators) return;
+        this.indicators.innerHTML = '';
+        
+        for (let i = 0; i < this.totalCards; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-3d-dot';
+          dot.setAttribute('aria-label', `Go to project ${i + 1}`);
+          dot.dataset.index = i;
+          this.indicators.appendChild(dot);
+        }
+      },
+      
+      // Bind all event listeners
+      bindEvents() {
+        // Navigation buttons
+        const prevBtn = document.querySelector('.carousel-3d-prev');
+        const nextBtn = document.querySelector('.carousel-3d-next');
+        
+        if (prevBtn) prevBtn.addEventListener('click', () => this.rotate(-1));
+        if (nextBtn) nextBtn.addEventListener('click', () => this.rotate(1));
+        
+        // Click on side cards to navigate
+        this.cards.forEach((card, index) => {
+          card.addEventListener('click', (e) => this.handleCardClick(e, index));
+        });
+        
+        // Dot indicators
+        if (this.indicators) {
+          this.indicators.addEventListener('click', (e) => {
+            if (e.target.classList.contains('carousel-3d-dot')) {
+              const targetIndex = parseInt(e.target.dataset.index, 10);
+              this.goTo(targetIndex);
+            }
+          });
+        }
+        
+        // Touch events for mobile swipe
+        this.track.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
+        this.track.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
+        
+        // Keyboard navigation when section is in view
+        document.addEventListener('keydown', (e) => this.handleKeydown(e));
+        
+        // Optional: Mouse wheel horizontal scroll
+        const viewport = document.querySelector('.carousel-3d-viewport');
+        if (viewport) {
+          viewport.addEventListener('wheel', (e) => this.handleWheel(e), { passive: false });
+        }
+        
+        // Update positions on viewport resize (radius is viewport-based)
+        window.addEventListener('resize', () => this.updatePositions());
+      },
+      
+      // Handle card click - navigate if side card, follow link if center
+      handleCardClick(e, index) {
+        const offset = this.getCircularDiff(index, this.activeIndex);
+        const theta = Math.abs(offset * STEP_ANGLE);
+        
+        // If clicking center card, allow default link behavior
+        if (offset === 0) return;
+        
+        // If clicking an interactive side card (within angle range), rotate to it
+        if (theta <= STEP_ANGLE) {
+          e.preventDefault();
+          this.rotate(offset > 0 ? 1 : -1);
+        }
+      },
+      
+      // Touch handlers for swipe
+      handleTouchStart(e) {
+        this.touchStartX = e.changedTouches[0].screenX;
+      },
+      
+      handleTouchEnd(e) {
+        this.touchEndX = e.changedTouches[0].screenX;
+        const diff = this.touchStartX - this.touchEndX;
+        
+        // Minimum swipe distance
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            this.rotate(1); // Swipe left = next
+          } else {
+            this.rotate(-1); // Swipe right = prev
+          }
+        }
+      },
+      
+      // Keyboard navigation
+      handleKeydown(e) {
+        // Only handle if carousel section is visible
+        const section = document.getElementById('projects');
+        if (!section) return;
+        
+        const rect = section.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (!isVisible) return;
+        
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          this.rotate(-1);
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          this.rotate(1);
+        }
+      },
+      
+      // Mouse wheel navigation
+      handleWheel(e) {
+        // Only handle horizontal-ish scrolls or when shift is held
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.shiftKey) {
+          e.preventDefault();
+          
+          if (this.isAnimating) return;
+          
+          if (e.deltaX > 30 || (e.shiftKey && e.deltaY > 30)) {
+            this.rotate(1);
+          } else if (e.deltaX < -30 || (e.shiftKey && e.deltaY < -30)) {
+            this.rotate(-1);
+          }
+        }
+      },
+      
+      // Rotate carousel by direction (-1 = prev, 1 = next)
+      rotate(direction) {
+        if (this.isAnimating) return;
+        
+        this.isAnimating = true;
+        this.activeIndex = this.wrapIndex(this.activeIndex + direction);
+        this.updatePositions();
+        
+        // Reset animation lock after transition
+        setTimeout(() => {
+          this.isAnimating = false;
+        }, 700);
+      },
+      
+      // Go to specific index
+      goTo(targetIndex) {
+        if (this.isAnimating || targetIndex === this.activeIndex) return;
+        
+        this.isAnimating = true;
+        this.activeIndex = targetIndex;
+        this.updatePositions();
+        
+        setTimeout(() => {
+          this.isAnimating = false;
+        }, 700);
+      },
+      
+      // Update all card positions based on activeIndex (TRUE SEMI-CIRCULAR WHEEL)
+      updatePositions() {
+        // Compute radius from viewport width (responsive)
+        const viewportWidth = window.innerWidth;
+        const radius = viewportWidth * RADIUS_FACTOR;
+        
+        this.cards.forEach((card, index) => {
+          // Calculate circular distance from active
+          const offset = this.getCircularDiff(index, this.activeIndex);
+          
+          // Convert offset to angle (theta in degrees)
+          const thetaDeg = offset * STEP_ANGLE;
+          const absThetaDeg = Math.abs(thetaDeg);
+          
+          // Convert to radians for trig
+          const thetaRad = (thetaDeg * Math.PI) / 180;
+          
+          // === SEMI-CIRCULAR POSITIONING ===
+          // Cards are placed on a semi-circle in front of the viewer
+          // x = horizontal position along the arc
+          // z = depth (negative = further away)
+          const x = Math.sin(thetaRad) * radius;
+          let z = Math.cos(thetaRad) * radius - radius; // z=0 at center, negative elsewhere
+          
+          // === ROTATION: Cards face the CENTER of the circle ===
+          // rotateY = -theta means each card rotates to face inward
+          // Center card (theta=0) naturally faces user
+          const rotateY = -thetaDeg;
+          
+          // === CENTER CARD EMPHASIS ===
+          // Center card gets scale boost and steps forward in Z
+          const isCenter = offset === 0;
+          if (isCenter) {
+            z += CENTER_Z_BOOST; // step forward toward user
+          }
+          
+          // === VISIBILITY & DEPTH PROPERTIES ===
+          const normalizedAngle = Math.min(absThetaDeg / MAX_VISIBLE_ANGLE, 1);
+          // Side cards scale from ~0.85 down to SCALE_AT_EDGE
+          // Center card uses CENTER_SCALE
+          const baseScale = isCenter ? CENTER_SCALE : (1 - normalizedAngle * (1 - SCALE_AT_EDGE));
+          const scale = baseScale;
+          const opacity = 1 - normalizedAngle * (1 - OPACITY_AT_EDGE);
+          const zIndex = Math.round(100 - absThetaDeg);
+          
+          // Visibility cutoff: hide cards beyond ±90°
+          const isVisible = absThetaDeg <= MAX_VISIBLE_ANGLE;
+          const isInteractive = absThetaDeg <= STEP_ANGLE; // Only center and adjacent
+          
+          // Apply inline transform
+          card.style.transform = `translateX(${x.toFixed(1)}px) translateZ(${z.toFixed(1)}px) rotateY(${rotateY.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
+          card.style.opacity = isVisible ? opacity.toFixed(2) : '0';
+          card.style.zIndex = zIndex;
+          card.style.pointerEvents = isInteractive ? 'auto' : 'none';
+          
+          // Keep class-based system as fallback/debug
+          card.classList.remove(
+            'carousel-3d-center',
+            'carousel-3d-left',
+            'carousel-3d-right',
+            'carousel-3d-ghost-left',
+            'carousel-3d-ghost-right',
+            'carousel-3d-far-left',
+            'carousel-3d-far-right',
+            'carousel-3d-hidden'
+          );
+          
+          // Assign fallback classes based on offset
+          const link = card.querySelector('.carousel-3d-link');
+          if (offset === 0) {
+            card.classList.add('carousel-3d-center');
+            if (link) link.tabIndex = 0;
+          } else if (offset === -1) {
+            card.classList.add('carousel-3d-left');
+            if (link) link.tabIndex = -1;
+          } else if (offset === 1) {
+            card.classList.add('carousel-3d-right');
+            if (link) link.tabIndex = -1;
+          } else if (offset === -2) {
+            card.classList.add('carousel-3d-ghost-left');
+            if (link) link.tabIndex = -1;
+          } else if (offset === 2) {
+            card.classList.add('carousel-3d-ghost-right');
+            if (link) link.tabIndex = -1;
+          } else if (offset <= -3) {
+            card.classList.add('carousel-3d-far-left');
+            if (link) link.tabIndex = -1;
+          } else if (offset >= 3) {
+            card.classList.add('carousel-3d-far-right');
+            if (link) link.tabIndex = -1;
+          }
+        });
+        
+        // Update indicators
+        this.updateIndicators();
+      },
+      
+      // Update dot indicators with angle-based prominence
+      updateIndicators() {
+        if (!this.indicators) return;
+        
+        const dots = this.indicators.querySelectorAll('.carousel-3d-dot');
+        dots.forEach((dot, i) => {
+          const offset = this.getCircularDiff(i, this.activeIndex);
+          const absOffset = Math.abs(offset);
+          
+          // Angle-based prominence
+          // Center dot (active): full scale and opacity
+          // Adjacent dots: slightly reduced
+          // Far dots: more reduced
+          const isActive = offset === 0;
+          const scale = isActive ? 1.4 : Math.max(0.7, 1 - absOffset * 0.1);
+          const opacity = isActive ? 1 : Math.max(0.3, 1 - absOffset * 0.15);
+          
+          dot.classList.toggle('active', isActive);
+          dot.style.transform = `scale(${scale.toFixed(2)})`;
+          dot.style.opacity = opacity.toFixed(2);
+        });
+      },
+      
+      // Calculate circular difference (shortest path around the wheel)
+      getCircularDiff(index, activeIndex) {
+        const total = this.totalCards;
+        let diff = index - activeIndex;
+        
+        // Wrap around for circular behavior
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+        
+        return diff;
+      },
+      
+      // Wrap index within bounds (circular)
+      wrapIndex(index) {
+        if (index < 0) return this.totalCards + index;
+        if (index >= this.totalCards) return index - this.totalCards;
+        return index;
+      }
+    };
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => carousel.init());
+    } else {
+      carousel.init();
+    }
+  })();
+  </script>
 </body>
 </html>
