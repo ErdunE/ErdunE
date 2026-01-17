@@ -537,6 +537,36 @@ header::before {
   margin-bottom: 10px;
 }
 
+@media (max-width: 768px) {
+  #experience .experience-item {
+    width: 80%;
+    max-width: 520px;
+    margin: 16px auto;
+
+    padding: 24px 20px 26px;
+    min-height: unset;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .experience-detail {
+    align-items: center;
+  }
+
+  .experience-detail-card {
+    width: 80%;
+    max-width: 80%;
+
+    border-radius: 20px 20px 20px 20px;
+    padding: 24px 20px 28px;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+}
+
 /* ===== Testimonials Marquee ===== */
 .marquee-row {
   margin: 0;               
