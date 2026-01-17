@@ -15,7 +15,7 @@
     Last Updated: April 21st, 2025.
 
     Erdun E's personal website. This site has information about him,
-    details about his education, skills, and links to his GitHub and LinkedIn
+    details about his education, capability, and links to his GitHub and LinkedIn
     Profiles. This site is hosted on GitHub Pages.
   -->
 
@@ -57,6 +57,25 @@
 </head>
 
 <body id="page-top">
+
+  <!-- Experience Detail Layer (Global Layer 2) -->
+  <div id="experience-detail-layer" class="experience-detail hidden">
+    <div class="experience-detail-card">
+      
+      <div class="detail-left">
+        <img id="detail-logo" />
+        <h3 id="detail-title"></h3>
+        <p id="detail-company"></p>
+        <span id="detail-time"></span>
+      </div>
+
+      <div class="detail-right">
+        <p id="detail-description"></p>
+      </div>
+
+    </div>
+  </div>
+  
   <!-- NavBar -->
   <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -75,7 +94,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a class="page-scroll" href="#page-top"><i class="fa fa-home"></i> Home</a></li>
           <li><a class="page-scroll" href="#education"><i class="fa fa-graduation-cap"></i> Education</a></li>
-          <li><a class="page-scroll" href="#skills"><i class="fa fa-cogs"></i> Skills</a></li>
+          <li><a class="page-scroll" href="#capability"><i class="fa fa-cogs"></i> Capability</a></li>
           <li><a class="page-scroll" href="#experience"><i class="fa fa-briefcase"></i> Experience</a></li>
           <li><a class="page-scroll" href="#projects"><i class="fa fa-code"></i> Projects</a></li>
           <li><a class="page-scroll" href="#contact"><i class="fa fa-envelope"></i> Contact</a></li>
@@ -101,8 +120,8 @@
       <div class="header-content-inner glass-card">
         <h1 id="homeHeading">Erdun E</h1>
         <hr>
-        <p class="dimmed no-break">20+ Yrs Skier<br>Former Amazon SDE (’21–’23)</p>
-        <p class="highlight no-break">M.S. in CS @ Northeastern<br>Graduating May 2026<br>Seeking Full-time @ May 2026<br>2025 Outstanding Network Student</p>
+        <p class="dimmed no-break">Seeking Full-time @ May 2026<br><br>20+ Yrs Skier<br>Former Amazon SDE (’21–’23)</p>
+        <p class="highlight no-break">M.S. in CS @ Northeastern<br>Graduating May 2026<br>2025 Outstanding Network Student</p>
         <p class="highlight no-break">B.S. in CS @ UMass Lowell<br>Dean’s List</p>
         <p class="dimmed">Boston · Indy · Miami</p>
         <a href="#education" class="btn btn-primary btn-xl page-scroll">Explore my journey</a>
@@ -193,69 +212,123 @@
 
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-          <a href="#skills" class="page-scroll btn btn-default btn-xl sr-button">Wait There's More!</a>
+          <a href="#capability" class="page-scroll btn btn-default btn-xl sr-button">Wait There's More!</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section class="min-padding" id="skills">
+  <!-- Capability Section -->
+  <section class="min-padding" id="capability">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading"><i class="fa fa-cogs text-primary" style="margin-right: 8px;"></i> Skills</h2>
+          <!-- 保留一致性：只改文本为 Capability -->
+          <h2 class="section-heading">
+            <i class="fa fa-cogs text-primary" style="margin-right: 8px;"></i>
+            Capability
+          </h2>
           <hr class="primary">
         </div>
       </div>
 
-      <div class="row text-center skill-box-row">
-        <div class="col-lg-3 col-sm-6 skill-box">
-          <i class="fa fa-4x fa-code text-primary sr-icons"></i>
-          <h3>Programming Languages</h3>
-          <p class="text-muted">Python, Java, Kotlin, Dart, SQL, C, C++, HTML, CSS, JavaScript, TypeScript, Prolog, Perl</p>
-        </div>
-        <div class="col-lg-3 col-sm-6 skill-box">
-          <i class="fa fa-4x fa-wrench text-primary sr-icons"></i>
-          <h3>Tools & IDEs</h3>
-          <p class="text-muted">Git, Vim, IntelliJ, PyCharm, VS Code, Xcode, Android Studio, Cursor</p>
-        </div>
-        <div class="col-lg-3 col-sm-6 skill-box">
-          <i class="fa fa-4x fa-cloud text-primary sr-icons"></i>
-          <h3>Cloud & DevOps</h3>
-          <p class="text-muted">AWS Lambda, EC2, EBS, S3, RedShift, CloudWatch, CI/CD Pipelines, Docker, GitHub Actions</p>
-        </div>
-        <div class="col-lg-3 col-sm-6 skill-box">
-          <i class="fa fa-4x fa-cogs text-primary sr-icons"></i>
-          <h3>Frameworks & APIs</h3>
-          <p class="text-muted">Spring Boot, Flask, React, Flutter, Bloc, Retrofit, REST API, Postman</p>
-        </div>
-      
-        <div class="col-lg-3 col-sm-6 skill-box">
-          <i class="fa fa-4x fa-desktop text-primary sr-icons"></i>
-          <h3>Operating Systems</h3>
-          <p class="text-muted">Linux, macOS, Windows, Android, iOS</p>
-        </div>
-        <div class="col-lg-3 col-sm-6 skill-box">
-          <i class="fa fa-4x fa-language text-primary sr-icons"></i>
-          <h3>Languages Spoken</h3>
-          <p class="text-muted">Native Chinese (Mandarin), Fluent English</p>
-        </div>
-        <div class="col-lg-3 col-sm-6 skill-box">
-          <i class="fa fa-4x fa-database text-primary sr-icons"></i>
-          <h3>Databases</h3>
-          <p class="text-muted">MySQL, MariaDB, Firebase, SQLite, MongoDB, Redis, Oracle</p>
-        </div>
-        <div class="col-lg-3 col-sm-6 skill-box">
-          <i class="fa fa-4x fa-paint-brush text-primary sr-icons"></i>
-          <h3>UI/UX & Design</h3>
-          <p class="text-muted">Figma, Material UI, Jetpack Compose, TailwindCSS, Canva, Gamma, Lovable, Arcades</p>
+      <!-- 描述（标题下方） -->
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+          <p class="capability-lead">
+            Erdun’s engineering capabilities are shaped by real systems and real constraints.
+            He focuses on making sound engineering decisions in environments where trade-offs matter.
+            Decisions balance reliability, clarity, and long-term maintainability over short-term wins.
+          </p>
         </div>
       </div>
 
+      <!-- 两列：左 Points / 右 Description -->
+      <div class="row capability-matrix">
+        <div class="col-lg-10 col-lg-offset-1">
+          <div class="capability-rows">
+
+            <div class="capability-row">
+              <div class="capability-point">
+                <span class="capability-kicker">Capability</span>
+                <h3 class="capability-point-title">System-Level Decision Making</h3>
+              </div>
+              <div class="capability-desc">
+                <p>
+                  Experience making trade-off decisions in complex systems where performance, stability,
+                  velocity, and maintainability conflict.
+                </p>
+                <p class="capability-desc-muted">
+                  Focused on reducing long-term risk, knowing when to simplify, and recognizing when deeper investment is necessary.
+                </p>
+              </div>
+            </div>
+
+            <div class="capability-row">
+              <div class="capability-point">
+                <span class="capability-kicker">Capability</span>
+                <h3 class="capability-point-title">Reliable Delivery Under Real Constraints</h3>
+              </div>
+              <div class="capability-desc">
+                <p>
+                  Delivered features and workflows in production environments with real users, deadlines, and dependencies.
+                </p>
+                <p class="capability-desc-muted">
+                  Prioritizes predictable outcomes, graceful failure modes, and systems that remain stable under pressure.
+                </p>
+              </div>
+            </div>
+
+            <div class="capability-row">
+              <div class="capability-point">
+                <span class="capability-kicker">Capability</span>
+                <h3 class="capability-point-title">Engineering for Change</h3>
+              </div>
+              <div class="capability-desc">
+                <p>
+                  Designs systems with the assumption that requirements will evolve.
+                </p>
+                <p class="capability-desc-muted">
+                  Architectural choices emphasize clarity, extensibility, and the ability to iterate without introducing regressions.
+                </p>
+              </div>
+            </div>
+
+            <div class="capability-row">
+              <div class="capability-point">
+                <span class="capability-kicker">Capability</span>
+                <h3 class="capability-point-title">Ownership &amp; Judgment</h3>
+              </div>
+              <div class="capability-desc">
+                <p>
+                  Operates with a strong sense of ownership across system boundaries.
+                </p>
+                <p class="capability-desc-muted">
+                  Communicates decisions clearly, surfaces risks early, and aligns technical execution with broader product goals.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 声明 -->
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+          <div class="capability-context">
+            <div class="capability-context-title">Technical Context</div>
+            <div class="capability-context-text">
+              Specific tools, languages, and frameworks naturally vary by project and team.  <br>
+              The capabilities above reflect transferable engineering practices that remain applicable across technology stacks.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 按钮 -->
       <div class="text-center" style="margin-top: 30px;">
-        <a href="#experience" class="btn btn-primary btn-xl page-scroll">
-          Let’s talk experience</a>
+        <a href="#experience" class="btn btn-primary btn-xl page-scroll">Let’s talk experience</a>
       </div>
     </div>
   </section>
@@ -273,95 +346,202 @@
       </div>
   
       <div class="row">
-        <div class="col-lg-3 col-sm-6 text-center">
-          <div style="font-size: 4em; line-height: 1; margin-bottom: 15px;">
-            <img src="img/PromptLint.png" 
-                 alt="PromptLint Logo"
-                 style="height:48px; width:48px; object-fit:contain;">
+        <!-- PromptLint -->
+        <div class="col-lg-3 col-sm-6 text-center experience-item"
+              data-logo="img/PromptLint.png"
+              data-company="PromptLint"
+              data-title="CEO & Founder"
+              data-time="Aug 2025 – Present"
+              data-detail="Building PromptLint, an AI prompt quality analysis tool with real-time scoring and rephrase suggestions, launching on web, desktop, mobile and IDE extension.">
+
+          <div style="margin-bottom: 18px;">
+            <img src="img/PromptLint.png"
+                  alt="PromptLint Logo"
+                  style="height:48px; width:48px; object-fit:contain;">
           </div>
-          <h3>CEO & Founder</h3>
-          <p class="text-white">
-            Building PromptLint, an AI prompt quality analysis tool with real-time scoring and rephrase suggestions, launching on web, desktop, mobile and IDE extension.<br>
-            (Aug, 2025 – Present)
-          </p>
+
+          <div class="experience-title">
+            CEO &amp; Founder
+          </div>
+
+          <div class="experience-company">
+            PromptLint
+          </div>
+
+          <div class="experience-time">
+            Aug 2025 – Present
+          </div>
         </div>
   
         <!-- Teaching Assistant -->
-        <div class="col-lg-3 col-sm-6 text-center">
-          <div style="font-size: 4em; line-height: 1; margin-bottom: 15px;">
+        <div class="col-lg-3 col-sm-6 text-center experience-item"
+              data-logo="img/NEU.png"
+              data-company="Northeastern University"
+              data-title="Teaching Assistant"
+              data-time="Sep 2025 – Present"
+              data-detail="Leading weekly recitations, grading, and offering office hours to support students in CS5100 Programming Design Paradigm.">
+
+          <div style="margin-bottom: 18px;">
             <img src="img/NEU.png"
-                alt="Northeastern Logo"
-                style="height:48px; width:48px; object-fit:contain;">
+                  alt="Northeastern Logo"
+                  style="height:48px; width:48px; object-fit:contain;">
           </div>
-          <h3>Teaching Assistant</h3>
-          <p class="text-white">
-            Leading weekly recitations, grading, and offering office hours to support students in CS5100 Programming Design Paradigm.<br>
-            (Sep, 2025 – Present)
-          </p>
+
+          <div class="experience-title">
+            Teaching Assistant
+          </div>
+
+          <div class="experience-company">
+            Northeastern University
+          </div>
+
+          <div class="experience-time">
+            Sep 2025 – Present
+          </div>
         </div>
   
-        <div class="col-lg-3 col-sm-6 text-center">
-          <div style="font-size: 4em; line-height: 1; margin-bottom: 15px;">
-            <img src="img/Superstars.png" 
-                 alt="Superstars Logo"
-                 style="height:48px; width:48px; object-fit:contain;">
+        <!-- Superstars -->
+        <div class="col-lg-3 col-sm-6 text-center experience-item"
+              data-logo="img/Superstars.png"
+              data-company="Superstars"
+              data-title="Software Engineer Intern"
+              data-time="May 2025 – Aug 2025"
+              data-detail="Delivered full story creation workflow in Flutter and authored Contribution Guide to streamline onboarding.">
+
+          <div style="margin-bottom: 18px;">
+            <img src="img/Superstars.png"
+                  alt="Superstars Logo"
+                  style="height:48px; width:48px; object-fit:contain;">
           </div>
-          <h3>Software Engineer Intern</h3>
-          <p class="text-white">
-            Delivered full story creation workflow in Flutter and authored Contribution Guide to streamline onboarding.<br>
-            (May, 2025 – Aug, 2025)
-          </p>
+
+          <div class="experience-title">
+            Software Engineer Intern
+          </div>
+
+          <div class="experience-company">
+            Superstars
+          </div>
+
+          <div class="experience-time">
+            May 2025 – Aug 2025
+          </div>
         </div>
 
         <!-- Miami Tech Club -->
-        <div class="col-lg-3 col-sm-6 text-center">
-          <div style="font-size: 4em; line-height: 1; margin-bottom: 15px;">
+        <div class="col-lg-3 col-sm-6 text-center experience-item"
+              data-logo="img/Miami_tech_club_logo.jpg"
+              data-company="Miami Tech Club"
+              data-title="Co-founder & President"
+              data-time="Jan 2025 – Present"
+              data-detail="Leading the Miami Tech Club at Northeastern, organizd events like Leetcode challenges and participated in the East Coast Student Leadership Retreat.">
+
+          <div style="margin-bottom: 18px;">
             <img src="img/Miami_tech_club_logo.jpg"
-                alt="Miami Tech Club Logo"
-                style="height:48px; width:48px; object-fit:contain;">
+                  alt="Miami Tech Club Logo"
+                  style="height:48px; width:48px; object-fit:contain;">
           </div>
-          <h3>Co-founder & President</h3>
-          <p class="text-white">
-            Leading the Miami Tech Club at Northeastern, organizd events like Leetcode challenges and participated in the East Coast Student Leadership Retreat.<br>
-            (Jan, 2025 – Present)
-          </p>
+
+          <div class="experience-title">
+            Co-founder &amp; President
+          </div>
+
+          <div class="experience-company">
+            Miami Tech Club
+          </div>
+
+          <div class="experience-time">
+            Jan 2025 – Present
+          </div>
         </div>
 
         <!-- Student Ambassador -->
-        <div class="col-lg-3 col-sm-6 text-center">
-          <div style="font-size: 4em; line-height: 1; margin-bottom: 15px;">
+        <div class="col-lg-3 col-sm-6 text-center experience-item"
+              data-logo="img/NEU_Khoury_Logo.jpg"
+              data-company="Khoury College"
+              data-title="Student Ambassador"
+              data-time="Nov 2024 – Present"
+              data-detail="Supporting Khoury College at the Miami campus by collaborating with directors, advisors, and peers to build student community and lead events.">
+
+          <div style="margin-bottom: 18px;">
             <img src="img/NEU_Khoury_Logo.jpg"
-                alt="Khoury Logo"
-                style="height:48px; width:48px; object-fit:contain;">
+                  alt="Khoury Logo"
+                  style="height:48px; width:48px; object-fit:contain;">
           </div>
-          <h3>Student Ambassador</h3>
-          <p class="text-white">
-            Supporting Khoury College at the Miami campus by collaborating with directors, advisors, and peers to build student community and lead events.<br>
-            (Nov, 2024 – Present)
-          </p>
+
+          <div class="experience-title">
+            Student Ambassador
+          </div>
+
+          <div class="experience-company">
+            Khoury College
+          </div>
+
+          <div class="experience-time">
+            Nov 2024 – Present
+          </div>
         </div>
 
         <!-- AWS -->
-        <div class="col-lg-3 col-sm-6 text-center">
-          <div style="font-size: 4em; line-height: 1; margin-bottom: 15px;">
+        <div class="col-lg-3 col-sm-6 text-center experience-item"
+              data-logo="img/AWS_Logo.jpeg"
+              data-company="Amazon Web Services"
+              data-title="Software Development Engineer"
+              data-time="Aug 2021 – Jun 2023"
+              data-detail="Led firmware testing and performance evaluation for Amazon EBS, improving system stability and supporting deployments across 20,000+ servers. Worked across teams to unblock releases, reduce operational risk, and improve reliability in large-scale production environments.">
+        
+          <div style="margin-bottom: 18px;">
             <img src="img/AWS_Logo.jpeg"
-                alt="AWS Logo"
-                style="height:48px; width:48px; object-fit:contain;">
+                  alt="AWS Logo"
+                  style="height:48px; width:48px; object-fit:contain;">
           </div>
-          <h3>Software Development Engineer</h3>
-          <p class="text-white">
-            Led firmware testing and performance evaluation at Amazon Web Services, EBS team, improving stability and supporting 20K+ server deployments.<br>
-            (Aug, 2021 – Jun, 2023)
-          </p>
+        
+          <div class="experience-title">
+            Software Development Engineer
+          </div>
+        
+          <div class="experience-company">
+            Amazon Web Services
+          </div>
+        
+          <div class="experience-time">
+            Aug 2021 – Jun 2023
+          </div>
         </div>
   
-        <div class="col-lg-3 col-sm-6 text-center">
-          <i class="fa fa-4x fa-ellipsis-h text-white sr-icons"></i>
-          <h3>More</h3>
-          <p class="text-white">Additional academic, leadership, and internship experience.</p>
+        <!-- More -->
+        <div class="col-lg-3 col-sm-6 text-center experience-item"
+              data-logo="img/more.png"
+              data-company=""
+              data-title="More"
+              data-time=""
+              data-detail="Additional academic, leadership, and internship experience.">
+
+          <div style="margin-bottom: 18px;">
+            <i class="fa fa-4x fa-ellipsis-h text-white sr-icons"></i>
+          </div>
+
+          <div class="experience-title">
+            More
+          </div>
+
+          <div class="experience-company">
+            Additional
+          </div>
+
+          <div class="experience-time">
+            &nbsp;
+          </div>
         </div>
       </div>
 
+      <div class="text-center" style="border-top: 2px solid rgba(255, 255, 255, 0.08); padding-top: 24px; margin: 40px auto 10px; max-width: 1080px;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:8px;">
+          Peer Perspective
+        </div>
+        <p style="font-size:14px; line-height:1.6; color:rgba(255,255,255,0.75);">
+          What collaborators say about working with Erdun..
+        </p>
+      </div>
       <!-- Testimonials Section -->
       <div id="testimonials" style="margin-top:0px;">
 
@@ -1061,7 +1241,7 @@
 
           <!-- Card 10: FuckWork -->
           <article class="carousel-3d-card" data-index="9">
-            <a href="https://github.com/ErdunE/FuckWork" class="carousel-3d-link" target="_blank" tabindex="-1">
+            <a href="https://github.com/ErdunE/Fuck-work" class="carousel-3d-link" target="_blank" tabindex="-1">
               <div class="carousel-3d-img-wrap">
                 <img src="img/portfolio/thumbnails/fuckwork.png" alt="FuckWork" loading="lazy">
               </div>
@@ -1087,7 +1267,7 @@
 
           <!-- Card 11: Mira -->
           <article class="carousel-3d-card" data-index="10">
-            <a href="https://github.com/ErdunE/Mira" class="carousel-3d-link" target="_blank" tabindex="-1">
+            <a href="https://github.com/ErdunE/mira-astrology-companion" class="carousel-3d-link" target="_blank" tabindex="-1">
               <div class="carousel-3d-img-wrap">
                 <img src="img/portfolio/thumbnails/mira.png" alt="Mira" loading="lazy">
               </div>
@@ -1113,7 +1293,7 @@
 
           <!-- Card 12: Forecasting Store Sales -->
           <article class="carousel-3d-card" data-index="11">
-            <a href="https://github.com/ErdunE/Store-Sales-Forecasting" class="carousel-3d-link" target="_blank" tabindex="-1">
+            <a href="https://github.com/ErdunE/NortheasternMiami/tree/main/CS6140MachineLearning/FinalProject" class="carousel-3d-link" target="_blank" tabindex="-1">
               <div class="carousel-3d-img-wrap">
                 <img src="img/portfolio/thumbnails/store_sales_forecasting.png" alt="Forecasting Store Sales" loading="lazy">
               </div>
@@ -1869,6 +2049,48 @@
       carousel.init();
     }
   })();
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const rows = document.querySelectorAll(".capability-row");
+    
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            entry.target.classList.toggle(
+              "is-active",
+              entry.isIntersecting
+            );
+          });
+        },
+        { threshold: 0.35 }
+      );
+    
+      rows.forEach(row => observer.observe(row));
+    });
+  </script>
+  <script>
+    document.querySelectorAll("#experience .experience-item").forEach(item => {
+      item.addEventListener("click", () => {
+        document.getElementById("detail-logo").src = item.dataset.logo;
+        document.getElementById("detail-title").innerText = item.dataset.title;
+        document.getElementById("detail-company").innerText = item.dataset.company;
+        document.getElementById("detail-time").innerText = item.dataset.time;
+        document.getElementById("detail-description").innerText = item.dataset.detail;
+  
+        document
+          .getElementById("experience-detail-layer")
+          .classList.remove("hidden");
+      });
+    });
+  
+    document
+      .getElementById("experience-detail-layer")
+      .addEventListener("click", e => {
+        if (e.target.id === "experience-detail-layer") {
+          e.target.classList.add("hidden");
+        }
+      });
   </script>
 </body>
 </html>
