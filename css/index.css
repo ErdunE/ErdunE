@@ -946,6 +946,10 @@ header::before {
   box-shadow: var(--shadow-none);
 }
 
+.carousel-3d-link:focus,
+.carousel-3d-link:focus-visible {
+  outline: none;
+}
 /* === Navigation Buttons === */
 .carousel-3d-nav {
   position: absolute;
