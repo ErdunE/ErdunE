@@ -1405,18 +1405,26 @@
     }
   
     const onLoad = function(){
-      const script = document.createElement("script");
-      script.src = "https://www.chatbase.co/embed.min.js";
-      script.id = "OiQfMdOhl78Pj66N6kHJz";  
-      script.domain = "www.chatbase.co";
-      document.body.appendChild(script);
-  
-      script.onload = function(){
-        setTimeout(()=>{
-          if(window.chatbase) window.chatbase("open");
-        }, 1000);
-      };
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "OiQfMdOhl78Pj66N6kHJz";
+    script.domain = "www.chatbase.co";
+    document.body.appendChild(script);
+
+    script.onload = function () {
+      const isDesktop = window.innerWidth > 768;
+      const hasOpened = localStorage.getItem("chatbase_opened");
+
+      if (isDesktop && !hasOpened) {
+        setTimeout(() => {
+          if (window.chatbase) {
+            window.chatbase("open");
+            localStorage.setItem("chatbase_opened", "true");
+          }
+        }, 5000);
+      }
     };
+  };
   
     if(document.readyState === "complete"){ onLoad(); }
     else{ window.addEventListener("load", onLoad); }
@@ -1452,7 +1460,7 @@
     src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
     data-id="erdun"
     data-description="Support Erdun’s work on Buy Me a Coffee!"
-    data-message="Love what Erdun builds? Send him a beer 🍺"
+    data-message=""
     data-color="#FF813F"
     data-position="right"
     data-x_margin="280"

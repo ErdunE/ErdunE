@@ -803,7 +803,7 @@ header::before {
 
 .carousel-3d-title {
   margin: 0 0 10px;
-  font-size: 19px;
+  font-size: clamp(16px, 4vw, 19px);
   font-weight: 700;
   color: #ffffff;
   line-height: 1.25;
@@ -814,7 +814,7 @@ header::before {
 
 /* Center card title emphasis */
 .carousel-3d-center .carousel-3d-title {
-  font-size: 20px;
+  font-size: clamp(17px, 4.2vw, 20px);
 }
 
 /* Description wrapper - contains primary + secondary */
@@ -827,7 +827,7 @@ header::before {
 /* Primary description - project definition */
 .carousel-3d-desc-primary {
   margin: 0;
-  font-size: 13px;
+  font-size: clamp(12px, 2.8vw, 13px);
   color: rgba(255, 255, 255, 0.78);
   line-height: 1.45;
 }
@@ -835,7 +835,7 @@ header::before {
 /* Secondary description - capability/feature expansion */
 .carousel-3d-desc-secondary {
   margin: 0;
-  font-size: 12px;
+  font-size: clamp(11px, 2.6vw, 12px);
   color: rgba(255, 255, 255, 0.52);
   line-height: 1.4;
 }
@@ -1117,14 +1117,6 @@ header::before {
     padding: 14px 16px 18px;
   }
   
-  .carousel-3d-title {
-    font-size: 16px;
-  }
-  
-  .carousel-3d-center .carousel-3d-title {
-    font-size: 17px;
-  }
-  
   .carousel-3d-desc,
   .carousel-3d-desc-primary {
     font-size: 12px;
@@ -1164,6 +1156,30 @@ header::before {
   .carousel-3d-dot {
     width: 7px;
     height: 7px;
+  }
+
+  .carousel-3d-center .carousel-3d-link {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .carousel-3d-tags {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .carousel-3d-tag {
+    font-size: 8px;
+    padding: 3px 6px;
+  }
+
+  .carousel-3d-title {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
