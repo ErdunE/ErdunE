@@ -1275,7 +1275,7 @@ header::before {
   
   .carousel-3d-track {
     width: 260px;
-    height: 340px;
+    height: 360px;
   }
   
   .carousel-3d-img-wrap {
@@ -1283,7 +1283,7 @@ header::before {
   }
   
   .carousel-3d-info {
-    padding: 14px 16px 18px;
+    padding: 14px 14px 16px;
   }
   
   .carousel-3d-desc,
