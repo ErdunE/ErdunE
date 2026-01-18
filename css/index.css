@@ -529,6 +529,29 @@ header::before {
   width: 100%; 
   position: relative;   
   overflow: hidden;
+  
+  /* Apple 风格悬停准备 */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+.edu-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.25),
+    0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.edu-card:active {
+  transform: translateY(-2px) scale(1.005);
+  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .edu-mascot {
@@ -785,7 +808,6 @@ header::before {
   min-height: 230px;
   padding: 32px 24px 34px;
   border-radius: 16px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
   width: 22%;
 
   background: rgba(255,255,255,0.06);
@@ -795,6 +817,30 @@ header::before {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.06) inset,
     0 8px 20px rgba(0, 0, 0, 0.12);
+  
+  /* Apple 风格：柔和的过渡 */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+#experience .experience-item:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 24px 48px rgba(0, 0, 0, 0.2),
+    0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+#experience .experience-item:active {
+  transform: translateY(-2px) scale(1.01);
+  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #experience .experience-item img {
@@ -1596,33 +1642,53 @@ header::before {
   }
   
   .carousel-3d-viewport {
-    height: 420px;
+    height: 480px;
     perspective: 1000px;
   }
   
   .carousel-3d-track {
-    width: 260px;
-    height: 360px;
+    width: 280px;
+    height: 420px;
   }
   
   .carousel-3d-img-wrap {
-    height: 160px;
+    height: 150px;
   }
   
   .carousel-3d-info {
-    padding: 14px 14px 16px;
+    padding: 12px 14px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .carousel-3d-title {
+    font-size: 14px;
+    margin-bottom: 6px;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   
   .carousel-3d-desc,
   .carousel-3d-desc-primary {
-    font-size: 12px;
+    font-size: 11px;
+    line-height: 1.4;
   }
   
   .carousel-3d-desc-secondary {
-    font-size: 11px;
+    font-size: 10px;
+    line-height: 1.35;
+    display: block;
+    overflow: visible;
   }
   
-  /* Transforms now handled by JS - removed legacy transforms */
+  .carousel-3d-desc-wrap {
+    flex: 1;
+    overflow: visible;
+  }
   
   /* Nav buttons on mobile */
   .carousel-3d-nav {
@@ -1640,7 +1706,7 @@ header::before {
   }
   
   .carousel-3d-indicators-wrapper {
-    max-width: 260px; /* matches mobile card width */
+    max-width: 280px;
     padding-top: 12px;
     padding-bottom: 10px;
   }
@@ -1663,6 +1729,8 @@ header::before {
   .carousel-3d-tags {
     gap: 4px;
     margin-bottom: 8px;
+    flex-wrap: nowrap;
+    overflow: hidden;
   }
 
   .carousel-3d-tag {
@@ -1671,6 +1739,8 @@ header::before {
   }
 
   .carousel-3d-title {
+    font-size: 15px;
+    margin-bottom: 8px;
     white-space: normal;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -1857,4 +1927,293 @@ header::before {
 
 .is-mobile #stripe-round-button {
   display: none !important;
+}
+
+/* ===== Contact Section Redesign (Apple Style) ===== */
+
+#contact {
+  padding: 60px 0 80px;
+}
+
+/* 两栏网格布局 */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 28px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
+  align-items: stretch;
+}
+
+/* 通用卡片样式 */
+.contact-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 36px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  
+  /* Apple 风格过渡 */
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* === 左卡片：关于我 === */
+.contact-about {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* 状态标签 */
+.contact-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 100px;
+  width: fit-content;
+  border: none;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: #ffd966;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 217, 102, 0.7);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* 介绍文字 */
+.contact-intro {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 1);
+  margin: 0;
+}
+
+.contact-detail {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* Resume 按钮 */
+.contact-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  width: fit-content;
+  margin-top: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact-resume-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.contact-resume-btn i {
+  font-size: 16px;
+}
+
+/* === 右卡片：联系方式 === */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-links-title {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 12px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* 6 宫格 */
+.contact-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* 单个联系方式卡片 */
+.contact-link-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 22px 16px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  text-decoration: none;
+  border: none;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact-link-item:hover {
+  background: rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  text-decoration: none;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.contact-link-item:active {
+  transform: translateY(-1px) scale(1.01);
+}
+
+/* 图标 - Font Awesome */
+.contact-link-item i {
+  font-size: 26px;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* 图标 - SVG */
+.contact-svg-icon {
+  width: 26px;
+  height: 26px;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* 悬停时图标放大 */
+.contact-link-item:hover i,
+.contact-link-item:hover .contact-svg-icon {
+  transform: scale(1.1);
+}
+
+/* 各平台悬停品牌色 */
+.contact-link-email:hover i { color: #ffd966; }
+.contact-link-linkedin:hover .contact-svg-icon { color: #0A66C2; }
+.contact-link-github:hover .contact-svg-icon { color: #171515; }
+.contact-link-wechat:hover .contact-svg-icon { color: #07C160; }
+.contact-link-whatsapp:hover .contact-svg-icon { color: #25D366; }
+.contact-link-xiaohongshu:hover .contact-svg-icon { color: #FF2442; }
+
+/* 名称 */
+.contact-link-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.2px;
+}
+
+/* 详情 */
+.contact-link-detail {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+  letter-spacing: 0.1px;
+}
+
+/* === 移动端适配 === */
+@media (max-width: 768px) {
+  #contact {
+    padding: 40px 0 60px;
+  }
+
+  #contact .section-heading {
+    font-size: 28px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0 16px;
+  }
+
+  .contact-card {
+    padding: 28px 24px;
+  }
+
+  .contact-about {
+    gap: 16px;
+  }
+
+  .contact-intro {
+    font-size: 15px;
+  }
+
+  .contact-detail {
+    font-size: 14px;
+  }
+
+  .contact-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .contact-link-item {
+    padding: 20px 12px;
+  }
+
+  .contact-link-item i {
+    font-size: 24px;
+  }
+
+  .contact-link-name {
+    font-size: 13px;
+  }
+
+  .contact-link-detail {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .contact-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .contact-link-item {
+    padding: 16px 10px;
+  }
 }
