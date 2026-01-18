@@ -1672,8 +1672,21 @@
       const leftTrack = document.getElementById("testimonials-track-left");
       const rightTrack = document.getElementById("testimonials-track-right");
 
+      // 先暂停动画
+      leftTrack.style.animationPlayState = 'paused';
+      rightTrack.style.animationPlayState = 'paused';
+
+      // 填充内容
       [...leftCards, ...leftCards].forEach(c => leftTrack.appendChild(c.cloneNode(true)));
       [...rightCards, ...rightCards].forEach(c => rightTrack.appendChild(c.cloneNode(true)));
+
+      // 用 requestAnimationFrame 确保两排同时启动
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          leftTrack.style.animationPlayState = 'running';
+          rightTrack.style.animationPlayState = 'running';
+        });
+      });
     });
   </script>
 

@@ -956,13 +956,75 @@ header::before {
   from { transform: translateX(-50%); }
   to   { transform: translateX(0); }
 }
+
 @media (max-width: 992px) {
   .card-w { flex-basis: 280px; }
-  .marquee-track { animation-duration: 32s; }
+  .marquee-track { animation-duration: 100s; }
 }
+
 @media (max-width: 768px) {
-  .card-w { flex-basis: 240px; }
-  .marquee-track { animation-duration: 36s; }
+  .card-w { 
+    flex-basis: 260px;
+    min-width: 260px;
+  }
+  .marquee-track { 
+    animation-duration: 80s; 
+  }
+  
+  /* 修复卡片高度一致性 */
+  .testimonial-glass {
+    min-height: 180px;
+    max-height: 280px;
+    padding: 18px;
+  }
+  
+  /* 限制引用文字高度，防止撑开 */
+  .testimonial-quote {
+    font-size: 13px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* 缩小头像和信息 */
+  .testimonial-footer {
+    grid-template-columns: 38px 1fr;
+    gap: 10px;
+  }
+  .testimonial-avatar {
+    width: 38px;
+    height: 38px;
+  }
+  .testimonial-name {
+    font-size: 13px;
+  }
+  .testimonial-position,
+  .testimonial-company {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-w { 
+    flex-basis: 230px;
+    min-width: 230px;
+  }
+  .marquee-track { 
+    animation-duration: 60s; 
+  }
+  
+  .testimonial-glass {
+    min-height: 160px;
+    max-height: 260px;
+    padding: 16px;
+  }
+  
+  .testimonial-quote {
+    font-size: 12px;
+    -webkit-line-clamp: 4;
+  }
 }
 
 /* ===== Projects Dial / 3D Carousel (Experimental) ===== */
