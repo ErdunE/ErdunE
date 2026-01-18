@@ -2205,6 +2205,14 @@ header::before {
   .contact-link-detail {
     font-size: 10px;
   }
+
+  .contact-status {
+    align-self: center;
+  }
+  
+  .contact-resume-btn {
+    align-self: center;
+  }
 }
 
 @media (max-width: 380px) {
