@@ -184,7 +184,7 @@ header::before {
   width: 30%;             
   max-width: 1000px;      
   min-width: 300px;      
-  margin: 0 auto;  
+  margin: 0 auto;
 }
 
 .glass-card p {
@@ -251,6 +251,136 @@ header::before {
   }
 }
 
+/* ===== Hero 阶段式动效系统 ===== */
+
+/* Stage 0: 玻璃卡片从左到右展开 */
+.glass-card.stage-0 {
+  clip-path: inset(0 100% 0 0);
+  animation: reveal-glass-card 1000ms cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
+}
+
+@keyframes reveal-glass-card {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* 签名初始状态：暂停动画，等玻璃卡片展开完 */
+.glass-card.stage-0 .signature path {
+  animation-play-state: paused;
+}
+
+/* 玻璃卡片展开后，签名开始 */
+.glass-card.signature-ready .signature path {
+  animation-play-state: running;
+}
+
+/* 阶段内容容器 - 初始隐藏 + 过渡准备 */
+.stage-1-content,
+.stage-2-content,
+.stage-3-content {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+}
+
+/* Stage 1 内容：短内容 (~60px)，短过渡 */
+.stage-1-content {
+  transition: 
+    max-height 1450ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stage 2 内容：中等内容 (~150px)，中等过渡 */
+.stage-2-content {
+  transition: 
+    max-height 3000ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stage 3 内容：长内容 (~350px)，长过渡 */
+.stage-3-content {
+  transition: 
+    max-height 6000ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stage 1: 显示关键词 */
+.glass-card.stage-1 .stage-1-content {
+  max-height: 100px;
+  opacity: 1;
+}
+
+/* Stage 2: 显示关键词 + 身份信息 */
+.glass-card.stage-2 .stage-1-content {
+  max-height: 100px;
+  opacity: 1;
+}
+
+.glass-card.stage-2 .stage-2-content {
+  max-height: 200px;
+  opacity: 1;
+}
+
+/* Stage 3: 显示全部内容 */
+.glass-card.stage-3 .stage-1-content {
+  max-height: 100px;
+  opacity: 1;
+}
+
+.glass-card.stage-3 .stage-2-content {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.glass-card.stage-3 .stage-3-content {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* 所有阶段：固定宽度 */
+.glass-card.stage-0,
+.glass-card.stage-1,
+.glass-card.stage-2,
+.glass-card.stage-3 {
+  width: 520px;
+  min-width: 520px;
+  max-width: 520px;
+}
+
+/* 关键词行样式 */
+.glass-card .tagline {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* 移动端：宽度自适应，跳过动画 */
+@media (max-width: 768px) {
+  .glass-card.stage-0,
+  .glass-card.stage-1,
+  .glass-card.stage-2,
+  .glass-card.stage-3 {
+    width: 90vw;
+    min-width: 0;
+    max-width: none;
+  }
+  
+  /* 移动端所有内容直接可见，无过渡 */
+  .stage-1-content,
+  .stage-2-content,
+  .stage-3-content {
+    max-height: none;
+    opacity: 1;
+    transition: none;
+  }
+}
+
 /* ===== Handwritten Name Animation (A1 – FINAL) ===== */
 
 .signature-wrap {
@@ -273,6 +403,11 @@ header::before {
   /* 从左到右“被写出来” */
   clip-path: inset(0 100% 0 0);
   animation: reveal-signature 2.6s ease-out forwards;
+  animation-play-state: paused;
+}
+
+.glass-card.signature-ready .signature path {
+  animation-play-state: running;
 }
 
 @keyframes reveal-signature {
