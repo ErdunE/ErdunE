@@ -1014,7 +1014,7 @@ header::before {
     min-width: 260px;
   }
   .marquee-track { 
-    animation-duration: 80s; 
+    animation-duration: 200s; 
   }
   
   /* 修复卡片高度一致性 */
@@ -1058,7 +1058,7 @@ header::before {
     min-width: 230px;
   }
   .marquee-track { 
-    animation-duration: 60s; 
+    animation-duration: 200s; 
   }
   
   .testimonial-glass {
