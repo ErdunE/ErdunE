@@ -137,21 +137,31 @@
 
         <!-- Stage 1: 关键词 -->
         <div class="stage-1-content">
-          <hr>
           <p class="tagline">builder · engineer · always shipping</p>
+          <hr>
         </div>
 
         <!-- Stage 2: 身份信息 -->
         <div class="stage-2-content">
-          <p class="dimmed no-break">Seeking Full-time @ May 2026<br><br>20+ Yrs Skier<br>Former Amazon SDE (2021 – 2023)</p>
+          <p class="dimmed no-break">Lifelong big-mountain skier<br>Former Software Engineer at Amazon</p>
         </div>
 
         <!-- Stage 3: 教育/城市/CTA -->
         <div class="stage-3-content">
-          <p class="highlight no-break">M.S. in CS @ Northeastern<br>Graduating May 2026<br>Outstanding Network Student (2025)</p>
-          <p class="highlight no-break">B.S. in CS @ UMass Lowell<br>Dean's List</p>
-          <p class="dimmed">Boston · Indy · Miami</p>
-          <a href="#education" class="btn btn-primary btn-xl page-scroll">Explore my journey</a>
+          <div class="education-columns">
+            <div class="edu-col">
+              <p class="edu-degree">M.S. in Computer Science</p>
+              <p class="edu-school">Northeastern University</p>
+              <p class="edu-detail">Outstanding Network Student</p>
+            </div>
+            <div class="edu-col">
+              <p class="edu-degree">B.S. in Computer Science</p>
+              <p class="edu-school">University of Massachusetts</p>
+              <p class="edu-detail">Dean's List</p>
+            </div>
+          </div>
+          <p class="cities">Boston · Indy · Miami</p>
+          <a href="#education" class="cta-btn page-scroll">EXPLORE MY JOURNEY</a>
         </div>
       </div>
     </div>
@@ -2159,9 +2169,15 @@
       const GLASS_CARD_DELAY = 1500; 
       const GLASS_CARD_DURATION = 1000;  // 玻璃卡片展开时长 (ms)
       const SIGNATURE_DURATION = 2600;   // 签名动画时长 (ms)
-      const STAGE_1_DELAY = 400;         // 签名完成后等待时间
-      const STAGE_2_DELAY = 1800;        // Stage 1 展开 + 停留时间
-      const STAGE_3_DELAY = 2600;        // Stage 2 展开 + 停留时间
+      const STAGE_1_DELAY = 1000;        // 签名完成后等待时间
+
+      // 统一计算：展开完成时间 + 停留时间
+      const STAGE_1_DURATION = 3100;     // Stage 1 动画完成时间
+      const STAGE_2_DURATION = 3200;     // Stage 2 动画完成时间
+      const DISPLAY_TIME = 800;          // 统一停留时间
+
+      const STAGE_2_DELAY = STAGE_1_DURATION + DISPLAY_TIME;  // 3900ms
+      const STAGE_3_DELAY = STAGE_2_DURATION + DISPLAY_TIME;         // Stage 2 展开 + 停留时间
       
       // Step 1: 玻璃卡片展开完成后，启动签名动画
       setTimeout(() => {
