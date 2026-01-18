@@ -1726,7 +1726,8 @@
   })();
   </script>
   <!-- Chatbase widget end -->
-  <script>
+   
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", () => {
       const all = Array.from(document.querySelectorAll("#all-testimonials .testimonial-glass"));
 
@@ -1762,6 +1763,44 @@
         rightTrack.style.animation = '';
       }, 100);
     });
+  </script> -->
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const all = Array.from(document.querySelectorAll("#all-testimonials .testimonial-glass"));
+
+    // 随机打乱顺序
+    for (let i = all.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [all[i], all[j]] = [all[j], all[i]];
+    }
+
+    const mid = Math.ceil(all.length / 2);
+    const leftCards = all.slice(0, mid);
+    const rightCards = all.slice(mid);
+
+    const leftTrack = document.getElementById("testimonials-track-left");
+    const rightTrack = document.getElementById("testimonials-track-right");
+
+    // 先完全隐藏动画
+    leftTrack.style.animation = 'none';
+    rightTrack.style.animation = 'none';
+
+    // 填充内容
+    [...leftCards, ...leftCards].forEach(c => leftTrack.appendChild(c.cloneNode(true)));
+    [...rightCards, ...rightCards].forEach(c => rightTrack.appendChild(c.cloneNode(true)));
+
+    // 等待 DOM 完全渲染后再启动动画
+    setTimeout(() => {
+      // 强制浏览器重新计算布局
+      leftTrack.offsetHeight;
+      rightTrack.offsetHeight;
+      
+      // 同时恢复动画
+      leftTrack.style.animation = '';
+      rightTrack.style.animation = '';
+    }, 100);
+  });
   </script>
 
   <!-- Buy Me a Coffee Widget -->

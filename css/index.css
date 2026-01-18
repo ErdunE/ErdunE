@@ -897,7 +897,7 @@ header::before {
 }
 
 .marquee-right .marquee-track {
-  animation-name: marquee-right;
+  animation: marquee-right 150s linear infinite; 
 }
 
 .card-w { flex: 0 0 320px; }
@@ -1006,6 +1006,7 @@ header::before {
 @media (max-width: 992px) {
   .card-w { flex-basis: 280px; }
   .marquee-track { animation-duration: 100s; }
+  .marquee-right .marquee-track { animation-duration: 100s; }
 }
 
 @media (max-width: 768px) {
@@ -1016,6 +1017,8 @@ header::before {
   .marquee-track { 
     animation-duration: 200s; 
   }
+
+  .marquee-right .marquee-track { animation-duration: 200s; }
   
   /* 修复卡片高度一致性 */
   .testimonial-glass {
@@ -1060,6 +1063,7 @@ header::before {
   .marquee-track { 
     animation-duration: 200s; 
   }
+  .marquee-right .marquee-track { animation-duration: 200s; }
   
   .testimonial-glass {
     min-height: 160px;
