@@ -13,7 +13,7 @@ Now pursuing M.S. in Computer Science @ Northeastern University
 [Book a 30-minute meeting with me on Calendly](https://calendly.com/erdune)  
 
 ---
-View My Personal Web at the following address: [https://erdune.github.io/ErdunE/](https://erdune.github.io/ErdunE/)  
+View My Personal Web at the following address: [https://erdun.me/](https://erdun.me/)  
 MIT Licensed · Built with HTML5 + Bootstrap · Contains resume, project links, and source code. 
 
 Check out the source code if you like! ☺  
@@ -23,7 +23,7 @@ Check out the source code if you like! ☺
 <!-- ![Hello](https://img.shields.io/badge/Hello%20World!-I'm%20Erdun-brightgreen?style=for-the-badge) -->
 
 ![](https://komarev.com/ghpvc/?username=ErdunE&style=flat-square)
-[![My Web](https://img.shields.io/badge/Portfolio-ErdunE.github.io-informational?style=flat&logo=githubpages&logoColor=white&color=blue)](https://erdune.github.io/ErdunE/)
+[![My Web](https://img.shields.io/badge/Portfolio-ErdunE.github.io-informational?style=flat&logo=githubpages&logoColor=white&color=blue)](https://erdun.me/)
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-007396?style=flat&logo=java&logoColor=white)
