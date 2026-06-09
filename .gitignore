@@ -1,0 +1,16 @@
+# OS / editor
+.DS_Store
+.idea/
+.cursor/
+
+# Node / build
+node_modules/
+dist/
+.astro/
+.vercel/
+.wrangler/
+
+# env
+.env
+.env.*
+!.env.example
