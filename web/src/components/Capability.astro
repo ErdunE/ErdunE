@@ -1,0 +1,55 @@
+---
+import { Network, ShieldCheck, GitBranch, Compass } from "lucide-react";
+import {
+  capabilityLead,
+  capabilities,
+  capabilityContext,
+} from "@/data/capabilities";
+
+// Icons are presentational, so they live with the component (not the data).
+const icons = [Network, ShieldCheck, GitBranch, Compass];
+---
+
+<section id="capability" class="border-t border-border py-16 sm:py-20">
+  <div class="container-page">
+    <p class="eyebrow">Capability</p>
+    <h2 class="h-section mt-3 text-text">How I approach the work</h2>
+
+    <p class="mt-5 max-w-3xl text-pretty text-lg leading-relaxed text-muted">
+      {capabilityLead}
+    </p>
+
+    <div class="mt-12 space-y-10">
+      {
+        capabilities.map((cap, i) => {
+          const Icon = icons[i] ?? Network;
+          return (
+            <div class="grid grid-cols-[auto_1fr] gap-5 sm:gap-7">
+              <span class="flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-card)] bg-accent-soft text-accent">
+                <Icon className="size-6" />
+              </span>
+              <div>
+                <h3 class="font-display text-lg font-semibold text-text">
+                  {cap.title}
+                </h3>
+                <p class="mt-2 max-w-2xl text-pretty text-muted">{cap.body}</p>
+                <p class="mt-2 max-w-2xl text-pretty text-sm text-faint">
+                  {cap.bodyMuted}
+                </p>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div
+      class="mt-12 max-w-3xl rounded-[var(--radius-card)] border border-border bg-surface-2 p-5"
+    >
+      <p class="eyebrow">{capabilityContext.title}</p>
+      <p class="mt-2 text-pretty text-sm leading-relaxed text-muted">
+        {capabilityContext.text}
+      </p>
+    </div>
+  </div>
+</section>
