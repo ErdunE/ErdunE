@@ -172,6 +172,23 @@
   animation: sheet-out-right 0.24s ease-in;
 }
 
+/* Projects coverflow carousel */
+.projects-swiper {
+  padding-bottom: 3rem;
+  padding-inline: clamp(20px, 5vw, 28px);
+}
+.projects-slide {
+  height: auto;
+}
+.projects-swiper .swiper-pagination-bullet {
+  background: var(--muted);
+  opacity: 0.45;
+}
+.projects-swiper .swiper-pagination-bullet-active {
+  background: var(--accent);
+  opacity: 1;
+}
+
 /* Dialog (centered modal) — minimal fade for now; scale+fade choreography
    is Phase 4. */
 .dialog-overlay[data-state="open"] {

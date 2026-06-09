@@ -3,10 +3,11 @@ import Base from "../layouts/Base.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
 import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
 import Footer from "../components/Footer.astro";
 
 // Sections still to be built in the rest of Phase 3.
-const sections = ["projects", "capability", "testimonials", "education", "contact"];
+const sections = ["capability", "testimonials", "education", "contact"];
 ---
 
 <Base>
@@ -16,6 +17,7 @@ const sections = ["projects", "capability", "testimonials", "education", "contac
   <main id="main">
     <Hero />
     <Experience />
+    <Projects />
 
     {/* Anchor stubs so nav links resolve until each section is built. */}
     {
