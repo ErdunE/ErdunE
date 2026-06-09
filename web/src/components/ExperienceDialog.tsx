@@ -55,7 +55,7 @@ export default function ExperienceDialog({ items }: { items: ExpItem[] }) {
             type="button"
             onClick={() => setActive(i)}
             className="group flex flex-col items-center gap-3 rounded-[var(--radius-card)] border border-border bg-surface p-6 text-center transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            aria-label={`${it.role}${it.company ? ` at ${it.company}` : ""} — view details`}
+            aria-label={`${it.role}${it.company ? ` at ${it.company}` : ""}, view details`}
           >
             <span className="flex size-12 items-center justify-center">
               <Logo logo={it.logo} company={it.company} size="size-12" />

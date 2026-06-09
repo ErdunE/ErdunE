@@ -1,6 +1,6 @@
-// Hero signature — real handwritten SVG path extracted verbatim from the
-// legacy index.html (class="signature"). fill="none"; ready for stroke draw-on
-// (animate stroke-dashoffset) in Phase 4.
+// Hero signature: real handwritten SVG path extracted verbatim from the
+// legacy index.html (class="signature"). Single closed filled-outline path
+// (rendered fill, not stroke). Phase 4 draw-on: left-to-right clip/mask reveal.
 
 export const SIGNATURE_VIEWBOX = "0 0 1411 343";
 

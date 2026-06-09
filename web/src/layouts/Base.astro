@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 
-// Self-hosted fonts (spec §4.2) — no external font CDN.
+// Self-hosted fonts (spec §4.2): no external font CDN.
 import "@fontsource/space-grotesk/500.css";
 import "@fontsource/space-grotesk/600.css";
 import "@fontsource/space-grotesk/700.css";
@@ -16,8 +16,8 @@ interface Props {
 }
 
 const {
-  title = "Erdun E — Software Engineer",
-  description = "Erdun E — Software Engineer · ex-AWS EBS. Builder, engineer, always shipping.",
+  title = "Erdun E · Software Engineer",
+  description = "Erdun E · Software Engineer · ex-AWS EBS. Builder, engineer, always shipping.",
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;

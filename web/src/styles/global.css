@@ -126,7 +126,7 @@
   padding-inline: clamp(20px, 5vw, 28px);
 }
 
-/* ── Theme cross-fade (~300ms) — only while toggling, not on hover ──── */
+/* ── Theme cross-fade (~300ms): only while toggling, not on hover ──── */
 @media (prefers-reduced-motion: no-preference) {
   html.theme-transition,
   html.theme-transition *,
@@ -177,7 +177,7 @@
   padding-bottom: 3rem;
   padding-inline: clamp(20px, 5vw, 28px);
 }
-/* Fixed slide size — overrides swiper/css `.swiper-slide{width:100%}` so
+/* Fixed slide size: overrides swiper/css `.swiper-slide{width:100%}` so
    `slidesPerView:'auto'` shows a centered card + peeking neighbors, and the
    card never sizes to its image. */
 .projects-swiper .swiper-slide {
@@ -190,6 +190,23 @@
     height: 420px;
   }
 }
+/* Emphasize the centered card: scale the inner card (not the slide, to avoid
+   fighting coverflow transforms); dim the side cards slightly. */
+.projects-swiper .swiper-slide > a {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+  opacity: 0.72;
+}
+.projects-swiper .swiper-slide-active > a {
+  transform: scale(1.1);
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .projects-swiper .swiper-slide > a {
+    transition: none;
+  }
+}
 .projects-swiper .swiper-pagination-bullet {
   background: var(--muted);
   opacity: 0.45;
@@ -199,7 +216,7 @@
   opacity: 1;
 }
 
-/* Dialog (centered modal) — minimal fade for now; scale+fade choreography
+/* Dialog (centered modal): minimal fade for now; scale+fade choreography
    is Phase 4. */
 .dialog-overlay[data-state="open"] {
   animation: overlay-in 0.18s ease-out;

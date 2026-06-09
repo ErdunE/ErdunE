@@ -47,7 +47,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Erdun is a force of productivity and precision. Collaborating with him as Co-President of the Miami Tech Club and Khoury Ambassador has been a privilege—his speed, quality, and consistency never cease to impress.",
+      "Erdun is a force of productivity and precision. Collaborating with him as Co-President of the Miami Tech Club and Khoury Ambassador has been a privilege. His speed, quality, and consistency never cease to impress.",
     name: "Naveen Kumanan",
     title: "President, Miami Tech Club",
     company: "Ambassador, Northeastern University – Khoury",
@@ -87,7 +87,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Erdun is a curious learner, patient teacher, and dedicated community member—technically proficient and exactly the kind of teammate you want.",
+      "Erdun is a curious learner, patient teacher, and dedicated community member, technically proficient and exactly the kind of teammate you want.",
     name: "Alan Jamieson",
     title: "Teaching Professor, Associate Dean of Computing Programs – East Coast",
     company: "Northeastern University",
@@ -143,7 +143,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Erdun is one of the best interns I have ever worked with—delivering impact far beyond expectations.",
+      "Erdun is one of the best interns I have ever worked with, delivering impact far beyond expectations.",
     name: "Shachar Golan, MBA",
     title: "Co-Founder & CEO",
     company: "Superstars",
