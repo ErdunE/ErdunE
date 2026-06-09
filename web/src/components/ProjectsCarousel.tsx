@@ -72,10 +72,7 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
       {ordered.map((it, i) => {
         const isActive = i === activeIndex;
         return (
-          <SwiperSlide
-            key={`${it.title}-${i}`}
-            className="projects-slide w-[280px] sm:w-[320px]"
-          >
+          <SwiperSlide key={`${it.title}-${i}`} className="projects-slide">
             <a
               href={it.href}
               target="_blank"
@@ -87,13 +84,11 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
                   swiperRef.current?.slideToLoop(i);
                 }
               }}
-              className={`block overflow-hidden rounded-[var(--radius-card)] border bg-surface transition-[border-color,box-shadow] duration-300 ${
-                isActive
-                  ? "border-accent shadow-xl"
-                  : "border-border shadow-none"
+              className={`flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border bg-surface transition-[border-color,box-shadow] duration-300 ${
+                isActive ? "border-accent shadow-xl" : "border-border shadow-none"
               }`}
             >
-              <div className="aspect-[16/10] w-full overflow-hidden bg-surface-2">
+              <div className="h-[190px] shrink-0 overflow-hidden bg-surface-2">
                 <img
                   src={it.thumb.src}
                   srcSet={it.thumb.srcSet}
@@ -104,7 +99,7 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
                   draggable={false}
                 />
               </div>
-              <div className="p-5">
+              <div className="flex min-h-0 flex-1 flex-col p-5">
                 <div className="flex flex-wrap gap-1.5">
                   {it.tags.map((t) => (
                     <span
@@ -118,8 +113,12 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
                 <h3 className="mt-3 font-display text-lg font-semibold text-text">
                   {it.title}
                 </h3>
-                <p className="mt-1.5 text-sm text-muted">{it.descPrimary}</p>
-                <p className="mt-1 text-xs text-faint">{it.descSecondary}</p>
+                <p className="mt-1.5 line-clamp-2 text-sm text-muted">
+                  {it.descPrimary}
+                </p>
+                <p className="mt-1 line-clamp-2 text-xs text-faint">
+                  {it.descSecondary}
+                </p>
               </div>
             </a>
           </SwiperSlide>

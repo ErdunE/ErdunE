@@ -177,8 +177,18 @@
   padding-bottom: 3rem;
   padding-inline: clamp(20px, 5vw, 28px);
 }
-.projects-slide {
-  height: auto;
+/* Fixed slide size — overrides swiper/css `.swiper-slide{width:100%}` so
+   `slidesPerView:'auto'` shows a centered card + peeking neighbors, and the
+   card never sizes to its image. */
+.projects-swiper .swiper-slide {
+  width: 280px;
+  height: 400px;
+}
+@media (min-width: 640px) {
+  .projects-swiper .swiper-slide {
+    width: 360px;
+    height: 420px;
+  }
 }
 .projects-swiper .swiper-pagination-bullet {
   background: var(--muted);
