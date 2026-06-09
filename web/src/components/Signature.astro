@@ -7,6 +7,9 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
+{/* Filled-outline path: the single closed subpath traces the signature
+    boundary, so it renders solid with fill (not a hairline stroke).
+    Phase 4 draw-on → left-to-right clip/mask reveal. */}
 <svg
   class={className}
   viewBox={SIGNATURE_VIEWBOX}
@@ -15,12 +18,5 @@ const { class: className } = Astro.props;
   role="img"
   aria-label="Erdun E signature"
 >
-  <path
-    d={SIGNATURE_PATH}
-    fill="none"
-    stroke="currentColor"
-    stroke-width="4"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+  <path d={SIGNATURE_PATH} fill="currentColor" stroke="none" />
 </svg>

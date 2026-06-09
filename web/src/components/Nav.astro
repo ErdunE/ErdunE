@@ -7,10 +7,13 @@ import { buttonVariants } from "@/components/ui/button";
 
 <header
   id="site-nav"
-  class="fixed inset-x-0 top-0 z-40 border-b border-transparent transition-[background-color,backdrop-filter,border-color,padding] duration-300"
+  class="nav-over-hero fixed inset-x-0 top-0 z-40 border-b border-transparent transition-[background-color,backdrop-filter,border-color,padding] duration-300"
 >
   <div class="container-page flex items-center justify-between py-4">
-    <a href="#top" class="flex items-center gap-2 font-display text-lg font-bold text-text">
+    <a
+      href="#top"
+      class="nav-brand flex items-center gap-2 font-display text-lg font-bold text-text"
+    >
       Erdun E<span class="inline-block size-2 rounded-full bg-accent"></span>
     </a>
 
@@ -19,7 +22,7 @@ import { buttonVariants } from "@/components/ui/button";
         NAV_LINKS.map((link) => (
           <a
             href={link.href}
-            class="relative font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition-colors hover:text-text"
+            class="nav-link relative font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition-colors hover:text-text"
           >
             {link.label}
           </a>
@@ -32,14 +35,16 @@ import { buttonVariants } from "@/components/ui/button";
         href={RESUME_HREF}
         target="_blank"
         rel="noopener"
-        class={buttonVariants({ variant: "outline", size: "sm", className: "hidden sm:inline-flex" })}
+        class={buttonVariants({ variant: "outline", size: "sm", className: "nav-resume hidden sm:inline-flex" })}
       >
         Résumé
       </a>
-      <ThemeToggle client:load />
-      <div class="md:hidden">
+      <span class="nav-toggle">
+        <ThemeToggle client:load />
+      </span>
+      <span class="nav-mobile md:hidden">
         <MobileNav client:load />
-      </div>
+      </span>
     </div>
   </div>
 </header>
@@ -51,7 +56,9 @@ import { buttonVariants } from "@/components/ui/button";
     var onScroll = function () {
       if (window.scrollY > 16) {
         nav.classList.add("nav-scrolled");
+        nav.classList.remove("nav-over-hero");
       } else {
+        nav.classList.add("nav-over-hero");
         nav.classList.remove("nav-scrolled");
       }
     };
@@ -61,6 +68,7 @@ import { buttonVariants } from "@/components/ui/button";
 </script>
 
 <style>
+  /* Scrolled into content: theme-colored nav + backdrop blur (both themes). */
   #site-nav.nav-scrolled {
     background-color: color-mix(in srgb, var(--bg) 78%, transparent);
     backdrop-filter: blur(12px);
@@ -70,5 +78,38 @@ import { buttonVariants } from "@/components/ui/button";
   #site-nav.nav-scrolled .container-page {
     padding-top: 0.625rem;
     padding-bottom: 0.625rem;
+  }
+
+  /* Over the hero: transparent bg + top-down scrim + forced white text,
+     legible over any video frame in both themes. */
+  #site-nav.nav-over-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    bottom: auto;
+    height: 8rem;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+  #site-nav.nav-over-hero .nav-brand,
+  #site-nav.nav-over-hero .nav-link,
+  #site-nav.nav-over-hero .nav-resume,
+  #site-nav.nav-over-hero .nav-toggle :global(button),
+  #site-nav.nav-over-hero .nav-mobile :global(button) {
+    color: #fff;
+  }
+  #site-nav.nav-over-hero .nav-resume {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  #site-nav.nav-over-hero .nav-resume:hover,
+  #site-nav.nav-over-hero .nav-toggle :global(button):hover,
+  #site-nav.nav-over-hero .nav-mobile :global(button):hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.6);
   }
 </style>
