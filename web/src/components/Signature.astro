@@ -1,0 +1,26 @@
+---
+import { SIGNATURE_PATH, SIGNATURE_VIEWBOX } from "@/data/signature";
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox={SIGNATURE_VIEWBOX}
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Erdun E signature"
+>
+  <path
+    d={SIGNATURE_PATH}
+    fill="none"
+    stroke="currentColor"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
