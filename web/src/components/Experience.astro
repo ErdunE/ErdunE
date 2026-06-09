@@ -1,0 +1,42 @@
+---
+import { getImage } from "astro:assets";
+import { experience } from "@/data/experience";
+import ExperienceDialog from "./ExperienceDialog.tsx";
+import type { ExpItem } from "./ExperienceDialog.tsx";
+
+const items: ExpItem[] = await Promise.all(
+  experience.map(async (e) => {
+    let logo: ExpItem["logo"] = null;
+    if (e.logo) {
+      const img = await getImage({
+        src: e.logo,
+        width: 96,
+        densities: [1, 2],
+        format: "webp",
+      });
+      logo = { src: img.src, srcSet: img.srcSet.attribute };
+    }
+    return {
+      role: e.role,
+      company: e.company,
+      time: e.time,
+      detail: e.detail,
+      logo,
+    };
+  }),
+);
+---
+
+<section id="experience" class="border-t border-border py-16 sm:py-20">
+  <div class="container-page">
+    <p class="eyebrow">Experience</p>
+    <h2 class="h-section mt-3 text-text">Where I've built</h2>
+    <p class="mt-3 max-w-xl text-muted">
+      Roles across engineering, teaching, and founding — tap any card for the full story.
+    </p>
+
+    <div class="mt-10">
+      <ExperienceDialog items={items} client:visible />
+    </div>
+  </div>
+</section>

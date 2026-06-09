@@ -172,12 +172,29 @@
   animation: sheet-out-right 0.24s ease-in;
 }
 
+/* Dialog (centered modal) — minimal fade for now; scale+fade choreography
+   is Phase 4. */
+.dialog-overlay[data-state="open"] {
+  animation: overlay-in 0.18s ease-out;
+}
+.dialog-overlay[data-state="closed"] {
+  animation: overlay-out 0.18s ease-in;
+}
+.dialog-content[data-state="open"] {
+  animation: overlay-in 0.18s ease-out;
+}
+.dialog-content[data-state="closed"] {
+  animation: overlay-out 0.16s ease-in;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
   .sheet-overlay,
-  .sheet-content {
+  .sheet-content,
+  .dialog-overlay,
+  .dialog-content {
     animation: none !important;
   }
 }
