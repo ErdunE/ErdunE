@@ -1,1 +1,183 @@
 @import "tailwindcss";
+
+/* dark: variant follows [data-theme="dark"] instead of prefers-color-scheme */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ── Theme tokens (spec §4.1) ───────────────────────────────────────── */
+:root {
+  --bg: #eceff4;
+  --surface: #ffffff;
+  --surface-2: #f3f5f9;
+  --text: #1f2733;
+  --muted: #5c6678;
+  --faint: #8d97a8;
+  --border: rgba(20, 30, 48, 0.1);
+  --border-strong: rgba(20, 30, 48, 0.2);
+  --accent: #dd5430;
+  --accent-soft: #fbe9e2;
+  --grid: rgba(20, 30, 48, 0.035);
+}
+
+[data-theme="dark"] {
+  --bg: #0e1623;
+  --surface: #15202f;
+  --surface-2: #1a2535;
+  --text: #e7ecf4;
+  --muted: #94a0b5;
+  --faint: #6b7689;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --accent: #ff6a3d;
+  --accent-soft: rgba(255, 106, 61, 0.12);
+  --grid: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Tailwind theme mapping (utilities: bg-bg, text-text, border-border…) */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --radius-card: 14px;
+  --radius-sm: 8px;
+  --radius-pill: 999px;
+}
+
+/* ── Base styles ────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #fff;
+  }
+}
+
+/* ── Type scale (spec §4.2) ─────────────────────────────────────────── */
+@utility h-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vw, 3.875rem); /* ~40 → 62px */
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+@utility h-section {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3.5vw, 1.75rem); /* ~24 → 28px */
+  letter-spacing: -0.01em;
+}
+
+@utility h-card {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1875rem; /* ~19px */
+}
+
+/* mono eyebrow / label */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Layout (spec §4.3) ─────────────────────────────────────────────── */
+@utility container-page {
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 28px);
+}
+
+/* ── Theme cross-fade (~300ms) — only while toggling, not on hover ──── */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      fill 0.3s ease,
+      stroke 0.3s ease !important;
+  }
+}
+
+/* ── Sheet (drawer) animations ──────────────────────────────────────── */
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes overlay-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes sheet-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes sheet-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+.sheet-overlay[data-state="open"] {
+  animation: overlay-in 0.2s ease-out;
+}
+.sheet-overlay[data-state="closed"] {
+  animation: overlay-out 0.2s ease-in;
+}
+.sheet-content[data-state="open"] {
+  animation: sheet-in-right 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sheet-content[data-state="closed"] {
+  animation: sheet-out-right 0.24s ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .sheet-overlay,
+  .sheet-content {
+    animation: none !important;
+  }
+}

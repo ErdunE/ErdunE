@@ -1,0 +1,64 @@
+---
+import "../styles/global.css";
+
+// Self-hosted fonts (spec §4.2) — no external font CDN.
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/600.css";
+import "@fontsource/space-grotesk/700.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Erdun E — Software Engineer",
+  description = "Erdun E — Software Engineer · ex-AWS EBS. Builder, engineer, always shipping.",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    {/* Phase 6 fills in full SEO (OG / Twitter / JSON-LD). */}
+    <slot name="head" />
+
+    {/* No-flash theme: set data-theme before first paint (spec §5.0). */}
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          document.documentElement.setAttribute(
+            "data-theme",
+            t === "dark" ? "dark" : "light",
+          );
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-text focus:ring-2 focus:ring-accent"
+    >
+      Skip to content
+    </a>
+    <slot />
+  </body>
+</html>
