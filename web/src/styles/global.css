@@ -276,6 +276,21 @@
    loop (track duplicated), pause on hover. */
 .marquee-row {
   overflow: hidden;
+  /* Fade cards in/out at the left + right edges (alpha mask, theme-agnostic). */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 80px,
+    #000 calc(100% - 80px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 80px,
+    #000 calc(100% - 80px),
+    transparent
+  );
 }
 .marquee-track {
   display: flex;
