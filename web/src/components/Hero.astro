@@ -6,7 +6,7 @@ import HeroIntro from "./HeroIntro.tsx";
   id="hero"
   class="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden"
 >
-  {/* Full-bleed background video (re-encode is Phase 7) */}
+  {/* Full-bleed background video (re-encoded to ~3 MB; WebM first, MP4 fallback) */}
   <video
     class="absolute inset-0 -z-20 h-full w-full object-cover"
     autoplay
@@ -14,9 +14,10 @@ import HeroIntro from "./HeroIntro.tsx";
     loop
     playsinline
     preload="metadata"
-    poster="/video/poster.jpg"
+    poster="/video/poster.webp"
     aria-hidden="true"
   >
+    <source src="/video/background.webm" type="video/webm" />
     <source src="/video/background.mp4" type="video/mp4" />
   </video>
 
