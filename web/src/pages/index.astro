@@ -6,10 +6,11 @@ import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import Capability from "../components/Capability.astro";
 import Testimonials from "../components/Testimonials.astro";
+import Education from "../components/Education.astro";
 import Footer from "../components/Footer.astro";
 
 // Sections still to be built in the rest of Phase 3.
-const sections = ["education", "contact"];
+const sections = ["contact"];
 ---
 
 <Base>
@@ -22,6 +23,7 @@ const sections = ["education", "contact"];
     <Projects />
     <Capability />
     <Testimonials />
+    <Education />
 
     {/* Anchor stubs so nav links resolve until each section is built. */}
     {

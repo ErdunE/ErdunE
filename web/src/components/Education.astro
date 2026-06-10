@@ -1,0 +1,114 @@
+---
+import { Image } from "astro:assets";
+import { ChevronDown } from "lucide-react";
+import { education } from "@/data/education";
+---
+
+<section id="education" class="border-t border-border py-16 sm:py-20">
+  <div class="container-page">
+    <p class="eyebrow">Education</p>
+    <h2 class="h-section mt-3 text-text">Where I studied</h2>
+
+    <div class="mt-10 grid items-start gap-6 md:grid-cols-2">
+      {
+        education.map((edu) => (
+          <article class="relative overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface p-6">
+            <img
+              src={edu.mascot.src}
+              alt=""
+              aria-hidden="true"
+              class="pointer-events-none absolute -right-6 -top-6 w-32 opacity-[0.05]"
+            />
+
+            <header class="flex items-center gap-3">
+              <span class="flex size-12 shrink-0 items-center justify-center">
+                <Image
+                  src={edu.logo}
+                  alt={`${edu.school} logo`}
+                  width={96}
+                  densities={[1, 2]}
+                  class="size-12 object-contain"
+                />
+              </span>
+              <div class="min-w-0">
+                <h3 class="font-display text-lg font-semibold text-text">
+                  <a
+                    href={edu.schoolHref}
+                    target="_blank"
+                    rel="noopener"
+                    class="transition-colors hover:text-accent"
+                  >
+                    {edu.school}
+                  </a>
+                </h3>
+                <p class="text-sm text-muted">
+                  <a
+                    href={edu.collegeHref}
+                    target="_blank"
+                    rel="noopener"
+                    class="transition-colors hover:text-accent"
+                  >
+                    {edu.college}
+                  </a>
+                </p>
+              </div>
+            </header>
+
+            <p class="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-faint">
+              <a
+                href={edu.locationHref}
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-accent"
+              >
+                {edu.location}
+              </a>
+              {" · "}
+              {edu.time}
+            </p>
+
+            <div class="mt-3 flex items-baseline justify-between gap-3">
+              <p class="font-display text-base font-semibold text-text">
+                {edu.degree}
+              </p>
+              <span class="shrink-0 rounded-[var(--radius-pill)] bg-accent-soft px-2.5 py-0.5 font-mono text-xs font-medium text-accent">
+                GPA {edu.gpa}
+              </span>
+            </div>
+
+            <details class="edu-courses group mt-4 border-t border-border pt-3">
+              <summary class="flex cursor-pointer list-none items-center justify-between font-mono text-[11px] uppercase tracking-[0.12em] text-muted transition-colors hover:text-text">
+                <span>Courses ({edu.courses.length})</span>
+                <ChevronDown className="size-4 transition-transform group-open:rotate-180" />
+              </summary>
+              <ul class="mt-3 space-y-1.5">
+                {edu.courses.map((c) => (
+                  <li class="text-sm text-muted">{c}</li>
+                ))}
+              </ul>
+            </details>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              {edu.awards.map((a) =>
+                a.href ? (
+                  <a
+                    href={a.href}
+                    target="_blank"
+                    rel="noopener"
+                    class="rounded-[var(--radius-pill)] border border-border bg-surface-2 px-2.5 py-1 text-xs text-muted transition-colors hover:border-accent hover:text-accent"
+                  >
+                    {a.text}
+                  </a>
+                ) : (
+                  <span class="rounded-[var(--radius-pill)] border border-border bg-surface-2 px-2.5 py-1 text-xs text-muted">
+                    {a.text}
+                  </span>
+                ),
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
