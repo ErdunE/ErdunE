@@ -7,10 +7,8 @@ import Projects from "../components/Projects.astro";
 import Capability from "../components/Capability.astro";
 import Testimonials from "../components/Testimonials.astro";
 import Education from "../components/Education.astro";
+import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
-
-// Sections still to be built in the rest of Phase 3.
-const sections = ["contact"];
 ---
 
 <Base>
@@ -24,16 +22,7 @@ const sections = ["contact"];
     <Capability />
     <Testimonials />
     <Education />
-
-    {/* Anchor stubs so nav links resolve until each section is built. */}
-    {
-      sections.map((id) => (
-        <section id={id} class="container-page border-t border-border py-16">
-          <p class="eyebrow">{id}</p>
-          <p class="mt-3 text-muted">Section coming soon.</p>
-        </section>
-      ))
-    }
+    <Contact />
   </main>
 
   <Footer />
