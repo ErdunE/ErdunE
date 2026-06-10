@@ -5,7 +5,7 @@ import Signal from "./Signal.astro";
 
 <section
   id="hero"
-  class="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden"
+  class="relative isolate min-h-[100svh] overflow-hidden"
 >
   {/* Full-bleed background video: original full-quality mp4 (the 18 MB size is a
       deliberate quality choice; the poster shows first while it buffers). */}
@@ -41,12 +41,17 @@ import Signal from "./Signal.astro";
   >
   </div>
 
-  {/* Two columns on desktop: identity (left, HeroIntro Motion island) + the
-      Signal activity log (right, opaque card). Stacked on mobile. Both sit over
-      the video + scrim. */}
-  <div class="container-page py-24">
-    <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+  {/* Identity is centered and is the main act (HeroIntro Motion island). The
+      Signal HUD floats over the video, pinned to the right on desktop (absolute,
+      so it scrolls away with the hero); on mobile it drops into the flow below
+      the identity as a near-solid panel. */}
+  <div
+    class="container-page flex min-h-[100svh] flex-col items-center justify-center gap-10 py-24 lg:gap-0"
+  >
+    <div class="w-full max-w-[640px]">
       <HeroIntro client:load />
+    </div>
+    <div class="signal-hud w-full max-w-[640px] lg:max-w-none">
       <Signal />
     </div>
   </div>
@@ -63,3 +68,18 @@ import Signal from "./Signal.astro";
     </style>
   </noscript>
 </section>
+
+<style>
+  /* Desktop: lift the Signal panel out of flow into a right-pinned HUD. Absolute
+     (not fixed) so it scrolls away with the hero. */
+  @media (min-width: 1024px) {
+    #hero .signal-hud {
+      position: absolute;
+      top: 50%;
+      right: 32px;
+      transform: translateY(-50%);
+      width: 360px;
+      max-width: none;
+    }
+  }
+</style>

@@ -18,60 +18,51 @@ function fmtDate(iso: string): string {
 }
 ---
 
-<section
-  class="signal-panel flex flex-col rounded-[var(--radius-card)] border border-border bg-surface shadow-xl"
-  aria-label="Recent activity"
->
-  <header class="flex items-center gap-2 border-b border-border px-5 py-3">
+<section class="signal-panel" aria-label="Recent activity">
+  <header class="signal-header">
     <span class="signal-pulse" aria-hidden="true"></span>
-    <span class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-text">
-      Signal
-    </span>
-    <span class="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
-      · activity log
-    </span>
-    <span class="ml-auto font-mono text-[10px] uppercase tracking-[0.14em] text-faint">
-      newest first
-    </span>
+    <span class="signal-heading">Recent activity</span>
   </header>
 
   <div class="signal-scroll">
-    <ul class="divide-y divide-border">
+    <ul>
       {
         sorted.map((e, i) => (
-          <li class="signal-item px-5 py-4" style={`--i:${i}`}>
-            <div class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em]">
-              <time datetime={e.date} class="text-faint">
+          <li class="signal-item" style={`--i:${i}`}>
+            <div class="signal-meta">
+              <time datetime={e.date} class="signal-date">
                 {fmtDate(e.date)}
               </time>
-              <span class="text-accent">{SOURCE_LABEL[e.source]}</span>
+              <span class="signal-tag">{SOURCE_LABEL[e.source]}</span>
             </div>
 
-            {e.link ? (
-              <a
-                href={e.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="focus-ring mt-1.5 block rounded-sm text-sm leading-snug text-text transition-colors hover:text-accent"
-              >
-                {e.title}
-              </a>
-            ) : (
-              <p class="mt-1.5 text-sm leading-snug text-text">{e.title}</p>
-            )}
+            <div class="signal-body">
+              {e.link ? (
+                <a
+                  href={e.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="signal-title focus-ring"
+                >
+                  {e.title}
+                </a>
+              ) : (
+                <span class="signal-title">{e.title}</span>
+              )}
 
-            {e.media && (
-              <img
-                src={e.media}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                width="640"
-                height="160"
-                class="mt-3 h-24 w-full rounded-[var(--radius-sm)] border border-border object-cover"
-              />
-            )}
+              {e.media && (
+                <img
+                  class="signal-thumb"
+                  src={e.media}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                  width="360"
+                  height="90"
+                />
+              )}
+            </div>
           </li>
         ))
       }
@@ -96,29 +87,52 @@ function fmtDate(iso: string): string {
 </script>
 
 <style>
-  .signal-scroll {
-    max-height: 22rem;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-strong) transparent;
+  /* Panel: near-solid on mobile (readable + cheap); airy glass on desktop. The
+     glass is intentionally NOT theme-aware (light text on deep neutral glass
+     reads over the video in both themes). */
+  .signal-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    background: rgba(24, 26, 32, 0.92);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   }
-  .signal-scroll::-webkit-scrollbar {
-    width: 6px;
-  }
-  .signal-scroll::-webkit-scrollbar-thumb {
-    background: var(--border-strong);
-    border-radius: var(--radius-pill);
+  @media (min-width: 1024px) {
+    .signal-panel {
+      background: var(--glass-bg);
+      -webkit-backdrop-filter: var(--glass-blur);
+      backdrop-filter: var(--glass-blur);
+    }
   }
 
-  /* Pulse: coral core + an expanding ring. */
+  /* Header */
+  .signal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .signal-heading {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.92);
+  }
   .signal-pulse {
     position: relative;
-    display: inline-block;
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     flex-shrink: 0;
     border-radius: var(--radius-pill);
-    background: var(--accent);
+    background: #ff7a4d;
   }
   @media (prefers-reduced-motion: no-preference) {
     .signal-pulse::after {
@@ -126,7 +140,7 @@ function fmtDate(iso: string): string {
       position: absolute;
       inset: 0;
       border-radius: var(--radius-pill);
-      background: var(--accent);
+      background: #ff7a4d;
       animation: signal-pulse 2s var(--ease-brand) infinite;
     }
     .signal-offscreen .signal-pulse::after {
@@ -143,6 +157,75 @@ function fmtDate(iso: string): string {
       transform: scale(2.6);
       opacity: 0;
     }
+  }
+
+  /* Scroll area: bottom fade hint + thin light scrollbar. */
+  .signal-scroll {
+    max-height: clamp(280px, 58vh, 430px);
+    overflow-y: auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+  }
+  .signal-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .signal-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-pill);
+  }
+
+  /* Items: meta column (date + tag) | body column (title + thumb). */
+  .signal-item {
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    column-gap: 14px;
+    align-items: start;
+    padding: 14px 18px;
+  }
+  .signal-item + .signal-item {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .signal-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .signal-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .signal-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ff8a5c;
+  }
+  .signal-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.95);
+    transition: color var(--dur-micro) ease;
+  }
+  a.signal-title:hover {
+    color: #ff8a5c;
+  }
+  .signal-thumb {
+    margin-top: 8px;
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
   }
 
   /* Restrained on-load entrance: items fade-up, staggered <=60ms.

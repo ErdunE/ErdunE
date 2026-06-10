@@ -64,6 +64,17 @@
   --dur-reveal: 500ms;
 }
 
+/* ── Airy glass HUD (Signal panel over the hero video). Deliberately NOT
+   theme-aware: light text on neutral-cool deep glass reads in both themes. */
+:root {
+  --glass-bg: rgba(48, 50, 58, 0.32);
+  --glass-blur: blur(28px) saturate(195%);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
 /* ── Base styles ────────────────────────────────────────────────────── */
 @layer base {
   html {
