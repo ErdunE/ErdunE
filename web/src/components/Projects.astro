@@ -33,7 +33,9 @@ const items: ProjItem[] = await Promise.all(
     </p>
   </div>
 
+  {/* client:load (not client:visible) so the carousel always mounts on page
+      load and the cards never depend on scroll/visibility to appear. */}
   <div class="mt-10">
-    <ProjectsCarousel items={items} client:visible />
+    <ProjectsCarousel items={items} client:load />
   </div>
 </section>
