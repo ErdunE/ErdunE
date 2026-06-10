@@ -6,18 +6,18 @@ const { stripeDonate } = widgets;
 ---
 
 {/* Stripe donate: a small static affordance (no third-party script). Hidden on
-    mobile via CSS; bottom-left, stacked above the Calendly badge. */}
+    mobile via CSS; bottom-left, stacked above the Chatbase bubble. */}
 {
   stripeDonate.enabled && (
     <a
       href={stripeDonate.url}
       target="_blank"
       rel="noopener"
-      aria-label="Support Erdun (donate)"
-      class="widget-stripe-fab fixed bottom-[88px] left-6 z-[9998] items-center gap-1.5 rounded-[var(--radius-pill)] border border-border bg-surface px-3 py-2 text-xs font-medium text-text shadow-lg transition-colors hover:border-accent hover:text-accent"
+      aria-label="Donate to Erdun"
+      class="widget-stripe-fab fixed bottom-[96px] left-6 z-[9998] items-center gap-1.5 rounded-[var(--radius-pill)] border border-border bg-surface px-3 py-2 text-xs font-medium text-text shadow-lg transition-colors hover:border-accent hover:text-accent"
     >
       <Heart className="size-3.5 fill-accent text-accent" />
-      Support
+      Donate
     </a>
   )
 }
@@ -129,19 +129,19 @@ const { stripeDonate } = widgets;
 </script>
 
 <style is:global>
-  /* LEFT cluster: move ONLY the Calendly badge to the bottom-left. The selector
-     is scoped to .calendly-badge-widget so it never touches Chatbase. */
+  /* RIGHT cluster: Calendly badge alone, bottom-right. Scoped to
+     .calendly-badge-widget so it never touches Chatbase. */
   .calendly-badge-widget {
-    left: 24px !important;
-    right: auto !important;
+    right: 24px !important;
+    left: auto !important;
     bottom: 24px !important;
   }
 
-  /* RIGHT cluster: pin the Chatbase bubble to its default bottom-right so it
-     never lands bottom-left and overlaps the Calendly/Stripe cluster. */
+  /* LEFT cluster: pin the Chatbase bubble to the bottom-left corner; the Donate
+     pill stacks just above it (see .widget-stripe-fab). */
   #chatbase-bubble-button {
-    left: auto !important;
-    right: 20px !important;
+    left: 20px !important;
+    right: auto !important;
     bottom: 20px !important;
   }
 
