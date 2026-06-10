@@ -27,6 +27,7 @@ export default function WeChatDialog({
             className="size-7"
             xmlns="http://www.w3.org/2000/svg"
             viewBox={brandIcons.wechat.viewBox}
+            aria-hidden="true"
             dangerouslySetInnerHTML={{ __html: brandIcons.wechat.inner }}
           />
         </span>

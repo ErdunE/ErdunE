@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Keyboard, Mousewheel } from "swiper/modules";
+import { EffectCoverflow, Pagination, Keyboard, Mousewheel, A11y } from "swiper/modules";
 import type { Swiper as SwiperClass } from "swiper";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -51,7 +51,7 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
 
   return (
     <Swiper
-      modules={[EffectCoverflow, Pagination, Keyboard, Mousewheel]}
+      modules={[EffectCoverflow, Pagination, Keyboard, Mousewheel, A11y]}
       effect="coverflow"
       centeredSlides
       slidesPerView="auto"
@@ -59,6 +59,7 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
       grabCursor
       mousewheel={{ forceToAxis: true }}
       keyboard={{ enabled: true }}
+      a11y={{ enabled: true, containerRoleDescriptionMessage: "Projects carousel" }}
       pagination={{ clickable: true }}
       coverflowEffect={coverflowEffect}
       speed={reduce ? 250 : 500}

@@ -10,7 +10,7 @@
   --surface-2: #f3f5f9;
   --text: #1f2733;
   --muted: #5c6678;
-  --faint: #8d97a8;
+  --faint: #636c7f; /* WCAG AA: 5.27:1 on surface, 4.58:1 on bg */
   --border: rgba(20, 30, 48, 0.1);
   --border-strong: rgba(20, 30, 48, 0.2);
   --accent: #dd5430;
@@ -24,7 +24,7 @@
   --surface-2: #1a2535;
   --text: #e7ecf4;
   --muted: #94a0b5;
-  --faint: #6b7689;
+  --faint: #828d9f; /* WCAG AA: 4.89:1 on surface, 5.41:1 on bg */
   --border: rgba(255, 255, 255, 0.1);
   --border-strong: rgba(255, 255, 255, 0.18);
   --accent: #ff6a3d;
