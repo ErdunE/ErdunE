@@ -20,7 +20,7 @@ export const widgets = {
     chatbotId: "OiQfMdOhl78Pj66N6kHJz",
   },
   bmc: {
-    enabled: true,
+    enabled: false,
     id: "erdun",
     color: "#FF813F",
     description: "Support Erdun's work on Buy Me a Coffee",
