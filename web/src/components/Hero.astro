@@ -1,5 +1,6 @@
 ---
 import HeroIntro from "./HeroIntro.tsx";
+import Signal from "./Signal.astro";
 ---
 
 <section
@@ -40,9 +41,14 @@ import HeroIntro from "./HeroIntro.tsx";
   >
   </div>
 
-  {/* Glass card + orchestrated entrance (HeroIntro is a Motion island) */}
-  <div class="container-page py-28">
-    <HeroIntro client:load />
+  {/* Two columns on desktop: identity (left, HeroIntro Motion island) + the
+      Signal activity log (right, opaque card). Stacked on mobile. Both sit over
+      the video + scrim. */}
+  <div class="container-page py-24">
+    <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+      <HeroIntro client:load />
+      <Signal />
+    </div>
   </div>
 
   {/* No-JS fallback: reveal the entrance's hidden initial state. */}

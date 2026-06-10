@@ -4,7 +4,7 @@ import { profile } from "@/data/profile";
 import { SIGNATURE_PATH, SIGNATURE_VIEWBOX } from "@/data/signature";
 import { EASE_OUT_EXPO, DURATION } from "@/lib/motion";
 
-const { name, role, heroStatus, tagline, subline } = profile;
+const { name, role, heroStatus, tagline, subline, resumeHref } = profile;
 
 const ctaBase =
   "inline-flex h-11 min-w-[8.5rem] items-center justify-center rounded-[var(--radius-sm)] border px-6 text-sm font-medium transition-[color,background-color,border-color,transform] duration-200 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
@@ -103,11 +103,16 @@ export default function HeroIntro() {
         {...child(6)}
         className="mt-8 flex flex-wrap items-center justify-center gap-3"
       >
-        <a href="#projects" className={ctaPrimary}>
-          View work
+        <a
+          href={resumeHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={ctaPrimary}
+        >
+          Résumé
         </a>
-        <a href="#experience" className={ctaSecondary}>
-          Experience
+        <a href="#contact" className={ctaSecondary}>
+          Contact
         </a>
       </motion.div>
     </motion.div>

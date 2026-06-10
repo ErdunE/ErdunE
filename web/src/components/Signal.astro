@@ -1,0 +1,166 @@
+---
+import { log, type LogSource } from "@/data/log";
+
+const sorted = [...log].sort((a, b) => b.date.localeCompare(a.date));
+
+const SOURCE_LABEL: Record<LogSource, string> = {
+  project: "Project",
+  event: "Event",
+  press: "Press",
+  milestone: "Milestone",
+  note: "Note",
+};
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function fmtDate(iso: string): string {
+  const [, m, d] = iso.split("-").map(Number);
+  return `${MONTHS[m - 1]} ${d}`;
+}
+---
+
+<section
+  class="signal-panel flex flex-col rounded-[var(--radius-card)] border border-border bg-surface shadow-xl"
+  aria-label="Recent activity"
+>
+  <header class="flex items-center gap-2 border-b border-border px-5 py-3">
+    <span class="signal-pulse" aria-hidden="true"></span>
+    <span class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-text">
+      Signal
+    </span>
+    <span class="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
+      · activity log
+    </span>
+    <span class="ml-auto font-mono text-[10px] uppercase tracking-[0.14em] text-faint">
+      newest first
+    </span>
+  </header>
+
+  <div class="signal-scroll">
+    <ul class="divide-y divide-border">
+      {
+        sorted.map((e, i) => (
+          <li class="signal-item px-5 py-4" style={`--i:${i}`}>
+            <div class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em]">
+              <time datetime={e.date} class="text-faint">
+                {fmtDate(e.date)}
+              </time>
+              <span class="text-accent">{SOURCE_LABEL[e.source]}</span>
+            </div>
+
+            {e.link ? (
+              <a
+                href={e.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="focus-ring mt-1.5 block rounded-sm text-sm leading-snug text-text transition-colors hover:text-accent"
+              >
+                {e.title}
+              </a>
+            ) : (
+              <p class="mt-1.5 text-sm leading-snug text-text">{e.title}</p>
+            )}
+
+            {e.media && (
+              <img
+                src={e.media}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="160"
+                class="mt-3 h-24 w-full rounded-[var(--radius-sm)] border border-border object-cover"
+              />
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<script>
+  // Pause the pulse when the panel scrolls off-screen (perf). reduced-motion has
+  // no pulse animation, so there is nothing to pause in that case.
+  const panel = document.querySelector(".signal-panel");
+  if (panel && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const en of entries)
+          panel.classList.toggle("signal-offscreen", !en.isIntersecting);
+      },
+      { threshold: 0 },
+    );
+    io.observe(panel);
+  }
+</script>
+
+<style>
+  .signal-scroll {
+    max-height: 22rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+  .signal-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .signal-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: var(--radius-pill);
+  }
+
+  /* Pulse: coral core + an expanding ring. */
+  .signal-pulse {
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .signal-pulse::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-pill);
+      background: var(--accent);
+      animation: signal-pulse 2s var(--ease-brand) infinite;
+    }
+    .signal-offscreen .signal-pulse::after {
+      animation-play-state: paused;
+    }
+  }
+  @keyframes signal-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.55;
+    }
+    70%,
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+
+  /* Restrained on-load entrance: items fade-up, staggered <=60ms.
+     Gated on no-preference so reduced-motion shows the final state. */
+  @media (prefers-reduced-motion: no-preference) {
+    .signal-item {
+      animation: signal-in var(--dur-fast) var(--ease-brand) both;
+      animation-delay: calc(var(--i) * 50ms);
+    }
+  }
+  @keyframes signal-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

@@ -14,7 +14,7 @@ export interface SocialLink {
 export const profile = {
   name: "Erdun E",
   role: "Software Engineer · ex-AWS EBS",
-  heroStatus: "Open to SWE roles · OPT",
+  heroStatus: "Miami · open to SWE roles",
   tagline: "builder · engineer · always shipping",
   subline: "Lifelong big-mountain skier. Former Software Engineer at Amazon.",
   resumeHref: RESUME_HREF,
