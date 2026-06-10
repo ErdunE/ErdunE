@@ -4,10 +4,16 @@ import {
   capabilityLead,
   capabilities,
   capabilityContext,
+  type CapabilityIcon,
 } from "@/data/capabilities";
 
-// Icons are presentational, so they live with the component (not the data).
-const icons = [Network, ShieldCheck, GitBranch, Compass];
+// Map each data-driven icon key to its lucide component.
+const iconFor: Record<CapabilityIcon, typeof Network> = {
+  network: Network,
+  "shield-check": ShieldCheck,
+  "git-branch": GitBranch,
+  compass: Compass,
+};
 ---
 
 <section id="capability" class="border-t border-border py-16 sm:py-20">
@@ -23,8 +29,8 @@ const icons = [Network, ShieldCheck, GitBranch, Compass];
 
     <div class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2" data-reveal-stagger>
       {
-        capabilities.map((cap, i) => {
-          const Icon = icons[i] ?? Network;
+        capabilities.map((cap) => {
+          const Icon = iconFor[cap.icon];
           return (
             <div class="cap-cell grid grid-cols-[auto_1fr] gap-4 sm:gap-5">
               <span class="cap-icon flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-card)] bg-accent-soft text-accent">
