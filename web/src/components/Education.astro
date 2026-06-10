@@ -9,15 +9,18 @@ import { education } from "@/data/education";
     <p class="eyebrow">Education</p>
     <h2 class="h-section mt-3 text-text">Where I studied</h2>
 
-    <div class="mt-10 grid items-start gap-6 md:grid-cols-2">
+    <div class="mt-10 grid items-stretch gap-6 md:grid-cols-2">
       {
         education.map((edu) => (
-          <article class="relative overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface p-6">
+          <article class="relative flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface p-6">
+            {/* Watermark: identical treatment for both (same square box,
+                object-contain, grayscale, opacity, corner) so the two read as a
+                consistent pair despite differing source art. */}
             <img
               src={edu.mascot.src}
               alt=""
               aria-hidden="true"
-              class="pointer-events-none absolute -right-6 -top-6 w-32 opacity-[0.05]"
+              class="pointer-events-none absolute -right-4 -top-4 size-28 object-contain opacity-[0.06] grayscale"
             />
 
             <header class="flex items-center gap-3">
