@@ -54,6 +54,16 @@
   --radius-pill: 999px;
 }
 
+/* ── Motion scale (single source of truth; aligned with lib/motion.ts) ──
+   Brand ease for entrances/reveals; default ease for hover/press micro. */
+:root {
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-micro: 200ms;
+  --dur-fast: 300ms;
+  --dur-slow: 450ms;
+  --dur-reveal: 500ms;
+}
+
 /* ── Base styles ────────────────────────────────────────────────────── */
 @layer base {
   html {
@@ -144,11 +154,11 @@
   html.theme-transition *::before,
   html.theme-transition *::after {
     transition:
-      background-color 0.3s ease,
-      border-color 0.3s ease,
-      color 0.3s ease,
-      fill 0.3s ease,
-      stroke 0.3s ease !important;
+      background-color var(--dur-fast) ease,
+      border-color var(--dur-fast) ease,
+      color var(--dur-fast) ease,
+      fill var(--dur-fast) ease,
+      stroke var(--dur-fast) ease !important;
   }
 }
 
@@ -171,16 +181,16 @@
 }
 
 .sheet-overlay[data-state="open"] {
-  animation: overlay-in 0.2s ease-out;
+  animation: overlay-in var(--dur-micro) var(--ease-brand);
 }
 .sheet-overlay[data-state="closed"] {
-  animation: overlay-out 0.2s ease-in;
+  animation: overlay-out var(--dur-micro) var(--ease-brand);
 }
 .sheet-content[data-state="open"] {
-  animation: sheet-in-right 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: sheet-in-right var(--dur-fast) var(--ease-brand);
 }
 .sheet-content[data-state="closed"] {
-  animation: sheet-out-right 0.24s ease-in;
+  animation: sheet-out-right var(--dur-fast) var(--ease-brand);
 }
 
 /* Projects coverflow carousel. Vertical padding gives the full-size center
@@ -210,11 +220,11 @@
   width: 100%;
   opacity: 0.75;
   transition:
-    width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    margin-inline 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.4s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    width var(--dur-slow) var(--ease-brand),
+    margin-inline var(--dur-slow) var(--ease-brand),
+    opacity var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease;
 }
 .projects-swiper .swiper-slide-active > a {
   width: 320px;
@@ -323,16 +333,16 @@
   }
 }
 .dialog-overlay[data-state="open"] {
-  animation: overlay-in 0.2s ease-out;
+  animation: overlay-in var(--dur-micro) var(--ease-brand);
 }
 .dialog-overlay[data-state="closed"] {
-  animation: overlay-out 0.18s ease-in;
+  animation: overlay-out var(--dur-micro) var(--ease-brand);
 }
 .dialog-content[data-state="open"] {
-  animation: dialog-in 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: dialog-in var(--dur-micro) var(--ease-brand);
 }
 .dialog-content[data-state="closed"] {
-  animation: dialog-out 0.18s ease-in;
+  animation: dialog-out var(--dur-micro) var(--ease-brand);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -356,8 +366,8 @@
     opacity: 0;
     transform: translateY(20px);
     transition:
-      opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity var(--dur-reveal) var(--ease-brand),
+      transform var(--dur-reveal) var(--ease-brand);
   }
   .js [data-reveal].is-revealed,
   .js [data-reveal-stagger] > .is-revealed {
@@ -371,8 +381,8 @@
 @media (prefers-reduced-motion: no-preference) {
   .js .cap-icon {
     transition:
-      background-color 0.5s ease,
-      color 0.5s ease;
+      background-color var(--dur-reveal) var(--ease-brand),
+      color var(--dur-reveal) var(--ease-brand);
   }
   .js .cap-cell:not(.is-revealed) .cap-icon {
     background-color: var(--surface-2);
@@ -394,7 +404,7 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .nav-link::after {
-    transition: transform 0.25s ease;
+    transition: transform var(--dur-micro) ease;
   }
 }
 .nav-link:hover::after {
