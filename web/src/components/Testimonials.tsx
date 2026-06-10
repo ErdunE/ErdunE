@@ -31,7 +31,7 @@ function Card({ t, hidden }: { t: TItem; hidden?: boolean }) {
       <blockquote className="text-sm leading-relaxed text-muted">
         &ldquo;{t.quote}&rdquo;
       </blockquote>
-      <figcaption className="mt-4 flex items-center gap-3">
+      <figcaption className="mt-auto flex items-center gap-3 pt-4">
         <img
           src={t.avatar.src}
           srcSet={t.avatar.srcSet}

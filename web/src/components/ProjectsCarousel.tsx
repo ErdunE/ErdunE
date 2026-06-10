@@ -41,7 +41,7 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
 
   if (!mounted) {
     // Reserve space until the island hydrates with shuffled order.
-    return <div className="h-[440px]" aria-hidden="true" />;
+    return <div className="h-[520px]" aria-hidden="true" />;
   }
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

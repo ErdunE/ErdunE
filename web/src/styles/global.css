@@ -172,34 +172,37 @@
   animation: sheet-out-right 0.24s ease-in;
 }
 
-/* Projects coverflow carousel */
+/* Projects coverflow carousel. Vertical padding gives the full-size center
+   card top/bottom breathing room so nothing is clipped. */
 .projects-swiper {
-  padding-bottom: 3rem;
+  padding-block: 1.75rem 3rem;
   padding-inline: clamp(20px, 5vw, 28px);
 }
-/* Fixed slide size: overrides swiper/css `.swiper-slide{width:100%}` so
-   `slidesPerView:'auto'` shows a centered card + peeking neighbors, and the
-   card never sizes to its image. */
+/* Fixed slide size, sized for the ACTIVE (largest) card so the centered card
+   is naturally full-size and never clipped. Overrides swiper/css
+   `.swiper-slide{width:100%}` so `slidesPerView:'auto'` shows peeking sides. */
 .projects-swiper .swiper-slide {
-  width: 280px;
-  height: 400px;
+  width: 300px;
+  height: 430px;
 }
 @media (min-width: 640px) {
   .projects-swiper .swiper-slide {
     width: 360px;
-    height: 420px;
+    height: 450px;
   }
 }
-/* Emphasize the centered card: scale the inner card (not the slide, to avoid
-   fighting coverflow transforms); dim the side cards slightly. */
+/* Hierarchy by scaling DOWN the side cards (the active card stays full-size in
+   both width and height); side cards slightly dimmer. */
 .projects-swiper .swiper-slide > a {
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.4s ease;
-  opacity: 0.72;
+  transform: scale(0.86);
+  transform-origin: center center;
+  opacity: 0.7;
 }
 .projects-swiper .swiper-slide-active > a {
-  transform: scale(1.1);
+  transform: scale(1);
   opacity: 1;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -228,17 +231,21 @@
   will-change: transform;
 }
 .marquee-track--left {
-  animation: marquee-left 60s linear infinite;
+  animation: marquee-left 78s linear infinite;
 }
 .marquee-track--right {
-  animation: marquee-right 60s linear infinite;
+  animation: marquee-right 78s linear infinite;
 }
 .marquee-row:hover .marquee-track {
   animation-play-state: paused;
 }
+/* Equal-height cards (flex track stretches them); footer pinned to bottom via
+   mt-auto so every avatar aligns on the same baseline across the row. */
 .marquee-card {
   width: 340px;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
 @keyframes marquee-left {
   from {

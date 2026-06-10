@@ -19,12 +19,12 @@ const icons = [Network, ShieldCheck, GitBranch, Compass];
       {capabilityLead}
     </p>
 
-    <div class="mt-12 space-y-10">
+    <div class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2">
       {
         capabilities.map((cap, i) => {
           const Icon = icons[i] ?? Network;
           return (
-            <div class="grid grid-cols-[auto_1fr] gap-5 sm:gap-7">
+            <div class="grid grid-cols-[auto_1fr] gap-4 sm:gap-5">
               <span class="flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-card)] bg-accent-soft text-accent">
                 <Icon className="size-6" />
               </span>
@@ -32,10 +32,8 @@ const icons = [Network, ShieldCheck, GitBranch, Compass];
                 <h3 class="font-display text-lg font-semibold text-text">
                   {cap.title}
                 </h3>
-                <p class="mt-2 max-w-2xl text-pretty text-muted">{cap.body}</p>
-                <p class="mt-2 max-w-2xl text-pretty text-sm text-faint">
-                  {cap.bodyMuted}
-                </p>
+                <p class="mt-2 text-pretty text-muted">{cap.body}</p>
+                <p class="mt-2 text-pretty text-sm text-faint">{cap.bodyMuted}</p>
               </div>
             </div>
           );
@@ -44,7 +42,7 @@ const icons = [Network, ShieldCheck, GitBranch, Compass];
     </div>
 
     <div
-      class="mt-12 max-w-3xl rounded-[var(--radius-card)] border border-border bg-surface-2 p-5"
+      class="mt-12 rounded-[var(--radius-card)] border border-border bg-surface-2 p-5"
     >
       <p class="eyebrow">{capabilityContext.title}</p>
       <p class="mt-2 text-pretty text-sm leading-relaxed text-muted">
