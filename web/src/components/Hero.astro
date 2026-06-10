@@ -1,14 +1,5 @@
 ---
-import { profile } from "@/data/profile";
-import Signature from "./Signature.astro";
-
-const { name, role, heroStatus, tagline, subline } = profile;
-
-// Two matched buttons: identical geometry, primary-filled vs secondary-outline.
-const ctaBase =
-  "inline-flex h-11 min-w-[8.5rem] items-center justify-center rounded-[var(--radius-sm)] border px-6 text-sm font-medium transition-[color,background-color,border-color,transform] duration-200 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
-const ctaPrimary = `${ctaBase} border-accent bg-accent text-white hover:bg-accent/90 focus-visible:ring-accent`;
-const ctaSecondary = `${ctaBase} border-white/35 bg-transparent text-white hover:bg-white/10 focus-visible:ring-white/60`;
+import HeroIntro from "./HeroIntro.tsx";
 ---
 
 <section
@@ -35,35 +26,20 @@ const ctaSecondary = `${ctaBase} border-white/35 bg-transparent text-white hover
   >
   </div>
 
-  {/* Glass card (glassmorphism = hero only) */}
+  {/* Glass card + orchestrated entrance (HeroIntro is a Motion island) */}
   <div class="container-page py-28">
-    <div
-      class="mx-auto max-w-2xl rounded-[var(--radius-card)] border border-white/15 bg-white/[0.06] px-6 py-10 text-center shadow-2xl backdrop-blur-xl sm:px-10 sm:py-12"
-    >
-      <span
-        class="inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-accent/40 bg-accent/15 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-white"
-      >
-        <span class="size-1.5 rounded-full bg-accent"></span>
-        {heroStatus}
-      </span>
-
-      <h1 class="h-display mt-6 text-white">{name}</h1>
-
-      <p
-        class="mt-2 font-mono text-xs uppercase tracking-[0.16em] text-white/70 sm:text-sm"
-      >
-        {role}
-      </p>
-
-      <Signature class="mx-auto mt-7 h-auto w-[78%] max-w-sm text-accent" />
-
-      <p class="mt-7 text-lg text-white/90">{tagline}</p>
-      <p class="mt-2 text-sm text-white/65">{subline}</p>
-
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="#projects" class={ctaPrimary}>View work</a>
-        <a href="#experience" class={ctaSecondary}>Experience</a>
-      </div>
-    </div>
+    <HeroIntro client:load />
   </div>
+
+  {/* No-JS fallback: reveal the entrance's hidden initial state. */}
+  <noscript>
+    <style>
+      #hero *,
+      #hero *::before {
+        opacity: 1 !important;
+        clip-path: none !important;
+        transform: none !important;
+      }
+    </style>
+  </noscript>
 </section>
