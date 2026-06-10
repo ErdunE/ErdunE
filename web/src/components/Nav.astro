@@ -71,8 +71,8 @@ import { buttonVariants } from "@/components/ui/button";
   /* Scrolled into content: theme-colored nav + backdrop blur (both themes). */
   #site-nav.nav-scrolled {
     background-color: color-mix(in srgb, var(--bg) 78%, transparent);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: var(--blur-nav);
+    -webkit-backdrop-filter: var(--blur-nav);
     border-bottom-color: var(--border);
   }
   #site-nav.nav-scrolled .container-page {
@@ -106,10 +106,12 @@ import { buttonVariants } from "@/components/ui/button";
   #site-nav.nav-over-hero .nav-resume {
     border-color: rgba(255, 255, 255, 0.4);
   }
-  #site-nav.nav-over-hero .nav-resume:hover,
-  #site-nav.nav-over-hero .nav-toggle :global(button):hover,
-  #site-nav.nav-over-hero .nav-mobile :global(button):hover {
-    background-color: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.6);
+  @media (hover: hover) and (pointer: fine) {
+    #site-nav.nav-over-hero .nav-resume:hover,
+    #site-nav.nav-over-hero .nav-toggle :global(button):hover,
+    #site-nav.nav-over-hero .nav-mobile :global(button):hover {
+      background-color: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, var(--on-media-soft));
+    }
   }
 </style>

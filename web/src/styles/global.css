@@ -68,11 +68,33 @@
    theme-aware: light text on neutral-cool deep glass reads in both themes. */
 :root {
   --glass-bg: rgba(48, 50, 58, 0.32);
+  --glass-bg-solid: rgba(24, 26, 32, 0.92); /* near-solid panel (mobile Signal) */
   --glass-blur: blur(28px) saturate(195%);
   --glass-border: rgba(255, 255, 255, 0.18);
   --glass-shadow:
     0 20px 60px rgba(0, 0, 0, 0.42),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --text-shadow-glass: 0 1px 2px rgba(0, 0, 0, 0.32);
+
+  /* coral on dark glass (lighter than --accent for contrast over the video) */
+  --pulse: #ff7a4d;
+  --accent-glass: #ff8a5c;
+
+  /* white text/lines over media (video/glass); alpha values reused cross-file */
+  --on-media-strong: 0.95;
+  --on-media-base: 0.92;
+  --on-media-soft: 0.6;
+  --hairline: rgba(255, 255, 255, 0.08);
+
+  --radius-lg: 16px;
+  --blur-nav: blur(12px);
+  --blur-solid: blur(6px);
+  --shadow-card-hover:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* fixed nav height (size-10 control + py-4) for anchor scroll-margin offset */
+  --nav-h: 72px;
 }
 
 /* ── Base styles ────────────────────────────────────────────────────── */
@@ -110,6 +132,16 @@
   ::selection {
     background: var(--accent);
     color: #fff;
+  }
+
+  /* Anchor targets clear the fixed nav when jumped to. */
+  #experience,
+  #projects,
+  #capability,
+  #testimonials,
+  #education,
+  #contact {
+    scroll-margin-top: calc(var(--nav-h) + 1rem);
   }
 }
 
@@ -173,18 +205,20 @@
     border-color var(--dur-micro) ease,
     box-shadow var(--dur-micro) ease;
 }
-.card-hover:hover {
-  border-color: var(--accent);
-  box-shadow:
-    0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+/* Hover affordances gated to hover-capable + fine-pointer devices (no sticky
+   hover on touch). :focus-visible is intentionally left ungated. */
+@media (hover: hover) and (pointer: fine) {
+  .card-hover:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-card-hover);
+  }
 }
-@media (prefers-reduced-motion: no-preference) {
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .card-hover:hover {
     transform: translateY(-4px);
   }
-  /* A revealed stagger child keeps `transform: none` (0,3,0); this 0,5,0
-     selector lets the hover lift win without !important or source-order luck.
+  /* A revealed stagger child keeps `transform: none` (0,3,0); this selector
+     lets the hover lift win without !important or source-order luck.
      Targets only .card-hover reveal children (currently the education cards). */
   .js [data-reveal-stagger] > .card-hover.is-revealed:hover {
     transform: translateY(-4px);
@@ -351,12 +385,12 @@
     box-shadow var(--dur-micro) ease,
     transform var(--dur-micro) ease;
 }
-.marquee-card:hover {
-  box-shadow:
-    0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+@media (hover: hover) and (pointer: fine) {
+  .marquee-card:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
 }
-@media (prefers-reduced-motion: no-preference) {
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   /* Lift the single card, never the .marquee-track (which carries the scroll
      translateX); the track already pauses on hover. */
   .marquee-card:hover {
@@ -490,6 +524,8 @@
     transition: transform var(--dur-micro) ease;
   }
 }
-.nav-link:hover::after {
-  transform: scaleX(1);
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
 }

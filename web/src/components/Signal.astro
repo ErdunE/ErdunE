@@ -128,13 +128,13 @@ function fmtDate(iso: string): string {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
-    background: rgba(24, 26, 32, 0.92);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+    background: var(--glass-bg-solid);
+    -webkit-backdrop-filter: var(--blur-solid);
+    backdrop-filter: var(--blur-solid);
+    text-shadow: var(--text-shadow-glass);
   }
   @media (min-width: 1280px) {
     .signal-panel {
@@ -150,7 +150,7 @@ function fmtDate(iso: string): string {
     align-items: center;
     gap: 10px;
     padding: 14px 18px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--hairline);
   }
   .signal-heading {
     font-family: var(--font-mono);
@@ -158,7 +158,7 @@ function fmtDate(iso: string): string {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, var(--on-media-base));
   }
   .signal-pulse {
     position: relative;
@@ -166,7 +166,7 @@ function fmtDate(iso: string): string {
     height: 7px;
     flex-shrink: 0;
     border-radius: var(--radius-pill);
-    background: #ff7a4d;
+    background: var(--pulse);
   }
   @media (prefers-reduced-motion: no-preference) {
     .signal-pulse::after {
@@ -174,7 +174,7 @@ function fmtDate(iso: string): string {
       position: absolute;
       inset: 0;
       border-radius: var(--radius-pill);
-      background: #ff7a4d;
+      background: var(--pulse);
       animation: signal-pulse 2s var(--ease-brand) var(--sig-pulse-delay) infinite;
     }
     .signal-offscreen .signal-pulse::after {
@@ -219,7 +219,7 @@ function fmtDate(iso: string): string {
     padding: 14px 18px;
   }
   .signal-item + .signal-item {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--hairline);
   }
   .signal-meta {
     display: flex;
@@ -230,7 +230,7 @@ function fmtDate(iso: string): string {
     font-family: var(--font-mono);
     font-size: 11px;
     font-variant-numeric: tabular-nums;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, var(--on-media-soft));
   }
   .signal-tag {
     font-family: var(--font-mono);
@@ -238,7 +238,7 @@ function fmtDate(iso: string): string {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #ff8a5c;
+    color: var(--accent-glass);
   }
   .signal-title {
     display: -webkit-box;
@@ -248,18 +248,20 @@ function fmtDate(iso: string): string {
     font-family: var(--font-sans);
     font-size: 13.5px;
     line-height: 1.4;
-    color: rgba(255, 255, 255, 0.95);
+    color: rgba(255, 255, 255, var(--on-media-strong));
     transition: color var(--dur-micro) ease;
   }
-  a.signal-title:hover {
-    color: #ff8a5c;
+  @media (hover: hover) and (pointer: fine) {
+    a.signal-title:hover {
+      color: var(--accent-glass);
+    }
   }
   .signal-thumb {
     margin-top: 8px;
     width: 100%;
     height: 90px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
   }
 
   /* Entrance choreography: triggered once when the hero enters view (the script
