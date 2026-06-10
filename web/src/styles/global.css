@@ -285,19 +285,40 @@
   }
 }
 
-/* Dialog (centered modal): minimal fade for now; scale+fade choreography
-   is Phase 4. */
+/* Dialog (centered modal): scale(0.96) + fade on open/close. The keyframes
+   keep the centering translate so the box stays centered during the animation
+   (Radix waits for the closed animation before unmounting). */
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@keyframes dialog-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+}
 .dialog-overlay[data-state="open"] {
-  animation: overlay-in 0.18s ease-out;
+  animation: overlay-in 0.2s ease-out;
 }
 .dialog-overlay[data-state="closed"] {
   animation: overlay-out 0.18s ease-in;
 }
 .dialog-content[data-state="open"] {
-  animation: overlay-in 0.18s ease-out;
+  animation: dialog-in 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .dialog-content[data-state="closed"] {
-  animation: overlay-out 0.16s ease-in;
+  animation: dialog-out 0.18s ease-in;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -310,4 +331,58 @@
   .dialog-content {
     animation: none !important;
   }
+}
+
+/* ── Scroll reveals (vanilla IntersectionObserver toggles .is-revealed) ──
+   Hidden state is gated on `.js` (set before paint) so no-JS users always see
+   content, and on no-preference so reduced-motion users get the final state. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal],
+  .js [data-reveal-stagger] > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .js [data-reveal].is-revealed,
+  .js [data-reveal-stagger] > .is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Capability in-view highlight: icon tile lights up to accent as the cell
+   enters view (final/default state for reduced-motion + no-JS). ── */
+@media (prefers-reduced-motion: no-preference) {
+  .js .cap-icon {
+    transition:
+      background-color 0.5s ease,
+      color 0.5s ease;
+  }
+  .js .cap-cell:not(.is-revealed) .cap-icon {
+    background-color: var(--surface-2);
+    color: var(--muted);
+  }
+}
+
+/* ── Nav link underline grow on hover ── */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .nav-link::after {
+    transition: transform 0.25s ease;
+  }
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
 }

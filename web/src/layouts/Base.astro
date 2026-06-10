@@ -37,9 +37,11 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     {/* Phase 6 fills in full SEO (OG / Twitter / JSON-LD). */}
     <slot name="head" />
 
-    {/* No-flash theme: set data-theme before first paint (spec §5.0). */}
+    {/* No-flash theme + `.js` flag (gates scroll-reveal hidden state so no-JS
+        users always see content), set before first paint (spec §5.0). */}
     <script is:inline>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var t = localStorage.getItem("theme");
           document.documentElement.setAttribute(
@@ -60,5 +62,45 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       Skip to content
     </a>
     <slot />
+
+    {/* Scroll reveals: one observer toggles `.is-revealed` once, then
+        unobserves. `data-reveal-stagger` reveals direct children ~80ms apart.
+        Capability cells get an in-view highlight via the same `.is-revealed`. */}
+    <script>
+      const reduce = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      const items = document.querySelectorAll(
+        "[data-reveal], [data-reveal-stagger]",
+      );
+
+      const revealStaggered = (el: Element) => {
+        Array.from(el.children).forEach((child, i) => {
+          (child as HTMLElement).style.transitionDelay = `${i * 80}ms`;
+          child.classList.add("is-revealed");
+        });
+      };
+
+      if (reduce) {
+        items.forEach((el) => {
+          el.classList.add("is-revealed");
+          if (el.hasAttribute("data-reveal-stagger")) revealStaggered(el);
+        });
+      } else {
+        const io = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target;
+              if (el.hasAttribute("data-reveal-stagger")) revealStaggered(el);
+              else el.classList.add("is-revealed");
+              obs.unobserve(el);
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+        );
+        items.forEach((el) => io.observe(el));
+      }
+    </script>
   </body>
 </html>
