@@ -6,20 +6,33 @@ import HeroIntro from "./HeroIntro.tsx";
   id="hero"
   class="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden"
 >
-  {/* Full-bleed background video (re-encoded to ~3 MB; WebM first, MP4 fallback) */}
+  {/* Full-bleed background video: original full-quality mp4 (the 18 MB size is a
+      deliberate quality choice; the poster shows first while it buffers). */}
   <video
+    id="hero-video"
     class="absolute inset-0 -z-20 h-full w-full object-cover"
     autoplay
     muted
     loop
     playsinline
-    preload="metadata"
+    preload="auto"
     poster="/video/poster.webp"
     aria-hidden="true"
   >
-    <source src="/video/background.webm" type="video/webm" />
     <source src="/video/background.mp4" type="video/mp4" />
   </video>
+  <script is:inline>
+    (function () {
+      var v = document.getElementById("hero-video");
+      if (!v) return;
+      var play = function () {
+        var p = v.play();
+        if (p && typeof p.catch === "function") p.catch(function () {});
+      };
+      if (v.readyState >= 3) play();
+      else v.addEventListener("canplay", play, { once: true });
+    })();
+  </script>
 
   {/* Dark scrim: guarantees legibility in both themes */}
   <div
