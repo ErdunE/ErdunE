@@ -67,7 +67,7 @@ export default function ExperienceDialog({ items }: { items: ExpItem[] }) {
   return (
     <>
       <motion.div
-        className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
+        className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-4"
         variants={reduced ? undefined : container}
         initial={reduced ? false : "hidden"}
         whileInView={reduced ? undefined : "visible"}
