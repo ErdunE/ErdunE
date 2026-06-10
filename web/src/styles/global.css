@@ -288,6 +288,11 @@
    loop (track duplicated), pause on hover. */
 .marquee-row {
   overflow: hidden;
+  /* Vertical room so the hover lift (and its shadow) isn't clipped by
+     overflow:hidden; the negative margin cancels the added height so the
+     section's vertical rhythm and the inter-row gap stay unchanged. */
+  padding-block: 0.75rem;
+  margin-block: -0.75rem;
   /* Fade cards in/out at the left + right edges (alpha mask, theme-agnostic). */
   -webkit-mask-image: linear-gradient(
     to right,
