@@ -12,7 +12,7 @@ import { buttonVariants } from "@/components/ui/button";
   <div class="container-page flex items-center justify-between py-4">
     <a
       href="#top"
-      class="nav-brand flex items-center gap-2 font-display text-lg font-bold text-text"
+      class="nav-brand focus-ring flex items-center gap-2 rounded-sm font-display text-lg font-bold text-text"
     >
       Erdun E<span class="inline-block size-2 rounded-full bg-accent"></span>
     </a>
@@ -22,7 +22,7 @@ import { buttonVariants } from "@/components/ui/button";
         NAV_LINKS.map((link) => (
           <a
             href={link.href}
-            class="nav-link relative font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition-colors hover:text-text"
+            class="nav-link focus-ring relative rounded-sm font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition-colors hover:text-text"
           >
             {link.label}
           </a>

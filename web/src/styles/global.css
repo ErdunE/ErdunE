@@ -126,6 +126,17 @@
   padding-inline: clamp(20px, 5vw, 28px);
 }
 
+/* Shared keyboard focus ring (accent ring + bg offset) so every interactive
+   element focuses the same way. Matches the shadcn Button focus treatment. */
+@utility focus-ring {
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--bg),
+      0 0 0 4px var(--accent);
+  }
+}
+
 /* ── Theme cross-fade (~300ms): only while toggling, not on hover ──── */
 @media (prefers-reduced-motion: no-preference) {
   html.theme-transition,
