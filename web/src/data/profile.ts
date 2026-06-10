@@ -1,5 +1,11 @@
 import type { ImageMetadata } from "astro";
-import wechatQr from "@/assets/contact/WechatIMG218.jpg";
+import { imageByName } from "@/lib/images";
+
+const imgs = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/contact/*.{jpg,jpeg,png,webp,svg}",
+  { eager: true },
+);
+const img = imageByName(imgs, "../assets/contact/");
 
 export const RESUME_HREF = "/resume/Resume_of_ErdunE_2026_04_16.pdf";
 
@@ -32,7 +38,7 @@ export const profile = {
     resumeLabel: "View My Resume",
   },
 
-  wechatQr: wechatQr as ImageMetadata,
+  wechatQr: img("WechatIMG218.jpg"),
 
   social: [
     {

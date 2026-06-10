@@ -1,8 +1,11 @@
 import type { ImageMetadata } from "astro";
-import neuLogo from "@/assets/edu/NEU.png";
-import umassLogo from "@/assets/edu/Umass.png";
-import neuMascot from "@/assets/edu/NEUmascot.svg";
-import umlMascot from "@/assets/edu/UMLmascot.svg";
+import { imageByName } from "@/lib/images";
+
+const imgs = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/edu/*.{jpg,jpeg,png,webp,svg}",
+  { eager: true },
+);
+const img = imageByName(imgs, "../assets/edu/");
 
 export interface Award {
   text: string;
@@ -36,8 +39,8 @@ export const education: Education[] = [
     time: "Sep 2024 – May 2026",
     degree: "M.S. in Computer Science",
     gpa: "4.00",
-    logo: neuLogo,
-    mascot: neuMascot,
+    logo: img("NEU.png"),
+    mascot: img("NEUmascot.svg"),
     courses: [
       "CS5100 Foundations of Artificial Intelligence",
       "CS5520 Mobile App Development",
@@ -74,8 +77,8 @@ export const education: Education[] = [
     time: "May 2016 – Dec 2020",
     degree: "B.S. in Computer Science",
     gpa: "3.20",
-    logo: umassLogo,
-    mascot: umlMascot,
+    logo: img("Umass.png"),
+    mascot: img("UMLmascot.svg"),
     courses: [
       "COMP4200 Artificial Intelligence",
       "COMP4210 Data Mining",

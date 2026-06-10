@@ -1,17 +1,11 @@
 import type { ImageMetadata } from "astro";
-import erduneWeb from "@/assets/projects/01.png";
-import promptlint from "@/assets/projects/promptlint.png";
-import superstars from "@/assets/projects/superstars.png";
-import trafficSign from "@/assets/projects/traffic_sign_classification_phases.png";
-import beanVibes from "@/assets/projects/02.jpg";
-import habitend from "@/assets/projects/03.jpg";
-import entertainmentRec from "@/assets/projects/04.jpg";
-import knn from "@/assets/projects/05.jpg";
-import dueMate from "@/assets/projects/06.jpg";
-import fuckwork from "@/assets/projects/fuckwork.png";
-import mira from "@/assets/projects/mira.png";
-import storeSales from "@/assets/projects/store_sales_forecasting.png";
-import vibes from "@/assets/projects/Vibes.png";
+import { imageByName } from "@/lib/images";
+
+const imgs = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/projects/*.{jpg,jpeg,png,webp,svg}",
+  { eager: true },
+);
+const img = imageByName(imgs, "../assets/projects/");
 
 export interface Project {
   title: string;
@@ -26,7 +20,7 @@ export const projects: Project[] = [
   {
     title: "ErdunE's Web",
     href: "https://github.com/ErdunE/ErdunE/tree/master",
-    thumbnail: erduneWeb,
+    thumbnail: img("01.png"),
     tags: ["Bootstrap", "Responsive Design", "Personal Portfolio"],
     descPrimary:
       "A fully responsive personal portfolio website showcasing projects and experience.",
@@ -36,7 +30,7 @@ export const projects: Project[] = [
   {
     title: "PromptLint",
     href: "https://github.com/ErdunE/promptlint",
-    thumbnail: promptlint,
+    thumbnail: img("promptlint.png"),
     tags: ["AI/ML", "Prompt Engineering", "Chrome Extension", "Developer Tooling"],
     descPrimary:
       "An AI-powered prompt quality analysis and optimization tool for developers.",
@@ -46,7 +40,7 @@ export const projects: Project[] = [
   {
     title: "Superstars",
     href: "https://github.com/naylalabs/superstars-mobile-v2",
-    thumbnail: superstars,
+    thumbnail: img("superstars.png"),
     tags: ["Flutter", "Bloc", "Firebase", "Mobile Architecture"],
     descPrimary:
       "A video-first professional hiring and networking mobile platform.",
@@ -56,7 +50,7 @@ export const projects: Project[] = [
   {
     title: "Traffic Sign Recognition",
     href: "https://github.com/ErdunE/AI-Project-Computer-Vision-Traffic-Sign-Recognition",
-    thumbnail: trafficSign,
+    thumbnail: img("traffic_sign_classification_phases.png"),
     tags: ["Computer Vision", "CNN", "TensorFlow", "Deep Learning"],
     descPrimary:
       "A deep learning system for traffic sign classification and recognition.",
@@ -66,7 +60,7 @@ export const projects: Project[] = [
   {
     title: "Bean Vibes",
     href: "https://github.com/ErdunE/CS5200-Final-Project",
-    thumbnail: beanVibes,
+    thumbnail: img("02.jpg"),
     tags: ["Android", "MySQL", "REST API", "Full Stack"],
     descPrimary:
       "A full-stack mobile app for personalized coffee tasting and journaling.",
@@ -76,7 +70,7 @@ export const projects: Project[] = [
   {
     title: "Habitend",
     href: "https://github.com/ErdunE/CS5520-Final-Project",
-    thumbnail: habitend,
+    thumbnail: img("03.jpg"),
     tags: ["Kotlin", "Firebase", "MVVM", "Mobile UX"],
     descPrimary: "A gamified habit-tracking Android application.",
     descSecondary:
@@ -85,7 +79,7 @@ export const projects: Project[] = [
   {
     title: "Entertainment Rec System",
     href: "https://github.com/ErdunE/NortheasternMiami/tree/main/CS5010ProgrammingDesignParadigm/Final%20Project/FinalProject",
-    thumbnail: entertainmentRec,
+    thumbnail: img("04.jpg"),
     tags: ["JavaFX", "Recommendation System", "API Integration", "Desktop Application"],
     descPrimary: "A desktop-based movie recommendation application.",
     descSecondary:
@@ -94,7 +88,7 @@ export const projects: Project[] = [
   {
     title: "KNN Visualization",
     href: "https://github.com/ErdunE/CS5800-Final-Project",
-    thumbnail: knn,
+    thumbnail: img("05.jpg"),
     tags: ["Machine Learning", "KNN", "Data Visualization", "Python"],
     descPrimary:
       "An interactive visualization tool for the k-Nearest Neighbors algorithm.",
@@ -104,7 +98,7 @@ export const projects: Project[] = [
   {
     title: "Due Mate",
     href: "https://github.com/ErdunE/DueMate",
-    thumbnail: dueMate,
+    thumbnail: img("06.jpg"),
     tags: ["Python", "Flask", "SQLite", "Backend Systems"],
     descPrimary: "A unified bill and payment deadline tracking application.",
     descSecondary:
@@ -113,7 +107,7 @@ export const projects: Project[] = [
   {
     title: "FuckWork",
     href: "https://github.com/ErdunE/Fuck-work",
-    thumbnail: fuckwork,
+    thumbnail: img("fuckwork.png"),
     tags: ["Chrome Extension", "Productivity", "JavaScript", "UX Design"],
     descPrimary:
       "A no-nonsense productivity Chrome extension designed to eliminate distractions.",
@@ -123,7 +117,7 @@ export const projects: Project[] = [
   {
     title: "Mira",
     href: "https://github.com/ErdunE/mira-astrology-companion",
-    thumbnail: mira,
+    thumbnail: img("mira.png"),
     tags: ["AI", "NLP", "Reasoning Systems", "Python"],
     descPrimary:
       "An intelligent AI assistant prototype focused on structured reasoning.",
@@ -133,7 +127,7 @@ export const projects: Project[] = [
   {
     title: "Forecasting Store Sales",
     href: "https://github.com/ErdunE/NortheasternMiami/tree/main/CS6140MachineLearning/FinalProject",
-    thumbnail: storeSales,
+    thumbnail: img("store_sales_forecasting.png"),
     tags: ["Machine Learning", "Time Series Forecasting", "Feature Engineering", "Python"],
     descPrimary:
       "A retail sales forecasting project using historical time-series data.",
@@ -143,7 +137,7 @@ export const projects: Project[] = [
   {
     title: "Vibes Alert System Enhancement",
     href: "https://www.notion.so/Vibes-Alert-System-Enhancement-Technical-Delivery-Report-336134f951b580918c9dfb1c865b5f53",
-    thumbnail: vibes,
+    thumbnail: img("Vibes.png"),
     tags: ["AWS Bedrock", "Claude AI", "AWS Lambda", "DynamoDB"],
     descPrimary:
       "AI-powered student distress detection system for a K-8 emotional wellness platform.",

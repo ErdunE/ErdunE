@@ -1,32 +1,11 @@
 import type { ImageMetadata } from "astro";
-import jay from "@/assets/people/Jay.jpeg";
-import naveen from "@/assets/people/Naveen.jpeg";
-import haedy from "@/assets/people/Haedy.png";
-import alex from "@/assets/people/Alex.jpeg";
-import profGS from "@/assets/people/ProfGS.jpeg";
-import haoge from "@/assets/people/Haoge.jpeg";
-import alan from "@/assets/people/Alan.jpeg";
-import juan from "@/assets/people/Juan.jpeg";
-import faisal from "@/assets/people/Faisai.jpeg";
-import nate from "@/assets/people/Nate.jpeg";
-import mudan from "@/assets/people/Mudan.png";
-import david from "@/assets/people/David.jpeg";
-import pedro from "@/assets/people/Pedro.jpeg";
-import shachar from "@/assets/people/Shachar.jpeg";
-import dharmesh from "@/assets/people/Dharmesh.jpeg";
-import nirmit from "@/assets/people/Nirmit.png";
-import hong from "@/assets/people/Hong.jpeg";
-import ge from "@/assets/people/Ge.jpeg";
-import clif from "@/assets/people/Clif.png";
-import gnana from "@/assets/people/Gnana.jpeg";
-import dhruv from "@/assets/people/Dhruv.png";
-import aditya from "@/assets/people/Aditya.jpeg";
-import tejesh from "@/assets/people/Tejesh.png";
-import mohana from "@/assets/people/Mohana.png";
-import weiwei from "@/assets/people/Weiwei.jpeg";
-import linlin from "@/assets/people/Linlin.jpeg";
-import zhiqiang from "@/assets/people/Zhiqiang.jpeg";
-import defaultAvatar from "@/assets/people/default-avatar.png";
+import { imageByName } from "@/lib/images";
+
+const imgs = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/people/*.{jpg,jpeg,png,webp,svg}",
+  { eager: true },
+);
+const img = imageByName(imgs, "../assets/people/");
 
 export interface Testimonial {
   quote: string;
@@ -43,7 +22,7 @@ export const testimonials: Testimonial[] = [
     name: "Jay Rodriguez",
     title: "Account Executive",
     company: "Aegis IT Solutions",
-    avatar: jay,
+    avatar: img("Jay.jpeg"),
   },
   {
     quote:
@@ -51,7 +30,7 @@ export const testimonials: Testimonial[] = [
     name: "Naveen Kumanan",
     title: "President, Miami Tech Club",
     company: "Ambassador, Northeastern University – Khoury",
-    avatar: naveen,
+    avatar: img("Naveen.jpeg"),
   },
   {
     quote:
@@ -59,7 +38,7 @@ export const testimonials: Testimonial[] = [
     name: "Haedy Liu, Ph.D.",
     title: "Global Learner Support Tutor",
     company: "Northeastern University – Miami",
-    avatar: haedy,
+    avatar: img("Haedy.png"),
   },
   {
     quote:
@@ -67,7 +46,7 @@ export const testimonials: Testimonial[] = [
     name: "Alejandro Vides",
     title: "Co-Founder",
     company: "The Daily Benji",
-    avatar: alex,
+    avatar: img("Alex.jpeg"),
   },
   {
     quote:
@@ -75,7 +54,7 @@ export const testimonials: Testimonial[] = [
     name: "Gabriela Gongora-Svartzman, Ph.D.",
     title: "Associate Teaching Professor & Director of Computing Programs",
     company: "Northeastern University – Khoury College",
-    avatar: profGS,
+    avatar: img("ProfGS.jpeg"),
   },
   {
     quote:
@@ -83,7 +62,7 @@ export const testimonials: Testimonial[] = [
     name: "Shihao Zhang",
     title: "Co-Founder / Investor",
     company: "G1 Innovations",
-    avatar: haoge,
+    avatar: img("Haoge.jpeg"),
   },
   {
     quote:
@@ -91,7 +70,7 @@ export const testimonials: Testimonial[] = [
     name: "Alan Jamieson",
     title: "Teaching Professor, Associate Dean of Computing Programs – East Coast",
     company: "Northeastern University",
-    avatar: alan,
+    avatar: img("Alan.jpeg"),
   },
   {
     quote:
@@ -99,7 +78,7 @@ export const testimonials: Testimonial[] = [
     name: "Juan F. Gonzalez, Ed.S",
     title: "Associate Director of Operations",
     company: "Northeastern University - Miami",
-    avatar: juan,
+    avatar: img("Juan.jpeg"),
   },
   {
     quote:
@@ -107,7 +86,7 @@ export const testimonials: Testimonial[] = [
     name: "Faisal Rehman Khattak",
     title: "Co-Founder & CTO",
     company: "Bite Buddy AI",
-    avatar: faisal,
+    avatar: img("Faisai.jpeg"),
   },
   {
     quote:
@@ -115,7 +94,7 @@ export const testimonials: Testimonial[] = [
     name: "Nate Derbinsky",
     title: "Teaching Professor",
     company: "Northeastern University",
-    avatar: nate,
+    avatar: img("Nate.jpeg"),
   },
   {
     quote:
@@ -123,7 +102,7 @@ export const testimonials: Testimonial[] = [
     name: "Shenghua Du",
     title: "State Police Officer",
     company: "Massachusetts State Police",
-    avatar: mudan,
+    avatar: img("Mudan.png"),
   },
   {
     quote:
@@ -131,7 +110,7 @@ export const testimonials: Testimonial[] = [
     name: "David Paquette",
     title: "Assistant Director of Retention and Engagement",
     company: "Northeastern University",
-    avatar: david,
+    avatar: img("David.jpeg"),
   },
   {
     quote:
@@ -139,7 +118,7 @@ export const testimonials: Testimonial[] = [
     name: "Pedro C. C. Gomes",
     title: "Associate Director of Entrepreneurship",
     company: "Northeastern University – Miami",
-    avatar: pedro,
+    avatar: img("Pedro.jpeg"),
   },
   {
     quote:
@@ -147,7 +126,7 @@ export const testimonials: Testimonial[] = [
     name: "Shachar Golan, MBA",
     title: "Co-Founder & CEO",
     company: "Superstars",
-    avatar: shachar,
+    avatar: img("Shachar.jpeg"),
   },
   {
     quote:
@@ -155,7 +134,7 @@ export const testimonials: Testimonial[] = [
     name: "Dharmesh Thakkar",
     title: "Senior Software Development Manager",
     company: "Amazon Elastic Block Store (EBS)",
-    avatar: dharmesh,
+    avatar: img("Dharmesh.jpeg"),
   },
   {
     quote:
@@ -163,7 +142,7 @@ export const testimonials: Testimonial[] = [
     name: "Nirmit Kachrani",
     title: "Engineering Manager",
     company: "Google",
-    avatar: nirmit,
+    avatar: img("Nirmit.png"),
   },
   {
     quote:
@@ -171,7 +150,7 @@ export const testimonials: Testimonial[] = [
     name: "Hong Zhao",
     title: "Senior Software Development Engineer",
     company: "Amazon Web Services",
-    avatar: hong,
+    avatar: img("Hong.jpeg"),
   },
   {
     quote:
@@ -179,7 +158,7 @@ export const testimonials: Testimonial[] = [
     name: "Tingjian Ge",
     title: "Professor of Computer Science",
     company: "University of Massachusetts Lowell",
-    avatar: ge,
+    avatar: img("Ge.jpeg"),
   },
   {
     quote:
@@ -187,7 +166,7 @@ export const testimonials: Testimonial[] = [
     name: "Clif Ong",
     title: "Backend Engineer",
     company: "Tencent",
-    avatar: clif,
+    avatar: img("Clif.png"),
   },
   {
     quote:
@@ -195,7 +174,7 @@ export const testimonials: Testimonial[] = [
     name: "Gnana Chand Mallangi",
     title: "Data Analytics Intern",
     company: "UNC Charlotte",
-    avatar: gnana,
+    avatar: img("Gnana.jpeg"),
   },
   {
     quote:
@@ -203,7 +182,7 @@ export const testimonials: Testimonial[] = [
     name: "Dhruvkumar Parmar",
     title: "Computer Science Student",
     company: "Saint Louis University",
-    avatar: dhruv,
+    avatar: img("Dhruv.png"),
   },
   {
     quote:
@@ -211,7 +190,7 @@ export const testimonials: Testimonial[] = [
     name: "Aditya Bhuran",
     title: "Webmaster",
     company: "Digital Grandparents Inc",
-    avatar: aditya,
+    avatar: img("Aditya.jpeg"),
   },
   {
     quote:
@@ -219,7 +198,7 @@ export const testimonials: Testimonial[] = [
     name: "Tejesh Boppana",
     title: "Computer Science Student",
     company: "University of Florida",
-    avatar: tejesh,
+    avatar: img("Tejesh.png"),
   },
   {
     quote:
@@ -227,7 +206,7 @@ export const testimonials: Testimonial[] = [
     name: "Mohana Siddhartha Chivukula",
     title: "Computer Science Student",
     company: "Arizona State University",
-    avatar: mohana,
+    avatar: img("Mohana.png"),
   },
   {
     quote:
@@ -235,21 +214,21 @@ export const testimonials: Testimonial[] = [
     name: "Weiwei Zhao",
     title: "Senior Software Engineer",
     company: "Amazon Web Services",
-    avatar: weiwei,
+    avatar: img("Weiwei.jpeg"),
   },
   {
     quote: "Erdun iterates quickly, resolves roadblocks, and always delivers results.",
     name: "Linlin Ding",
     title: "Senior Software Development Engineer",
     company: "Amazon Web Services",
-    avatar: linlin,
+    avatar: img("Linlin.jpeg"),
   },
   {
     quote: "Erdun is self-motivated, meets deadlines, and is a great team player.",
     name: "Zhiqiang (Justin) Wang",
     title: "Software Development Engineer",
     company: "Amazon Web Services",
-    avatar: zhiqiang,
+    avatar: img("Zhiqiang.jpeg"),
   },
   {
     quote:
@@ -257,6 +236,6 @@ export const testimonials: Testimonial[] = [
     name: "Eric W",
     title: "Software Development Engineer",
     company: "Microsoft",
-    avatar: defaultAvatar,
+    avatar: img("default-avatar.png"),
   },
 ];
