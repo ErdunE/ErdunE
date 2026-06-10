@@ -1,12 +1,3 @@
-import type { ImageMetadata } from "astro";
-import { imageByName } from "@/lib/images";
-
-const imgs = import.meta.glob<{ default: ImageMetadata }>(
-  "../assets/contact/*.{jpg,jpeg,png,webp,svg}",
-  { eager: true },
-);
-const img = imageByName(imgs, "../assets/contact/");
-
 export const RESUME_HREF = "/resume/Resume_of_ErdunE_2026_04_16.pdf";
 
 export interface SocialLink {
@@ -37,7 +28,7 @@ export const profile = {
     resumeLabel: "View My Resume",
   },
 
-  wechatQr: img("WechatIMG218.jpg"),
+  wechatQr: "/wechat-qr.webp",
 
   social: [
     {

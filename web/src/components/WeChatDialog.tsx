@@ -15,7 +15,7 @@ export default function WeChatDialog({
   qrSrcSet,
 }: {
   qrSrc: string;
-  qrSrcSet: string;
+  qrSrcSet?: string;
 }) {
   const [open, setOpen] = useState(false);
 

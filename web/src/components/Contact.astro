@@ -1,5 +1,4 @@
 ---
-import { getImage } from "astro:assets";
 import { Mail } from "lucide-react";
 import { profile } from "@/data/profile";
 import { buttonVariants } from "@/components/ui/button";
@@ -8,13 +7,6 @@ import WeChatDialog from "./WeChatDialog.tsx";
 
 const { contact, social, resumeHref, wechatQr } = profile;
 const intro = contact.intro.split("\n");
-
-const qr = await getImage({
-  src: wechatQr,
-  width: 400,
-  densities: [1, 2],
-  format: "webp",
-});
 
 const tile =
   "group flex items-center gap-3 rounded-[var(--radius-card)] border border-border bg-surface p-3.5 transition-colors hover:border-accent";
@@ -61,7 +53,7 @@ const iconWrap = "flex size-9 shrink-0 items-center justify-center";
           {
             social.map((link) => {
               if (link.id === "wechat") {
-                return <WeChatDialog qrSrc={qr.src} qrSrcSet={qr.srcSet.attribute} client:visible />;
+                return <WeChatDialog qrSrc={wechatQr} client:visible />;
               }
               return (
                 <a href={link.href} target="_blank" rel="noopener" class={tile}>
