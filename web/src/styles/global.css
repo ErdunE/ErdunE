@@ -172,6 +172,12 @@
   .card-hover:hover {
     transform: translateY(-4px);
   }
+  /* A revealed stagger child keeps `transform: none` (0,3,0); this 0,5,0
+     selector lets the hover lift win without !important or source-order luck.
+     Targets only .card-hover reveal children (currently the education cards). */
+  .js [data-reveal-stagger] > .card-hover.is-revealed:hover {
+    transform: translateY(-4px);
+  }
 }
 
 /* ── Theme cross-fade (~300ms): only while toggling, not on hover ──── */
@@ -321,6 +327,25 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  /* Unify hover with .card-hover: border-accent (from the inline hover class)
+     + soft shadow + a small lift. Transform must be in the transition; this
+     unlayered rule overrides the inline Tailwind transition-colors. */
+  transition:
+    border-color var(--dur-micro) ease,
+    box-shadow var(--dur-micro) ease,
+    transform var(--dur-micro) ease;
+}
+.marquee-card:hover {
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* Lift the single card, never the .marquee-track (which carries the scroll
+     translateX); the track already pauses on hover. */
+  .marquee-card:hover {
+    transform: translateY(-4px);
+  }
 }
 @keyframes marquee-left {
   from {
@@ -350,7 +375,7 @@
 
 /* Dialog (centered modal): scale(0.96) + fade on open/close, FROM CENTER.
    Tailwind v4 centers the box via the `translate` CSS property
-   (translate: -50% -50%), so the keyframes animate ONLY `transform: scale()` —
+   (translate: -50% -50%), so the keyframes animate ONLY `transform: scale()`;
    the two compose and the box stays centered (animating translate here would
    double it and fling the box to the top-left). Radix waits for the closed
    animation before unmounting. */
