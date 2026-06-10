@@ -6,7 +6,8 @@ const { stripeDonate } = widgets;
 ---
 
 {/* Stripe donate: a small static affordance (no third-party script). Hidden on
-    mobile via CSS; bottom-left, stacked above the Chatbase bubble. */}
+    mobile via CSS; bottom-left, on the same row as and to the right of the
+    Chatbase bubble (which is pinned at left:20 / bottom:20, ~60px tall). */}
 {
   stripeDonate.enabled && (
     <a
@@ -14,7 +15,7 @@ const { stripeDonate } = widgets;
       target="_blank"
       rel="noopener"
       aria-label="Donate to Erdun"
-      class="widget-stripe-fab fixed bottom-[96px] left-6 z-[9998] items-center gap-1.5 rounded-[var(--radius-pill)] border border-border bg-surface px-3 py-2 text-xs font-medium text-text shadow-lg transition-colors hover:border-accent hover:text-accent"
+      class="widget-stripe-fab fixed bottom-[34px] left-[90px] z-[9998] items-center gap-1.5 rounded-[var(--radius-pill)] border border-border bg-surface px-3 py-2 text-xs font-medium text-text shadow-lg transition-colors hover:border-accent hover:text-accent"
     >
       <Heart className="size-3.5 fill-accent text-accent" />
       Donate
@@ -138,7 +139,7 @@ const { stripeDonate } = widgets;
   }
 
   /* LEFT cluster: pin the Chatbase bubble to the bottom-left corner; the Donate
-     pill stacks just above it (see .widget-stripe-fab). */
+     pill sits on the same row to its right (see .widget-stripe-fab). */
   #chatbase-bubble-button {
     left: 20px !important;
     right: auto !important;
