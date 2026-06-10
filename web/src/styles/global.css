@@ -73,6 +73,12 @@
 
   body {
     background-color: var(--bg);
+    /* Spec §4.1: a very faint 48px blueprint grid for quiet "systems" texture.
+       Sits behind content (cards/video cover it); theme-aware via --grid. */
+    background-image:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
     color: var(--text);
     font-family: var(--font-sans);
     font-size: 16px;
