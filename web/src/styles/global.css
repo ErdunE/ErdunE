@@ -178,32 +178,43 @@
   padding-block: 1.75rem 3rem;
   padding-inline: clamp(20px, 5vw, 28px);
 }
-/* Fixed slide size, sized for the ACTIVE (largest) card so the centered card
-   is naturally full-size and never clipped. Overrides swiper/css
+/* Slide = the narrower SIDE-card width; overflow visible so the wider active
+   card can extend symmetrically beyond its slot. Overrides swiper/css
    `.swiper-slide{width:100%}` so `slidesPerView:'auto'` shows peeking sides. */
 .projects-swiper .swiper-slide {
-  width: 300px;
-  height: 430px;
+  width: 280px;
+  height: 440px;
+  overflow: visible;
 }
 @media (min-width: 640px) {
   .projects-swiper .swiper-slide {
-    width: 360px;
+    width: 300px;
     height: 450px;
   }
 }
-/* Hierarchy by scaling DOWN the side cards (the active card stays full-size in
-   both width and height); side cards slightly dimmer. */
+/* Horizontal emphasis: only the centered card widens (actual width, not
+   scaleX, to avoid distorting content); the extra width spreads symmetrically
+   via negative inline margin. Height stays uniform across all cards. */
 .projects-swiper .swiper-slide > a {
+  width: 100%;
+  opacity: 0.75;
   transition:
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.4s ease;
-  transform: scale(0.86);
-  transform-origin: center center;
-  opacity: 0.7;
+    width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    margin-inline 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 .projects-swiper .swiper-slide-active > a {
-  transform: scale(1);
+  width: 320px;
+  margin-inline: -20px;
   opacity: 1;
+}
+@media (min-width: 640px) {
+  .projects-swiper .swiper-slide-active > a {
+    width: 440px;
+    margin-inline: -70px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .projects-swiper .swiper-slide > a {
@@ -239,10 +250,11 @@
 .marquee-row:hover .marquee-track {
   animation-play-state: paused;
 }
-/* Equal-height cards (flex track stretches them); footer pinned to bottom via
-   mt-auto so every avatar aligns on the same baseline across the row. */
+/* Uniform fixed height so BOTH rows are the same height (not each row sized to
+   its own tallest card); footer pinned to the bottom via mt-auto. */
 .marquee-card {
   width: 340px;
+  height: 250px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
