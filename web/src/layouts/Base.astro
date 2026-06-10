@@ -9,18 +9,17 @@ import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
+import { SITE, personJsonLd } from "@/lib/seo";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const {
-  title = "Erdun E · Software Engineer",
-  description = "Erdun E · Software Engineer · ex-AWS EBS. Builder, engineer, always shipping.",
-} = Astro.props;
+const { title = SITE.title, description = SITE.description } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const jsonLd = JSON.stringify(personJsonLd);
 ---
 
 <!doctype html>
@@ -30,11 +29,33 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content={SITE.themeColorLight} media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content={SITE.themeColorDark} media="(prefers-color-scheme: dark)" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
 
-    {/* Phase 6 fills in full SEO (OG / Twitter / JSON-LD). */}
+    {/* Open Graph */}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:image" content={SITE.ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Erdun E · Software Engineer" />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={SITE.ogImage} />
+
+    {/* JSON-LD Person */}
+    <script type="application/ld+json" is:inline set:html={jsonLd} />
+
     <slot name="head" />
 
     {/* No-flash theme + `.js` flag (gates scroll-reveal hidden state so no-JS
