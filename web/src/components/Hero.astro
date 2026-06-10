@@ -46,12 +46,12 @@ import Signal from "./Signal.astro";
       so it scrolls away with the hero); on mobile it drops into the flow below
       the identity as a near-solid panel. */}
   <div
-    class="container-page flex min-h-[100svh] flex-col items-center justify-center gap-10 py-24 lg:gap-0"
+    class="container-page flex min-h-[100svh] flex-col items-center justify-center gap-10 py-24 xl:gap-0"
   >
     <div class="w-full max-w-[640px]">
       <HeroIntro client:load />
     </div>
-    <div class="signal-hud w-full max-w-[640px] lg:max-w-none">
+    <div class="signal-hud w-full max-w-[640px] xl:max-w-none">
       <Signal />
     </div>
   </div>
@@ -70,9 +70,10 @@ import Signal from "./Signal.astro";
 </section>
 
 <style>
-  /* Desktop: lift the Signal panel out of flow into a right-pinned HUD. Absolute
-     (not fixed) so it scrolls away with the hero. */
-  @media (min-width: 1024px) {
+  /* Wide desktop (>=1280): lift the Signal panel out of flow into a right-pinned
+     HUD. Absolute (not fixed) so it scrolls away with the hero. Below 1280 the
+     centered identity gets too close to the HUD, so it stays stacked. */
+  @media (min-width: 1280px) {
     #hero .signal-hud {
       position: absolute;
       top: 50%;

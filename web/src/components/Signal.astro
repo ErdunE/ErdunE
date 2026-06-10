@@ -71,18 +71,44 @@ function fmtDate(iso: string): string {
 </section>
 
 <script>
-  // Pause the pulse when the panel scrolls off-screen (perf). reduced-motion has
-  // no pulse animation, so there is nothing to pause in that case.
   const panel = document.querySelector(".signal-panel");
-  if (panel && "IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const en of entries)
-          panel.classList.toggle("signal-offscreen", !en.isIntersecting);
-      },
-      { threshold: 0 },
-    );
-    io.observe(panel);
+  if (panel) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const hasIO = "IntersectionObserver" in window;
+
+    // Entrance: play once when the panel first enters view, then stop observing
+    // so scrolling back to the top does not replay it. reduced-motion / no-IO
+    // jump straight to the final state.
+    if (reduce || !hasIO) {
+      panel.classList.add("is-in");
+    } else {
+      const enter = new IntersectionObserver(
+        (entries, obs) => {
+          for (const en of entries) {
+            if (en.isIntersecting) {
+              panel.classList.add("is-in");
+              obs.disconnect();
+              break;
+            }
+          }
+        },
+        { threshold: 0.1 },
+      );
+      enter.observe(panel);
+    }
+
+    // Pause the pulse when the panel scrolls off-screen (perf). reduced-motion
+    // has no pulse animation, so there is nothing to pause in that case.
+    if (hasIO) {
+      const vis = new IntersectionObserver(
+        (entries) => {
+          for (const en of entries)
+            panel.classList.toggle("signal-offscreen", !en.isIntersecting);
+        },
+        { threshold: 0 },
+      );
+      vis.observe(panel);
+    }
   }
 </script>
 
@@ -91,6 +117,14 @@ function fmtDate(iso: string): string {
      glass is intentionally NOT theme-aware (light text on deep neutral glass
      reads over the video in both themes). */
   .signal-panel {
+    /* Entrance timing (kept as variables; brand ease from the global scale). */
+    --sig-frame-dur: 420ms;
+    --sig-frame-delay: 250ms;
+    --sig-item-dur: var(--dur-fast);
+    --sig-item-base: 600ms;
+    --sig-item-stagger: 50ms;
+    --sig-pulse-delay: 700ms;
+
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -102,7 +136,7 @@ function fmtDate(iso: string): string {
     backdrop-filter: blur(6px);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     .signal-panel {
       background: var(--glass-bg);
       -webkit-backdrop-filter: var(--glass-blur);
@@ -141,7 +175,7 @@ function fmtDate(iso: string): string {
       inset: 0;
       border-radius: var(--radius-pill);
       background: #ff7a4d;
-      animation: signal-pulse 2s var(--ease-brand) infinite;
+      animation: signal-pulse 2s var(--ease-brand) var(--sig-pulse-delay) infinite;
     }
     .signal-offscreen .signal-pulse::after {
       animation-play-state: paused;
@@ -228,22 +262,44 @@ function fmtDate(iso: string): string {
     border-radius: 8px;
   }
 
-  /* Restrained on-load entrance: items fade-up, staggered <=60ms.
-     Gated on no-preference so reduced-motion shows the final state. */
+  /* Entrance choreography: triggered once when the hero enters view (the script
+     adds .is-in, then unobserves so scrolling back to the top does not replay).
+     Gated on no-preference so reduced-motion lands on the final state. */
   @media (prefers-reduced-motion: no-preference) {
-    .signal-item {
-      animation: signal-in var(--dur-fast) var(--ease-brand) both;
-      animation-delay: calc(var(--i) * 50ms);
-    }
-  }
-  @keyframes signal-in {
-    from {
+    /* Frame: fade in after the identity. */
+    .signal-panel {
       opacity: 0;
-      transform: translateY(8px);
+      transition:
+        opacity var(--sig-frame-dur) var(--ease-brand) var(--sig-frame-delay),
+        transform var(--sig-frame-dur) var(--ease-brand) var(--sig-frame-delay);
     }
-    to {
+    .signal-panel.is-in {
       opacity: 1;
       transform: none;
+    }
+
+    /* Rows: stagger up after the frame. */
+    .signal-item {
+      opacity: 0;
+      transform: translateY(8px);
+      transition:
+        opacity var(--sig-item-dur) var(--ease-brand),
+        transform var(--sig-item-dur) var(--ease-brand);
+      transition-delay: calc(
+        var(--sig-item-base) + var(--i) * var(--sig-item-stagger)
+      );
+    }
+    .signal-panel.is-in .signal-item {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Wide HUD only: the frame also slides in from the right + scales. On the
+     stacked layout (<1280) it just fades, to avoid odd horizontal motion. */
+  @media (prefers-reduced-motion: no-preference) and (min-width: 1280px) {
+    .signal-panel:not(.is-in) {
+      transform: translateX(14px) scale(0.99);
     }
   }
 </style>
