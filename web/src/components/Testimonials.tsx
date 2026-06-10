@@ -26,7 +26,7 @@ function Card({ t, hidden }: { t: TItem; hidden?: boolean }) {
   return (
     <figure
       aria-hidden={hidden}
-      className="marquee-card rounded-[var(--radius-card)] border border-border bg-surface p-5"
+      className="marquee-card rounded-[var(--radius-card)] border border-border bg-surface p-5 transition-colors duration-200 hover:border-accent"
     >
       <blockquote className="line-clamp-6 text-sm leading-relaxed text-muted">
         &ldquo;{t.quote}&rdquo;

@@ -147,6 +147,27 @@
   }
 }
 
+/* Unified interactive-card hover: accent border + soft shadow + a small lift.
+   The lift is gated on no-preference; border/shadow remain under reduced-motion.
+   (Experience cards mirror this via Motion whileHover.) */
+.card-hover {
+  transition:
+    transform var(--dur-micro) ease,
+    border-color var(--dur-micro) ease,
+    box-shadow var(--dur-micro) ease;
+}
+.card-hover:hover {
+  border-color: var(--accent);
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card-hover:hover {
+    transform: translateY(-4px);
+  }
+}
+
 /* ── Theme cross-fade (~300ms): only while toggling, not on hover ──── */
 @media (prefers-reduced-motion: no-preference) {
   html.theme-transition,

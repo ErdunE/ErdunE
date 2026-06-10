@@ -14,7 +14,7 @@ import { education } from "@/data/education";
     <div class="mt-10 grid items-stretch gap-6 md:grid-cols-2" data-reveal-stagger>
       {
         education.map((edu) => (
-          <article class="relative flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface p-6">
+          <article class="card-hover relative flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface p-6">
             {/* Watermark: identical treatment for both (same square box,
                 object-contain, grayscale, opacity, corner) so the two read as a
                 consistent pair despite differing source art. */}
