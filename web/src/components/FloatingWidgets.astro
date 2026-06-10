@@ -1,0 +1,138 @@
+---
+import { Heart } from "lucide-react";
+import { widgets } from "@/config/widgets";
+
+const { stripeDonate } = widgets;
+---
+
+{/* Stripe donate: a small static affordance (no third-party script). Hidden on
+    mobile via CSS; bottom-left, stacked above the Calendly badge. */}
+{
+  stripeDonate.enabled && (
+    <a
+      href={stripeDonate.url}
+      target="_blank"
+      rel="noopener"
+      aria-label="Support Erdun (donate)"
+      class="widget-stripe-fab fixed bottom-[88px] left-6 z-[9998] items-center gap-1.5 rounded-[var(--radius-pill)] border border-border bg-surface px-3 py-2 text-xs font-medium text-text shadow-lg transition-colors hover:border-accent hover:text-accent"
+    >
+      <Heart className="size-3.5 fill-accent text-accent" />
+      Support
+    </a>
+  )
+}
+
+{/* Third-party widgets: desktop-only, loaded client-side after idle so they
+    never block first paint. A disabled widget injects/fetches nothing. */}
+<script>
+  import { widgets } from "@/config/widgets";
+
+  const w = window as unknown as Record<string, any>;
+
+  const isDesktop = () =>
+    window.matchMedia("(min-width: 1024px) and (pointer: fine)").matches;
+
+  const whenIdle = (cb: () => void) => {
+    const ric = (window as any).requestIdleCallback;
+    if (typeof ric === "function") ric(cb, { timeout: 3000 });
+    else window.setTimeout(cb, 1500);
+  };
+
+  function inject(src: string, attrs: Record<string, string> = {}) {
+    const s = document.createElement("script");
+    s.src = src;
+    s.async = true;
+    for (const [k, v] of Object.entries(attrs)) s.setAttribute(k, v);
+    document.body.appendChild(s);
+    return s;
+  }
+
+  function initCalendly() {
+    const css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = "https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(css);
+    const s = inject("https://assets.calendly.com/assets/external/widget.js");
+    s.onload = () => {
+      w.Calendly?.initBadgeWidget({
+        url: widgets.calendly.url,
+        text: "Chat with Erdun",
+        color: "#15202f",
+        textColor: "#ffffff",
+        branding: true,
+      });
+    };
+  }
+
+  function initChatbase() {
+    if (!w.chatbase || w.chatbase("getState") !== "initialized") {
+      w.chatbase = (...args: any[]) => {
+        if (!w.chatbase.q) w.chatbase.q = [];
+        w.chatbase.q.push(args);
+      };
+      w.chatbase = new Proxy(w.chatbase, {
+        get(target: any, prop: string) {
+          if (prop === "q") return target.q;
+          return (...args: any[]) => target(prop, ...args);
+        },
+      });
+    }
+    const s = inject("https://www.chatbase.co/embed.min.js");
+    s.id = widgets.chatbase.chatbotId;
+    s.setAttribute("domain", "www.chatbase.co");
+  }
+
+  function initBmc() {
+    // Offset from the right edge so it sits to the left of the Chatbase bubble.
+    inject("https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js", {
+      "data-name": "BMC-Widget",
+      "data-cfasync": "false",
+      "data-id": widgets.bmc.id,
+      "data-description": widgets.bmc.description,
+      "data-color": widgets.bmc.color,
+      "data-position": "Right",
+      "data-x_margin": "96",
+      "data-y_margin": "20",
+    });
+  }
+
+  function initCloudflareAnalytics() {
+    inject("https://static.cloudflareinsights.com/beacon.min.js", {
+      "data-cf-beacon": JSON.stringify({
+        token: widgets.cloudflareAnalytics.token,
+      }),
+    });
+  }
+
+  function init() {
+    if (!isDesktop()) return;
+    if (widgets.calendly.enabled) initCalendly();
+    if (widgets.chatbase.enabled) initChatbase();
+    if (widgets.bmc.enabled) initBmc();
+    if (widgets.cloudflareAnalytics.enabled && widgets.cloudflareAnalytics.token)
+      initCloudflareAnalytics();
+  }
+
+  whenIdle(init);
+</script>
+
+<style is:global>
+  /* Reposition the Calendly badge to the bottom-left so it never collides with
+     the bottom-right cluster (Chatbase + Buy Me a Coffee). */
+  .calendly-badge-widget {
+    left: 24px !important;
+    right: auto !important;
+    bottom: 24px !important;
+  }
+
+  /* Stripe donate affordance: desktop + fine-pointer only (mobile never shows
+     or fetches it). */
+  .widget-stripe-fab {
+    display: none;
+  }
+  @media (min-width: 1024px) and (pointer: fine) {
+    .widget-stripe-fab {
+      display: inline-flex;
+    }
+  }
+</style>

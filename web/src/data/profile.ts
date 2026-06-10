@@ -79,33 +79,3 @@ export const profile = {
     },
   ] satisfies SocialLink[],
 } as const;
-
-/**
- * Floating widgets (spec §5.8). Each gated behind `enabled` so Erdun can
- * toggle individually; all are desktop-only + lazy-loaded in Phase 5.
- */
-export const widgets = {
-  calendly: {
-    enabled: true,
-    url: "https://calendly.com/erdune/15min",
-    text: "Chat with Erdun",
-    color: "#0069ff",
-    textColor: "#ffffff",
-  },
-  chatbase: {
-    enabled: true,
-    id: "OiQfMdOhl78Pj66N6kHJz",
-    src: "https://www.chatbase.co/embed.min.js",
-  },
-  buyMeACoffee: {
-    enabled: true,
-    id: "erdun",
-    description: "Support Erdun's work on Buy Me a Coffee!",
-    color: "#FF813F",
-  },
-  stripe: {
-    enabled: true,
-    href: "https://donate.stripe.com/fZu7sLaqc8QV1XF9QGa3u00",
-    icon: "/bmc-logo-yellow.png",
-  },
-} as const;
