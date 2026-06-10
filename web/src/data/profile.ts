@@ -26,7 +26,6 @@ export const profile = {
   heroStatus: "Open to SWE roles · OPT",
   tagline: "builder · engineer · always shipping",
   subline: "Lifelong big-mountain skier. Former Software Engineer at Amazon.",
-  cities: "Boston · Indy · Miami",
   resumeHref: RESUME_HREF,
 
   contact: {

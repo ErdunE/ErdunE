@@ -1,4 +1,4 @@
-// Layout-level nav config (content data lands in src/data/* in Phase 2).
+// Layout-level nav config (content data lives in src/data/*).
 
 export const NAV_LINKS = [
   { label: "Experience", href: "#experience" },
@@ -9,4 +9,5 @@ export const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ] as const;
 
-export const RESUME_HREF = "/resume/Resume_of_ErdunE_2026_04_16.pdf";
+// Single source of truth lives in profile.ts; re-exported here for nav imports.
+export { RESUME_HREF } from "@/data/profile";
