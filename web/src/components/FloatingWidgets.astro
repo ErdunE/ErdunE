@@ -83,17 +83,29 @@ const { stripeDonate } = widgets;
   }
 
   function initBmc() {
-    // Offset from the right edge so it sits to the left of the Chatbase bubble.
-    inject("https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js", {
+    // data-position must be lowercase "right" (matches the old working embed).
+    // x_margin offsets it from the right edge so it sits to the LEFT of the
+    // Chatbase bubble (which is pinned ~20px from the right).
+    const s = inject("https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js", {
       "data-name": "BMC-Widget",
       "data-cfasync": "false",
       "data-id": widgets.bmc.id,
       "data-description": widgets.bmc.description,
       "data-color": widgets.bmc.color,
-      "data-position": "Right",
-      "data-x_margin": "96",
+      "data-position": "right",
+      "data-x_margin": "100",
       "data-y_margin": "20",
     });
+    // The BMC widget only builds its button on a DOMContentLoaded listener,
+    // which has already fired by idle-injection time. If the button hasn't
+    // appeared shortly after load, nudge it by re-dispatching the event.
+    s.onload = () => {
+      window.setTimeout(() => {
+        if (!document.getElementById("bmc-wbtn")) {
+          document.dispatchEvent(new Event("DOMContentLoaded"));
+        }
+      }, 400);
+    };
   }
 
   function initCloudflareAnalytics() {
@@ -117,12 +129,20 @@ const { stripeDonate } = widgets;
 </script>
 
 <style is:global>
-  /* Reposition the Calendly badge to the bottom-left so it never collides with
-     the bottom-right cluster (Chatbase + Buy Me a Coffee). */
+  /* LEFT cluster: move ONLY the Calendly badge to the bottom-left. The selector
+     is scoped to .calendly-badge-widget so it never touches Chatbase. */
   .calendly-badge-widget {
     left: 24px !important;
     right: auto !important;
     bottom: 24px !important;
+  }
+
+  /* RIGHT cluster: pin the Chatbase bubble to its default bottom-right so it
+     never lands bottom-left and overlaps the Calendly/Stripe cluster. */
+  #chatbase-bubble-button {
+    left: auto !important;
+    right: 20px !important;
+    bottom: 20px !important;
   }
 
   /* Stripe donate affordance: desktop + fine-pointer only (mobile never shows
