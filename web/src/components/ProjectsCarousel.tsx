@@ -111,7 +111,7 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
                     </span>
                   ))}
                 </div>
-                <h3 className="mt-3 font-display text-lg font-semibold text-text">
+                <h3 className="mt-3 h-card text-text">
                   {it.title}
                 </h3>
                 <p className="mt-1.5 line-clamp-2 text-sm text-muted">
