@@ -5,6 +5,7 @@ import {
   SheetContent,
   SheetTrigger,
   SheetTitle,
+  SheetDescription,
 } from "@/components/ui/sheet";
 import { buttonVariants } from "@/components/ui/button";
 import { NAV_LINKS, RESUME_HREF } from "@/lib/nav";
@@ -25,6 +26,9 @@ export default function MobileNav() {
       </SheetTrigger>
       <SheetContent>
         <SheetTitle>Menu</SheetTitle>
+        <SheetDescription className="sr-only">
+          Site navigation and quick links
+        </SheetDescription>
 
         {/* Conversion CTA pinned to the top so Contact is always one tap away. */}
         <a
