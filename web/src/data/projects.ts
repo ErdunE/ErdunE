@@ -151,6 +151,7 @@ export const projects: Project[] = [
     tags: ["Multi-Agent AI", "Gemini", "Next.js", "MongoDB"],
     descPrimary:
       "A multi-agent AI system that automates post-purchase price-match refunds.",
-    descSecondary: "",
+    descSecondary:
+      "Four Gemini agents coordinate over a Pub/Sub event bus, with MongoDB, Phoenix, and Elastic MCP integrations.",
   },
 ];
