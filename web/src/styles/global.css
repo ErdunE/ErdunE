@@ -53,6 +53,11 @@
   --radius-sm: 8px;
   --radius-pill: 999px;
 
+  /* Brand curve as the default for every Tailwind transition utility, so
+     `transition`/`transition-colors` without an explicit ease no longer fall
+     back to Tailwind's Material default. Exits still opt into ease-out. */
+  --default-transition-timing-function: var(--ease-brand);
+
   /* ── Type scale: fluid display + h2, fixed body steps. Single source of
      truth for the heading utilities below; body copy sits on body/small/
      caption (16/14/13), labels/eyebrows on label (11). ── */
