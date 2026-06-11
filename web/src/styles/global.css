@@ -354,8 +354,15 @@
   }
 }
 .projects-swiper .swiper-pagination-bullet {
+  position: relative;
   background: var(--muted);
   opacity: 0.45;
+}
+/* Expand the tap area to ~44px tall without enlarging the visible dot. */
+.projects-swiper .swiper-pagination-bullet::after {
+  content: "";
+  position: absolute;
+  inset: -16px -5px;
 }
 .projects-swiper .swiper-pagination-bullet-active {
   background: var(--accent);

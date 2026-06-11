@@ -42,7 +42,7 @@ export default function ThemeToggle() {
           ? `Switch to ${theme === "light" ? "dark" : "light"} theme`
           : "Toggle theme"
       }
-      className="grid size-10 place-items-center rounded-[var(--radius-sm)] text-muted transition-colors hover:bg-surface-2 hover:text-text focus-visible:ring-2 focus-visible:ring-accent outline-none"
+      className="grid size-11 place-items-center rounded-[var(--radius-sm)] text-muted transition-colors hover:bg-surface-2 hover:text-text focus-visible:ring-2 focus-visible:ring-accent outline-none md:size-10"
     >
       {/* Both icons render always and stack in one grid cell; CSS (keyed on
           html[data-theme]) cross-fades + rotates the active one in. */}

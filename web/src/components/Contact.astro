@@ -1,5 +1,6 @@
 ---
 import { profile } from "@/data/profile";
+import { education } from "@/data/education";
 import { buttonVariants } from "@/components/ui/button";
 import { brandIcons } from "@/lib/brand-icons";
 import WeChatDialog from "./WeChatDialog.tsx";
@@ -7,6 +8,12 @@ import EmailCopy from "./EmailCopy.tsx";
 
 const { contact, social, resumeHref, wechatQr } = profile;
 const intro = contact.intro.split("\n");
+
+// Conversion highlights — only verifiable facts already on the page.
+const highlights = [
+  "ex-AWS · EBS",
+  `M.S. CS · GPA ${education[0].gpa}`,
+];
 
 const tile =
   "group focus-ring card-hover flex items-center gap-3 rounded-[var(--radius-card)] border border-border bg-surface p-3.5";
@@ -29,6 +36,16 @@ const iconWrap = "flex size-9 shrink-0 items-center justify-center";
           <span class="size-1.5 rounded-full bg-accent"></span>
           {contact.status}
         </p>
+
+        <ul class="mt-4 flex flex-wrap gap-2" aria-label="Highlights">
+          {
+            highlights.map((h) => (
+              <li class="rounded-[var(--radius-pill)] border border-border bg-surface-2 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+                {h}
+              </li>
+            ))
+          }
+        </ul>
 
         <div class="mt-5 space-y-1 text-muted">
           {intro.map((line) => <p>{line}</p>)}
