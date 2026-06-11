@@ -582,6 +582,46 @@
   }
 }
 
+/* Scroll-spy active link: the section currently in view gets a full underline
+   and the foreground text colour (set via aria-current by the nav script). */
+.nav-link[aria-current="location"] {
+  color: var(--text);
+}
+.nav-link[aria-current="location"]::after {
+  transform: scaleX(1);
+}
+
+/* ── Theme toggle sun/moon morph (D). Both icons are stacked in one grid cell;
+   the active one (keyed off html[data-theme]) fades/rotates in. Reduced-motion
+   swaps instantly. ── */
+.theme-icon {
+  grid-area: 1 / 1;
+  transition:
+    opacity var(--dur-base) var(--ease-brand),
+    transform var(--dur-base) var(--ease-brand);
+}
+.theme-icon-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+.theme-icon-moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+[data-theme="dark"] .theme-icon-sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+[data-theme="dark"] .theme-icon-moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-icon {
+    transition: none;
+  }
+}
+
 /* ── Inline text-link underline draw-on (body links: same left-to-right
    scaleX sweep as the nav, hover-gated so touch never sticks). ── */
 .link-underline {

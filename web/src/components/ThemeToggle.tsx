@@ -37,15 +37,17 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
-      className="inline-flex size-10 items-center justify-center rounded-[var(--radius-sm)] text-muted transition-colors hover:bg-surface-2 hover:text-text focus-visible:ring-2 focus-visible:ring-accent outline-none"
+      aria-label={
+        mounted
+          ? `Switch to ${theme === "light" ? "dark" : "light"} theme`
+          : "Toggle theme"
+      }
+      className="grid size-10 place-items-center rounded-[var(--radius-sm)] text-muted transition-colors hover:bg-surface-2 hover:text-text focus-visible:ring-2 focus-visible:ring-accent outline-none"
     >
-      {/* render after mount to reflect the real persisted theme */}
-      {mounted && theme === "dark" ? (
-        <Sun className="size-5" />
-      ) : (
-        <Moon className="size-5" />
-      )}
+      {/* Both icons render always and stack in one grid cell; CSS (keyed on
+          html[data-theme]) cross-fades + rotates the active one in. */}
+      <Sun className="theme-icon theme-icon-sun size-5" aria-hidden="true" />
+      <Moon className="theme-icon theme-icon-moon size-5" aria-hidden="true" />
     </button>
   );
 }

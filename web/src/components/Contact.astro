@@ -1,9 +1,9 @@
 ---
-import { Mail } from "lucide-react";
 import { profile } from "@/data/profile";
 import { buttonVariants } from "@/components/ui/button";
 import { brandIcons } from "@/lib/brand-icons";
 import WeChatDialog from "./WeChatDialog.tsx";
+import EmailCopy from "./EmailCopy.tsx";
 
 const { contact, social, resumeHref, wechatQr } = profile;
 const intro = contact.intro.split("\n");
@@ -55,20 +55,25 @@ const iconWrap = "flex size-9 shrink-0 items-center justify-center";
               if (link.id === "wechat") {
                 return <WeChatDialog qrSrc={wechatQr} client:visible />;
               }
+              if (link.id === "email") {
+                return (
+                  <EmailCopy
+                    email={link.detail}
+                    mailto={link.href}
+                    client:visible
+                  />
+                );
+              }
               return (
                 <a href={link.href} target="_blank" rel="noopener" class={tile}>
                   <span class={iconWrap}>
-                    {link.id === "email" ? (
-                      <Mail className="size-6 text-accent" />
-                    ) : (
-                      <svg
-                        class="size-7"
-                        viewBox={brandIcons[link.id].viewBox}
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        set:html={brandIcons[link.id].inner}
-                      />
-                    )}
+                    <svg
+                      class="size-7"
+                      viewBox={brandIcons[link.id].viewBox}
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      set:html={brandIcons[link.id].inner}
+                    />
                   </span>
                   <span class="min-w-0">
                     <span class="block text-sm font-medium text-text">{link.name}</span>

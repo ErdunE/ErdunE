@@ -46,6 +46,8 @@ import { buttonVariants } from "@/components/ui/button";
         <MobileNav client:load />
       </span>
     </div>
+    {/* Scroll progress fill pinned to the nav's lower edge. */}
+    <div class="nav-progress" aria-hidden="true"></div>
   </div>
 </header>
 
@@ -53,21 +55,82 @@ import { buttonVariants } from "@/components/ui/button";
   (function () {
     var nav = document.getElementById("site-nav");
     if (!nav) return;
-    var onScroll = function () {
-      if (window.scrollY > 16) {
+    var bar = nav.querySelector(".nav-progress");
+
+    var ticking = false;
+    var update = function () {
+      ticking = false;
+      var y = window.scrollY;
+      if (y > 16) {
         nav.classList.add("nav-scrolled");
         nav.classList.remove("nav-over-hero");
       } else {
         nav.classList.add("nav-over-hero");
         nav.classList.remove("nav-scrolled");
       }
+      if (bar) {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        var p = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
+        bar.style.transform = "scaleX(" + p.toFixed(4) + ")";
+      }
     };
-    onScroll();
+    var onScroll = function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    // Scroll-spy: highlight the nav link for whichever section sits in a thin
+    // band near the top of the viewport, and mark it aria-current="location".
+    var links = {};
+    nav.querySelectorAll(".nav-link").forEach(function (a) {
+      links[a.getAttribute("href")] = a;
+    });
+    var sections = Object.keys(links)
+      .map(function (h) {
+        return document.querySelector(h);
+      })
+      .filter(Boolean);
+    if ("IntersectionObserver" in window && sections.length) {
+      var spy = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var link = links["#" + e.target.id];
+            if (!link) return;
+            Object.keys(links).forEach(function (h) {
+              links[h].removeAttribute("aria-current");
+            });
+            link.setAttribute("aria-current", "location");
+          });
+        },
+        { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
+      );
+      sections.forEach(function (s) {
+        spy.observe(s);
+      });
+    }
   })();
 </script>
 
 <style>
+  /* Scroll progress fill on the nav's lower edge. JS sets scaleX each frame so
+     it tracks scroll 1:1 (no transition). Invisible at the top (scaleX 0). */
+  .nav-progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
   /* Scrolled into content: theme-colored nav + backdrop blur (both themes). */
   #site-nav.nav-scrolled {
     background-color: color-mix(in srgb, var(--bg) 78%, transparent);
