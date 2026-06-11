@@ -84,18 +84,21 @@ import { buttonVariants } from "@/components/ui/button";
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
 
-    // Scroll-spy: highlight the nav link for whichever section sits in a thin
-    // band near the top of the viewport, and mark it aria-current="location".
-    var links = {};
-    nav.querySelectorAll(".nav-link").forEach(function (a) {
-      links[a.getAttribute("href")] = a;
-    });
-    var sections = Object.keys(links)
-      .map(function (h) {
-        return document.querySelector(h);
-      })
-      .filter(Boolean);
-    if ("IntersectionObserver" in window && sections.length) {
+    // Scroll-spy: mark the nav link for whichever section sits in a thin band
+    // near the top of the viewport with aria-current="location" (and clear the
+    // rest). Deferred to DOM-ready because this inline script runs while the nav
+    // is parsed, before the sections below it exist in the document.
+    var setupSpy = function () {
+      var links = {};
+      nav.querySelectorAll(".nav-link").forEach(function (a) {
+        links[a.getAttribute("href")] = a;
+      });
+      var sections = Object.keys(links)
+        .map(function (h) {
+          return document.querySelector(h);
+        })
+        .filter(Boolean);
+      if (!("IntersectionObserver" in window) || !sections.length) return;
       var spy = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (e) {
@@ -113,6 +116,11 @@ import { buttonVariants } from "@/components/ui/button";
       sections.forEach(function (s) {
         spy.observe(s);
       });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupSpy);
+    } else {
+      setupSpy();
     }
   })();
 </script>
