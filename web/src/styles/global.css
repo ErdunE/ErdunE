@@ -16,6 +16,8 @@
   --accent: #dd5430;
   --accent-soft: #fbe9e2;
   --grid: rgba(20, 30, 48, 0.035);
+  /* faint accent wash layered under the neutral card/dialog/HUD shadows */
+  --shadow-tint: rgba(221, 84, 48, 0.05);
 }
 
 [data-theme="dark"] {
@@ -30,6 +32,7 @@
   --accent: #ff6a3d;
   --accent-soft: rgba(255, 106, 61, 0.12);
   --grid: rgba(255, 255, 255, 0.04);
+  --shadow-tint: rgba(255, 106, 61, 0.06);
 }
 
 /* ── Tailwind theme mapping (utilities: bg-bg, text-text, border-border…) */
@@ -91,6 +94,7 @@
   --glass-border: rgba(255, 255, 255, 0.18);
   --glass-shadow:
     0 20px 60px rgba(0, 0, 0, 0.42),
+    0 8px 30px -8px var(--shadow-tint),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
   --text-shadow-glass: 0 1px 2px rgba(0, 0, 0, 0.32);
 
@@ -109,7 +113,16 @@
   --blur-solid: blur(6px);
   --shadow-card-hover:
     0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+    0 4px 6px -4px rgb(0 0 0 / 0.1),
+    0 6px 20px -8px var(--shadow-tint);
+
+  /* Subtle top sheen for card surfaces (like the Signal glass upper edge). */
+  --edge-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  /* Tinted pop shadow for floating layers (dialogs). */
+  --shadow-pop:
+    0 24px 60px -12px rgba(0, 0, 0, 0.5),
+    0 8px 24px -8px var(--shadow-tint);
 
   /* fixed nav height (size-10 control + py-4) for anchor scroll-margin offset */
   --nav-h: 72px;
@@ -219,6 +232,7 @@
    The lift is gated on no-preference; border/shadow remain under reduced-motion.
    (Experience cards mirror this via Motion whileHover.) */
 .card-hover {
+  box-shadow: var(--edge-highlight);
   transition:
     transform var(--dur-fast) var(--ease-brand),
     border-color var(--dur-fast) var(--ease-brand),
@@ -229,7 +243,7 @@
 @media (hover: hover) and (pointer: fine) {
   .card-hover:hover {
     border-color: var(--accent);
-    box-shadow: var(--shadow-card-hover);
+    box-shadow: var(--edge-highlight), var(--shadow-card-hover);
   }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
@@ -396,6 +410,7 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--edge-highlight);
   /* Unify hover with .card-hover: border-accent (from the inline hover class)
      + soft shadow + a small lift. Transform must be in the transition; this
      unlayered rule overrides the inline Tailwind transition-colors. */
@@ -406,7 +421,7 @@
 }
 @media (hover: hover) and (pointer: fine) {
   .marquee-card:hover {
-    box-shadow: var(--shadow-card-hover);
+    box-shadow: var(--edge-highlight), var(--shadow-card-hover);
   }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
@@ -621,4 +636,44 @@
 }
 [data-tilt].is-tilting::before {
   opacity: 1;
+}
+
+/* ── Grain (C): a near-invisible film over the page, above the background and
+   below content. Pure inline SVG noise, fixed + non-interactive, so it costs
+   nothing to scroll. Slightly stronger in dark mode where banding shows more. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+[data-theme="dark"] .grain {
+  opacity: 0.05;
+}
+
+/* ── Blueprint motif (C): a denser drafting grid behind select sections, faded
+   with a radial mask so it reads as a corner accent, not a full fill. Uses the
+   existing --grid token. Content sits above via the > * z-index bump. ── */
+.blueprint {
+  position: relative;
+}
+.blueprint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 0%, #000, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 0%, #000, transparent 78%);
+}
+.blueprint > * {
+  position: relative;
+  z-index: 1;
 }
