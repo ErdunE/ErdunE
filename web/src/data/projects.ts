@@ -144,4 +144,13 @@ export const projects: Project[] = [
     descSecondary:
       "Replaced legacy VADER sentiment analysis with Claude AI via AWS Bedrock. Designed a five-tier alert classification framework combining real-time scoring and six-day rolling history.",
   },
+  {
+    title: "ClaimIt",
+    href: "https://github.com/claimit-team/claimit",
+    thumbnail: img("claimit.webp"),
+    tags: ["Multi-Agent AI", "Gemini", "Next.js", "MongoDB"],
+    descPrimary:
+      "A multi-agent AI system that automates post-purchase price-match refunds.",
+    descSecondary: "",
+  },
 ];
