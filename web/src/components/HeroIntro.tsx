@@ -7,7 +7,7 @@ import { EASE_OUT_EXPO, DURATION } from "@/lib/motion";
 const { name, role, heroStatus, tagline, subline, resumeHref } = profile;
 
 const ctaBase =
-  "inline-flex h-11 min-w-[8.5rem] items-center justify-center rounded-[var(--radius-sm)] border px-6 text-sm font-medium transition-[color,background-color,border-color,transform] duration-200 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
+  "inline-flex h-11 min-w-[8.5rem] items-center justify-center rounded-[var(--radius-sm)] border px-6 text-sm font-medium transition-[color,background-color,border-color,transform] duration-150 ease-[var(--ease-brand)] active:scale-[0.98] motion-reduce:active:scale-100 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
 const ctaPrimary = `${ctaBase} border-accent bg-accent text-white hover:bg-accent/90 focus-visible:ring-accent`;
 const ctaSecondary = `${ctaBase} border-white/35 bg-transparent text-white hover:bg-white/10 focus-visible:ring-white/60`;
 

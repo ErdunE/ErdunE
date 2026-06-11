@@ -87,7 +87,7 @@ const jsonLd = JSON.stringify(personJsonLd);
     <slot />
 
     {/* Scroll reveals: one observer toggles `.is-revealed` once, then
-        unobserves. `data-reveal-stagger` reveals direct children ~80ms apart.
+        unobserves. `data-reveal-stagger` reveals direct children ~60ms apart.
         Capability cells get an in-view highlight via the same `.is-revealed`. */}
     <script>
       const reduce = window.matchMedia(
@@ -99,7 +99,7 @@ const jsonLd = JSON.stringify(personJsonLd);
 
       const revealStaggered = (el: Element) => {
         Array.from(el.children).forEach((child, i) => {
-          (child as HTMLElement).style.transitionDelay = `${i * 80}ms`;
+          (child as HTMLElement).style.transitionDelay = `${i * 60}ms`;
           child.classList.add("is-revealed");
         });
       };

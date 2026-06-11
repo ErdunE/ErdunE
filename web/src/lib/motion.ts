@@ -2,11 +2,12 @@
 
 export const EASE_OUT_EXPO = [0.22, 1, 0.36, 1] as const;
 
+// Three-tier scale, mirrors global.css --dur-fast/base/slow (seconds here).
 export const DURATION = {
-  micro: 0.2, // 150–250ms micro-interactions
-  reveal: 0.5, // scroll reveals
-  hero: 0.6, // hero beats (400–700ms)
-  signature: 2.2, // signature stroke draw
+  fast: 0.15, // micro-interactions (hover/press)
+  base: 0.3, // standard transitions
+  slow: 0.45, // reveals / emphasis
+  signature: 2.2, // bespoke hero stroke draw
 } as const;
 
 export const STAGGER = 0.08; // ~80ms between grouped children

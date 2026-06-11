@@ -120,7 +120,7 @@ function fmtDate(iso: string): string {
     /* Entrance timing (kept as variables; brand ease from the global scale). */
     --sig-frame-dur: 420ms;
     --sig-frame-delay: 250ms;
-    --sig-item-dur: var(--dur-fast);
+    --sig-item-dur: var(--dur-base);
     --sig-item-base: 600ms;
     --sig-item-stagger: 50ms;
     --sig-pulse-delay: 700ms;
@@ -249,7 +249,7 @@ function fmtDate(iso: string): string {
     font-size: 13.5px;
     line-height: 1.4;
     color: rgba(255, 255, 255, var(--on-media-strong));
-    transition: color var(--dur-micro) ease;
+    transition: color var(--dur-fast) var(--ease-brand);
   }
   @media (hover: hover) and (pointer: fine) {
     a.signal-title:hover {

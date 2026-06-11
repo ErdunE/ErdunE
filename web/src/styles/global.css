@@ -69,10 +69,12 @@
    Brand ease for entrances/reveals; default ease for hover/press micro. */
 :root {
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur-micro: 200ms;
-  --dur-fast: 300ms;
+  /* Three-tier duration scale: fast = micro (hover/press/underline),
+     base = standard (theme/sheet/nav/dialog), slow = reveals/emphasis.
+     Exits reuse --dur-fast with the CSS `ease-out` keyword for a snappier out. */
+  --dur-fast: 150ms;
+  --dur-base: 300ms;
   --dur-slow: 450ms;
-  --dur-reveal: 500ms;
 }
 
 /* ── Airy glass HUD (Signal panel over the hero video). Deliberately NOT
@@ -213,9 +215,9 @@
    (Experience cards mirror this via Motion whileHover.) */
 .card-hover {
   transition:
-    transform var(--dur-micro) ease,
-    border-color var(--dur-micro) ease,
-    box-shadow var(--dur-micro) ease;
+    transform var(--dur-fast) var(--ease-brand),
+    border-color var(--dur-fast) var(--ease-brand),
+    box-shadow var(--dur-fast) var(--ease-brand);
 }
 /* Hover affordances gated to hover-capable + fine-pointer devices (no sticky
    hover on touch). :focus-visible is intentionally left ungated. */
@@ -244,11 +246,11 @@
   html.theme-transition *::before,
   html.theme-transition *::after {
     transition:
-      background-color var(--dur-fast) ease,
-      border-color var(--dur-fast) ease,
-      color var(--dur-fast) ease,
-      fill var(--dur-fast) ease,
-      stroke var(--dur-fast) ease !important;
+      background-color var(--dur-base) var(--ease-brand),
+      border-color var(--dur-base) var(--ease-brand),
+      color var(--dur-base) var(--ease-brand),
+      fill var(--dur-base) var(--ease-brand),
+      stroke var(--dur-base) var(--ease-brand) !important;
   }
 }
 
@@ -271,16 +273,16 @@
 }
 
 .sheet-overlay[data-state="open"] {
-  animation: overlay-in var(--dur-micro) var(--ease-brand);
+  animation: overlay-in var(--dur-fast) var(--ease-brand);
 }
 .sheet-overlay[data-state="closed"] {
-  animation: overlay-out var(--dur-micro) var(--ease-brand);
+  animation: overlay-out var(--dur-fast) ease-out;
 }
 .sheet-content[data-state="open"] {
-  animation: sheet-in-right var(--dur-fast) var(--ease-brand);
+  animation: sheet-in-right var(--dur-base) var(--ease-brand);
 }
 .sheet-content[data-state="closed"] {
-  animation: sheet-out-right var(--dur-fast) var(--ease-brand);
+  animation: sheet-out-right var(--dur-fast) ease-out;
 }
 
 /* Projects coverflow carousel. Vertical padding gives the full-size center
@@ -312,9 +314,9 @@
   transition:
     width var(--dur-slow) var(--ease-brand),
     margin-inline var(--dur-slow) var(--ease-brand),
-    opacity var(--dur-fast) ease,
-    border-color var(--dur-fast) ease,
-    box-shadow var(--dur-fast) ease;
+    opacity var(--dur-base) var(--ease-brand),
+    border-color var(--dur-base) var(--ease-brand),
+    box-shadow var(--dur-base) var(--ease-brand);
 }
 .projects-swiper .swiper-slide-active > a {
   width: 320px;
@@ -393,9 +395,9 @@
      + soft shadow + a small lift. Transform must be in the transition; this
      unlayered rule overrides the inline Tailwind transition-colors. */
   transition:
-    border-color var(--dur-micro) ease,
-    box-shadow var(--dur-micro) ease,
-    transform var(--dur-micro) ease;
+    border-color var(--dur-fast) var(--ease-brand),
+    box-shadow var(--dur-fast) var(--ease-brand),
+    transform var(--dur-fast) var(--ease-brand);
 }
 @media (hover: hover) and (pointer: fine) {
   .marquee-card:hover {
@@ -462,16 +464,16 @@
   }
 }
 .dialog-overlay[data-state="open"] {
-  animation: overlay-in var(--dur-micro) var(--ease-brand);
+  animation: overlay-in var(--dur-fast) var(--ease-brand);
 }
 .dialog-overlay[data-state="closed"] {
-  animation: overlay-out var(--dur-micro) var(--ease-brand);
+  animation: overlay-out var(--dur-fast) ease-out;
 }
 .dialog-content[data-state="open"] {
-  animation: dialog-in var(--dur-micro) var(--ease-brand);
+  animation: dialog-in var(--dur-fast) var(--ease-brand);
 }
 .dialog-content[data-state="closed"] {
-  animation: dialog-out var(--dur-micro) var(--ease-brand);
+  animation: dialog-out var(--dur-fast) ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -495,13 +497,31 @@
     opacity: 0;
     transform: translateY(20px);
     transition:
-      opacity var(--dur-reveal) var(--ease-brand),
-      transform var(--dur-reveal) var(--ease-brand);
+      opacity var(--dur-slow) var(--ease-brand),
+      transform var(--dur-slow) var(--ease-brand);
   }
   .js [data-reveal].is-revealed,
   .js [data-reveal-stagger] > .is-revealed {
     opacity: 1;
     transform: none;
+  }
+
+  /* Section heading: wipes up via clip-path instead of the generic translateY,
+     so a staggered group reads as eyebrow (fade-up) -> heading (wipe) -> intro.
+     Higher specificity than the generic child rules above, so it wins. */
+  .js [data-reveal-stagger] > .h-section {
+    opacity: 0;
+    transform: translateY(0.16em);
+    clip-path: inset(100% 0 0 0);
+    transition:
+      opacity var(--dur-base) var(--ease-brand),
+      transform var(--dur-slow) var(--ease-brand),
+      clip-path var(--dur-slow) var(--ease-brand);
+  }
+  .js [data-reveal-stagger] > .h-section.is-revealed {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 0);
   }
 }
 
@@ -510,8 +530,8 @@
 @media (prefers-reduced-motion: no-preference) {
   .js .cap-icon {
     transition:
-      background-color var(--dur-reveal) var(--ease-brand),
-      color var(--dur-reveal) var(--ease-brand);
+      background-color var(--dur-slow) var(--ease-brand),
+      color var(--dur-slow) var(--ease-brand);
   }
   .js .cap-cell:not(.is-revealed) .cap-icon {
     background-color: var(--surface-2);
@@ -533,11 +553,38 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .nav-link::after {
-    transition: transform var(--dur-micro) ease;
+    transition: transform var(--dur-fast) var(--ease-brand);
   }
 }
 @media (hover: hover) and (pointer: fine) {
   .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* ── Inline text-link underline draw-on (body links: same left-to-right
+   scaleX sweep as the nav, hover-gated so touch never sticks). ── */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .link-underline::after {
+    transition: transform var(--dur-fast) var(--ease-brand);
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .link-underline:hover::after {
     transform: scaleX(1);
   }
 }
