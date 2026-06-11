@@ -19,13 +19,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "ErdunE's Web",
-    href: "https://github.com/ErdunE/ErdunE/tree/master",
+    href: "https://github.com/ErdunE/ErdunE",
     thumbnail: img("01.png"),
-    tags: ["Bootstrap", "Responsive Design", "Personal Portfolio"],
-    descPrimary:
-      "A fully responsive personal portfolio website showcasing projects and experience.",
+    tags: ["Astro", "React", "TypeScript", "Tailwind CSS"],
+    descPrimary: "My personal portfolio site, designed and built from scratch.",
     descSecondary:
-      "Built with Bootstrap and custom CSS, featuring glassmorphism UI, video background, and a custom 3D carousel.",
+      "Astro with React islands, TypeScript, and Tailwind, animated with Motion and deployed on Cloudflare Pages.",
   },
   {
     title: "PromptLint",
