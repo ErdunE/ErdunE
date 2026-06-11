@@ -39,15 +39,11 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
 
   useEffect(() => setMounted(true), []);
 
+  // Detach the active card's tilt listeners on unmount.
+  useEffect(() => () => tiltCleanup.current?.(), []);
+
   // Tilt only the centered (interactive) card, and only on a real pointer with
   // motion allowed. Re-attach on each slide change so loop clones are covered.
-  useEffect(() => {
-    canTilt.current =
-      window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
-      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    return () => tiltCleanup.current?.();
-  }, []);
-
   const attachActiveTilt = (s: SwiperClass) => {
     if (!canTilt.current) return;
     tiltCleanup.current?.();
@@ -66,6 +62,10 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
   }
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Set synchronously (the island has a window here) so it is already true when
+  // onSwiper fires and attaches tilt to the initial active card.
+  canTilt.current =
+    !reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const coverflowEffect = reduce
     ? { rotate: 0, depth: 60, modifier: 1, stretch: 0, slideShadows: false }
     : { rotate: 34, depth: 180, modifier: 1, stretch: 0, slideShadows: false };
