@@ -4,7 +4,7 @@
 // initTilt() and attachTilt() are no-ops conceptually only via the guards in
 // initTilt; attachTilt assumes the caller already checked hover/pointer/motion.
 
-const MAX_DEG = 5;
+const MAX_DEG = 3.5;
 const PERSPECTIVE = 800;
 const LIFT = 4; // px, folded into the transform so it never fights card-hover
 
@@ -27,7 +27,10 @@ export function attachTilt(el: HTMLElement): () => void {
   };
 
   const onEnter = () => {
-    el.style.transition = "none";
+    // Smoothly trail the cursor (~150ms) instead of snapping each frame, and
+    // ease the shadow in/out, so the tilt slides in rather than hard-cutting.
+    el.style.transition =
+      "transform var(--dur-fast) var(--ease-brand), box-shadow var(--dur-base) var(--ease-brand)";
     el.style.willChange = "transform";
     el.classList.add("is-tilting");
   };
