@@ -32,7 +32,7 @@ const iconFor: Record<CapabilityIcon, typeof Network> = {
         capabilities.map((cap) => {
           const Icon = iconFor[cap.icon];
           return (
-            <div class="cap-cell grid grid-cols-[auto_1fr] gap-4 sm:gap-5">
+            <div data-tilt class="cap-cell grid grid-cols-[auto_1fr] gap-4 sm:gap-5">
               <span class="cap-icon flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-card)] bg-accent-soft text-accent">
                 <Icon className="size-6" />
               </span>

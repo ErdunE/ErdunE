@@ -125,5 +125,12 @@ const jsonLd = JSON.stringify(personJsonLd);
         items.forEach((el) => io.observe(el));
       }
     </script>
+
+    {/* Pointer-aware tilt + glow for static cards (Capability, Education). The
+        module self-gates on hover/fine-pointer and skips reduced-motion. */}
+    <script>
+      import { initTilt } from "@/lib/tilt";
+      initTilt();
+    </script>
   </body>
 </html>

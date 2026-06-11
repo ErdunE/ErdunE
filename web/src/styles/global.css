@@ -593,3 +593,32 @@
     transform: scaleX(1);
   }
 }
+
+/* ── Pointer-aware card tilt + glow (B2). The transform itself is driven inline
+   by src/lib/tilt.ts (so it wins over reveal/hover transforms cleanly); this
+   only supplies the cursor-following glow sheen. The script attaches listeners
+   only on hover-capable + fine-pointer devices and skips reduced-motion, so the
+   glow never lights up on touch. ── */
+[data-tilt] {
+  position: relative;
+  --mx: 50%;
+  --my: 50%;
+}
+[data-tilt]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: radial-gradient(
+    220px circle at var(--mx) var(--my),
+    rgba(255, 255, 255, 0.1),
+    transparent 60%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-brand);
+}
+[data-tilt].is-tilting::before {
+  opacity: 1;
+}

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Keyboard, Mousewheel, A11y } from "swiper/modules";
 import type { Swiper as SwiperClass } from "swiper";
+import { attachTilt } from "@/lib/tilt";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -33,8 +34,28 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
   const [mounted, setMounted] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperClass | null>(null);
+  const tiltCleanup = useRef<(() => void) | null>(null);
+  const canTilt = useRef(false);
 
   useEffect(() => setMounted(true), []);
+
+  // Tilt only the centered (interactive) card, and only on a real pointer with
+  // motion allowed. Re-attach on each slide change so loop clones are covered.
+  useEffect(() => {
+    canTilt.current =
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return () => tiltCleanup.current?.();
+  }, []);
+
+  const attachActiveTilt = (s: SwiperClass) => {
+    if (!canTilt.current) return;
+    tiltCleanup.current?.();
+    tiltCleanup.current = null;
+    const slide = s.slides[s.activeIndex] as HTMLElement | undefined;
+    const card = slide?.querySelector("a");
+    if (card) tiltCleanup.current = attachTilt(card);
+  };
 
   // Shuffle client-side only (random each load; avoids hydration mismatch).
   const ordered = useMemo(() => (mounted ? shuffle(items) : items), [mounted, items]);
@@ -66,8 +87,12 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
       onSwiper={(s) => {
         swiperRef.current = s;
         setActiveIndex(s.realIndex);
+        attachActiveTilt(s);
       }}
-      onSlideChange={(s) => setActiveIndex(s.realIndex)}
+      onSlideChange={(s) => {
+        setActiveIndex(s.realIndex);
+        attachActiveTilt(s);
+      }}
       className="projects-swiper"
     >
       {ordered.map((it, i) => {
@@ -78,6 +103,7 @@ export default function ProjectsCarousel({ items }: { items: ProjItem[] }) {
               href={it.href}
               target="_blank"
               rel="noopener"
+              data-tilt
               tabIndex={isActive ? 0 : -1}
               onClick={(e) => {
                 if (!isActive) {
