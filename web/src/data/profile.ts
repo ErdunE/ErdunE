@@ -13,16 +13,15 @@ export interface SocialLink {
 
 export const profile = {
   name: "Erdun E",
-  role: "Software Engineer · ex-AWS EBS",
-  heroStatus: "Miami · open to SWE roles",
+  heroStatus: "Hangzhou · Full Stack Engineer @ MolarData",
   tagline: "builder · engineer · always shipping",
   subline: "Lifelong big-mountain skier. Former Software Engineer at Amazon.",
   resumeHref: RESUME_HREF,
 
   contact: {
-    status: "Open to Full-time SWE Opportunities · OPT",
+    status: "Full Stack Engineer @ MolarData · Hangzhou, China",
     intro:
-      "Interested in hiring Erdun?\nHave a cool open source project you need help with?\nOr just want to chat tech, drop him a line!",
+      "Want to build something together?\nHave a cool open source project you need help with?\nOr just want to chat tech, drop him a line!",
     detail:
       "He is interested in working on challenging projects. Feel free to reach out through any of the channels.",
     resumeLabel: "View My Resume",

@@ -4,7 +4,7 @@ import { profile } from "@/data/profile";
 import { SIGNATURE_PATH, SIGNATURE_VIEWBOX } from "@/data/signature";
 import { EASE_OUT_EXPO, DURATION } from "@/lib/motion";
 
-const { name, role, heroStatus, tagline, subline, resumeHref } = profile;
+const { name, heroStatus, tagline, subline, resumeHref } = profile;
 
 const ctaBase =
   "inline-flex h-11 min-w-[8.5rem] items-center justify-center rounded-[var(--radius-sm)] border px-6 text-sm font-medium transition-[color,background-color,border-color,transform] duration-150 ease-[var(--ease-brand)] active:scale-[0.98] motion-reduce:active:scale-100 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
@@ -26,7 +26,7 @@ export default function HeroIntro() {
   // Signature: long draw on desktop, quick reveal on mobile.
   const sigDur = isMobile ? 0.45 : DURATION.signature;
 
-  // A staggered child (status/name/role/tagline/subline/CTAs).
+  // A staggered child (status/name/tagline/subline/CTAs).
   const child = (i: number) =>
     reduced
       ? ({ initial: false } as const)
@@ -71,13 +71,6 @@ export default function HeroIntro() {
       <motion.h1 {...child(1)} className="h-display mt-6 text-white">
         {name}
       </motion.h1>
-
-      <motion.p
-        {...child(2)}
-        className="mt-2 font-mono text-xs uppercase tracking-[0.16em] text-white/70 sm:text-sm"
-      >
-        {role}
-      </motion.p>
 
       <motion.div {...sigClip} className="mx-auto mt-7 w-[78%] max-w-sm">
         <svg
