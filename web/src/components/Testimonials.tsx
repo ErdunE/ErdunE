@@ -10,6 +10,7 @@ export interface TItem {
   name: string;
   title: string;
   company: string;
+  linkedin?: string;
   avatar: TAvatar;
 }
 
@@ -41,8 +42,25 @@ function Card({ t, hidden }: { t: TItem; hidden?: boolean }) {
           className="size-10 shrink-0 rounded-full object-cover"
         />
         <div className="min-w-0">
+          {/* The name is the link, not the whole card: the card is a moving
+              340px block, and wrapping the <figure> would make the accessible
+              name the entire quote. The duplicate set is aria-hidden, so its
+              links get tabIndex -1 — otherwise they are focusable inside
+              aria-hidden (an a11y violation) and double the tab stops. */}
           <div className="truncate font-display text-sm font-semibold text-text">
-            {t.name}
+            {t.linkedin ? (
+              <a
+                href={t.linkedin}
+                target="_blank"
+                rel="noopener"
+                tabIndex={hidden ? -1 : undefined}
+                className="link-underline focus-ring rounded-sm transition-colors hover:text-accent"
+              >
+                {t.name}
+              </a>
+            ) : (
+              t.name
+            )}
           </div>
           <div className="truncate text-xs text-muted">{t.title}</div>
           <div className="truncate text-xs text-faint">{t.company}</div>

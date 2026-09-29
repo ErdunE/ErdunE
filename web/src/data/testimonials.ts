@@ -12,6 +12,9 @@ export interface Testimonial {
   name: string;
   title: string;
   company: string;
+  /** Public LinkedIn profile. Omitted where none is known; the name then
+      renders as plain text instead of a link. */
+  linkedin?: string;
   avatar: ImageMetadata;
 }
 
@@ -22,6 +25,7 @@ export const testimonials: Testimonial[] = [
     name: "Jay Rodriguez",
     title: "Account Executive",
     company: "Aegis IT Solutions",
+    linkedin: "https://www.linkedin.com/in/jay-rod/",
     avatar: img("Jay.jpeg"),
   },
   {
@@ -30,6 +34,7 @@ export const testimonials: Testimonial[] = [
     name: "Naveen Kumanan",
     title: "President, Miami Tech Club",
     company: "Ambassador, Northeastern University – Khoury",
+    linkedin: "https://www.linkedin.com/in/naveen-kumanan-2328ba208/",
     avatar: img("Naveen.jpeg"),
   },
   {
@@ -38,6 +43,7 @@ export const testimonials: Testimonial[] = [
     name: "Haedy Liu, Ph.D.",
     title: "Global Learner Support Tutor",
     company: "Northeastern University – Miami",
+    linkedin: "https://www.linkedin.com/in/haedy-l-99533435/",
     avatar: img("Haedy.png"),
   },
   {
@@ -46,6 +52,7 @@ export const testimonials: Testimonial[] = [
     name: "Alejandro Vides",
     title: "Co-Founder",
     company: "The Daily Benji",
+    linkedin: "https://www.linkedin.com/in/a-vides/",
     avatar: img("Alex.jpeg"),
   },
   {
@@ -54,6 +61,7 @@ export const testimonials: Testimonial[] = [
     name: "Gabriela Gongora-Svartzman, Ph.D.",
     title: "Associate Teaching Professor & Director of Computing Programs",
     company: "Northeastern University – Khoury College",
+    linkedin: "https://www.linkedin.com/in/profgs/",
     avatar: img("ProfGS.jpeg"),
   },
   {
@@ -62,6 +70,7 @@ export const testimonials: Testimonial[] = [
     name: "Shihao Zhang",
     title: "Co-Founder / Investor",
     company: "G1 Innovations",
+    linkedin: "https://www.linkedin.com/in/shihao-zhang-7977487b/",
     avatar: img("Haoge.jpeg"),
   },
   {
@@ -70,6 +79,7 @@ export const testimonials: Testimonial[] = [
     name: "Alan Jamieson",
     title: "Teaching Professor, Associate Dean of Computing Programs – East Coast",
     company: "Northeastern University",
+    linkedin: "https://www.linkedin.com/in/alancjamieson/",
     avatar: img("Alan.jpeg"),
   },
   {
@@ -78,6 +88,7 @@ export const testimonials: Testimonial[] = [
     name: "Juan F. Gonzalez, Ed.S",
     title: "Associate Director of Operations",
     company: "Northeastern University - Miami",
+    linkedin: "https://www.linkedin.com/in/jfgonzalez63/",
     avatar: img("Juan.jpeg"),
   },
   {
@@ -86,6 +97,7 @@ export const testimonials: Testimonial[] = [
     name: "Faisal Rehman Khattak",
     title: "Co-Founder & CTO",
     company: "Bite Buddy AI",
+    linkedin: "https://www.linkedin.com/in/faisalrehmanktk/",
     avatar: img("Faisai.jpeg"),
   },
   {
@@ -94,6 +106,7 @@ export const testimonials: Testimonial[] = [
     name: "Nate Derbinsky",
     title: "Teaching Professor",
     company: "Northeastern University",
+    linkedin: "https://www.linkedin.com/in/natederbinsky/",
     avatar: img("Nate.jpeg"),
   },
   {
@@ -110,6 +123,7 @@ export const testimonials: Testimonial[] = [
     name: "David Paquette",
     title: "Assistant Director of Retention and Engagement",
     company: "Northeastern University",
+    linkedin: "https://www.linkedin.com/in/david-paquette-48832784/",
     avatar: img("David.jpeg"),
   },
   {
@@ -118,6 +132,7 @@ export const testimonials: Testimonial[] = [
     name: "Pedro C. C. Gomes",
     title: "Associate Director of Entrepreneurship",
     company: "Northeastern University – Miami",
+    linkedin: "https://www.linkedin.com/in/pccg/",
     avatar: img("Pedro.jpeg"),
   },
   {
@@ -126,6 +141,7 @@ export const testimonials: Testimonial[] = [
     name: "Shachar Golan, MBA",
     title: "Co-Founder & CEO",
     company: "Superstars",
+    linkedin: "https://www.linkedin.com/in/shachargolan/",
     avatar: img("Shachar.jpeg"),
   },
   {
@@ -134,6 +150,7 @@ export const testimonials: Testimonial[] = [
     name: "Dharmesh Thakkar",
     title: "Senior Software Development Manager",
     company: "Amazon Elastic Block Store (EBS)",
+    linkedin: "https://www.linkedin.com/in/thakkd/",
     avatar: img("Dharmesh.jpeg"),
   },
   {
@@ -142,6 +159,7 @@ export const testimonials: Testimonial[] = [
     name: "Nirmit Kachrani",
     title: "Engineering Manager",
     company: "Google",
+    linkedin: "https://www.linkedin.com/in/nirmitkachrani/",
     avatar: img("Nirmit.png"),
   },
   {
@@ -150,6 +168,7 @@ export const testimonials: Testimonial[] = [
     name: "Hong Zhao",
     title: "Senior Software Development Engineer",
     company: "Amazon Web Services",
+    linkedin: "https://www.linkedin.com/in/hong-zhao-1b086532/",
     avatar: img("Hong.jpeg"),
   },
   {
@@ -158,6 +177,7 @@ export const testimonials: Testimonial[] = [
     name: "Tingjian Ge",
     title: "Professor of Computer Science",
     company: "University of Massachusetts Lowell",
+    linkedin: "https://www.linkedin.com/in/tingjian-ge-7a857297/",
     avatar: img("Ge.jpeg"),
   },
   {
@@ -166,6 +186,7 @@ export const testimonials: Testimonial[] = [
     name: "Clif Ong",
     title: "Backend Engineer",
     company: "Tencent",
+    linkedin: "https://www.linkedin.com/in/clif-ong-724467199/",
     avatar: img("Clif.png"),
   },
   {
@@ -174,6 +195,7 @@ export const testimonials: Testimonial[] = [
     name: "Gnana Chand Mallangi",
     title: "Data Analytics Intern",
     company: "UNC Charlotte",
+    linkedin: "https://www.linkedin.com/in/gnanachand-mallangi/",
     avatar: img("Gnana.jpeg"),
   },
   {
@@ -182,6 +204,7 @@ export const testimonials: Testimonial[] = [
     name: "Dhruvkumar Parmar",
     title: "Computer Science Student",
     company: "Saint Louis University",
+    linkedin: "https://www.linkedin.com/in/dhruvprmr/",
     avatar: img("Dhruv.png"),
   },
   {
@@ -198,6 +221,7 @@ export const testimonials: Testimonial[] = [
     name: "Tejesh Boppana",
     title: "Computer Science Student",
     company: "University of Florida",
+    linkedin: "https://www.linkedin.com/in/tejesh0209/",
     avatar: img("Tejesh.png"),
   },
   {
@@ -206,6 +230,7 @@ export const testimonials: Testimonial[] = [
     name: "Mohana Siddhartha Chivukula",
     title: "Computer Science Student",
     company: "Arizona State University",
+    linkedin: "https://www.linkedin.com/in/siddharthachivukula/",
     avatar: img("Mohana.png"),
   },
   {
@@ -214,6 +239,7 @@ export const testimonials: Testimonial[] = [
     name: "Weiwei Zhao",
     title: "Senior Software Engineer",
     company: "Amazon Web Services",
+    linkedin: "https://www.linkedin.com/in/weiwei-zhao-23616730/",
     avatar: img("Weiwei.jpeg"),
   },
   {
@@ -221,6 +247,7 @@ export const testimonials: Testimonial[] = [
     name: "Linlin Ding",
     title: "Senior Software Development Engineer",
     company: "Amazon Web Services",
+    linkedin: "https://www.linkedin.com/in/linlin-ding-ab918b111/",
     avatar: img("Linlin.jpeg"),
   },
   {
@@ -228,6 +255,7 @@ export const testimonials: Testimonial[] = [
     name: "Zhiqiang (Justin) Wang",
     title: "Software Development Engineer",
     company: "Amazon Web Services",
+    linkedin: "https://www.linkedin.com/in/zhiqiang-justin-wang/",
     avatar: img("Zhiqiang.jpeg"),
   },
   {
@@ -236,6 +264,7 @@ export const testimonials: Testimonial[] = [
     name: "Eric W",
     title: "Software Development Engineer",
     company: "Microsoft",
+    linkedin: "https://www.linkedin.com/in/eric-w-388b4b141/",
     avatar: img("default-avatar.png"),
   },
 ];

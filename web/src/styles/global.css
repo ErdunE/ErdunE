@@ -406,7 +406,10 @@
 .marquee-track--right {
   animation: marquee-right 78s linear infinite;
 }
-.marquee-row:hover .marquee-track {
+/* Pause on hover, and on focus-within too: the names are links now, so a
+   keyboard user tabbing in would otherwise be chasing a moving target. */
+.marquee-row:hover .marquee-track,
+.marquee-row:focus-within .marquee-track {
   animation-play-state: paused;
 }
 /* Uniform fixed height so BOTH rows are the same height (not each row sized to
