@@ -18,6 +18,22 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
+    role: "Full Stack Engineer",
+    company: "MolarData",
+    time: "Aug 2026 – Present",
+    logo: img("MolarData.jpeg"),
+    detail:
+      "Recently joined the platform team in Hangzhou, working across the stack on MolarData's intelligent data engineering platform for AI-assisted annotation of image, video, text, audio, and point-cloud datasets.",
+  },
+  {
+    role: "Software Development Engineer II",
+    company: "diGeniusAI",
+    time: "May 2026 – Present",
+    logo: img("diGeniusAI.jpeg"),
+    detail:
+      "Working on diGeniusAI, an AI operating system for multi-unit restaurant and retail operators, where agentic modules coordinate over a single source of truth on a serverless architecture.",
+  },
+  {
     role: "CEO & Founder",
     company: "PromptLint",
     time: "Aug 2025 – Present",
