@@ -12,19 +12,71 @@ export interface LogEntry {
 
 export const log: LogEntry[] = [
   {
+    date: "2026-08-25",
+    source: "milestone",
+    title:
+      "Started as a Full Stack Engineer at MolarData, on the team behind their AI data annotation platform.",
+    link: "https://www.molardata.com/",
+    media: "/log/13molardata-start.webp",
+  },
+  {
+    date: "2026-08-20",
+    source: "note",
+    title:
+      "Arrived in Hangzhou, the city I'll be working in. Spent the first evening walking the river.",
+    media: "/log/12hangzhou.webp",
+  },
+  {
+    date: "2026-08-16",
+    source: "note",
+    title:
+      "Landed in China. Woke up to the Oriental Pearl and the Huangpu from a Pudong window.",
+    media: "/log/11shanghai.webp",
+  },
+  {
+    date: "2026-08-14",
+    source: "milestone",
+    title:
+      "Left the US with one small dog and everything I own, closing the chapter on a second hometown.",
+    media: "/log/10departure.webp",
+  },
+  {
+    date: "2026-07-15",
+    source: "milestone",
+    title:
+      "Accepted MolarData's Full Stack Engineer offer, and with it the decision to move back to China.",
+    link: "https://www.molardata.com/",
+    media: "/log/09molardata-offer.webp",
+  },
+  {
+    date: "2026-07-04",
+    source: "event",
+    title:
+      "Caught several FIFA World Cup 2026 matches at Hard Rock Stadium in Miami: Cape Verde against Argentina in the Round of 32 was the standout.",
+    media: "/log/08worldcup.webp",
+  },
+  {
     date: "2026-06-10",
     source: "project",
     title:
       "Shipped ClaimIt with Will W., Raj K. and Chris C. for the Google Cloud Rapid Agent Hackathon: an AI agent for post-purchase price protection.",
     link: "https://claimitai.vercel.app/",
-    media: "/log/06claimit.webp",
+    media: "/log/07claimit.webp",
   },
   {
     date: "2026-06-09",
     source: "project",
     title: "Rebuilt and relaunched erdun.me on Astro and Cloudflare.",
     link: "https://erdun.me",
-    media: "/log/05erdunme.png",
+    media: "/log/06erdunme.png",
+  },
+  {
+    date: "2026-05-29",
+    source: "milestone",
+    title:
+      "Joined diGeniusAI as a Software Development Engineer II, working on the AI operating system behind their restaurant platform.",
+    link: "https://www.digeniusai.com/",
+    media: "/log/05digeniusai.webp",
   },
   {
     date: "2026-05-21",
