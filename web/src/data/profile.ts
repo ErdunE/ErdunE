@@ -21,7 +21,7 @@ export const profile = {
   contact: {
     status: "Full Stack Engineer @ MolarData · Hangzhou, China",
     intro:
-      "Want to build something together?\nHave a cool open source project you need help with?\nOr just want to chat tech, drop him a line!",
+      "Want to build something together?\nHave a cool open source project Erdun can help with?\nOr just want to chat tech, drop him a line!",
     detail:
       "He is interested in working on challenging projects. Feel free to reach out through any of the channels.",
     resumeLabel: "View My Resume",

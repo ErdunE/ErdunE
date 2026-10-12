@@ -4,9 +4,9 @@ import { education } from "@/data/education";
 export const SITE = {
   url: "https://erdun.me",
   name: "Erdun E",
-  title: "Erdun E · Software Engineer",
+  title: "Erdun E · Full Stack Engineer",
   description:
-    "Erdun E, Software Engineer and ex-AWS EBS. Builder, engineer, always shipping. Portfolio of projects, experience, capabilities, and ways to get in touch.",
+    "Erdun E, Full Stack Engineer at MolarData in Hangzhou, ex-AWS. Builder, engineer, always shipping. Portfolio of projects, experience, and ways to get in touch.",
   ogImage: "https://erdun.me/og.png",
   locale: "en_US",
   themeColorLight: "#eceff4",
@@ -24,9 +24,20 @@ export const personJsonLd = {
   name: "Erdun E",
   url: SITE.url,
   image: SITE.ogImage,
-  jobTitle: "Software Engineer",
+  jobTitle: "Full Stack Engineer",
   description:
-    "Software Engineer and ex-AWS EBS, focused on reliable, maintainable systems.",
+    "Full Stack Engineer at MolarData in Hangzhou, previously at AWS. Focused on reliable, maintainable systems.",
+  worksFor: {
+    "@type": "Organization",
+    name: "MolarData",
+    url: "https://www.molardata.com/",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Hangzhou",
+    addressRegion: "Zhejiang",
+    addressCountry: "CN",
+  },
   sameAs,
   alumniOf: education.map((e) => ({
     "@type": "CollegeOrUniversity",

@@ -649,6 +649,17 @@
     transform: scale(1.1);
   }
 }
+/* Hover lift, matching what the old cards had and what the three neighbouring
+   sections still do. Declared after the selected rule because the two have the
+   same specificity and source order decides. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .exp-node:hover .exp-node-tile {
+    transform: translateY(-3px);
+  }
+  .exp-node[aria-selected="true"]:hover .exp-node-tile {
+    transform: scale(1.1) translateY(-3px);
+  }
+}
 
 /* The sliding label. Each slot is exactly one node wide, so translating it by
    whole slots lands it centred under the selection. */
@@ -669,7 +680,7 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .exp-marker-slot {
-    transition: transform 320ms var(--ease-brand);
+    transition: transform var(--dur-base) var(--ease-brand);
   }
 }
 .exp-marker-caret {
