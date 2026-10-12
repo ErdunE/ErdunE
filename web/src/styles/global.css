@@ -467,6 +467,327 @@
   }
 }
 
+/* ── Experience timeline (01 / Experience) ──────────────────────────────
+   A horizontal time axis whose nodes are tabs: the W3C ARIA Tabs pattern
+   wearing a timeline's clothes. Years live on the axis, not on the nodes —
+   the standard time-axis convention is to print the larger unit only when it
+   changes, so "2026" appears once instead of four times.
+   Wide containers get the axis; narrow ones fall back to an accordion, which
+   is the right shape for ten short entries and needs no sideways scrolling. */
+.exp {
+  container-type: inline-size;
+}
+.exp-rail-view {
+  display: none;
+}
+.exp-acc-view {
+  display: grid;
+  gap: 0.5rem;
+}
+@container (min-width: 860px) {
+  .exp-rail-view {
+    display: block;
+  }
+  .exp-acc-view {
+    display: none;
+  }
+}
+
+/* Axis ticks: one per run of entries sharing an end label. */
+.exp-era-row {
+  display: flex;
+  margin-bottom: 6px;
+}
+.exp-era {
+  flex: var(--n) 1 0;
+  min-width: 0;
+  border-left: 1px solid var(--border-strong);
+  padding-left: 9px;
+  padding-block: 2px 4px;
+}
+/* The trailing entry sits outside the time axis, so it gets no tick. */
+.exp-era:empty {
+  border-left-color: transparent;
+}
+.exp-era span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.exp-rail {
+  --dot: 46px;
+  --lab-h: 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: calc(var(--dot) + var(--lab-h) * 2);
+}
+/* The spine stops short of the arrowhead so the two read as one line. */
+.exp-rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 14px;
+  top: 50%;
+  height: 1px;
+  background: var(--border-strong);
+}
+.exp-rail::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 10px solid var(--border-strong);
+}
+
+.exp-node {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.exp-node:focus-visible {
+  outline: none;
+}
+.exp-node:focus-visible .exp-node-dot {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+
+/* Opaque fill so the spine reads as passing behind the node, not through it. */
+.exp-node-dot {
+  position: relative;
+  z-index: 1;
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  transition:
+    border-color var(--dur-fast) var(--ease-brand),
+    box-shadow var(--dur-fast) var(--ease-brand),
+    transform var(--dur-fast) var(--ease-brand);
+}
+@media (hover: hover) and (pointer: fine) {
+  .exp-node:hover .exp-node-dot {
+    border-color: var(--accent);
+  }
+}
+.exp-node[aria-selected="true"] .exp-node-dot {
+  border-color: var(--accent);
+  border-width: 2px;
+  box-shadow:
+    0 0 0 4px var(--accent-soft),
+    0 6px 18px -8px var(--shadow-tint);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .exp-node[aria-selected="true"] .exp-node-dot {
+    transform: scale(1.06);
+  }
+}
+
+/* Labels alternate above and below so neighbours get twice the room: a
+   1/10 slot is ~100px but "Amazon Web Services" needs ~140px. */
+.exp-node-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: color var(--dur-fast) var(--ease-brand);
+}
+.exp-node[data-side="up"] .exp-node-label {
+  bottom: calc(50% + var(--dot) / 2 + 13px);
+}
+.exp-node[data-side="down"] .exp-node-label {
+  top: calc(50% + var(--dot) / 2 + 13px);
+}
+.exp-node-label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  height: 9px;
+  background: var(--border-strong);
+}
+.exp-node[data-side="up"] .exp-node-label::after {
+  bottom: -11px;
+}
+.exp-node[data-side="down"] .exp-node-label::after {
+  top: -11px;
+}
+.exp-node[aria-selected="true"] .exp-node-label {
+  color: var(--text);
+}
+
+.exp-panel {
+  margin-top: 1.875rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  padding: 1.5rem;
+  min-height: 196px;
+  box-shadow: var(--edge-highlight);
+}
+.exp-panel:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+.exp-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 0.875rem;
+}
+.exp-panel-logo {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.exp-panel-time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.exp-panel-body p {
+  margin-bottom: 0.625rem;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 72ch;
+}
+.exp-panel-body p:last-child {
+  margin-bottom: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .exp-panel-head,
+  .exp-panel-body {
+    animation: exp-swap var(--dur-base) var(--ease-brand);
+  }
+}
+@keyframes exp-swap {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Accordion (narrow containers) */
+.exp-acc-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: var(--edge-highlight);
+}
+.exp-acc-item[data-open="true"] {
+  border-color: var(--accent);
+}
+.exp-acc-h {
+  margin: 0;
+  font: inherit;
+}
+.exp-acc-btn {
+  width: 100%;
+  min-height: 56px;
+  padding: 0.8125rem 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+  cursor: pointer;
+}
+.exp-acc-btn:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+.exp-acc-logo {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.exp-acc-role {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+}
+.exp-acc-meta {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+.exp-acc-time {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+.exp-acc-chev {
+  flex: 0 0 auto;
+  color: var(--faint);
+  font-size: 11px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .exp-acc-chev {
+    transition: transform var(--dur-fast) var(--ease-brand);
+  }
+}
+.exp-acc-item[data-open="true"] .exp-acc-chev {
+  transform: rotate(90deg);
+  color: var(--accent);
+}
+.exp-acc-panel {
+  padding: 0 0.875rem 0.875rem 3.875rem;
+}
+.exp-acc-panel p {
+  margin-bottom: 0.5625rem;
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--muted);
+}
+.exp-acc-panel p:last-child {
+  margin-bottom: 0;
+}
+
 /* Dialog (centered modal): scale(0.96) + fade on open/close, FROM CENTER.
    Tailwind v4 centers the box via the `translate` CSS property
    (translate: -50% -50%), so the keyframes animate ONLY `transform: scale()`;

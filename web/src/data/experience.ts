@@ -10,6 +10,8 @@ const img = imageByName(imgs, "../assets/people/");
 export interface Experience {
   role: string;
   company: string;
+  /** Axis-node label when `company` is too long for a 1/10 slot. */
+  short?: string;
   time: string;
   logo: ImageMetadata | null;
   /** Full detail shown in the dialog. \n\n marks a paragraph break. */
@@ -52,6 +54,7 @@ export const experience: Experience[] = [
   {
     role: "Teaching Assistant",
     company: "Northeastern University",
+    short: "Northeastern",
     time: "Sep 2025 – May 2026",
     logo: img("NEU.png"),
     detail:
@@ -92,6 +95,7 @@ export const experience: Experience[] = [
   {
     role: "More",
     company: "Additional",
+    short: "More",
     time: "",
     logo: null,
     detail: "Additional academic, leadership, and internship experience.",

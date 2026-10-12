@@ -1,11 +1,52 @@
 ---
 import { getImage } from "astro:assets";
 import { experience } from "@/data/experience";
-import ExperienceDialog from "./ExperienceDialog.tsx";
-import type { ExpItem } from "./ExperienceDialog.tsx";
+import ExperienceTimeline from "./ExperienceTimeline.tsx";
+import type { ExpItem } from "./ExperienceTimeline.tsx";
+
+/**
+ * Axis segment label for one entry: the year the role ended, or "Now" while it
+ * is current. `time` stays the single source of truth, so adding a role needs
+ * no second date field. An unparseable value yields "", which just means that
+ * node sits under no tick.
+ */
+function endLabel(time: string): string {
+  if (!time) return "";
+  const right = time.split("–").pop()?.trim() ?? "";
+  if (/present/i.test(right)) return "Now";
+  return right.match(/\d{4}/)?.[0] ?? "";
+}
+
+const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+
+/** "Aug 2026" -> 202608. "Present" -> Infinity. Unparseable -> -Infinity. */
+function monthKey(part: string): number {
+  const p = part.trim();
+  if (/present/i.test(p)) return Number.POSITIVE_INFINITY;
+  const year = p.match(/\d{4}/)?.[0];
+  if (!year) return Number.NEGATIVE_INFINITY;
+  const month = MONTHS.indexOf(p.slice(0, 3).toLowerCase()) + 1;
+  return Number(year) * 100 + (month || 1);
+}
+
+/**
+ * The axis has to read monotonically, so order is derived rather than taken
+ * from the array: most recent end first, then most recent start. Current roles
+ * tie at the front, which keeps PromptLint from being buried behind a course
+ * project that merely started later. Entries with no dates sort last.
+ * Adding a role means appending it anywhere; the order follows from `time`.
+ */
+const ordered = [...experience].sort((a, b) => {
+  if (!a.time !== !b.time) return a.time ? -1 : 1;
+  const [aStart, aEnd] = a.time.split("–");
+  const [bStart, bEnd] = b.time.split("–");
+  const byEnd = monthKey(bEnd ?? "") - monthKey(aEnd ?? "");
+  if (byEnd) return byEnd;
+  return monthKey(bStart ?? "") - monthKey(aStart ?? "");
+});
 
 const items: ExpItem[] = await Promise.all(
-  experience.map(async (e) => {
+  ordered.map(async (e) => {
     let logo: ExpItem["logo"] = null;
     if (e.logo) {
       const img = await getImage({
@@ -19,7 +60,9 @@ const items: ExpItem[] = await Promise.all(
     return {
       role: e.role,
       company: e.company,
+      short: e.short ?? e.company,
       time: e.time,
+      end: endLabel(e.time),
       detail: e.detail,
       logo,
     };
@@ -33,12 +76,12 @@ const items: ExpItem[] = await Promise.all(
       <p class="eyebrow"><span class="text-accent">01 /</span> Experience</p>
       <h2 class="h-section mt-2 text-text">Where I've built</h2>
       <p class="mt-3 max-w-3xl text-pretty text-muted">
-        Roles across engineering, teaching, and founding. Tap any card for the full story.
+        Roles across engineering, teaching, and founding, most recent first.
       </p>
     </div>
 
-    <div class="mt-10">
-      <ExperienceDialog items={items} client:visible />
+    <div class="mt-10" data-reveal>
+      <ExperienceTimeline items={items} client:visible />
     </div>
   </div>
 </section>
