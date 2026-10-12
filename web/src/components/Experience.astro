@@ -63,6 +63,7 @@ const items: ExpItem[] = await Promise.all(
       short: e.short ?? e.company,
       time: e.time,
       end: endLabel(e.time),
+      logoFit: e.logoFit ?? "cover",
       detail: e.detail,
       logo,
     };

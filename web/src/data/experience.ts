@@ -12,6 +12,9 @@ export interface Experience {
   company: string;
   /** Axis-node label when `company` is too long for a 1/10 slot. */
   short?: string;
+  /** "contain" for logo art that is not square or would lose its mark
+      to an edge-to-edge crop. Defaults to "cover". */
+  logoFit?: "cover" | "contain";
   time: string;
   logo: ImageMetadata | null;
   /** Full detail shown in the dialog. \n\n marks a paragraph break. */
@@ -55,6 +58,7 @@ export const experience: Experience[] = [
     role: "Teaching Assistant",
     company: "Northeastern University",
     short: "Northeastern",
+    logoFit: "contain",
     time: "Sep 2025 – May 2026",
     logo: img("NEU.png"),
     detail:

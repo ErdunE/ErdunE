@@ -469,9 +469,19 @@
 
 /* ── Experience timeline (01 / Experience) ──────────────────────────────
    A horizontal time axis whose nodes are tabs: the W3C ARIA Tabs pattern
-   wearing a timeline's clothes. Years live on the axis, not on the nodes —
-   the standard time-axis convention is to print the larger unit only when it
-   changes, so "2026" appears once instead of four times.
+   wearing a timeline's clothes. Three rules carry the look:
+
+   1. Years belong to the axis, not the nodes. The time-axis convention is to
+      print the larger unit only when it changes, so consecutive entries
+      sharing an end label collapse into one tick.
+   2. Organisations get squircles, people get circles. That is the LinkedIn /
+      Google split, and it matters here because seven of these logos bake in
+      their own square ground — a square mark floating inside a round plate
+      reads as two shapes fighting. Filling the tile edge to edge turns each
+      brand's ground into the icon instead.
+   3. One label for the whole rail, sliding to the selected node. Ten labels
+      at once is noise; a label that moves is the state change.
+
    Wide containers get the axis; narrow ones fall back to an accordion, which
    is the right shape for ten short entries and needs no sideways scrolling. */
 .exp {
@@ -496,14 +506,14 @@
 /* Axis ticks: one per run of entries sharing an end label. */
 .exp-era-row {
   display: flex;
-  margin-bottom: 6px;
+  margin-bottom: 0.75rem;
 }
 .exp-era {
   flex: var(--n) 1 0;
   min-width: 0;
   border-left: 1px solid var(--border-strong);
-  padding-left: 9px;
-  padding-block: 2px 4px;
+  padding-left: 0.625rem;
+  padding-block: 0.125rem 0.25rem;
 }
 /* The trailing entry sits outside the time axis, so it gets no tick. */
 .exp-era:empty {
@@ -519,12 +529,11 @@
 }
 
 .exp-rail {
-  --dot: 46px;
-  --lab-h: 44px;
+  --tile: 52px;
   position: relative;
   display: flex;
   align-items: center;
-  height: calc(var(--dot) + var(--lab-h) * 2);
+  height: 4.5rem;
 }
 /* The spine stops short of the arrowhead so the two read as one line. */
 .exp-rail::before {
@@ -560,90 +569,119 @@
 .exp-node:focus-visible {
   outline: none;
 }
-.exp-node:focus-visible .exp-node-dot {
+.exp-node:focus-visible .exp-node-tile {
   box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
 }
 
-/* Opaque fill so the spine reads as passing behind the node, not through it. */
-.exp-node-dot {
+/* Opaque fill so the spine reads as passing behind the tile, not through it.
+   Unselected tiles sit back a little: focus and context in one row. */
+.exp-node-tile {
   position: relative;
   z-index: 1;
-  width: var(--dot);
-  height: var(--dot);
-  border-radius: var(--radius-pill);
+  width: var(--tile);
+  height: var(--tile);
+  border-radius: 14px;
   background: var(--surface);
   border: 1px solid var(--border);
+  overflow: hidden;
   display: grid;
   place-items: center;
-  overflow: hidden;
+  opacity: 0.62;
   transition:
+    opacity var(--dur-base) var(--ease-brand),
     border-color var(--dur-fast) var(--ease-brand),
-    box-shadow var(--dur-fast) var(--ease-brand),
-    transform var(--dur-fast) var(--ease-brand);
+    box-shadow var(--dur-base) var(--ease-brand),
+    transform var(--dur-base) var(--ease-brand);
+}
+.exp-node-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.exp-node-img[data-fit="contain"],
+.exp-panel-img[data-fit="contain"],
+.exp-acc-img[data-fit="contain"] {
+  object-fit: contain;
+  padding: 15%;
+  background: var(--surface);
+}
+.exp-logo-none {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--faint);
 }
 @media (hover: hover) and (pointer: fine) {
-  .exp-node:hover .exp-node-dot {
+  .exp-node:hover .exp-node-tile {
+    opacity: 1;
     border-color: var(--accent);
   }
 }
-.exp-node[aria-selected="true"] .exp-node-dot {
+.exp-node[aria-selected="true"] .exp-node-tile {
+  opacity: 1;
   border-color: var(--accent);
   border-width: 2px;
   box-shadow:
     0 0 0 4px var(--accent-soft),
-    0 6px 18px -8px var(--shadow-tint);
+    0 10px 24px -10px var(--shadow-tint);
 }
 @media (prefers-reduced-motion: no-preference) {
-  .exp-node[aria-selected="true"] .exp-node-dot {
-    transform: scale(1.06);
+  .exp-node[aria-selected="true"] .exp-node-tile {
+    transform: scale(1.1);
   }
 }
 
-/* Labels alternate above and below so neighbours get twice the room: a
-   1/10 slot is ~100px but "Amazon Web Services" needs ~140px. */
-.exp-node-label {
+/* The sliding label. Each slot is exactly one node wide, so translating it by
+   whole slots lands it centred under the selection. */
+.exp-marker {
+  position: relative;
+  height: 2.25rem;
+  margin-top: 0.25rem;
+}
+.exp-marker-slot {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  pointer-events: none;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: calc(100% / var(--count));
+  transform: translateX(calc(var(--i) * 100%));
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .exp-marker-slot {
+    transition: transform 320ms var(--ease-brand);
+  }
+}
+.exp-marker-caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid var(--accent);
+}
+.exp-marker-label {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--muted);
-  transition: color var(--dur-fast) var(--ease-brand);
-}
-.exp-node[data-side="up"] .exp-node-label {
-  bottom: calc(50% + var(--dot) / 2 + 13px);
-}
-.exp-node[data-side="down"] .exp-node-label {
-  top: calc(50% + var(--dot) / 2 + 13px);
-}
-.exp-node-label::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  width: 1px;
-  height: 9px;
-  background: var(--border-strong);
-}
-.exp-node[data-side="up"] .exp-node-label::after {
-  bottom: -11px;
-}
-.exp-node[data-side="down"] .exp-node-label::after {
-  top: -11px;
-}
-.exp-node[aria-selected="true"] .exp-node-label {
   color: var(--text);
+  white-space: nowrap;
+  text-align: center;
 }
 
 .exp-panel {
-  margin-top: 1.875rem;
+  margin-top: 2.5rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
-  padding: 1.5rem;
-  min-height: 196px;
+  padding: 1.75rem;
+  min-height: 13rem;
   box-shadow: var(--edge-highlight);
 }
 .exp-panel:focus-visible {
@@ -653,19 +691,25 @@
 .exp-panel-head {
   display: flex;
   align-items: center;
-  gap: 0.875rem;
-  margin-bottom: 0.875rem;
+  gap: 1rem;
+  margin-bottom: 1.125rem;
 }
-.exp-panel-logo {
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
-  border-radius: var(--radius-pill);
+.exp-panel-tile {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  border-radius: 14px;
   background: var(--surface-2);
   border: 1px solid var(--border);
+  overflow: hidden;
   display: grid;
   place-items: center;
-  overflow: hidden;
+}
+.exp-panel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .exp-panel-time {
   font-family: var(--font-mono);
@@ -675,25 +719,53 @@
   color: var(--faint);
 }
 .exp-panel-body p {
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.75rem;
   font-size: 15px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--muted);
   max-width: 72ch;
 }
 .exp-panel-body p:last-child {
   margin-bottom: 0;
 }
+
+/* The panel swaps along the axis: pick a node to the right and the content
+   arrives from the right. */
 @media (prefers-reduced-motion: no-preference) {
-  .exp-panel-head,
-  .exp-panel-body {
-    animation: exp-swap var(--dur-base) var(--ease-brand);
+  .exp-panel-inner {
+    animation: exp-swap-up var(--dur-base) var(--ease-brand);
+  }
+  .exp-panel-inner[data-dir="1"] {
+    animation-name: exp-swap-fwd;
+  }
+  .exp-panel-inner[data-dir="-1"] {
+    animation-name: exp-swap-back;
   }
 }
-@keyframes exp-swap {
+@keyframes exp-swap-up {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes exp-swap-fwd {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes exp-swap-back {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
   }
   to {
     opacity: 1;
@@ -719,10 +791,10 @@
 .exp-acc-btn {
   width: 100%;
   min-height: 56px;
-  padding: 0.8125rem 0.875rem;
+  padding: 0.875rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.875rem;
   text-align: left;
   cursor: pointer;
 }
@@ -730,16 +802,22 @@
   outline: none;
   box-shadow: inset 0 0 0 2px var(--accent);
 }
-.exp-acc-logo {
-  width: 36px;
-  height: 36px;
-  flex: 0 0 36px;
-  border-radius: var(--radius-pill);
+.exp-acc-tile {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 11px;
   background: var(--surface-2);
   border: 1px solid var(--border);
+  overflow: hidden;
   display: grid;
   place-items: center;
-  overflow: hidden;
+}
+.exp-acc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .exp-acc-role {
   display: block;
@@ -752,7 +830,7 @@
   display: block;
   font-size: 12px;
   color: var(--muted);
-  margin-top: 1px;
+  margin-top: 2px;
 }
 .exp-acc-time {
   font-family: var(--font-mono);
@@ -776,12 +854,12 @@
   color: var(--accent);
 }
 .exp-acc-panel {
-  padding: 0 0.875rem 0.875rem 3.875rem;
+  padding: 0 0.875rem 1rem 4rem;
 }
 .exp-acc-panel p {
-  margin-bottom: 0.5625rem;
+  margin-bottom: 0.625rem;
   font-size: 14px;
-  line-height: 1.62;
+  line-height: 1.65;
   color: var(--muted);
 }
 .exp-acc-panel p:last-child {

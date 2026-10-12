@@ -8,7 +8,7 @@ export interface ExpLogo {
 export interface ExpItem {
   role: string;
   company: string;
-  /** Label for the axis node. Falls back to `company` when not shortened. */
+  /** Label shown under the axis while this node is selected. */
   short: string;
   time: string;
   /**
@@ -17,27 +17,34 @@ export interface ExpItem {
    * time axis (the trailing "More" card).
    */
   end: string;
+  /**
+   * Logos fill their tile edge to edge so each brand's own ground becomes the
+   * icon, which is why most of these read as app icons. Set "contain" for art
+   * that is not square, or that would lose its mark to the crop.
+   */
+  logoFit: "cover" | "contain";
   detail: string;
   logo: ExpLogo | null;
 }
 
-function Logo({ logo, className }: { logo: ExpLogo | null; className: string }) {
-  if (!logo) {
+function Logo({ item, className }: { item: ExpItem; className: string }) {
+  if (!item.logo) {
     return (
-      <span className={`${className} grid place-items-center font-mono text-sm text-faint`}>
+      <span className={`${className} exp-logo-none`} aria-hidden="true">
         •••
       </span>
     );
   }
   return (
     <img
-      src={logo.src}
-      srcSet={logo.srcSet}
-      // Decorative: the button and panel already carry the company name.
+      src={item.logo.src}
+      srcSet={item.logo.srcSet}
+      // Decorative: the button and the panel already name the company.
       alt=""
       loading="lazy"
       decoding="async"
-      className={`${className} object-contain`}
+      data-fit={item.logoFit}
+      className={className}
     />
   );
 }
@@ -54,7 +61,15 @@ function Detail({ text }: { text: string }) {
 
 export default function ExperienceTimeline({ items }: { items: ExpItem[] }) {
   const [active, setActive] = useState(0);
+  // -1 / 1: which way the last move went, so the panel swaps along the axis
+  // instead of blinking in place.
+  const [dir, setDir] = useState(0);
   const [open, setOpen] = useState(0);
+
+  const go = (i: number) => {
+    setDir(Math.sign(i - active));
+    setActive(i);
+  };
 
   // Axis segments: consecutive entries sharing an end label collapse into one
   // tick, so "2026" is printed once instead of four times (the standard
@@ -75,11 +90,10 @@ export default function ExperienceTimeline({ items }: { items: ExpItem[] }) {
     else if (e.key === "End") next = last;
     if (next === null) return;
     e.preventDefault();
-    setActive(next);
-    // Automatic activation (ARIA APG): the panels are already in the DOM, so
-    // moving focus may switch them with no latency.
-    const el = document.getElementById(`exp-tab-${next}`);
-    el?.focus();
+    go(next);
+    // Automatic activation (ARIA APG): the panel is already in the DOM, so
+    // moving focus may switch it with no latency.
+    document.getElementById(`exp-tab-${next}`)?.focus();
   };
 
   const current = items[active];
@@ -111,20 +125,33 @@ export default function ExperienceTimeline({ items }: { items: ExpItem[] }) {
               aria-controls="exp-panel"
               aria-selected={i === active}
               tabIndex={i === active ? 0 : -1}
-              onClick={() => setActive(i)}
+              onClick={() => go(i)}
               className="exp-node"
-              data-side={i % 2 === 0 ? "up" : "down"}
             >
-              <span className="exp-node-label">{it.short}</span>
-              <span className="exp-node-dot">
-                <Logo logo={it.logo} className="size-[72%]" />
+              <span className="exp-node-tile">
+                <Logo item={it} className="exp-node-img" />
               </span>
               <span className="sr-only">
                 {it.role}
+                {it.company ? `, ${it.company}` : ""}
                 {it.time ? `, ${it.time}` : ""}
               </span>
             </button>
           ))}
+        </div>
+
+        {/* One label for the whole axis: it slides to whichever node is
+            selected, so the rail stays quiet and the movement itself reads as
+            the state change. */}
+        <div
+          className="exp-marker"
+          style={{ ["--count" as string]: items.length }}
+          aria-hidden="true"
+        >
+          <span className="exp-marker-slot" style={{ ["--i" as string]: active }}>
+            <span className="exp-marker-caret"></span>
+            <span className="exp-marker-label">{current.short}</span>
+          </span>
         </div>
 
         <div
@@ -134,22 +161,25 @@ export default function ExperienceTimeline({ items }: { items: ExpItem[] }) {
           tabIndex={0}
           className="exp-panel"
         >
-          <div className="exp-panel-head">
-            <span className="exp-panel-logo">
-              <Logo logo={current.logo} className="size-[72%]" />
-            </span>
-            <div className="min-w-0">
-              <h3 className="h-card text-text">{current.role}</h3>
-              <p className="mt-0.5 text-sm text-muted">
-                {current.company}
-                {current.time && (
-                  <span className="exp-panel-time"> · {current.time}</span>
-                )}
-              </p>
+          {/* Keyed so the entrance replays on every swap. */}
+          <div key={active} className="exp-panel-inner" data-dir={dir}>
+            <div className="exp-panel-head">
+              <span className="exp-panel-tile">
+                <Logo item={current} className="exp-panel-img" />
+              </span>
+              <div className="min-w-0">
+                <h3 className="h-card text-text">{current.role}</h3>
+                <p className="mt-1 text-sm text-muted">
+                  {current.company}
+                  {current.time && (
+                    <span className="exp-panel-time"> · {current.time}</span>
+                  )}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="exp-panel-body">
-            <Detail text={current.detail} />
+            <div className="exp-panel-body">
+              <Detail text={current.detail} />
+            </div>
           </div>
         </div>
       </div>
@@ -170,8 +200,8 @@ export default function ExperienceTimeline({ items }: { items: ExpItem[] }) {
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   className="exp-acc-btn"
                 >
-                  <span className="exp-acc-logo">
-                    <Logo logo={it.logo} className="size-[72%]" />
+                  <span className="exp-acc-tile">
+                    <Logo item={it} className="exp-acc-img" />
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="exp-acc-role">{it.role}</span>
