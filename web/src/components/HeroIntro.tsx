@@ -27,9 +27,16 @@ export default function HeroIntro() {
   const sigDur = isMobile ? 0.45 : DURATION.signature;
 
   // A staggered child (status/name/tagline/subline/CTAs).
+  //
+  // The reduced branches below pair `initial: false` with an `animate` target.
+  // `initial: false` means "render at the animate values without playing the
+  // entrance" — on its own it has nothing to render at, so the opacity: 0 that
+  // SSR bakes in (SSR cannot know the preference, so it always writes the
+  // non-reduced initial) would never be cleared and the whole card would stay
+  // invisible for anyone with Reduce Motion switched on.
   const child = (i: number) =>
     reduced
-      ? ({ initial: false } as const)
+      ? ({ initial: false, animate: { opacity: 1, y: 0 } } as const)
       : ({
           initial: { opacity: 0, y: 14 },
           animate: { opacity: 1, y: 0 },
@@ -38,7 +45,7 @@ export default function HeroIntro() {
 
   // The glass card itself: rise + fade.
   const card = reduced
-    ? ({ initial: false } as const)
+    ? ({ initial: false, animate: { opacity: 1, y: 0 } } as const)
     : ({
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0 },
@@ -48,7 +55,7 @@ export default function HeroIntro() {
   // Signature draw-on: left-to-right clip sweep (filled path, not a stroke).
   // Runs independently of the text stagger so CTAs don't wait for it.
   const sigClip = reduced
-    ? ({ initial: false } as const)
+    ? ({ initial: false, animate: { clipPath: "inset(0 0% 0 0)" } } as const)
     : ({
         initial: { clipPath: "inset(0 100% 0 0)" },
         animate: { clipPath: "inset(0 0% 0 0)" },
