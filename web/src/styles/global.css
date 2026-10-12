@@ -574,7 +574,9 @@
 }
 
 /* Opaque fill so the spine reads as passing behind the tile, not through it.
-   Unselected tiles sit back a little: focus and context in one row. */
+   The unselected state dims via a scrim rather than the tile's own opacity:
+   fading the element itself would make its background translucent and let the
+   spine show straight through the artwork. */
 .exp-node-tile {
   position: relative;
   z-index: 1;
@@ -586,12 +588,19 @@
   overflow: hidden;
   display: grid;
   place-items: center;
-  opacity: 0.62;
   transition:
-    opacity var(--dur-base) var(--ease-brand),
     border-color var(--dur-fast) var(--ease-brand),
     box-shadow var(--dur-base) var(--ease-brand),
     transform var(--dur-base) var(--ease-brand);
+}
+.exp-node-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  opacity: 0.4;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-brand);
 }
 .exp-node-img {
   width: 100%;
@@ -619,12 +628,16 @@
 }
 @media (hover: hover) and (pointer: fine) {
   .exp-node:hover .exp-node-tile {
-    opacity: 1;
     border-color: var(--accent);
   }
+  .exp-node:hover .exp-node-tile::after {
+    opacity: 0;
+  }
+}
+.exp-node[aria-selected="true"] .exp-node-tile::after {
+  opacity: 0;
 }
 .exp-node[aria-selected="true"] .exp-node-tile {
-  opacity: 1;
   border-color: var(--accent);
   border-width: 2px;
   box-shadow:
@@ -681,7 +694,9 @@
   border-radius: var(--radius-card);
   background: var(--surface);
   padding: 1.75rem;
-  min-height: 13rem;
+  /* Measured: the tallest entry renders at 268px, the rest bottom out at the
+     floor. Holding the floor above the tallest means no jump on swap. */
+  min-height: 17rem;
   box-shadow: var(--edge-highlight);
 }
 .exp-panel:focus-visible {
