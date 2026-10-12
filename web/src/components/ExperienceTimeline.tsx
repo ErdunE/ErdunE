@@ -29,8 +29,11 @@ export interface ExpItem {
 
 function Logo({ item, className }: { item: ExpItem; className: string }) {
   if (!item.logo) {
+    // Deliberately not given `className`: those are <img> rules, and their
+    // `display: block` is declared later in the sheet, so it would beat this
+    // element's own grid centring and strand the dots in the corner.
     return (
-      <span className={`${className} exp-logo-none`} aria-hidden="true">
+      <span className="exp-logo-none" aria-hidden="true">
         •••
       </span>
     );
