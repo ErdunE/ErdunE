@@ -32,7 +32,7 @@ export const education: Education[] = [
   {
     school: "Northeastern University",
     schoolHref: "https://www.northeastern.edu/",
-    college: "Khoury College of Computer Science",
+    college: "Khoury College of Computer Sciences",
     collegeHref: "https://www.khoury.northeastern.edu/",
     location: "Miami, FL",
     locationHref: "https://miami.northeastern.edu/",
@@ -68,8 +68,8 @@ export const education: Education[] = [
     ],
   },
   {
-    school: "University of Massachusetts",
-    schoolHref: "https://www.massachusetts.edu/",
+    school: "University of Massachusetts Lowell",
+    schoolHref: "https://www.uml.edu/",
     college: "Kennedy College of Sciences",
     collegeHref: "https://www.uml.edu/",
     location: "Lowell, MA",

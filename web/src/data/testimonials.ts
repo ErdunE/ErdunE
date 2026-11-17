@@ -87,7 +87,7 @@ export const testimonials: Testimonial[] = [
       "Erdun's commitment to excellence goes beyond his responsibilities, he actively enhances the student learning experience while pursuing his own growth. His curiosity, dedication, and positive energy make him an invaluable member of our campus community.",
     name: "Juan F. Gonzalez, Ed.S",
     title: "Associate Director of Operations",
-    company: "Northeastern University - Miami",
+    company: "Northeastern University – Miami",
     linkedin: "https://www.linkedin.com/in/jfgonzalez63/",
     avatar: img("Juan.jpeg"),
   },
