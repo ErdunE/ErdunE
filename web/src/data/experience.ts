@@ -23,12 +23,20 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
+    role: "Senior AI Solutions Architect",
+    company: "DJI",
+    time: "Nov 2026 – Present",
+    logo: img("DJI.png"),
+    detail:
+      "Building the business-finance data platform at DJI in Shenzhen: warehouse architecture, turning finance rules and metrics into data models and services, and the data governance underneath.",
+  },
+  {
     role: "Full Stack Engineer",
     company: "MolarData",
-    time: "Aug 2026 – Present",
+    time: "Aug 2026 – Nov 2026",
     logo: img("MolarData.jpeg"),
     detail:
-      "Recently joined the platform team in Hangzhou, working across the stack on MolarData's intelligent data engineering platform for AI-assisted annotation of image, video, text, audio, and point-cloud datasets.",
+      "Built MolarData's unified cross-cloud observability platform and took it to production, onboarding three business lines.",
   },
   {
     role: "Software Development Engineer II",

@@ -12,6 +12,28 @@ export interface LogEntry {
 
 export const log: LogEntry[] = [
   {
+    date: "2026-11-25",
+    source: "milestone",
+    title:
+      "Started at DJI in Shenzhen as a Senior AI Solutions Architect, on the team building their business-finance data platform.",
+    link: "https://www.dji.com/",
+    media: "/log/16dji-start.webp",
+  },
+  {
+    date: "2026-11-20",
+    source: "note",
+    title: "Moved 1,050 km south, from Hangzhou to Shenzhen.",
+    media: "/log/15shenzhen-move.webp",
+  },
+  {
+    date: "2026-11-19",
+    source: "milestone",
+    title:
+      "Wrapped up at MolarData after shipping their unified cross-cloud observability platform to three business lines.",
+    link: "https://www.molardata.com/",
+    media: "/log/14molardata-end.webp",
+  },
+  {
     date: "2026-08-25",
     source: "milestone",
     title:

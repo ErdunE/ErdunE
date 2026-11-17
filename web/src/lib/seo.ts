@@ -4,9 +4,9 @@ import { education } from "@/data/education";
 export const SITE = {
   url: "https://erdun.me",
   name: "Erdun E",
-  title: "Erdun E · Full Stack Engineer",
+  title: "Erdun E · Senior AI Solutions Architect",
   description:
-    "Erdun E, Full Stack Engineer at MolarData in Hangzhou, ex-AWS. Builder, engineer, always shipping. Portfolio of projects, experience, and ways to get in touch.",
+    "Erdun E, Senior AI Solutions Architect at DJI in Shenzhen, ex-AWS. Builder, engineer, always shipping. Projects, experience, and ways to get in touch.",
   ogImage: "https://erdun.me/og.png",
   locale: "en_US",
   themeColorLight: "#eceff4",
@@ -24,18 +24,18 @@ export const personJsonLd = {
   name: "Erdun E",
   url: SITE.url,
   image: SITE.ogImage,
-  jobTitle: "Full Stack Engineer",
+  jobTitle: "Senior AI Solutions Architect",
   description:
-    "Full Stack Engineer at MolarData in Hangzhou, previously at AWS. Focused on reliable, maintainable systems.",
+    "Senior AI Solutions Architect at DJI in Shenzhen, previously at AWS. Focused on reliable, maintainable systems.",
   worksFor: {
     "@type": "Organization",
-    name: "MolarData",
-    url: "https://www.molardata.com/",
+    name: "DJI",
+    url: "https://www.dji.com/",
   },
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Hangzhou",
-    addressRegion: "Zhejiang",
+    addressLocality: "Shenzhen",
+    addressRegion: "Guangdong",
     addressCountry: "CN",
   },
   sameAs,
