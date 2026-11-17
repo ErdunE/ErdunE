@@ -705,10 +705,15 @@
   border-radius: var(--radius-card);
   background: var(--surface);
   padding: 1.75rem;
-  /* Measured against the two-column layout: entries render 170-198px, so the
-     floor sits just above the tallest. Holding it there means no jump on swap
-     without leaving dead space under the shorter ones. */
+  /* Measured: entries render 134-198px, so the floor sits just above the
+     tallest and swapping tabs never jumps. The flex column is what lets
+     align-items on the inner grid actually bite — the grid only ever sizes to
+     its own content, so without this the leftover height falls outside it and
+     the content stays pinned to the top. */
   min-height: 12.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   box-shadow: var(--edge-highlight);
 }
 .exp-panel:focus-visible {
@@ -723,19 +728,38 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr);
   gap: 2.75rem;
-  align-items: start;
+  /* Centred, not top-aligned: entries run 134-198px inside a 200px card, so
+     something has to absorb the difference. Splitting it above and below reads
+     as breathing room; pushing it all to the bottom read as a half-empty card. */
+  align-items: center;
 }
+/* The role leads both columns. Stacking the tile above it pushed the card's
+   most important line 66px below the first line of the prose beside it, so the
+   eye had no shared starting edge; the tile moves down beside the dates. */
 .exp-panel-head {
-  display: block;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 0.75rem;
+  align-items: center;
 }
-.exp-panel-tile {
+.exp-panel-head > div {
+  display: contents;
+}
+.exp-panel-head h3 {
+  grid-column: 1 / -1;
+  grid-row: 1;
   margin-bottom: 0.875rem;
 }
+.exp-panel-head p {
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: 0;
+}
 .exp-panel-tile {
-  width: 52px;
-  height: 52px;
-  flex: 0 0 52px;
-  border-radius: 14px;
+  grid-row: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
   background: var(--surface-2);
   border: 1px solid var(--border);
   overflow: hidden;
