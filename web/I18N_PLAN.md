@@ -149,6 +149,10 @@ are translated — there is nothing to mismatch.
 `PromptLint` is Erdun's own project; he can name it in Chinese, so it is not in
 category 2.
 
+Category 3 is the one place the §0 principle is not applied literally, so it
+was carried as a proposal rather than a decision. **Confirmed by Erdun on
+2026-11-17**: the names stay in English.
+
 ### 4.3 Glossary (verified 2026-11-17)
 
 **Organisations — translated**
