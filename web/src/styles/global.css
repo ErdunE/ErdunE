@@ -705,20 +705,31 @@
   border-radius: var(--radius-card);
   background: var(--surface);
   padding: 1.75rem;
-  /* Measured: the tallest entry renders at 268px, the rest bottom out at the
-     floor. Holding the floor above the tallest means no jump on swap. */
-  min-height: 17rem;
+  /* Measured against the two-column layout: entries render 170-198px, so the
+     floor sits just above the tallest. Holding it there means no jump on swap
+     without leaving dead space under the shorter ones. */
+  min-height: 12.5rem;
   box-shadow: var(--edge-highlight);
 }
 .exp-panel:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
 }
+/* Two columns: identity left, prose right. The card fills its width while the
+   measure stays short, instead of capping the paragraph and leaving 30% of the
+   card empty. The rail only renders above an 860px container, where both
+   columns still have room, so there is no single-column fallback to carry. */
+.exp-panel-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr);
+  gap: 2.75rem;
+  align-items: start;
+}
 .exp-panel-head {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.125rem;
+  display: block;
+}
+.exp-panel-tile {
+  margin-bottom: 0.875rem;
 }
 .exp-panel-tile {
   width: 52px;
@@ -749,7 +760,6 @@
   font-size: 15px;
   line-height: 1.7;
   color: var(--muted);
-  max-width: 72ch;
 }
 .exp-panel-body p:last-child {
   margin-bottom: 0;
