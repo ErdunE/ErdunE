@@ -29,7 +29,7 @@ const iconFor: Record<CapabilityIcon, typeof Network> = {
     </div>
 
     <p class="mt-5 max-w-3xl text-pretty text-lg leading-relaxed text-muted" data-reveal>
-      {capabilityLead}
+      {t(capabilityLead, lang)}
     </p>
 
     <div class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2" data-reveal-stagger>
@@ -43,10 +43,10 @@ const iconFor: Record<CapabilityIcon, typeof Network> = {
               </span>
               <div>
                 <h3 class="h-card text-text">
-                  {cap.title}
+                  {t(cap.title, lang)}
                 </h3>
-                <p class="mt-2 text-pretty text-muted">{cap.body}</p>
-                <p class="mt-2 text-pretty text-sm text-faint">{cap.bodyMuted}</p>
+                <p class="mt-2 text-pretty text-muted">{t(cap.body, lang)}</p>
+                <p class="mt-2 text-pretty text-sm text-faint">{t(cap.bodyMuted, lang)}</p>
               </div>
             </div>
           );
@@ -58,9 +58,9 @@ const iconFor: Record<CapabilityIcon, typeof Network> = {
       class="mt-12 rounded-[var(--radius-card)] border border-border bg-surface-2 p-5"
       data-reveal
     >
-      <p class="eyebrow">{capabilityContext.title}</p>
+      <p class="eyebrow">{t(capabilityContext.title, lang)}</p>
       <p class="mt-2 max-w-3xl text-pretty text-sm leading-relaxed text-muted">
-        {capabilityContext.text}
+        {t(capabilityContext.text, lang)}
       </p>
     </div>
   </div>

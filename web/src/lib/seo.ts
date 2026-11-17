@@ -1,6 +1,6 @@
 import { profile } from "@/data/profile";
 import { education } from "@/data/education";
-import { HOME_PATH, OG_LOCALE, type Lang } from "@/lib/i18n";
+import { HOME_PATH, OG_LOCALE, t, type Lang } from "@/lib/i18n";
 
 export const SITE = {
   url: "https://erdun.me",
@@ -88,7 +88,7 @@ export function personJsonLd(lang: Lang) {
     sameAs,
     alumniOf: education.map((e) => ({
       "@type": "CollegeOrUniversity",
-      name: e.school,
+      name: t(e.school, lang),
     })),
   };
 }

@@ -128,6 +128,10 @@ export const UI = {
     },
   },
 
+  education: {
+    courses: { en: "Courses", zh: "修读课程" },
+  },
+
   signal: {
     label: { en: "Recent activity", zh: "最近动态" },
     heading: { en: "Recent activity", zh: "最近动态" },

@@ -8,19 +8,19 @@ import { langOf, t, UI } from "@/lib/i18n";
 const lang = langOf(Astro.currentLocale);
 
 const items: TItem[] = await Promise.all(
-  testimonials.map(async (t) => {
+  testimonials.map(async (item) => {
     const img = await getImage({
-      src: t.avatar,
+      src: item.avatar,
       width: 96,
       densities: [1, 2],
       format: "webp",
     });
     return {
-      quote: t.quote,
-      name: t.name,
-      title: t.title,
-      company: t.company,
-      linkedin: t.linkedin,
+      quote: t(item.quote, lang),
+      name: item.name,
+      title: t(item.title, lang),
+      company: t(item.company, lang),
+      linkedin: item.linkedin,
       avatar: { src: img.src, srcSet: img.srcSet.attribute },
     };
   }),
@@ -41,4 +41,16 @@ const items: TItem[] = await Promise.all(
   <div class="mt-10" data-reveal>
     <Testimonials items={items} client:visible />
   </div>
+
+  {/* The quotes were written in English; say so rather than let a Chinese
+      reader assume these are the words their authors used. */}
+  {
+    t(UI.sections.testimonials.translatedNote, lang) && (
+      <div class="container-page mt-6">
+        <p class="text-xs text-faint">
+          {t(UI.sections.testimonials.translatedNote, lang)}
+        </p>
+      </div>
+    )
+  }
 </section>

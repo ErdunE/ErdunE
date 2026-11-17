@@ -8,7 +8,7 @@ import { langOf, t, UI } from "@/lib/i18n";
 
 const lang = langOf(Astro.currentLocale);
 const { contact, social, resumeHref, wechatQr } = profile;
-const intro = contact.intro.split("\n");
+const intro = t(contact.intro, lang).split("\n");
 
 const tile =
   "group focus-ring card-hover flex items-center gap-3 rounded-[var(--radius-card)] border border-border bg-surface p-3.5";
@@ -31,14 +31,14 @@ const iconWrap = "flex size-9 shrink-0 items-center justify-center";
           class="inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-accent/30 bg-accent-soft px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-accent"
         >
           <span class="size-1.5 rounded-full bg-accent"></span>
-          {contact.status}
+          {t(contact.status, lang)}
         </p>
 
         <div class="mt-5 space-y-1 text-muted">
           {intro.map((line) => <p>{line}</p>)}
         </div>
 
-        <p class="mt-4 text-sm text-faint">{contact.detail}</p>
+        <p class="mt-4 text-sm text-faint">{t(contact.detail, lang)}</p>
 
         <a
           href={resumeHref[lang]}
@@ -46,7 +46,7 @@ const iconWrap = "flex size-9 shrink-0 items-center justify-center";
           rel="noopener"
           class={buttonVariants({ size: "lg", className: "mt-6" })}
         >
-          {contact.resumeLabel}
+          {t(contact.resumeLabel, lang)}
         </a>
       </div>
 
@@ -62,7 +62,7 @@ const iconWrap = "flex size-9 shrink-0 items-center justify-center";
               if (link.id === "email") {
                 return (
                   <EmailCopy
-                    email={link.detail}
+                    email={t(link.detail, lang)}
                     mailto={link.href}
                     lang={lang}
                     client:visible
@@ -81,8 +81,8 @@ const iconWrap = "flex size-9 shrink-0 items-center justify-center";
                     />
                   </span>
                   <span class="min-w-0">
-                    <span class="block text-sm font-medium text-text">{link.name}</span>
-                    <span class="block text-xs text-muted">{link.detail}</span>
+                    <span class="block text-sm font-medium text-text">{t(link.name, lang)}</span>
+                    <span class="block text-xs text-muted">{t(link.detail, lang)}</span>
                   </span>
                 </a>
               );

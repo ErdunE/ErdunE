@@ -3,9 +3,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { profile } from "@/data/profile";
 import { SIGNATURE_PATH, SIGNATURE_VIEWBOX } from "@/data/signature";
 import { EASE_OUT_EXPO, DURATION } from "@/lib/motion";
-import { type Lang } from "@/lib/i18n";
-
-const { name, heroStatus, tagline, subline, resumeHref } = profile;
+import { type Lang, t } from "@/lib/i18n";
 
 const ctaBase =
   "inline-flex h-11 min-w-[8.5rem] items-center justify-center rounded-[var(--radius-sm)] border px-6 text-sm font-medium transition-[color,background-color,border-color,transform] duration-150 ease-[var(--ease-brand)] active:scale-[0.98] motion-reduce:active:scale-100 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
@@ -13,6 +11,12 @@ const ctaPrimary = `${ctaBase} border-accent bg-accent text-white hover:bg-accen
 const ctaSecondary = `${ctaBase} border-white/35 bg-transparent text-white hover:bg-white/10 focus-visible:ring-white/60`;
 
 export default function HeroIntro({ lang }: { lang: Lang }) {
+  const { resumeHref } = profile;
+  const name = t(profile.name, lang);
+  const heroStatus = t(profile.heroStatus, lang);
+  const tagline = t(profile.tagline, lang);
+  const subline = t(profile.subline, lang);
+
   const reduced = useReducedMotion();
   // client-correct on first client render (window undefined during SSR)
   const [isMobile, setIsMobile] = useState(false);

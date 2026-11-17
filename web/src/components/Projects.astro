@@ -3,7 +3,7 @@ import { getImage } from "astro:assets";
 import { projects } from "@/data/projects";
 import ProjectsCarousel from "./ProjectsCarousel.tsx";
 import type { ProjItem } from "./ProjectsCarousel.tsx";
-import { langOf, t, UI } from "@/lib/i18n";
+import { langOf, t, tAll, UI } from "@/lib/i18n";
 
 const lang = langOf(Astro.currentLocale);
 
@@ -16,11 +16,11 @@ const items: ProjItem[] = await Promise.all(
       format: "webp",
     });
     return {
-      title: p.title,
+      title: t(p.title, lang),
       href: p.href,
-      descPrimary: p.descPrimary,
-      descSecondary: p.descSecondary,
-      tags: p.tags,
+      descPrimary: t(p.descPrimary, lang),
+      descSecondary: t(p.descSecondary, lang),
+      tags: tAll(p.tags, lang),
       thumb: { src: img.src, srcSet: img.srcSet.attribute },
     };
   }),

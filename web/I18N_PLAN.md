@@ -22,7 +22,7 @@ where it yields to a stronger constraint (§4.2).
 | | Decision | Consequence |
 |---|---|---|
 | **URL** | `/` = English, `/zh/` = Chinese, two static pages | Astro native i18n; full SEO per locale; routing refactor |
-| **Testimonials** | All 29 quotes translated into Chinese | ~6,500 extra characters; see §4.2 note |
+| **Testimonials** | All 28 quotes translated into Chinese | ~6,500 extra characters; see §4.2 note |
 | **CJK font** | Subset a Chinese face at build time | ~850 glyphs, 70–100 KB; adds a prebuild step |
 | **Scope, phase 1** | Whole site | **17,984 characters** to translate |
 
@@ -32,7 +32,7 @@ where it yields to a stronger constraint (§4.2).
 
 ```
 src/data/*.ts — translatable content
-  testimonials.ts   6,542 chars   36%   29 entries
+  testimonials.ts   6,542 chars   36%   28 entries
   projects.ts       3,589         20%   15 entries
   experience.ts     2,927         16%   11 entries
   log.ts            1,814         10%   18 entries
@@ -137,7 +137,7 @@ Researched 2026-11-17. Three categories, all for **factual accuracy**:
    `diGeniusAI`. Inventing one would make the employer unsearchable and, for
    the testimonial entries, misstate a real person's employer.
 
-3. **Personal names** — all 29 testimonial authors. Every card links to that
+3. **Personal names** — all 28 testimonial authors. Every card links to that
    person's LinkedIn; a transliterated name on the card and an English name
    behind the link do not match, and no standard Chinese form exists for them.
 

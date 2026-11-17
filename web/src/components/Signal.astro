@@ -33,10 +33,10 @@ const sorted = [...log].sort((a, b) => b.date.localeCompare(a.date));
                   rel="noopener noreferrer"
                   class="signal-title focus-ring"
                 >
-                  {e.title}
+                  {t(e.title, lang)}
                 </a>
               ) : (
-                <span class="signal-title">{e.title}</span>
+                <span class="signal-title">{t(e.title, lang)}</span>
               )}
 
               {e.media && (

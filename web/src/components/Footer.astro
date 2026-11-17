@@ -1,5 +1,6 @@
 ---
 import { langOf, t, UI } from "@/lib/i18n";
+import { profile } from "@/data/profile";
 
 const lang = langOf(Astro.currentLocale);
 const year = new Date().getFullYear();
@@ -8,7 +9,7 @@ const year = new Date().getFullYear();
 <footer class="border-t border-border py-10">
   <div class="container-page flex flex-col items-center justify-between gap-3 sm:flex-row">
     <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
-      © {year} Erdun E
+      © {year} {t(profile.name, lang)}
     </p>
     <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
       {t(UI.footer.builtWith, lang)}

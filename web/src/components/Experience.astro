@@ -32,13 +32,13 @@ const items: ExpItem[] = await Promise.all(
       logo = { src: img.src, srcSet: img.srcSet.attribute };
     }
     return {
-      role: e.role,
-      company: e.company,
-      short: e.short ?? e.company,
+      role: t(e.role, lang),
+      company: t(e.company, lang),
+      short: t(e.short ?? e.company, lang),
       time: formatRange(e, lang),
       end: endLabel(e, lang),
       logoFit: e.logoFit ?? "cover",
-      detail: e.detail,
+      detail: t(e.detail, lang),
       logo,
     };
   }),
