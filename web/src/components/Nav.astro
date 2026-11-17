@@ -175,17 +175,18 @@ const lang = langOf(Astro.currentLocale);
   #site-nav.nav-over-hero .nav-brand,
   #site-nav.nav-over-hero .nav-link,
   #site-nav.nav-over-hero .nav-resume,
-  #site-nav.nav-over-hero .nav-lang,
+  #site-nav.nav-over-hero :global(.nav-lang),
   #site-nav.nav-over-hero .nav-toggle :global(button),
   #site-nav.nav-over-hero .nav-mobile :global(button) {
     color: #fff;
   }
-  #site-nav.nav-over-hero .nav-resume {
+  #site-nav.nav-over-hero .nav-resume,
+  #site-nav.nav-over-hero :global(.nav-lang) {
     border-color: rgba(255, 255, 255, 0.4);
   }
   @media (hover: hover) and (pointer: fine) {
     #site-nav.nav-over-hero .nav-resume:hover,
-    #site-nav.nav-over-hero .nav-lang:hover,
+    #site-nav.nav-over-hero :global(.nav-lang):hover,
     #site-nav.nav-over-hero .nav-toggle :global(button):hover,
     #site-nav.nav-over-hero .nav-mobile :global(button):hover {
       background-color: rgba(255, 255, 255, 0.12);

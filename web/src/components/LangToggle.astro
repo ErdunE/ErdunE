@@ -1,23 +1,31 @@
 ---
 import { HOME_PATH, HREFLANG, LANG_NAME, langOf, otherLang, t, UI } from "@/lib/i18n";
+import { buttonVariants } from "@/components/ui/button";
 
 const lang = langOf(Astro.currentLocale);
 const other = otherLang(lang);
-const href = HOME_PATH[other];
 ---
 
 {/*
   A plain link, not a React island: the two locales are two documents, so
   switching is a navigation and needs no JS. The label is always written in the
   language it switches *to*, so the reader who needs it can read it.
+
+  Styled with the same `outline` button as Résumé beside it — the two are the
+  same kind of control. Taller below `sm`, where Résumé is hidden and this is a
+  touch target rather than a mouse one.
 */}
 <a
-  href={href}
+  href={HOME_PATH[other]}
   hreflang={HREFLANG[other]}
   lang={HREFLANG[other]}
   data-lang-switch
   aria-label={t(UI.nav.switchLang, lang)}
-  class="nav-lang focus-ring inline-grid h-11 min-w-11 place-items-center rounded-[var(--radius-sm)] px-2 font-mono text-[11px] uppercase tracking-[0.12em] text-muted transition-colors hover:bg-surface-2 hover:text-text md:h-10"
+  class={buttonVariants({
+    variant: "outline",
+    size: "sm",
+    className: "nav-lang h-11 sm:h-9",
+  })}
 >
   {LANG_NAME[other]}
 </a>
