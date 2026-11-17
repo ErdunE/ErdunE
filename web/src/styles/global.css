@@ -1222,17 +1222,21 @@ html[lang="zh-Hans"] {
 
 /* Chinese has no ascenders or descenders to breathe around, and no spaces to
    open up a line, so the Latin rhythm reads cramped. Slightly looser lines and
-   a hair of tracking; headings stay tight because they are large. */
+   a hair of tracking in body copy. */
 html[lang="zh-Hans"] body {
   line-height: 1.75;
   letter-spacing: 0.01em;
 }
+/* Headings take none at all. The Latin headings are tracked -0.02em, which
+   reads tight on ideographs — they are already full-width boxes with their own
+   side bearing, so negative tracking makes them collide. Zero, not the body's
+   positive value, which looked loose at display sizes. */
 html[lang="zh-Hans"] .h-section,
 html[lang="zh-Hans"] .h-card,
 html[lang="zh-Hans"] h1,
 html[lang="zh-Hans"] h2,
 html[lang="zh-Hans"] h3 {
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 /* Mono labels are set with wide Latin tracking that looks gappy on ideographs. */
 html[lang="zh-Hans"] .eyebrow {
