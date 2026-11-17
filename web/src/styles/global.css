@@ -705,12 +705,15 @@
   border-radius: var(--radius-card);
   background: var(--surface);
   padding: 1.75rem;
-  /* Measured: entries render 134-198px, so the floor sits just above the
-     tallest and swapping tabs never jumps. The flex column is what lets
-     align-items on the inner grid actually bite — the grid only ever sizes to
-     its own content, so without this the leftover height falls outside it and
-     the content stays pinned to the top. */
-  min-height: 12.5rem;
+  /* Measured at this column split: entries render 56-165px, so 14rem clears
+     the tallest (165 + 56 of padding = 221) and swapping tabs never changes
+     the card's height. The flex column is what lets align-items on the inner
+     grid actually bite — the grid only ever sizes to its own content, so
+     without this the leftover height falls outside it and the content stays
+     pinned to the top. Centred rather than top-aligned: the short entries
+     leave 70px either side, which reads as padding, where the same gap pushed
+     entirely below the text read as a half-filled card. */
+  min-height: 14rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -726,40 +729,50 @@
    columns still have room, so there is no single-column fallback to carry. */
 .exp-panel-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr);
-  gap: 2.75rem;
-  /* Centred, not top-aligned: entries run 134-198px inside a 200px card, so
-     something has to absorb the difference. Splitting it above and below reads
-     as breathing room; pushing it all to the bottom read as a half-empty card. */
+  /* 1 : 1.15, not 1 : 1.75. Measured: the longest role renders 325px, so the
+     identity column needs 427px to seat a 56px tile + gap + one unwrapped
+     line with 28px to spare. The prose column still holds 59 characters,
+     inside the 45-75 measure, so widening the left costs the right nothing. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 3rem;
+  /* Both columns centre against each other. The entries split two ways: on
+     the eight short ones the identity block is the taller of the two, so it
+     sets the row and the prose centres inside it; on the three wordiest the
+     prose sets the row and the 74px identity block centres against it. Top
+     alignment is the alternative — it buys the two columns a shared first
+     line, but it pins that 74px block to the top of a 165px row and leaves
+     the rest of the column empty, which is the more visible flaw of the
+     two. */
   align-items: center;
 }
-/* The role leads both columns. Stacking the tile above it pushed the card's
-   most important line 66px below the first line of the prose beside it, so the
-   eye had no shared starting edge; the tile moves down beside the dates. */
+/* Mark beside name: the tile sits left of a three-line stack — role, then
+   employer, then dates — so the column reads top-to-bottom in one descending
+   weight instead of wrapping the identity around the tile. The stack is a
+   fixed 3 lines for every entry (no role wraps at this column width), so
+   centring the tile against it never drifts. */
 .exp-panel-head {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0 0.75rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0 1.125rem;
   align-items: center;
 }
-.exp-panel-head > div {
-  display: contents;
+.exp-panel-id {
+  min-width: 0;
 }
 .exp-panel-head h3 {
-  grid-column: 1 / -1;
-  grid-row: 1;
-  margin-bottom: 0.875rem;
+  line-height: 1.2;
 }
-.exp-panel-head p {
-  grid-column: 2;
-  grid-row: 2;
-  margin-top: 0;
+.exp-panel-org {
+  margin-top: 0.4375rem;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text);
 }
 .exp-panel-tile {
-  grid-row: 2;
-  width: 40px;
-  height: 40px;
-  border-radius: 11px;
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
   background: var(--surface-2);
   border: 1px solid var(--border);
   overflow: hidden;
@@ -773,6 +786,7 @@
   display: block;
 }
 .exp-panel-time {
+  margin-top: 0.4375rem;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.1em;

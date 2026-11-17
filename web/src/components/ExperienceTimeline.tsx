@@ -170,14 +170,10 @@ export default function ExperienceTimeline({ items }: { items: ExpItem[] }) {
               <span className="exp-panel-tile">
                 <Logo item={current} className="exp-panel-img" />
               </span>
-              <div className="min-w-0">
+              <div className="exp-panel-id">
                 <h3 className="h-card text-text">{current.role}</h3>
-                <p className="mt-1 text-sm text-muted">
-                  {current.company}
-                  {current.time && (
-                    <span className="exp-panel-time"> · {current.time}</span>
-                  )}
-                </p>
+                <p className="exp-panel-org">{current.company}</p>
+                {current.time && <p className="exp-panel-time">{current.time}</p>}
               </div>
             </div>
             <div className="exp-panel-body">
