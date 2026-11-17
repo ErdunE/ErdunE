@@ -1,31 +1,7 @@
 ---
-import Base from "../layouts/Base.astro";
-import Nav from "../components/Nav.astro";
-import Hero from "../components/Hero.astro";
-import Experience from "../components/Experience.astro";
-import Projects from "../components/Projects.astro";
-import Capability from "../components/Capability.astro";
-import Testimonials from "../components/Testimonials.astro";
-import Education from "../components/Education.astro";
-import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
-import FloatingWidgets from "../components/FloatingWidgets.astro";
+// Thin route shell. The page itself lives in layouts/Home.astro so the two
+// locales can never drift apart — adding a section touches one file.
+import Home from "@/layouts/Home.astro";
 ---
 
-<Base>
-  <span id="top"></span>
-  <Nav />
-
-  <main id="main">
-    <Hero />
-    <Experience />
-    <Projects />
-    <Capability />
-    <Testimonials />
-    <Education />
-    <Contact />
-  </main>
-
-  <Footer />
-  <FloatingWidgets />
-</Base>
+<Home />

@@ -1,6 +1,9 @@
 ---
 import HeroIntro from "./HeroIntro.tsx";
 import Signal from "./Signal.astro";
+import { langOf } from "@/lib/i18n";
+
+const lang = langOf(Astro.currentLocale);
 ---
 
 <section
@@ -49,7 +52,7 @@ import Signal from "./Signal.astro";
     class="container-page flex min-h-[100svh] flex-col items-center justify-center gap-10 py-24 xl:gap-0"
   >
     <div class="w-full max-w-[640px]">
-      <HeroIntro client:load />
+      <HeroIntro lang={lang} client:load />
     </div>
     <div class="signal-hud w-full max-w-[640px] xl:max-w-none">
       <Signal />

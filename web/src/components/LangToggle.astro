@@ -1,0 +1,35 @@
+---
+import { HOME_PATH, HREFLANG, LANG_NAME, langOf, otherLang, t, UI } from "@/lib/i18n";
+
+const lang = langOf(Astro.currentLocale);
+const other = otherLang(lang);
+const href = HOME_PATH[other];
+---
+
+{/*
+  A plain link, not a React island: the two locales are two documents, so
+  switching is a navigation and needs no JS. The label is always written in the
+  language it switches *to*, so the reader who needs it can read it.
+*/}
+<a
+  href={href}
+  hreflang={HREFLANG[other]}
+  lang={HREFLANG[other]}
+  data-lang-switch
+  aria-label={t(UI.nav.switchLang, lang)}
+  class="nav-lang focus-ring inline-grid h-11 min-w-11 place-items-center rounded-[var(--radius-sm)] px-2 font-mono text-[11px] uppercase tracking-[0.12em] text-muted transition-colors hover:bg-surface-2 hover:text-text md:h-10"
+>
+  {LANG_NAME[other]}
+</a>
+
+<script is:inline>
+  // Carry the reader's place across the switch: /#projects -> /zh/#projects.
+  // Progressive only — without JS the link still lands on the other home page.
+  (function () {
+    document.querySelectorAll("[data-lang-switch]").forEach(function (a) {
+      a.addEventListener("click", function () {
+        if (location.hash) a.setAttribute("href", a.pathname + location.hash);
+      });
+    });
+  })();
+</script>

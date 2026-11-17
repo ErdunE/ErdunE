@@ -1,4 +1,10 @@
-export const RESUME_HREF = "/resume/Resume_of_ErdunE_2026_04_16.pdf";
+import type { Lang } from "@/lib/i18n";
+
+/** Two separate documents, not translations of one file. */
+export const RESUME_HREF: Record<Lang, string> = {
+  en: "/resume/Resume_of_ErdunE_2026_04_16.pdf",
+  zh: "/resume/Resume_of_ErdunE_zh_2026_10_18.pdf",
+};
 
 export interface SocialLink {
   /** Stable key used for the brand SVG + styling in Phase 3. */

@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/sheet";
 import { buttonVariants } from "@/components/ui/button";
 import { NAV_LINKS, RESUME_HREF } from "@/lib/nav";
+import { type Lang, t, UI } from "@/lib/i18n";
 
-export default function MobileNav() {
+export default function MobileNav({ lang }: { lang: Lang }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -18,16 +19,16 @@ export default function MobileNav() {
       <SheetTrigger asChild>
         <button
           type="button"
-          aria-label="Open menu"
+          aria-label={t(UI.nav.openMenu, lang)}
           className="inline-flex size-11 items-center justify-center rounded-[var(--radius-sm)] text-text transition-colors hover:bg-surface-2 focus-visible:ring-2 focus-visible:ring-accent outline-none md:size-10"
         >
           <Menu className="size-5" />
         </button>
       </SheetTrigger>
       <SheetContent>
-        <SheetTitle>Menu</SheetTitle>
+        <SheetTitle>{t(UI.nav.menu, lang)}</SheetTitle>
         <SheetDescription className="sr-only">
-          Site navigation and quick links
+          {t(UI.nav.menuDescription, lang)}
         </SheetDescription>
 
         {/* Conversion CTA pinned to the top so Contact is always one tap away. */}
@@ -36,7 +37,7 @@ export default function MobileNav() {
           onClick={() => setOpen(false)}
           className={buttonVariants({ size: "lg", className: "w-full" })}
         >
-          Get in touch
+          {t(UI.sections.contact.heading, lang)}
         </a>
 
         <nav className="flex flex-col gap-1">
@@ -50,13 +51,13 @@ export default function MobileNav() {
               <span className="text-accent">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              {link.label}
+              {t(link.label, lang)}
             </a>
           ))}
         </nav>
 
         <a
-          href={RESUME_HREF}
+          href={RESUME_HREF[lang]}
           target="_blank"
           rel="noopener"
           onClick={() => setOpen(false)}
@@ -66,7 +67,7 @@ export default function MobileNav() {
             className: "mt-auto w-full",
           })}
         >
-          Résumé
+          {t(UI.nav.resume, lang)}
         </a>
       </SheetContent>
     </Sheet>

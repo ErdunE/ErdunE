@@ -11,26 +11,36 @@ import "@fontsource/inter/latin-400.css";
 import "@fontsource/inter/latin-500.css";
 import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/ibm-plex-mono/latin-500.css";
-import { SITE, personJsonLd } from "@/lib/seo";
+import { SITE, META, personJsonLd, localeUrl } from "@/lib/seo";
+import { HTML_LANG, HREFLANG, LOCALES, langOf, t, UI, OG_LOCALE, otherLang } from "@/lib/i18n";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const { title = SITE.title, description = SITE.description } = Astro.props;
+const lang = langOf(Astro.currentLocale);
+const meta = META[lang];
+const { title = meta.title, description = meta.description } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const jsonLd = JSON.stringify(personJsonLd);
+const jsonLd = JSON.stringify(personJsonLd(lang));
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang={HTML_LANG[lang]} data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="canonical" href={canonical} />
+    {/* Every locale lists every locale, itself included, plus x-default. */}
+    {
+      LOCALES.map((l) => (
+        <link rel="alternate" hreflang={HREFLANG[l]} href={localeUrl(l)} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={localeUrl("en")} />
     <meta name="theme-color" content={SITE.themeColorLight} media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content={SITE.themeColorDark} media="(prefers-color-scheme: dark)" />
 
@@ -42,9 +52,10 @@ const jsonLd = JSON.stringify(personJsonLd);
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content={SITE.name} />
-    <meta property="og:locale" content={SITE.locale} />
-    <meta property="og:image" content={SITE.ogImage} />
+    <meta property="og:site_name" content={meta.name} />
+    <meta property="og:locale" content={OG_LOCALE[lang]} />
+    <meta property="og:locale:alternate" content={OG_LOCALE[otherLang(lang)]} />
+    <meta property="og:image" content={meta.ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={title} />
@@ -53,7 +64,7 @@ const jsonLd = JSON.stringify(personJsonLd);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={SITE.ogImage} />
+    <meta name="twitter:image" content={meta.ogImage} />
 
     {/* JSON-LD Person */}
     <script type="application/ld+json" is:inline set:html={jsonLd} />
@@ -84,7 +95,7 @@ const jsonLd = JSON.stringify(personJsonLd);
       href="#main"
       class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-text focus:ring-2 focus:ring-accent"
     >
-      Skip to content
+      {t(UI.skipToContent, lang)}
     </a>
     <slot />
 

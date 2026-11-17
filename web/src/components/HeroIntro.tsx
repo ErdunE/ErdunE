@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { profile } from "@/data/profile";
 import { SIGNATURE_PATH, SIGNATURE_VIEWBOX } from "@/data/signature";
 import { EASE_OUT_EXPO, DURATION } from "@/lib/motion";
+import { type Lang } from "@/lib/i18n";
 
 const { name, heroStatus, tagline, subline, resumeHref } = profile;
 
@@ -11,7 +12,7 @@ const ctaBase =
 const ctaPrimary = `${ctaBase} border-accent bg-accent text-white hover:bg-accent/90 focus-visible:ring-accent`;
 const ctaSecondary = `${ctaBase} border-white/35 bg-transparent text-white hover:bg-white/10 focus-visible:ring-white/60`;
 
-export default function HeroIntro() {
+export default function HeroIntro({ lang }: { lang: Lang }) {
   const reduced = useReducedMotion();
   // client-correct on first client render (window undefined during SSR)
   const [isMobile, setIsMobile] = useState(false);
@@ -104,7 +105,7 @@ export default function HeroIntro() {
         className="mt-8 flex flex-wrap items-center justify-center gap-3"
       >
         <a
-          href={resumeHref}
+          href={resumeHref[lang]}
           target="_blank"
           rel="noopener noreferrer"
           className={ctaPrimary}

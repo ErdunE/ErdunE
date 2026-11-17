@@ -1,8 +1,12 @@
 ---
 import ThemeToggle from "./ThemeToggle.tsx";
 import MobileNav from "./MobileNav.tsx";
+import LangToggle from "./LangToggle.astro";
 import { NAV_LINKS, RESUME_HREF } from "@/lib/nav";
 import { buttonVariants } from "@/components/ui/button";
+import { langOf, t, UI } from "@/lib/i18n";
+
+const lang = langOf(Astro.currentLocale);
 ---
 
 <header
@@ -17,14 +21,14 @@ import { buttonVariants } from "@/components/ui/button";
       Erdun E<span class="inline-block size-2 rounded-full bg-accent"></span>
     </a>
 
-    <nav class="hidden items-center gap-7 md:flex" aria-label="Primary">
+    <nav class="hidden items-center gap-7 md:flex" aria-label={t(UI.nav.label, lang)}>
       {
         NAV_LINKS.map((link) => (
           <a
             href={link.href}
             class="nav-link focus-ring relative rounded-sm font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition-colors hover:text-text"
           >
-            {link.label}
+            {t(link.label, lang)}
           </a>
         ))
       }
@@ -32,18 +36,19 @@ import { buttonVariants } from "@/components/ui/button";
 
     <div class="flex items-center gap-1.5">
       <a
-        href={RESUME_HREF}
+        href={RESUME_HREF[lang]}
         target="_blank"
         rel="noopener"
         class={buttonVariants({ variant: "outline", size: "sm", className: "nav-resume hidden sm:inline-flex" })}
       >
-        Résumé
+        {t(UI.nav.resume, lang)}
       </a>
+      <LangToggle />
       <span class="nav-toggle">
         <ThemeToggle client:load />
       </span>
       <span class="nav-mobile md:hidden">
-        <MobileNav client:load />
+        <MobileNav lang={lang} client:load />
       </span>
     </div>
     {/* Scroll progress fill pinned to the nav's lower edge. */}
@@ -170,6 +175,7 @@ import { buttonVariants } from "@/components/ui/button";
   #site-nav.nav-over-hero .nav-brand,
   #site-nav.nav-over-hero .nav-link,
   #site-nav.nav-over-hero .nav-resume,
+  #site-nav.nav-over-hero .nav-lang,
   #site-nav.nav-over-hero .nav-toggle :global(button),
   #site-nav.nav-over-hero .nav-mobile :global(button) {
     color: #fff;
@@ -179,6 +185,7 @@ import { buttonVariants } from "@/components/ui/button";
   }
   @media (hover: hover) and (pointer: fine) {
     #site-nav.nav-over-hero .nav-resume:hover,
+    #site-nav.nav-over-hero .nav-lang:hover,
     #site-nav.nav-over-hero .nav-toggle :global(button):hover,
     #site-nav.nav-over-hero .nav-mobile :global(button):hover {
       background-color: rgba(255, 255, 255, 0.12);
