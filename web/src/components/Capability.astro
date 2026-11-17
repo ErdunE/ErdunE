@@ -6,6 +6,9 @@ import {
   capabilityContext,
   type CapabilityIcon,
 } from "@/data/capabilities";
+import { langOf, t, UI } from "@/lib/i18n";
+
+const lang = langOf(Astro.currentLocale);
 
 // Map each data-driven icon key to its lucide component.
 const iconFor: Record<CapabilityIcon, typeof Network> = {
@@ -19,8 +22,10 @@ const iconFor: Record<CapabilityIcon, typeof Network> = {
 <section id="capability" class="blueprint border-t border-border py-16 sm:py-20">
   <div class="container-page">
     <div data-reveal-stagger>
-      <p class="eyebrow"><span class="text-accent">03 /</span> Capability</p>
-      <h2 class="h-section mt-2 text-text">How I approach the work</h2>
+      <p class="eyebrow">
+        <span class="text-accent">03 /</span>{" "}{t(UI.sections.capability.eyebrow, lang)}
+      </p>
+      <h2 class="h-section mt-2 text-text">{t(UI.sections.capability.heading, lang)}</h2>
     </div>
 
     <p class="mt-5 max-w-3xl text-pretty text-lg leading-relaxed text-muted" data-reveal>

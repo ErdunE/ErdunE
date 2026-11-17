@@ -1,4 +1,7 @@
 ---
+import { langOf, t, UI } from "@/lib/i18n";
+
+const lang = langOf(Astro.currentLocale);
 const year = new Date().getFullYear();
 ---
 
@@ -8,7 +11,7 @@ const year = new Date().getFullYear();
       © {year} Erdun E
     </p>
     <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
-      Built with Astro · Boston · Indy · Miami · Hangzhou · Shenzhen
+      {t(UI.footer.builtWith, lang)}
     </p>
   </div>
 </footer>

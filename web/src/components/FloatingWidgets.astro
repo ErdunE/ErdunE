@@ -1,4 +1,7 @@
 ---
+import { langOf, t, UI } from "@/lib/i18n";
+
+const lang = langOf(Astro.currentLocale);
 import { Heart } from "lucide-react";
 import { widgets } from "@/config/widgets";
 
@@ -14,7 +17,7 @@ const { stripeDonate } = widgets;
       href={stripeDonate.url}
       target="_blank"
       rel="noopener"
-      aria-label="Donate to Erdun"
+      aria-label={t(UI.widgets.donate, lang)}
       class="widget-stripe-fab fixed bottom-5 left-[88px] z-[9998] h-[55px] items-center gap-1.5 rounded-[var(--radius-pill)] border border-border bg-surface px-4 text-xs font-medium text-text shadow-lg transition-colors hover:border-accent hover:text-accent"
     >
       <Heart className="size-3.5 fill-accent text-accent" />

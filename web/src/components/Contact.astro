@@ -4,7 +4,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { brandIcons } from "@/lib/brand-icons";
 import WeChatDialog from "./WeChatDialog.tsx";
 import EmailCopy from "./EmailCopy.tsx";
-import { langOf } from "@/lib/i18n";
+import { langOf, t, UI } from "@/lib/i18n";
 
 const lang = langOf(Astro.currentLocale);
 const { contact, social, resumeHref, wechatQr } = profile;
@@ -18,8 +18,10 @@ const iconWrap = "flex size-9 shrink-0 items-center justify-center";
 <section id="contact" class="blueprint border-t border-border py-16 sm:py-20">
   <div class="container-page">
     <div data-reveal-stagger>
-      <p class="eyebrow"><span class="text-accent">06 /</span> Contact</p>
-      <h2 class="h-section mt-2 text-text">Get in touch</h2>
+      <p class="eyebrow">
+        <span class="text-accent">06 /</span>{" "}{t(UI.sections.contact.eyebrow, lang)}
+      </p>
+      <h2 class="h-section mt-2 text-text">{t(UI.sections.contact.heading, lang)}</h2>
     </div>
 
     <div class="mt-10 grid gap-6 lg:grid-cols-2" data-reveal-stagger>
@@ -50,18 +52,19 @@ const iconWrap = "flex size-9 shrink-0 items-center justify-center";
 
       {/* Social link grid */}
       <div class="rounded-[var(--radius-card)] border border-border bg-surface-2 p-6">
-        <h3 class="eyebrow">Connect with me</h3>
+        <h3 class="eyebrow">{t(UI.sections.contact.connect, lang)}</h3>
         <div class="mt-4 grid gap-3 sm:grid-cols-2">
           {
             social.map((link) => {
               if (link.id === "wechat") {
-                return <WeChatDialog qrSrc={wechatQr} client:visible />;
+                return <WeChatDialog qrSrc={wechatQr} lang={lang} client:visible />;
               }
               if (link.id === "email") {
                 return (
                   <EmailCopy
                     email={link.detail}
                     mailto={link.href}
+                    lang={lang}
                     client:visible
                   />
                 );

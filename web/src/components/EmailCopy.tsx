@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Mail, Check } from "lucide-react";
+import { type Lang, t, UI } from "@/lib/i18n";
 
 // Click-to-copy email tile. Copies to the clipboard with a brief "Copied"
 // confirmation announced via aria-live; falls back to the mailto link when the
@@ -7,9 +8,11 @@ import { Mail, Check } from "lucide-react";
 export default function EmailCopy({
   email,
   mailto,
+  lang,
 }: {
   email: string;
   mailto: string;
+  lang: Lang;
 }) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<number | undefined>(undefined);
@@ -42,13 +45,13 @@ export default function EmailCopy({
         )}
       </span>
       <span className="min-w-0">
-        <span className="block text-sm font-medium text-text">Email</span>
+        <span className="block text-sm font-medium text-text">{t(UI.email.label, lang)}</span>
         <span className="block text-xs text-muted">
-          {copied ? "Copied!" : email}
+          {copied ? t(UI.email.copied, lang) : email}
         </span>
       </span>
       <span className="sr-only" aria-live="polite">
-        {copied ? "Email address copied to clipboard" : ""}
+        {copied ? t(UI.email.copiedAnnounce, lang) : ""}
       </span>
     </a>
   );

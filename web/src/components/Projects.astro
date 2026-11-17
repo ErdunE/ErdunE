@@ -3,6 +3,9 @@ import { getImage } from "astro:assets";
 import { projects } from "@/data/projects";
 import ProjectsCarousel from "./ProjectsCarousel.tsx";
 import type { ProjItem } from "./ProjectsCarousel.tsx";
+import { langOf, t, UI } from "@/lib/i18n";
+
+const lang = langOf(Astro.currentLocale);
 
 const items: ProjItem[] = await Promise.all(
   projects.map(async (p) => {
@@ -26,10 +29,12 @@ const items: ProjItem[] = await Promise.all(
 
 <section id="projects" class="overflow-hidden border-t border-border py-16 sm:py-20">
   <div class="container-page" data-reveal-stagger>
-    <p class="eyebrow"><span class="text-accent">02 /</span> Projects</p>
-    <h2 class="h-section mt-2 text-text">Things I've shipped</h2>
+    <p class="eyebrow">
+      <span class="text-accent">02 /</span>{" "}{t(UI.sections.projects.eyebrow, lang)}
+    </p>
+    <h2 class="h-section mt-2 text-text">{t(UI.sections.projects.heading, lang)}</h2>
     <p class="mt-3 max-w-3xl text-pretty text-muted">
-      Drag, scroll, or swipe to rotate through the work. Tap the centered card to open it.
+      {t(UI.sections.projects.subtitle, lang)}
     </p>
   </div>
 

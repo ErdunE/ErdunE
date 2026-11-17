@@ -25,7 +25,7 @@ export default function MobileNav({ lang }: { lang: Lang }) {
           <Menu className="size-5" />
         </button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent closeLabel={t(UI.nav.close, lang)}>
         <SheetTitle>{t(UI.nav.menu, lang)}</SheetTitle>
         <SheetDescription className="sr-only">
           {t(UI.nav.menuDescription, lang)}
