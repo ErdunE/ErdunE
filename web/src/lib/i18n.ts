@@ -131,6 +131,13 @@ export const UI = {
   signal: {
     label: { en: "Recent activity", zh: "最近动态" },
     heading: { en: "Recent activity", zh: "最近动态" },
+    sources: {
+      project: { en: "Project", zh: "项目" },
+      event: { en: "Event", zh: "活动" },
+      press: { en: "Press", zh: "报道" },
+      milestone: { en: "Milestone", zh: "里程碑" },
+      note: { en: "Note", zh: "随记" },
+    },
   },
 
   email: {

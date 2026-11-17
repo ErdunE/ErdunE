@@ -2,13 +2,19 @@
 import { Image } from "astro:assets";
 import { ChevronDown } from "lucide-react";
 import { education } from "@/data/education";
+import { formatRange } from "@/lib/dates";
+import { langOf, t, UI } from "@/lib/i18n";
+
+const lang = langOf(Astro.currentLocale);
 ---
 
 <section id="education" class="border-t border-border py-16 sm:py-20">
   <div class="container-page">
     <div data-reveal-stagger>
-      <p class="eyebrow"><span class="text-accent">05 /</span> Education</p>
-      <h2 class="h-section mt-2 text-text">Where I studied</h2>
+      <p class="eyebrow">
+        <span class="text-accent">05 /</span>{" "}{t(UI.sections.education.eyebrow, lang)}
+      </p>
+      <h2 class="h-section mt-2 text-text">{t(UI.sections.education.heading, lang)}</h2>
     </div>
 
     <div class="mt-10 grid items-stretch gap-6 md:grid-cols-2" data-reveal-stagger>
@@ -69,7 +75,7 @@ import { education } from "@/data/education";
                 {edu.location}
               </a>
               {" · "}
-              {edu.time}
+              {formatRange(edu, lang)}
             </p>
 
             <div class="mt-3 flex items-baseline justify-between gap-3">

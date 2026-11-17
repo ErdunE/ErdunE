@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { type Lang, t, UI } from "@/lib/i18n";
 
 export interface ExpLogo {
   src: string;
@@ -62,7 +63,7 @@ function Detail({ text }: { text: string }) {
   );
 }
 
-export default function ExperienceTimeline({ items }: { items: ExpItem[] }) {
+export default function ExperienceTimeline({ items, lang }: { items: ExpItem[]; lang: Lang }) {
   const [active, setActive] = useState(0);
   // -1 / 1: which way the last move went, so the panel swaps along the axis
   // instead of blinking in place.
@@ -115,7 +116,7 @@ export default function ExperienceTimeline({ items }: { items: ExpItem[] }) {
 
         <div
           role="tablist"
-          aria-label="Experience timeline, most recent first"
+          aria-label={t(UI.sections.experience.timeline, lang)}
           className="exp-rail"
           onKeyDown={onKeyDown}
         >

@@ -1,27 +1,16 @@
 ---
-import { log, type LogSource } from "@/data/log";
+import { log } from "@/data/log";
+import { formatDay } from "@/lib/dates";
+import { langOf, t, UI } from "@/lib/i18n";
 
+const lang = langOf(Astro.currentLocale);
 const sorted = [...log].sort((a, b) => b.date.localeCompare(a.date));
-
-const SOURCE_LABEL: Record<LogSource, string> = {
-  project: "Project",
-  event: "Event",
-  press: "Press",
-  milestone: "Milestone",
-  note: "Note",
-};
-
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-function fmtDate(iso: string): string {
-  const [, m, d] = iso.split("-").map(Number);
-  return `${MONTHS[m - 1]} ${d}`;
-}
 ---
 
-<section class="signal-panel" aria-label="Recent activity">
+<section class="signal-panel" aria-label={t(UI.signal.label, lang)}>
   <header class="signal-header">
     <span class="signal-pulse" aria-hidden="true"></span>
-    <span class="signal-heading">Recent activity</span>
+    <span class="signal-heading">{t(UI.signal.heading, lang)}</span>
   </header>
 
   <div class="signal-scroll">
@@ -31,9 +20,9 @@ function fmtDate(iso: string): string {
           <li class="signal-item" style={`--i:${i}`}>
             <div class="signal-meta">
               <time datetime={e.date} class="signal-date">
-                {fmtDate(e.date)}
+                {formatDay(e.date, lang)}
               </time>
-              <span class="signal-tag">{SOURCE_LABEL[e.source]}</span>
+              <span class="signal-tag">{t(UI.signal.sources[e.source], lang)}</span>
             </div>
 
             <div class="signal-body">

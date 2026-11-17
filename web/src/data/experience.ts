@@ -1,4 +1,5 @@
 import type { ImageMetadata } from "astro";
+import type { Dated } from "@/lib/dates";
 import { imageByName } from "@/lib/images";
 
 const imgs = import.meta.glob<{ default: ImageMetadata }>(
@@ -7,7 +8,7 @@ const imgs = import.meta.glob<{ default: ImageMetadata }>(
 );
 const img = imageByName(imgs, "../assets/people/");
 
-export interface Experience {
+export interface Experience extends Dated {
   role: string;
   company: string;
   /** Axis-node label when `company` is too long for a 1/10 slot. */
@@ -15,7 +16,6 @@ export interface Experience {
   /** "contain" for logo art that is not square or would lose its mark
       to an edge-to-edge crop. Defaults to "cover". */
   logoFit?: "cover" | "contain";
-  time: string;
   logo: ImageMetadata | null;
   /** Full detail shown in the dialog. \n\n marks a paragraph break. */
   detail: string;
@@ -25,7 +25,8 @@ export const experience: Experience[] = [
   {
     role: "Senior AI Solutions Architect",
     company: "DJI",
-    time: "Nov 2026 – Present",
+    start: "2026-11",
+    end: null,
     logo: img("DJI.png"),
     detail:
       "Building the business-finance data platform at DJI in Shenzhen: warehouse architecture, turning finance rules and metrics into data models and services, and the data governance underneath.",
@@ -33,7 +34,8 @@ export const experience: Experience[] = [
   {
     role: "Full Stack Engineer",
     company: "MolarData",
-    time: "Aug 2026 – Nov 2026",
+    start: "2026-08",
+    end: "2026-11",
     logo: img("MolarData.jpeg"),
     detail:
       "Built MolarData's unified cross-cloud observability platform and took it to production, onboarding three business lines.",
@@ -41,7 +43,8 @@ export const experience: Experience[] = [
   {
     role: "Software Development Engineer II",
     company: "diGeniusAI",
-    time: "May 2026 – Present",
+    start: "2026-05",
+    end: null,
     logo: img("diGeniusAI.jpeg"),
     detail:
       "Working on diGeniusAI, an AI operating system for multi-unit restaurant and retail operators, where agentic modules coordinate over a single source of truth on a serverless architecture.",
@@ -49,7 +52,8 @@ export const experience: Experience[] = [
   {
     role: "CEO & Founder",
     company: "PromptLint",
-    time: "Aug 2025 – Present",
+    start: "2025-08",
+    end: null,
     logo: img("PromptLint.png"),
     detail:
       "Building PromptLint, an AI prompt quality analysis tool with real-time scoring and rephrase suggestions, launching on web, desktop, mobile and IDE extension.",
@@ -57,7 +61,8 @@ export const experience: Experience[] = [
   {
     role: "Software Dev Manager",
     company: "KidzHack",
-    time: "Jan 2026 – Apr 2026",
+    start: "2026-01",
+    end: "2026-04",
     logo: img("KidzHack.jpeg"),
     detail:
       "Course-based project (CS6966 Practicum). \n\nLed a team of 5 to redesign the alert detection pipeline for Vibes, a K-8 emotional wellness platform. Replaced VADER with Claude AI via AWS Bedrock and designed a five-tier alert classification framework. Delivered a production-ready system on AWS Lambda, DynamoDB, API Gateway, and Bedrock.",
@@ -67,7 +72,8 @@ export const experience: Experience[] = [
     company: "Northeastern University",
     short: "Northeastern",
     logoFit: "contain",
-    time: "Sep 2025 – May 2026",
+    start: "2025-09",
+    end: "2026-05",
     logo: img("NEU.png"),
     detail:
       "CS5100 Programming Design Paradigm (Fall 2025): Led weekly recitations, graded assignments, and held office hours.\n\nCS5800/INFO6205 Algorithms (Spring 2026): Supported students in algorithm design and analysis under Prof. Jia Zhu, including grading and office hours.",
@@ -75,7 +81,8 @@ export const experience: Experience[] = [
   {
     role: "Software Engineer Intern",
     company: "Superstars",
-    time: "May 2025 – Aug 2025",
+    start: "2025-05",
+    end: "2025-08",
     logo: img("Superstars.png"),
     detail:
       "Delivered full story creation workflow in Flutter and authored Contribution Guide to streamline onboarding.",
@@ -83,7 +90,8 @@ export const experience: Experience[] = [
   {
     role: "Co-founder & President",
     company: "Miami Tech Club",
-    time: "Jan 2025 – May 2026",
+    start: "2025-01",
+    end: "2026-05",
     logo: img("Miami_tech_club_logo.jpg"),
     detail:
       "Leading the Miami Tech Club at Northeastern, organized events like Leetcode challenges and participated in the East Coast Student Leadership Retreat.",
@@ -91,7 +99,8 @@ export const experience: Experience[] = [
   {
     role: "Student Ambassador",
     company: "Khoury College",
-    time: "Nov 2024 – May 2026",
+    start: "2024-11",
+    end: "2026-05",
     logo: img("NEU_Khoury_Logo.jpg"),
     detail:
       "Supporting Khoury College at the Miami campus by collaborating with directors, advisors, and peers to build student community and lead events.",
@@ -99,7 +108,8 @@ export const experience: Experience[] = [
   {
     role: "Software Development Engineer",
     company: "Amazon Web Services",
-    time: "Aug 2021 – Jun 2023",
+    start: "2021-08",
+    end: "2023-06",
     logo: img("AWS_Logo.jpeg"),
     detail:
       "Led firmware testing and performance evaluation for Amazon EBS, improving system stability and supporting deployments across 20,000+ servers. Worked across teams to unblock releases, reduce operational risk, and improve reliability in large-scale production environments.",
@@ -108,7 +118,7 @@ export const experience: Experience[] = [
     role: "More",
     company: "Additional",
     short: "More",
-    time: "",
+    // no dates — this entry is the catch-all
     logo: null,
     detail: "Additional academic, leadership, and internship experience.",
   },

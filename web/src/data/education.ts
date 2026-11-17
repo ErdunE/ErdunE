@@ -1,4 +1,5 @@
 import type { ImageMetadata } from "astro";
+import type { Dated } from "@/lib/dates";
 import { imageByName } from "@/lib/images";
 
 const imgs = import.meta.glob<{ default: ImageMetadata }>(
@@ -12,14 +13,13 @@ export interface Award {
   href?: string;
 }
 
-export interface Education {
+export interface Education extends Dated {
   school: string;
   schoolHref: string;
   college: string;
   collegeHref: string;
   location: string;
   locationHref: string;
-  time: string;
   degree: string;
   gpa: string;
   logo: ImageMetadata;
@@ -36,7 +36,8 @@ export const education: Education[] = [
     collegeHref: "https://www.khoury.northeastern.edu/",
     location: "Miami, FL",
     locationHref: "https://miami.northeastern.edu/",
-    time: "Sep 2024 – May 2026",
+    start: "2024-09",
+    end: "2026-05",
     degree: "M.S. in Computer Science",
     gpa: "4.00",
     logo: img("NEU.png"),
@@ -74,7 +75,8 @@ export const education: Education[] = [
     collegeHref: "https://www.uml.edu/",
     location: "Lowell, MA",
     locationHref: "https://www.uml.edu/Sciences/",
-    time: "May 2016 – Dec 2020",
+    start: "2016-05",
+    end: "2020-12",
     degree: "B.S. in Computer Science",
     gpa: "3.20",
     logo: img("Umass.png"),

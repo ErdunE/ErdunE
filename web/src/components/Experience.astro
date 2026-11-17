@@ -3,47 +3,21 @@ import { getImage } from "astro:assets";
 import { experience } from "@/data/experience";
 import ExperienceTimeline from "./ExperienceTimeline.tsx";
 import type { ExpItem } from "./ExperienceTimeline.tsx";
+import { endKey, endLabel, formatRange, startKey } from "@/lib/dates";
+import { langOf, t, UI } from "@/lib/i18n";
 
-/**
- * Axis segment label for one entry: the year the role ended, or "Now" while it
- * is current. `time` stays the single source of truth, so adding a role needs
- * no second date field. An unparseable value yields "", which just means that
- * node sits under no tick.
- */
-function endLabel(time: string): string {
-  if (!time) return "";
-  const right = time.split("–").pop()?.trim() ?? "";
-  if (/present/i.test(right)) return "Now";
-  return right.match(/\d{4}/)?.[0] ?? "";
-}
-
-const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
-
-/** "Aug 2026" -> 202608. "Present" -> Infinity. Unparseable -> -Infinity. */
-function monthKey(part: string): number {
-  const p = part.trim();
-  if (/present/i.test(p)) return Number.POSITIVE_INFINITY;
-  const year = p.match(/\d{4}/)?.[0];
-  if (!year) return Number.NEGATIVE_INFINITY;
-  const month = MONTHS.indexOf(p.slice(0, 3).toLowerCase()) + 1;
-  return Number(year) * 100 + (month || 1);
-}
+const lang = langOf(Astro.currentLocale);
 
 /**
  * The axis has to read monotonically, so order is derived rather than taken
  * from the array: most recent end first, then most recent start. Current roles
  * tie at the front, which keeps PromptLint from being buried behind a course
  * project that merely started later. Entries with no dates sort last.
- * Adding a role means appending it anywhere; the order follows from `time`.
+ * Adding a role means appending it anywhere; the order follows from the dates.
  */
-const ordered = [...experience].sort((a, b) => {
-  if (!a.time !== !b.time) return a.time ? -1 : 1;
-  const [aStart, aEnd] = a.time.split("–");
-  const [bStart, bEnd] = b.time.split("–");
-  const byEnd = monthKey(bEnd ?? "") - monthKey(aEnd ?? "");
-  if (byEnd) return byEnd;
-  return monthKey(bStart ?? "") - monthKey(aStart ?? "");
-});
+const ordered = [...experience].sort(
+  (a, b) => endKey(b) - endKey(a) || startKey(b) - startKey(a),
+);
 
 const items: ExpItem[] = await Promise.all(
   ordered.map(async (e) => {
@@ -61,8 +35,8 @@ const items: ExpItem[] = await Promise.all(
       role: e.role,
       company: e.company,
       short: e.short ?? e.company,
-      time: e.time,
-      end: endLabel(e.time),
+      time: formatRange(e, lang),
+      end: endLabel(e, lang),
       logoFit: e.logoFit ?? "cover",
       detail: e.detail,
       logo,
@@ -74,15 +48,17 @@ const items: ExpItem[] = await Promise.all(
 <section id="experience" class="border-t border-border py-16 sm:py-20">
   <div class="container-page">
     <div data-reveal-stagger>
-      <p class="eyebrow"><span class="text-accent">01 /</span> Experience</p>
-      <h2 class="h-section mt-2 text-text">Where I've built</h2>
+      <p class="eyebrow">
+        <span class="text-accent">01 /</span>{" "}{t(UI.sections.experience.eyebrow, lang)}
+      </p>
+      <h2 class="h-section mt-2 text-text">{t(UI.sections.experience.heading, lang)}</h2>
       <p class="mt-3 max-w-3xl text-pretty text-muted">
-        Roles across engineering, teaching, and founding, most recent first.
+        {t(UI.sections.experience.subtitle, lang)}
       </p>
     </div>
 
     <div class="mt-10" data-reveal>
-      <ExperienceTimeline items={items} client:visible />
+      <ExperienceTimeline items={items} lang={lang} client:visible />
     </div>
   </div>
 </section>
