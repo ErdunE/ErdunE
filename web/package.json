@@ -7,7 +7,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "fonts": "node scripts/subset-cjk.mjs",
+    "prebuild": "node scripts/subset-cjk.mjs"
   },
   "dependencies": {
     "@astrojs/react": "4.4.2",
@@ -32,6 +34,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "@fontsource/noto-sans-sc": "^5.3.1",
+    "subset-font": "^2.9.0",
     "typescript": "5.9.3"
   }
 }

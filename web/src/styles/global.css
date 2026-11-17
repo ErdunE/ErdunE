@@ -1200,3 +1200,41 @@
   position: relative;
   z-index: 1;
 }
+
+/* ── Chinese typography ──────────────────────────────────────────────────── */
+
+/*
+ * Noto Sans SC is named only in the Chinese document's stacks, not in the base
+ * tokens. unicode-range alone was not enough: the English page renders 小红书
+ * in Contact, which matched the CJK range and pulled the whole 109 KB face
+ * down for three characters. Scoping by the document's lang attribute keeps
+ * the English page exactly as it was — those three glyphs fall back to the
+ * system CJK font, as they always did — and costs the Chinese page nothing.
+ *
+ * The Latin face still leads each stack, so Latin inside Chinese copy ("AI
+ * 解决方案架构师") keeps rendering in Space Grotesk and Inter.
+ */
+html[lang="zh-Hans"] {
+  --font-display: "Space Grotesk", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "Noto Sans SC", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Chinese has no ascenders or descenders to breathe around, and no spaces to
+   open up a line, so the Latin rhythm reads cramped. Slightly looser lines and
+   a hair of tracking; headings stay tight because they are large. */
+html[lang="zh-Hans"] body {
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+html[lang="zh-Hans"] .h-section,
+html[lang="zh-Hans"] .h-card,
+html[lang="zh-Hans"] h1,
+html[lang="zh-Hans"] h2,
+html[lang="zh-Hans"] h3 {
+  letter-spacing: 0.01em;
+}
+/* Mono labels are set with wide Latin tracking that looks gappy on ideographs. */
+html[lang="zh-Hans"] .eyebrow {
+  letter-spacing: 0.08em;
+}

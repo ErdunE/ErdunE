@@ -1,9 +1,10 @@
 ---
 import "../styles/global.css";
 
-// Self-hosted fonts (spec §4.2): no external font CDN. Latin subset only
-// (all visible glyphs are Latin + U+2000-206F punctuation; 小红书 / emoji use
-// system fallback), which trims the emitted woff2 payload sharply.
+// Self-hosted fonts (spec §4.2): no external font CDN. The Latin faces ship
+// their latin subset only, which trims the emitted woff2 payload sharply.
+// Chinese comes from a build-time subset of Noto Sans SC — see
+// scripts/subset-cjk.mjs and the @font-face block below.
 import "@fontsource/space-grotesk/latin-500.css";
 import "@fontsource/space-grotesk/latin-600.css";
 import "@fontsource/space-grotesk/latin-700.css";
@@ -11,6 +12,7 @@ import "@fontsource/inter/latin-400.css";
 import "@fontsource/inter/latin-500.css";
 import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/ibm-plex-mono/latin-500.css";
+import "@/styles/cjk-font.css";
 import { SITE, META, personJsonLd, localeUrl } from "@/lib/seo";
 import { HTML_LANG, HREFLANG, LOCALES, langOf, t, UI, OG_LOCALE, otherLang } from "@/lib/i18n";
 
