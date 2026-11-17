@@ -31,12 +31,38 @@ const other = otherLang(lang);
 </a>
 
 <script is:inline>
-  // Carry the reader's place across the switch: /#projects -> /zh/#projects.
-  // Progressive only — without JS the link still lands on the other home page.
+  // Carry the reader's place across the switch. A hash is only present if they
+  // arrived by a nav link, so otherwise work out which section they are looking
+  // at — without it, switching halfway down the page dumps them at the top.
+  //
+  // Whichever section fills most of the viewport wins. Two simpler rules both
+  // failed at an end: the nav's scroll-spy keeps its last section marked after
+  // you scroll back up to the hero, and "topmost section above the nav" can
+  // never name the last section, whose top cannot be scrolled past the nav once
+  // the page has hit its bottom. Under a third of the viewport means nothing
+  // has taken over yet — the hero — and "" is the right answer there.
   (function () {
+    function here() {
+      if (location.hash) return location.hash;
+      var vh = window.innerHeight;
+      var best = "";
+      var bestVisible = 0;
+      document.querySelectorAll("#site-nav .nav-link").forEach(function (link) {
+        var id = link.getAttribute("href");
+        var el = id && id.charAt(0) === "#" && document.querySelector(id);
+        if (!el) return;
+        var r = el.getBoundingClientRect();
+        var visible = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+        if (visible > bestVisible) {
+          bestVisible = visible;
+          best = id;
+        }
+      });
+      return bestVisible > vh / 3 ? best : "";
+    }
     document.querySelectorAll("[data-lang-switch]").forEach(function (a) {
       a.addEventListener("click", function () {
-        if (location.hash) a.setAttribute("href", a.pathname + location.hash);
+        a.setAttribute("href", a.pathname + here());
       });
     });
   })();
