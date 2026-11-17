@@ -119,54 +119,67 @@ leave the two locales out of sync. Cost: data files grow ~60%.
 
 ### 4.2 Keeps its original form — and why
 
-Two categories, both for **factual accuracy**, not convenience:
+Researched 2026-11-17. Three categories, all for **factual accuracy**:
 
 1. **Technology product names** — `React`, `Python`, `TypeScript`, `MongoDB`,
    `AWS Lambda`, `DynamoDB`, `Flutter`, `Next.js`, `TensorFlow`, `Astro`,
-   `Tailwind CSS`. Chinese technical writing uses these in Latin script; there
-   is no Chinese form a reader would recognise. This splits the tag list in two
-   — product names stay, descriptive phrases (§4.1) translate.
+   `Tailwind CSS`, `Amazon Elastic Block Store`. Chinese technical writing uses
+   these in Latin script — AWS's own Chinese documentation keeps
+   "Amazon Elastic Block Store (Amazon EBS)" in English under the Chinese
+   corporate name. This splits the tag list in two: product names stay,
+   descriptive phrases (§4.1) translate.
 
-2. **Names and employers in testimonials, and small companies with no
-   registered Chinese name** — `Jay Rodriguez`, `Aegis IT Solutions`,
-   `Bite Buddy AI`, `Digital Grandparents Inc`, `G1 Innovations`, `KidzHack`,
-   `Miami Tech Club`, `The Daily Benji`, `diGeniusAI`, `Superstars`.
+2. **Companies with no Chinese name** — searched and confirmed to have no
+   Chinese registration, Chinese-language site or established Chinese rendering:
+   `Aegis IT Solutions` (Fair Lawn, NJ), `G1 Innovations`,
+   `Digital Grandparents Inc` (Chatham, NY, a 501(c)(3)), `Bite Buddy AI`,
+   `The Daily Benji`, `KidzHack`, `Miami Tech Club`, `Superstars`,
+   `diGeniusAI`. Inventing one would make the employer unsearchable and, for
+   the testimonial entries, misstate a real person's employer.
 
-   Every testimonial card links to that person's LinkedIn. A transliterated
-   name on the card and an English name behind the link do not match, and a
-   Chinese company name that does not exist cannot be searched or verified.
-   Inventing one would misstate a real person's employer.
+3. **Personal names** — all 29 testimonial authors. Every card links to that
+   person's LinkedIn; a transliterated name on the card and an English name
+   behind the link do not match, and no standard Chinese form exists for them.
 
-   **STATUS: proposed, awaiting Erdun's confirmation.** This is the one place
-   the §0 principle is not applied literally.
+Note the rule turns on **whether a Chinese name exists**, not on whose employer
+it is. Universities that appear as testimonial employers (`University of
+Florida`, `Arizona State University`, …) all have standard Chinese names and
+are translated — there is nothing to mismatch.
 
-`PromptLint` is Erdun's own project — he can give it a Chinese name, so it is
-not in category 2.
+`PromptLint` is Erdun's own project; he can name it in Chinese, so it is not in
+category 2.
 
-### 4.3 Glossary (locked terminology)
+### 4.3 Glossary (verified 2026-11-17)
 
-Organisations with an official or settled Chinese name:
+**Organisations — translated**
 
-| English | 中文 | Note |
+| English | 中文 | Source / note |
 |---|---|---|
-| DJI | 大疆创新 | official |
-| Amazon Web Services | 亚马逊云科技 | official China brand |
-| Amazon Elastic Block Store (EBS) | 亚马逊弹性块存储 | |
-| MolarData | 整数智能 | the company's actual Chinese name |
+| DJI | 大疆创新 | brand name; full entity 深圳市大疆创新科技有限公司 |
+| Amazon Web Services | 亚马逊云科技 | official Chinese brand since March 2021 |
+| MolarData | 整数智能 | entity 整数智能信息技术（杭州）有限责任公司 |
 | Google | 谷歌 | official |
 | Microsoft | 微软 | official |
 | Tencent | 腾讯 | already Chinese |
-| Northeastern University | 美国东北大学 | **"美国" is required** — `东北大学` alone is the Shenyang university |
-| Arizona State University | 亚利桑那州立大学 | |
-| Saint Louis University | 圣路易斯大学 | |
-| University of Florida | 佛罗里达大学 | |
-| University of Massachusetts Lowell | 马萨诸塞大学洛厄尔分校 | |
-| UNC Charlotte | 北卡罗来纳大学夏洛特分校 | |
-| Massachusetts State Police | 马萨诸塞州警察局 | |
-| Khoury College of Computer Science | — | **TO VERIFY** — no official Chinese name found |
-| Kennedy College of Sciences | — | **TO VERIFY** |
+| Northeastern University | 美国东北大学 | **"美国" required** — zh-Wikipedia disambiguates as 东北大学（美国）; bare 东北大学 is the Shenyang university |
+| Northeastern University – Miami | 美国东北大学迈阿密校区 | |
+| Khoury College of Computer Sciences | 库里计算机科学学院 | no official name; 库里 is the prevailing form in Chinese study-abroad sources |
+| University of Massachusetts Lowell | 马萨诸塞大学洛厄尔分校 | mainland standard (麻省大学… is the HK/TW variant) |
+| Kennedy College of Sciences | 肯尼迪理学院 | compositional — 肯尼迪 is the standard form of the surname |
+| Arizona State University | 亚利桑那州立大学 | standard |
+| Saint Louis University | 圣路易斯大学 | standard |
+| University of Florida | 佛罗里达大学 | standard |
+| UNC Charlotte | 北卡罗来纳大学夏洛特分校 | standard |
+| Massachusetts State Police | 马萨诸塞州警察局 | standard |
+| Additional *(the "More" entry)* | 其他经历 | |
 
-Roles and degrees:
+**Organisations — kept in English** (§4.2 category 2)
+
+`Aegis IT Solutions` · `Bite Buddy AI` · `Digital Grandparents Inc` ·
+`G1 Innovations` · `KidzHack` · `Miami Tech Club` · `Superstars` ·
+`The Daily Benji` · `diGeniusAI` · `Amazon Elastic Block Store (EBS)`
+
+**Roles and degrees**
 
 | English | 中文 |
 |---|---|
@@ -183,14 +196,40 @@ Roles and degrees:
 | M.S. in Computer Science | 计算机科学硕士 |
 | B.S. in Computer Science | 计算机科学学士 |
 
-Places: `Shenzhen` 深圳 · `Hangzhou` 杭州 · `Boston` 波士顿 · `Indy` 印第安纳波利斯 · `Miami, FL` 美国佛罗里达州迈阿密 · `Lowell, MA` 美国马萨诸塞州洛厄尔
+**Places** — `Shenzhen` 深圳 · `Hangzhou` 杭州 · `Boston` 波士顿 ·
+`Indy` 印第安纳波利斯 · `Miami, FL` 美国佛罗里达州迈阿密 ·
+`Lowell, MA` 美国马萨诸塞州洛厄尔
 
-Platforms: `LinkedIn` 领英 · `WeChat` 微信 · `小红书` unchanged · `GitHub` / `WhatsApp` unchanged (no official Chinese name)
+**Platforms** — `LinkedIn` 领英 · `WeChat` 微信 · `小红书` unchanged ·
+`GitHub` / `WhatsApp` unchanged (no Chinese name).
+领英职场 (InCareer) closed in August 2023, but 领英 remains LinkedIn's Chinese
+brand and is what a Chinese reader recognises.
+
+**Publications** — `Khoury News` 库里学院新闻 (appears twice in `log.ts`)
 
 ### 4.4 Tone
 
 `profile.contact.intro` is deliberately **third person** ("Have a cool open
 source project Erdun can help with?"). Keep third person in Chinese.
+
+### 4.5 English-side errors found while verifying names
+
+Both pre-date this work and are independent of i18n. **Not fixed — awaiting
+Erdun's confirmation**, because they state his own credentials.
+
+1. `education.ts:35` — `"Khoury College of Computer Science"`. The official
+   name is **"Khoury College of Computer Sciences"** (plural). Named for
+   alumnus and trustee Amin Khoury after his 2018 gift.
+
+2. `education.ts:71` — `school: "University of Massachusetts"` with
+   `schoolHref: "https://www.massachusetts.edu/"`, which is the **UMass system**,
+   not a campus. Every other field on that entry points at Lowell
+   (`Kennedy College of Sciences`, `Lowell, MA`, `uml.edu`), so the degree reads
+   as if it came from the system office. Likely should be
+   `"University of Massachusetts Lowell"` / `https://www.uml.edu/`.
+
+Also cosmetic: `testimonials.ts:90` uses a hyphen in
+`"Northeastern University - Miami"` where lines 45 and 134 use an en dash.
 
 ---
 
