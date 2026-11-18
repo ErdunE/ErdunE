@@ -23,6 +23,23 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
+    // The only entry written in Chinese; every other quote was written in
+    // English and translated. The Chinese is the original, trimmed by eight
+    // characters to clear the card's six-line limit — the author wrote
+    // "他始终保持着学习的热情，能够在实际工作中不断反思、学习和迭代自己。" and the cut
+    // phrase is already implied by the rest of the sentence. Restoring it
+    // costs the closing line, which is the part worth keeping.
+    quote: {
+      en: "Erdun takes real initiative and is deeply committed to his work. He holds his own standards on the details and thinks things through before calling them done. He keeps learning and iterating on himself — that is what I admire in him.",
+      zh: "尔敦是一个主观能动性很强、对工作有着高度投入感的人。他对工作中的细节有自己的坚持，愿意花时间深入研究，把事情想清楚、做到位。更难得的是，他始终保持着学习的热情，不断反思、学习和迭代自己。这种认真、主动且持续成长的特质，是我非常欣赏他的地方。",
+    },
+    name: "Michael Han",
+    title: { en: "Head of Talent", zh: "人才负责人" },
+    company: { en: "MolarData", zh: "整数智能" },
+    linkedin: "https://www.linkedin.com/in/michaehanco/",
+    avatar: img("Michael.jpeg"),
+  },
+  {
     quote: {
       en: "Working with Erdun has been a pleasure. He brings professionalism, curiosity, and a genuine desire to uplift others, creating a collaborative and inclusive environment where everyone feels valued.",
       zh: "和额尔敦共事是件愉快的事。他身上有专业、好奇心，还有一种发自内心想把身边人托起来的劲头，总能营造出让每个人都被看见的协作氛围。",

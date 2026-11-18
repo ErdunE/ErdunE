@@ -54,7 +54,19 @@ only.
 year. Same convention the experience axis already uses — print the larger unit
 only when it changes.
 
-### 2.2 The English résumé is seven months old
+### 2.2 One testimonial is clipped mid-sentence
+`Juan F. Gonzalez`'s English quote needs seven lines in a card that shows six,
+so it ends in an ellipsis. Measured in a browser, not estimated — a card holds
+about 230 English characters or 126 Chinese ones at 340px, and his is 252.
+
+It is the only one of the 29 that clips, in either language, which makes it
+read as a bug rather than a convention.
+
+**Fix:** either tighten the English by ~25 characters, which is an edit to
+someone's words and needs his nod, or give the quote a seventh line, which
+means a taller card and a changed rhythm for the whole marquee.
+
+### 2.3 The English résumé is seven months old
 `public/resume/Resume_of_ErdunE_2026_04_16.pdf`. The Chinese one is from
 2026-10-18 and names DJI; the English one predates MolarData, diGeniusAI and
 DJI, so the site's own experience section contradicts the PDF a visitor
@@ -62,7 +74,7 @@ downloads.
 
 **Needs Erdun:** a current English PDF. Code change is one filename.
 
-### 2.3 The root README still describes the old site
+### 2.4 The root README still describes the old site
 Last touched 2026-02-03, before the rebuild. The repo's default branch is what
 a visitor from LinkedIn or GitHub search lands on.
 

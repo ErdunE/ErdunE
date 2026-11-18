@@ -112,9 +112,13 @@ export const UI = {
         en: "A few words from people Erdun has worked, built, and taught alongside.",
         zh: "来自与额尔敦共事、合作和一起教过课的人。",
       },
+      // Quotes come in both languages now, so each locale shows some
+      // originals and some translations. Stated at the section rather than
+      // per card: marking every card costs the quote a line of its six, which
+      // would clip 28 cards to disclose one.
       translatedNote: {
-        en: "",
-        zh: "以上评价原文为英文，此处为中文翻译。",
+        en: "These comments were written in English or Chinese, and appear here in English.",
+        zh: "以上评价原文为英文或中文，此处统一以中文呈现。",
       },
     },
     education: {
