@@ -11,6 +11,8 @@ export interface TItem {
   title: string;
   company: string;
   linkedin?: string;
+  /** Short enough to be set as a pull quote rather than a paragraph. */
+  aphorism?: boolean;
   avatar: TAvatar;
 }
 
@@ -29,7 +31,18 @@ function Card({ t, hidden }: { t: TItem; hidden?: boolean }) {
       aria-hidden={hidden}
       className="marquee-card rounded-[var(--radius-card)] border border-border bg-surface p-5 transition-colors duration-150 ease-[var(--ease-brand)] hover:border-accent"
     >
-      <blockquote className="line-clamp-6 text-sm leading-relaxed text-muted">
+      {/* An aphorism is set larger and floated to the card's middle. At body
+          size it occupies one line of six and the card reads unfinished;
+          this is a flag on the data rather than a length threshold, because
+          the Chinese runs 13 characters and the English 63, which would
+          collide with the shortest ordinary quote. */}
+      <blockquote
+        className={
+          t.aphorism
+            ? "my-auto line-clamp-6 text-lg leading-relaxed text-muted"
+            : "line-clamp-6 text-sm leading-relaxed text-muted"
+        }
+      >
         &ldquo;{t.quote}&rdquo;
       </blockquote>
       <figcaption className="mt-auto flex items-center gap-3 pt-4">

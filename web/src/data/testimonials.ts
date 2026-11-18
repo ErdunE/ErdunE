@@ -1,6 +1,6 @@
 import type { ImageMetadata } from "astro";
 import { imageByName } from "@/lib/images";
-import type { I18nText } from "@/lib/i18n";
+import type { I18nText, MaybeI18n } from "@/lib/i18n";
 
 const imgs = import.meta.glob<{ default: ImageMetadata }>(
   "../assets/people/*.{jpg,jpeg,png,webp,svg}",
@@ -10,18 +10,43 @@ const img = imageByName(imgs, "../assets/people/");
 
 export interface Testimonial {
   quote: I18nText;
-  /** Not translated: the card links to this person's LinkedIn (§4.2). */
-  name: string;
+  /**
+   * Usually a plain string, left in English because the card links to that
+   * person's LinkedIn and a transliteration would not match it (§4.2). An
+   * entry with no LinkedIn and a real name in both scripts can carry both.
+   */
+  name: MaybeI18n;
   title: I18nText;
   /** Translated only where a Chinese name exists (§4.2). */
   company: I18nText;
   /** Public LinkedIn profile. Omitted where none is known; the name then
       renders as plain text instead of a link. */
   linkedin?: string;
+  /**
+   * Set for a quote that is an aphorism rather than a paragraph. The card
+   * then sets it larger and centres it, so a deliberately short endorsement
+   * reads as composed rather than as a card someone forgot to fill.
+   */
+  aphorism?: boolean;
   avatar: ImageMetadata;
 }
 
 export const testimonials: Testimonial[] = [
+  {
+    // Written in Chinese, as a 4-4-4 aphorism. Translating it into a sentence
+    // would lose the form, so the English keeps three beats too.
+    quote: {
+      en: "Trustworthy. Delivers beyond expectation. Always moving forward.",
+      zh: "值得信任，创造惊喜，始终向前",
+    },
+    // No LinkedIn to mismatch, and the name has a settled form in both
+    // scripts, so unlike the other entries this one is translated (§4.2).
+    name: { en: "Yang Yi (YY)", zh: "杨易（YY）" },
+    title: { en: "VP", zh: "副总裁" },
+    company: { en: "MolarData", zh: "整数智能" },
+    aphorism: true,
+    avatar: img("YangYi.jpeg"),
+  },
   {
     // The only entry written in Chinese; every other quote was written in
     // English and translated. The Chinese is the original, trimmed by eight

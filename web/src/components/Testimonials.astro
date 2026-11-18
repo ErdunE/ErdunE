@@ -17,10 +17,11 @@ const items: TItem[] = await Promise.all(
     });
     return {
       quote: t(item.quote, lang),
-      name: item.name,
+      name: t(item.name, lang),
       title: t(item.title, lang),
       company: t(item.company, lang),
       linkedin: item.linkedin,
+      aphorism: item.aphorism,
       avatar: { src: img.src, srcSet: img.srcSet.attribute },
     };
   }),
