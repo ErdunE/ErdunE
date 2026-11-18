@@ -40,7 +40,7 @@ const lang = langOf(Astro.currentLocale);
         href={RESUME_HREF[lang]}
         target="_blank"
         rel="noopener"
-        class={buttonVariants({ variant: "outline", size: "sm", className: "nav-resume hidden sm:inline-flex" })}
+        class={buttonVariants({ variant: "outline", size: "sm", className: "nav-resume" })}
       >
         {t(UI.nav.resume, lang)}
       </a>
@@ -132,6 +132,18 @@ const lang = langOf(Astro.currentLocale);
 </script>
 
 <style>
+  /* `hidden sm:inline-flex` never worked on this button. buttonVariants' base
+     already sets inline-flex, Tailwind emits .inline-flex after .hidden, and at
+     equal specificity the later rule wins — so the résumé button has been
+     showing on mobile all along, at 36px beside a 44px language switcher sized
+     for a layout where it was absent. The résumé is in the mobile menu, so hide
+     it here with a rule that cannot lose on source order. */
+  @media (width < 40rem) {
+    #site-nav .nav-resume {
+      display: none;
+    }
+  }
+
   /* Scroll progress fill on the nav's lower edge. JS sets scaleX each frame so
      it tracks scroll 1:1 (no transition). Invisible at the top (scaleX 0). */
   .nav-progress {
