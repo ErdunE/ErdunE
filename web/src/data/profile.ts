@@ -26,11 +26,11 @@ export const profile = {
   },
   tagline: {
     en: "builder · engineer · always shipping",
-    zh: "做东西的人 · 工程师 · 一直在交付",
+    zh: "做东西 · 工程师 · 一直在交付",
   },
   subline: {
     en: "Lifelong big-mountain skier. Former Software Engineer at Amazon.",
-    zh: "常年滑大山的人。曾任亚马逊软件工程师。",
+    zh: "常年滑野雪。前亚马逊软件工程师。",
   },
   resumeHref: RESUME_HREF,
 
@@ -42,11 +42,11 @@ export const profile = {
     // Third person on purpose, in both locales.
     intro: {
       en: "Want to build something together?\nHave a cool open source project Erdun can help with?\nOr just want to chat tech, drop him a line!",
-      zh: "想一起做点什么吗？\n有有意思的开源项目需要额尔敦搭把手？\n或者只是想聊聊技术，给他留个言吧！",
+      zh: "想一起做点什么吗？\n有好玩的开源项目想拉额尔敦搭把手？\n或者只是想聊聊技术，给他留个言吧！",
     },
     detail: {
       en: "He is interested in working on challenging projects. Feel free to reach out through any of the channels.",
-      zh: "他对有挑战性的项目感兴趣。下面任何一个渠道都能找到他。",
+      zh: "他喜欢做有挑战的项目。下面任何一个渠道都能找到他。",
     },
     resumeLabel: { en: "View My Resume", zh: "查看我的简历" },
   },
@@ -89,7 +89,7 @@ export const profile = {
     {
       id: "xiaohongshu",
       name: { en: "小红书", zh: "小红书" },
-      detail: { en: "RedNote", zh: "主页" },
+      detail: { en: "RedNote", zh: "看我的笔记" },
       href: "https://xhslink.com/m/4lKgPEuKzoA",
     },
   ] satisfies SocialLink[],

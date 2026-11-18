@@ -54,7 +54,7 @@ export const projects: Project[] = [
     tags: [{ en: "Flutter", zh: "Flutter" }, { en: "Bloc", zh: "Bloc" }, { en: "Firebase", zh: "Firebase" }, { en: "Mobile Architecture", zh: "移动端架构" }],
     descPrimary: {
       en: "A video-first professional hiring and networking mobile platform.",
-      zh: "以视频为核心的职业招聘与人脉社交移动平台。",
+      zh: "以视频为主的招聘与职场社交移动平台。",
     },
     descSecondary: {
       en: "Implemented end-to-end story creation workflows with clean architecture, state management, and media processing.",
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     tags: [{ en: "Computer Vision", zh: "计算机视觉" }, { en: "CNN", zh: "卷积神经网络" }, { en: "TensorFlow", zh: "TensorFlow" }, { en: "Deep Learning", zh: "深度学习" }],
     descPrimary: {
       en: "A deep learning system for traffic sign classification and recognition.",
-      zh: "用于交通标志分类与识别的深度学习系统。",
+      zh: "识别并分类交通标志的深度学习系统。",
     },
     descSecondary: {
       en: "Trained CNN models on the GTSRB dataset with image augmentation and performance evaluation pipelines.",
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     tags: [{ en: "Android", zh: "Android" }, { en: "MySQL", zh: "MySQL" }, { en: "REST API", zh: "REST API" }, { en: "Full Stack", zh: "全栈" }],
     descPrimary: {
       en: "A full-stack mobile app for personalized coffee tasting and journaling.",
-      zh: "一个做个性化咖啡品鉴与记录的全栈移动应用。",
+      zh: "把每一杯咖啡的风味记下来，全栈移动应用。",
     },
     descSecondary: {
       en: "Supports flavor profiling, brew tracking, and backend-driven data persistence via RESTful APIs.",
@@ -96,11 +96,11 @@ export const projects: Project[] = [
     tags: [{ en: "Kotlin", zh: "Kotlin" }, { en: "Firebase", zh: "Firebase" }, { en: "MVVM", zh: "MVVM" }, { en: "Mobile UX", zh: "移动端体验" }],
     descPrimary: {
       en: "A gamified habit-tracking Android application.",
-      zh: "一个游戏化的习惯打卡 Android 应用。",
+      zh: "把习惯打卡做成游戏的 Android 应用。",
     },
     descSecondary: {
       en: "Designed with MVVM architecture, real-time sync, and streak-based habit visualization.",
-      zh: "采用 MVVM 架构，支持实时同步和基于连续天数的习惯可视化。",
+      zh: "MVVM 架构，实时同步，用连续天数把习惯画出来。",
     },
   },
   {
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     tags: [{ en: "JavaFX", zh: "JavaFX" }, { en: "Recommendation System", zh: "推荐系统" }, { en: "API Integration", zh: "API 对接" }, { en: "Desktop Application", zh: "桌面应用" }],
     descPrimary: {
       en: "A desktop-based movie recommendation application.",
-      zh: "一个桌面端的影视推荐应用。",
+      zh: "桌面端的影视推荐应用。",
     },
     descSecondary: {
       en: "Integrates TMDB API to filter and rank movies by genre, popularity, language, and release year.",
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     tags: [{ en: "Machine Learning", zh: "机器学习" }, { en: "KNN", zh: "K 近邻算法" }, { en: "Data Visualization", zh: "数据可视化" }, { en: "Python", zh: "Python" }],
     descPrimary: {
       en: "An interactive visualization tool for the k-Nearest Neighbors algorithm.",
-      zh: "一个 K 近邻算法的交互式可视化工具。",
+      zh: "K 近邻算法的交互式可视化工具。",
     },
     descSecondary: {
       en: "Enables real-time adjustment of K values and distance metrics with visual decision boundaries.",
@@ -138,11 +138,11 @@ export const projects: Project[] = [
     tags: [{ en: "Python", zh: "Python" }, { en: "Flask", zh: "Flask" }, { en: "SQLite", zh: "SQLite" }, { en: "Backend Systems", zh: "后端系统" }],
     descPrimary: {
       en: "A unified bill and payment deadline tracking application.",
-      zh: "一个统一管理账单与缴费截止日期的应用。",
+      zh: "账单和缴费截止日，集中在一处。",
     },
     descSecondary: {
       en: "Supports recurring payments, reminders, and lightweight backend persistence.",
-      zh: "支持周期性账单、提醒，以及轻量的后端持久化。",
+      zh: "支持周期账单和提醒，后端持久化做得很轻。",
     },
   },
   {
@@ -152,11 +152,11 @@ export const projects: Project[] = [
     tags: [{ en: "Chrome Extension", zh: "Chrome 扩展" }, { en: "Productivity", zh: "效率工具" }, { en: "JavaScript", zh: "JavaScript" }, { en: "UX Design", zh: "用户体验设计" }],
     descPrimary: {
       en: "A no-nonsense productivity Chrome extension designed to eliminate distractions.",
-      zh: "一个不讲情面的 Chrome 效率插件，专门用来消灭干扰。",
+      zh: "不讲情面的 Chrome 效率插件，专门用来消灭干扰。",
     },
     descSecondary: {
       en: "Enforces focus through aggressive blocking rules and opinionated UX design.",
-      zh: "靠强硬的拦截规则和带主张的交互设计，把注意力摁回来。",
+      zh: "靠强硬的拦截规则和不留余地的交互设计，把注意力摁回来。",
     },
   },
   {
@@ -166,11 +166,11 @@ export const projects: Project[] = [
     tags: [{ en: "AI", zh: "人工智能" }, { en: "NLP", zh: "自然语言处理" }, { en: "Reasoning Systems", zh: "推理系统" }, { en: "Python", zh: "Python" }],
     descPrimary: {
       en: "An intelligent AI assistant prototype focused on structured reasoning.",
-      zh: "一个聚焦结构化推理的智能助手原型。",
+      zh: "聚焦结构化推理的 AI 助手原型。",
     },
     descSecondary: {
       en: "Explores context-aware response generation and prompt-to-structure pipelines.",
-      zh: "探索上下文感知的回复生成，以及从提示词到结构化输出的链路。",
+      zh: "探索怎么让回复读懂上下文，以及从提示词到结构化输出的链路。",
     },
   },
   {
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     tags: [{ en: "Machine Learning", zh: "机器学习" }, { en: "Time Series Forecasting", zh: "时间序列预测" }, { en: "Feature Engineering", zh: "特征工程" }, { en: "Python", zh: "Python" }],
     descPrimary: {
       en: "A retail sales forecasting project using historical time-series data.",
-      zh: "基于历史时间序列数据的零售销量预测项目。",
+      zh: "用历史时间序列预测零售销量。",
     },
     descSecondary: {
       en: "Compares multiple models with feature engineering, validation strategies, and performance analysis.",
@@ -198,7 +198,7 @@ export const projects: Project[] = [
     },
     descSecondary: {
       en: "Replaced legacy VADER sentiment analysis with Claude AI via AWS Bedrock. Designed a five-tier alert classification framework combining real-time scoring and six-day rolling history.",
-      zh: "用 AWS Bedrock 上的 Claude AI 替换掉老的 VADER 情感分析，并设计了结合实时评分与六天滚动历史的五级告警分类框架。",
+      zh: "用 AWS Bedrock 上的 Claude AI 换掉老的 VADER 情感分析，并设计了五级告警分类框架——实时评分加六天滚动历史。",
     },
   },
   {
@@ -208,7 +208,7 @@ export const projects: Project[] = [
     tags: [{ en: "Multi-Agent AI", zh: "多智能体 AI" }, { en: "Gemini", zh: "Gemini" }, { en: "Next.js", zh: "Next.js" }, { en: "MongoDB", zh: "MongoDB" }],
     descPrimary: {
       en: "A multi-agent AI system that automates post-purchase price-match refunds.",
-      zh: "一个自动处理购后价保退款的多智能体 AI 系统。",
+      zh: "自动处理购后价保退款的多智能体 AI 系统。",
     },
     descSecondary: {
       en: "Four Gemini agents coordinate over a Pub/Sub event bus, with MongoDB, Phoenix, and Elastic MCP integrations.",

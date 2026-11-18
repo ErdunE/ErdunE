@@ -67,7 +67,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Working with Erdun has been a pleasure. He brings professionalism, curiosity, and a genuine desire to uplift others, creating a collaborative and inclusive environment where everyone feels valued.",
-      zh: "和额尔敦共事是件愉快的事。他身上有专业、好奇心，还有一种发自内心想把身边人托起来的劲头，总能营造出让每个人都被看见的协作氛围。",
+      zh: "和额尔敦共事是件愉快的事。他身上专业、好奇，还有一股发自内心想把身边人托起来的劲头，总能营造出让每个人都被看见的协作氛围。",
     },
     name: "Jay Rodriguez",
     title: { en: "Account Executive", zh: "客户经理" },
@@ -78,7 +78,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun is a force of productivity and precision. Collaborating with him as Co-President of the Miami Tech Club and Khoury Ambassador has been a privilege. His speed, quality, and consistency never cease to impress.",
-      zh: "额尔敦是效率与精准的代名词。能和他一起担任 Miami Tech Club 联席会长、做库里学院的学生大使，是我的荣幸。他的速度、质量和稳定性始终让人佩服。",
+      zh: "额尔敦是效率与精准的代名词。能和他一起担任 Miami Tech Club 联席会长、做库里学院的学生大使，是我的荣幸。他出手快、质量高、而且一直稳，始终让人佩服。",
     },
     name: "Naveen Kumanan",
     title: { en: "President, Miami Tech Club", zh: "Miami Tech Club 会长" },
@@ -89,7 +89,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun is an exceptional leader who brings energy and insight to the global Northeastern community. His contributions to the multicultural teamwork workshop showcased his professionalism and ability to connect across cultures.",
-      zh: "额尔敦是一位出色的领导者，为美国东北大学的全球社群注入了活力和洞见。他在多元文化团队协作工作坊中的贡献，展现了他的专业素养和跨文化沟通的能力。",
+      zh: "额尔敦是一位出色的领导者，给美国东北大学的全球社群带来了活力，也带来了见解。在多元文化团队协作工作坊上，他的专业和跨文化沟通的本事都看得出来。",
     },
     name: "Haedy Liu, Ph.D.",
     title: { en: "Global Learner Support Tutor", zh: "全球学习支持导师" },
@@ -100,7 +100,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "It was incredible working with Erdun during the Northeastern Miami Entrepreneurship Trek. He brought both technical expertise and collaborative spirit to our team, helping us deliver a working product under intense time pressure.",
-      zh: "在美国东北大学迈阿密创业营和额尔敦合作的经历非常棒。他既带来了技术专长，也带来了协作精神，帮我们在极紧的时间压力下交付出了能跑的产品。",
+      zh: "在美国东北大学迈阿密创业营和额尔敦搭档，特别愉快。他技术过硬，又肯配合别人，帮我们在极紧的时间里交付出了真能跑的产品。",
     },
     name: "Alejandro Vides",
     title: { en: "Co-Founder", zh: "联合创始人" },
@@ -111,7 +111,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun brings professionalism and passion to everything he does, consistently delivering top-quality work in the classroom. His innovative problem-solving and genuine care for building community make him an outstanding collaborator.",
-      zh: "额尔敦做任何事都带着专业和热情，在课堂上始终交出高质量的作业。他解决问题的创造力，以及真心经营社群的那份在意，让他成为非常出色的合作者。",
+      zh: "额尔敦做任何事都带着专业和热情，在课堂上始终交出高质量的作业。他解决问题有创造力，经营社群也是真上心——这样的人，合作起来非常出色。",
     },
     name: "Gabriela Gongora-Svartzman, Ph.D.",
     title: { en: "Associate Teaching Professor & Director of Computing Programs", zh: "副教学教授兼计算机项目主任" },
@@ -133,7 +133,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun is a curious learner, patient teacher, and dedicated community member, technically proficient and exactly the kind of teammate you want.",
-      zh: "额尔敦是个充满好奇心的学习者、有耐心的老师、尽心的社群成员，技术扎实，正是你会想要的那种队友。",
+      zh: "他好学、教人有耐心、对社群的事也上心，技术又扎实——正是你想要的那种队友。",
     },
     name: "Alan Jamieson",
     title: { en: "Teaching Professor, Associate Dean of Computing Programs – East Coast", zh: "教学教授、东海岸计算机项目副院长" },
@@ -144,7 +144,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun's commitment to excellence goes beyond his responsibilities, he actively enhances the student learning experience while pursuing his own growth. His curiosity, dedication, and positive energy make him an invaluable member of our campus community.",
-      zh: "额尔敦对卓越的追求远超出他的职责范围——他在自己成长的同时，也在主动改善其他学生的学习体验。他的好奇心、投入和正能量，让他成为我们校园社群中不可多得的一员。",
+      zh: "额尔敦对好的标准，远不止于把本职做完——他一边自己成长，一边主动去改善其他学生的学习体验。他好奇、投入、有股精气神，这样的人在我们校园社群里不可多得。",
     },
     name: "Juan F. Gonzalez, Ed.S",
     title: { en: "Associate Director of Operations", zh: "运营副主任" },
@@ -155,7 +155,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "I worked with Erdun during the Northeastern Miami Trek, where he played a key role in brainstorming, attracting attendees, and building Mediclear that a price transparency prototype we successfully pitched within a week.",
-      zh: "我在美国东北大学迈阿密创业营和额尔敦共事，他在头脑风暴、吸引参与者以及搭建 Mediclear 上都起了关键作用——那是一个医疗价格透明化的原型，我们在一周内就成功完成了路演。",
+      zh: "我在美国东北大学迈阿密创业营和额尔敦共事，出点子、拉人参与、把 Mediclear 搭起来，他都是关键——那是个医疗价格透明化的原型，我们一周内就完成了路演。",
     },
     name: "Faisal Rehman Khattak",
     title: { en: "Co-Founder & CTO", zh: "联合创始人兼首席技术官" },
@@ -166,7 +166,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun brought energy, innovation, and community to the classroom and campus via captivating academic projects, novel technological events, and camaraderie amongst colleagues.",
-      zh: "额尔敦用引人入胜的学术项目、新颖的技术活动和同伴间的情谊，为课堂和校园带来了活力、创新与归属感。",
+      zh: "额尔敦做的学术项目引人入胜，办的技术活动新鲜，同伴之间也处得好。课堂和校园因此有了活力、有了新东西，也有了归属感。",
     },
     name: "Nate Derbinsky",
     title: { en: "Teaching Professor", zh: "教学教授" },
@@ -187,7 +187,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "As a student leader at Northeastern's Miami campus, Erdun built the Miami Tech Club into a thriving community. His calm demeanor, time management, and dedication to peers also led to his election to Khoury's MS Advisory Board.",
-      zh: "作为美国东北大学迈阿密校区的学生领袖，额尔敦把 Miami Tech Club 做成了一个有活力的社群。他的沉稳、时间管理能力以及对同学的用心，也让他当选了库里学院硕士生顾问委员会成员。",
+      zh: "作为美国东北大学迈阿密校区的学生领袖，额尔敦把 Miami Tech Club 做成了一个有活力的社群。他沉得住气、安排得过来、又惦记着同学，后来当选了库里学院硕士生顾问委员会成员。",
     },
     name: "David Paquette",
     title: { en: "Assistant Director of Retention and Engagement", zh: "学生留存与参与事务助理主任" },
@@ -198,7 +198,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun impressed me at the 2025 NU Entrepreneurship Trek with his ability to distill abstract ideas into actionable strategies. His adaptability, curiosity, and problem-solving mindset make him an exceptional founder and teammate.",
-      zh: "在 2025 年美国东北大学创业营上，额尔敦把抽象想法提炼成可执行策略的能力让我印象深刻。他的适应力、好奇心和解决问题的思维方式，让他成为出色的创始人和队友。",
+      zh: "在 2025 年美国东北大学创业营上，额尔敦能把抽象想法提炼成可执行的策略，这点让我印象深刻。他适应得快、好奇心重、遇事先想怎么解决——做创始人、做队友都出色。",
     },
     name: "Pedro C. C. Gomes",
     title: { en: "Associate Director of Entrepreneurship", zh: "创业事务副主任" },
@@ -231,7 +231,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun's initiative and problem-solving saved millions in costs and earned cross-team trust at Amazon.",
-      zh: "额尔敦的主动性和解决问题的能力，在亚马逊为公司省下了数百万美元的成本，也赢得了跨团队的信任。",
+      zh: "额尔敦主动找问题、也解决问题，在亚马逊为公司省下了数百万美元，也赢得了跨团队的信任。",
     },
     name: "Nirmit Kachrani",
     title: { en: "Engineering Manager", zh: "工程经理" },
@@ -242,7 +242,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun is a driven engineer whose ownership and technical depth left a lasting impact on our AWS team.",
-      zh: "额尔敦是个有冲劲的工程师，他的担当和技术深度给我们亚马逊云科技团队留下了长久的影响。",
+      zh: "额尔敦是个有冲劲的工程师，他肯扛事、技术扎得深，对我们亚马逊云科技团队的影响一直都在。",
     },
     name: "Hong Zhao",
     title: { en: "Senior Software Development Engineer", zh: "高级软件开发工程师" },
@@ -253,7 +253,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun stands out as one of the most self-motivated and determined students I have taught.",
-      zh: "在我教过的学生里，额尔敦是最有自驱力、最有决心的之一。",
+      zh: "在我教过的学生里，额尔敦的自驱力和决心数一数二。",
     },
     name: "Tingjian Ge",
     title: { en: "Professor of Computer Science", zh: "计算机科学教授" },
@@ -264,7 +264,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun has shown tremendous initiative in improving the maintenance and documentation of the application.",
-      zh: "在改善应用的维护和文档方面，额尔敦展现出了极强的主动性。",
+      zh: "应用的维护和文档，额尔敦主动去改，劲头很足。",
     },
     name: "Clif Ong",
     title: { en: "Backend Engineer", zh: "后端工程师" },
@@ -275,7 +275,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun consistently impressed me with his attention to detail and commitment to high-quality work.",
-      zh: "额尔敦对细节的在意和对高质量产出的坚持，始终让我印象深刻。",
+      zh: "额尔敦在意细节，也不肯在质量上将就，这点始终让我印象深刻。",
     },
     name: "Gnana Chand Mallangi",
     title: { en: "Data Analytics Intern", zh: "数据分析实习生" },
@@ -297,7 +297,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun's reliability and professionalism made him a trusted teammate, recognized as one of the best interns.",
-      zh: "额尔敦的可靠和专业让他成为值得信赖的队友，大家公认他是最好的实习生之一。",
+      zh: "额尔敦可靠又专业，是那种你放心把事交给他的队友。大家都说他是最好的实习生之一。",
     },
     name: "Aditya Bhuran",
     title: { en: "Webmaster", zh: "网站管理员" },
@@ -307,7 +307,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun uplifted everyone around him with his collaborative mindset and supportive leadership.",
-      zh: "额尔敦以协作的心态和愿意托举他人的领导方式，带动了身边的每一个人。",
+      zh: "额尔敦乐意协作，也愿意把人往上托，身边的人都被他带起来了。",
     },
     name: "Tejesh Boppana",
     title: { en: "Computer Science Student", zh: "计算机科学专业学生" },
@@ -318,7 +318,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun created a detailed onboarding guide that saved time and smoothed the transition for new interns.",
-      zh: "额尔敦写了一份详尽的新人上手指南，省下了大量时间，也让新实习生的过渡顺畅了很多。",
+      zh: "额尔敦写了一份详尽的新人上手指南，省下了大量时间，也新来的实习生接手也顺畅多了。",
     },
     name: "Mohana Siddhartha Chivukula",
     title: { en: "Computer Science Student", zh: "计算机科学专业学生" },
@@ -362,7 +362,7 @@ export const testimonials: Testimonial[] = [
   {
     quote: {
       en: "Erdun's proactive problem-solving and deep technical expertise made him invaluable in high-stakes projects.",
-      zh: "额尔敦主动解决问题的习惯和深厚的技术功底，让他在高风险项目中格外不可或缺。",
+      zh: "额尔敦习惯主动解决问题，技术功底也深，关键项目里格外少不了他。",
     },
     name: "Eric W",
     title: { en: "Software Development Engineer", zh: "软件开发工程师" },

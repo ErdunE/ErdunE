@@ -1238,7 +1238,17 @@ html[lang="zh-Hans"] h2,
 html[lang="zh-Hans"] h3 {
   letter-spacing: 0;
 }
-/* Mono labels are set with wide Latin tracking that looks gappy on ideographs. */
-html[lang="zh-Hans"] .eyebrow {
-  letter-spacing: 0.08em;
+/* Mono labels are set with wide Latin tracking, where the extra space falls
+   between letters of a short uppercase word. Ideographs are already full-width
+   boxes, so the same tracking reads as a line that has come apart — most
+   visibly on the hero's status pill, which is long.
+
+   The attribute match catches the inline tracking-[0.12em] / tracking-[0.14em]
+   utilities as well as .eyebrow, so the hero status, the contact status, the
+   education dates and summary, the footer and the nav links all narrow
+   together. It is matched on the substring rather than the exact value so a
+   small change to either number does not silently drop the rule. */
+html[lang="zh-Hans"] .eyebrow,
+html[lang="zh-Hans"] [class*="tracking-[0.1"] {
+  letter-spacing: 0.06em;
 }

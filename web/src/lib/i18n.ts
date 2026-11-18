@@ -79,6 +79,14 @@ export const UI = {
     },
   },
 
+  hero: {
+    // The nav's résumé button and this one say the same thing, but the hero's
+    // pair reads as two choices rather than one label, so "Contact" is the
+    // shorter 联系 rather than the section's 联系我.
+    contact: { en: "Contact", zh: "联系" },
+    signature: { en: "Erdun E signature", zh: "额尔敦的签名" },
+  },
+
   sections: {
     experience: {
       eyebrow: { en: "Experience", zh: "经历" },
@@ -110,7 +118,7 @@ export const UI = {
       heading: { en: "What collaborators say", zh: "合作者怎么说" },
       subtitle: {
         en: "A few words from people Erdun has worked, built, and taught alongside.",
-        zh: "来自与额尔敦共事、合作和一起教过课的人。",
+        zh: "来自和额尔敦共事、一起做东西、一起带过课的人。",
       },
       // Quotes come in both languages now, so each locale shows some
       // originals and some translations. Stated at the section rather than
@@ -169,6 +177,7 @@ export const UI = {
 
   widgets: {
     donate: { en: "Donate to Erdun", zh: "赞赏额尔敦" },
+    donateShort: { en: "Donate", zh: "赞赏" },
   },
 
   footer: {

@@ -64,6 +64,7 @@ function Detail({ text }: { text: string }) {
 }
 
 export default function ExperienceTimeline({ items, lang }: { items: ExpItem[]; lang: Lang }) {
+  const sep = lang === "zh" ? "，" : ", ";
   const [active, setActive] = useState(0);
   // -1 / 1: which way the last move went, so the panel swaps along the axis
   // instead of blinking in place.
@@ -136,9 +137,11 @@ export default function ExperienceTimeline({ items, lang }: { items: ExpItem[]; 
                 <Logo item={it} className="exp-node-img" />
               </span>
               <span className="sr-only">
+                {/* A screen reader reads this aloud, so the comma has to be
+                    the one the language uses. */}
                 {it.role}
-                {it.company ? `, ${it.company}` : ""}
-                {it.time ? `, ${it.time}` : ""}
+                {it.company ? `${sep}${it.company}` : ""}
+                {it.time ? `${sep}${it.time}` : ""}
               </span>
             </button>
           ))}

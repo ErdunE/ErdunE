@@ -89,7 +89,7 @@ export const education: Education[] = [
       { en: "COMP4630 Mobile App Programming I", zh: "COMP4630 移动应用编程 I" },
     ],
     awards: [
-      { text: { en: "Dean's List (2018 – 2020) 🏅", zh: "院长嘉许名单（2018 – 2020）🏅" } },
+      { text: { en: "Dean's List (2018 – 2020) 🏅", zh: "院长嘉许名单（2018—2020）🏅" } },
       { text: { en: "Communications Lead, CSSA", zh: "中国学生学者联合会 宣传负责人" } },
     ],
   },

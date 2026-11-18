@@ -17,7 +17,7 @@ export interface Capability {
 
 export const capabilityLead: I18nText = {
   en: "Erdun's engineering capabilities are shaped by real systems and real constraints. He focuses on making sound engineering decisions in environments where trade-offs matter. Decisions balance reliability, clarity, and long-term maintainability over short-term wins.",
-  zh: "额尔敦的工程能力来自真实的系统和真实的约束。他擅长在必须做取舍的环境里作出稳妥的工程决策——在可靠性、清晰度和长期可维护性之间取得平衡，而不是追求短期的漂亮结果。",
+  zh: "额尔敦的工程能力是真实系统和真实约束磨出来的。他擅长在不得不取舍的时候把决策做稳——宁可要可靠、要看得懂、要长期好维护，也不去换短期漂亮的结果。",
 };
 
 export const capabilities: Capability[] = [
@@ -29,11 +29,11 @@ export const capabilities: Capability[] = [
     icon: "network",
     body: {
       en: "Experience making trade-off decisions in complex systems where performance, stability, velocity, and maintainability conflict.",
-      zh: "在性能、稳定性、迭代速度与可维护性相互冲突的复杂系统里，有做取舍决策的经验。",
+      zh: "在复杂系统里做过取舍。性能、稳定性、迭代速度和可维护性，常常互相打架。",
     },
     bodyMuted: {
       en: "Focused on reducing long-term risk, knowing when to simplify, and recognizing when deeper investment is necessary.",
-      zh: "重点在于降低长期风险、知道什么时候该做减法，以及识别什么时候值得投入更多。",
+      zh: "关键是压住长期风险：知道什么时候该做减法，也看得出什么时候值得多投入。",
     },
   },
   {
@@ -44,11 +44,11 @@ export const capabilities: Capability[] = [
     icon: "shield-check",
     body: {
       en: "Delivered features and workflows in production environments with real users, deadlines, and dependencies.",
-      zh: "在有真实用户、真实期限和真实依赖的生产环境里交付过功能与流程。",
+      zh: "在生产环境里交付过功能和流程——有真实用户、真实期限、真实依赖。",
     },
     bodyMuted: {
       en: "Prioritizes predictable outcomes, graceful failure modes, and systems that remain stable under pressure.",
-      zh: "优先考虑结果可预期、故障能优雅降级，以及系统在压力下仍然稳得住。",
+      zh: "他看重的是结果可预期、出了问题能优雅降级、压力上来系统还稳得住。",
     },
   },
   {
@@ -63,7 +63,7 @@ export const capabilities: Capability[] = [
     },
     bodyMuted: {
       en: "Architectural choices emphasize clarity, extensibility, and the ability to iterate without introducing regressions.",
-      zh: "架构选择上强调清晰、可扩展，以及能在不引入回归的前提下持续迭代。",
+      zh: "架构上图的是清楚、好扩展，以及改起来不会把原来能跑的东西弄坏。",
     },
   },
   {
@@ -74,11 +74,11 @@ export const capabilities: Capability[] = [
     icon: "compass",
     body: {
       en: "Operates with a strong sense of ownership across system boundaries.",
-      zh: "跨越系统边界做事，有很强的主人翁意识。",
+      zh: "做事不划地盘，跨系统的活儿照样接得住。",
     },
     bodyMuted: {
       en: "Communicates decisions clearly, surfaces risks early, and aligns technical execution with broader product goals.",
-      zh: "把决策讲清楚、把风险提早暴露，并让技术落地和更大的产品目标对齐。",
+      zh: "决策讲得清楚，风险提早摆出来，技术怎么落地也对得上更上层的产品目标。",
     },
   },
 ];

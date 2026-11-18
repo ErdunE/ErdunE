@@ -38,11 +38,21 @@ export function formatMonth(ym: YearMonth, lang: Lang): string {
   return lang === "zh" ? `${y}年${m}月` : `${MONTH_EN[m - 1]} ${y}`;
 }
 
-/** The displayed range. Undated entries render nothing. */
+/**
+ * The displayed range. Undated entries render nothing.
+ *
+ * The separator is not shared. English sets a spaced en dash; Chinese has no
+ * such convention — 至今 already carries "up to now" and needs nothing before
+ * it, and a closed range takes an unspaced em dash.
+ */
 export function formatRange(r: Dated, lang: Lang): string {
   if (!r.start) return "";
-  const right = r.end == null ? PRESENT[lang] : formatMonth(r.end, lang);
-  return `${formatMonth(r.start, lang)} – ${right}`;
+  const from = formatMonth(r.start, lang);
+  if (lang === "zh") {
+    return r.end == null ? `${from}至今` : `${from}—${formatMonth(r.end, lang)}`;
+  }
+  const right = r.end == null ? PRESENT.en : formatMonth(r.end, lang);
+  return `${from} – ${right}`;
 }
 
 /** Axis tick under a node: the year it ended, or the current-role label. */

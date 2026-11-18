@@ -113,7 +113,7 @@ export const log: LogEntry[] = [
     source: "project",
     title: {
       en: "Rebuilt and relaunched erdun.me on Astro and Cloudflare.",
-      zh: "用 Astro 和 Cloudflare 重做并重新上线了 erdun.me。",
+      zh: "用 Astro 和 Cloudflare 把 erdun.me 重做了一遍，上线。",
     },
     link: "https://erdun.me",
     media: "/log/06erdunme.png",
@@ -123,7 +123,7 @@ export const log: LogEntry[] = [
     source: "milestone",
     title: {
       en: "Joined diGeniusAI as a Software Development Engineer II, working on the AI operating system behind their restaurant platform.",
-      zh: "入职 diGeniusAI，任软件开发工程师 II，参与其餐饮平台背后的 AI 操作系统。",
+      zh: "入职 diGeniusAI，任软件开发工程师 II，参与他们餐饮平台背后的 AI 操作系统。",
     },
     link: "https://www.digeniusai.com/",
     media: "/log/05digeniusai.webp",
@@ -133,7 +133,7 @@ export const log: LogEntry[] = [
     source: "press",
     title: {
       en: "Featured in Khoury News: students bring in a record awards haul at the 2026 Northeastern convocation.",
-      zh: "被库里学院新闻报道：2026 年美国东北大学毕业典礼上，学生拿下创纪录的获奖数量。",
+      zh: "被库里学院新闻报道：2026 年美国东北大学毕业典礼上，学生的获奖数创下纪录。",
     },
     link: "https://www.khoury.northeastern.edu/khoury-students-bring-in-record-awards-haul-at-2026-northeastern-convocation/",
     media: "/log/04khoury-awards.jpg",

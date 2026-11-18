@@ -32,7 +32,7 @@ export const experience: Experience[] = [
     detail:
 {
       en: "Building the business-finance data platform at DJI in Shenzhen: warehouse architecture, turning finance rules and metrics into data models and services, and the data governance underneath.",
-      zh: "在深圳的大疆创新做业财数据平台：数仓架构、把财务规则和指标沉淀为数据模型与服务，以及底下那套数据治理体系。",
+      zh: "在深圳的大疆创新做业财数据平台：搭数仓架构，把财务规则和指标沉淀成数据模型与服务，再把底下那套数据治理做起来。",
     },
   },
   {
@@ -56,7 +56,7 @@ export const experience: Experience[] = [
     detail:
 {
       en: "Working on diGeniusAI, an AI operating system for multi-unit restaurant and retail operators, where agentic modules coordinate over a single source of truth on a serverless architecture.",
-      zh: "参与 diGeniusAI —— 一套面向连锁餐饮与零售的 AI 操作系统，在无服务器架构上，各个智能体模块围绕同一份可信数据源协同工作。",
+      zh: "参与 diGeniusAI —— 面向连锁餐饮和零售的 AI 操作系统。跑在无服务器架构上，各个智能体模块围着同一份可信数据协同。",
     },
   },
   {
@@ -68,7 +68,7 @@ export const experience: Experience[] = [
     detail:
 {
       en: "Building PromptLint, an AI prompt quality analysis tool with real-time scoring and rephrase suggestions, launching on web, desktop, mobile and IDE extension.",
-      zh: "在做 PromptLint —— 一个 AI 提示词质量分析工具，提供实时评分与改写建议，覆盖网页、桌面、移动端和 IDE 插件。",
+      zh: "在做 PromptLint —— AI 提示词质量分析工具，实时评分加改写建议，覆盖网页、桌面、移动端和 IDE 插件。",
     },
   },
   {
@@ -80,7 +80,7 @@ export const experience: Experience[] = [
     detail:
 {
       en: "Course-based project (CS6966 Practicum). \n\nLed a team of 5 to redesign the alert detection pipeline for Vibes, a K-8 emotional wellness platform. Replaced VADER with Claude AI via AWS Bedrock and designed a five-tier alert classification framework. Delivered a production-ready system on AWS Lambda, DynamoDB, API Gateway, and Bedrock.",
-      zh: "课程项目（CS6966 实践课）。\n\n带 5 人团队重做了 Vibes 的告警检测链路——那是一个面向 K-8 学生的情绪健康平台。用 AWS Bedrock 上的 Claude AI 替换掉原来的 VADER，并设计了五级告警分类框架。最终在 AWS Lambda、DynamoDB、API Gateway 和 Bedrock 上交付了可上生产的系统。",
+      zh: "课程项目（CS6966 实践课）。\n\n带 5 人团队重做了 Vibes 的告警检测链路——那是面向 K-8 学生的情绪健康平台。用 AWS Bedrock 上的 Claude AI 替换掉原来的 VADER，并设计了五级告警分类框架。最终在 AWS Lambda、DynamoDB、API Gateway 和 Bedrock 上交付了能上生产的系统。",
     },
   },
   {
@@ -94,7 +94,7 @@ export const experience: Experience[] = [
     detail:
 {
       en: "CS5100 Programming Design Paradigm (Fall 2025): Led weekly recitations, graded assignments, and held office hours.\n\nCS5800/INFO6205 Algorithms (Spring 2026): Supported students in algorithm design and analysis under Prof. Jia Zhu, including grading and office hours.",
-      zh: "CS5100 程序设计范式（2025 年秋）：负责每周习题课、作业批改和答疑时间。\n\nCS5800/INFO6205 算法（2026 年春）：在朱佳教授指导下，帮助学生做算法设计与分析，同样负责批改和答疑。",
+      zh: "CS5100 程序设计范式（2025 年秋）：负责每周习题课、批改作业和答疑。\n\nCS5800/INFO6205 算法（2026 年春）：在朱佳教授指导下，帮助学生做算法设计与分析，同样负责批改和答疑。",
     },
   },
   {
@@ -142,7 +142,7 @@ export const experience: Experience[] = [
     detail:
 {
       en: "Led firmware testing and performance evaluation for Amazon EBS, improving system stability and supporting deployments across 20,000+ servers. Worked across teams to unblock releases, reduce operational risk, and improve reliability in large-scale production environments.",
-      zh: "主导 Amazon EBS 的固件测试与性能评估，提升了系统稳定性，并支撑了 20,000 多台服务器的部署。跨团队协作推动版本发布、降低运维风险，提高大规模生产环境的可靠性。",
+      zh: "主导 Amazon EBS 的固件测试与性能评估，系统稳定性因此提升，也撑住了两万多台服务器的部署。跨团队推进版本发布、压低运维风险，让大规模生产环境更可靠。",
     },
   },
   {
@@ -153,7 +153,7 @@ export const experience: Experience[] = [
     logo: null,
     detail: {
       en: "Additional academic, leadership, and internship experience.",
-      zh: "其他的学术、社团与实习经历。",
+      zh: "其他学术、社团与实习经历。",
     },
   },
 ];

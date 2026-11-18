@@ -3,7 +3,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { profile } from "@/data/profile";
 import { SIGNATURE_PATH, SIGNATURE_VIEWBOX } from "@/data/signature";
 import { EASE_OUT_EXPO, DURATION } from "@/lib/motion";
-import { type Lang, t } from "@/lib/i18n";
+import { type Lang, t, UI } from "@/lib/i18n";
 
 const ctaBase =
   "inline-flex h-11 min-w-[8.5rem] items-center justify-center rounded-[var(--radius-sm)] border px-6 text-sm font-medium transition-[color,background-color,border-color,transform] duration-150 ease-[var(--ease-brand)] active:scale-[0.98] motion-reduce:active:scale-100 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
@@ -90,7 +90,7 @@ export default function HeroIntro({ lang }: { lang: Lang }) {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           role="img"
-          aria-label="Erdun E signature"
+          aria-label={t(UI.hero.signature, lang)}
           className="h-auto w-full text-accent"
         >
           <path d={SIGNATURE_PATH} fill="currentColor" stroke="none" />
@@ -114,10 +114,10 @@ export default function HeroIntro({ lang }: { lang: Lang }) {
           rel="noopener noreferrer"
           className={ctaPrimary}
         >
-          Résumé
+          {t(UI.nav.resume, lang)}
         </a>
         <a href="#contact" className={ctaSecondary}>
-          Contact
+          {t(UI.hero.contact, lang)}
         </a>
       </motion.div>
     </motion.div>
