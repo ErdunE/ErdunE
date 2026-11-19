@@ -33,6 +33,25 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
+    // Written in Chinese, in speech rather than prose — "cool" is the author's
+    // own word and 尔敦 his own shortening of the name, both left as written.
+    // Only the space around the Latin word is added, to match the spacing
+    // the rest of the site uses between scripts.
+    quote: {
+      en: "Erdun is cool in how he thinks and how he works. He gets results fast, and what he delivers is seriously good. If I were putting together a new team, he'd be my first pick.",
+      zh: "尔敦是一个想法、做事都非常 cool 的人，他能快速做出成果且这个成果还非常的牛，如果我要组建新团队还是会首选尔敦做队友。",
+    },
+    // No LinkedIn, and the name has a settled form in both scripts (§4.2).
+    name: { en: "Zhang Chao", zh: "张超" },
+    title: { en: "CTO", zh: "首席技术官" },
+    company: { en: "MolarData", zh: "整数智能" },
+    // Erdun's choice, after I raised that it does not read as a face at the
+    // 40px the card renders: a night shot, the head upturned and backlit
+    // against a lit spire. Cropped to the head; brightening was tried and
+    // made it worse, blowing out the face against a neon sky.
+    avatar: img("ZhangChao.jpeg"),
+  },
+  {
     // Written in Chinese, as a 4-4-4 aphorism. Translating it into a sentence
     // would lose the form, so the English keeps three beats too.
     quote: {
