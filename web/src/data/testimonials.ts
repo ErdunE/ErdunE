@@ -33,6 +33,19 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
+    // Written in Chinese. 尔敦 is the author's own shortening of the name, as
+    // in the other two Chinese-language quotes, and stays.
+    quote: {
+      en: "Erdun is a partner you can genuinely trust and rely on. Since he joined, the team has felt stronger and more confident taking on bigger work. He thinks things through from every side, digs into the details, and brings real enthusiasm to work and life alike.",
+      zh: "尔敦是个非常值得信任非常可靠的伙伴，他工作以来给予了我们很大的力量，让我们有信心完成更多更棒的事情。面对很多事情，他的思考非常全面，对待工作具体事项会进行很全面的调研，对待工作和生活都有足够的热情。",
+    },
+    // No LinkedIn, and the name has a settled form in both scripts (§4.2).
+    name: { en: "Xiong Zongjie", zh: "熊宗杰" },
+    title: { en: "Director of Infrastructure", zh: "基础架构总监" },
+    company: { en: "MolarData", zh: "整数智能" },
+    avatar: img("XiongZongjie.jpeg"),
+  },
+  {
     // Written in Chinese, in speech rather than prose — "cool" is the author's
     // own word and 尔敦 his own shortening of the name, both left as written.
     // Only the space around the Latin word is added, to match the spacing
